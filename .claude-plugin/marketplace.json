@@ -1,0 +1,20 @@
+{
+  "name": "skylence-laravel-livewire4-marketplace",
+  "owner": {
+    "name": "Skylence",
+    "contact": "github.com/skylence"
+  },
+  "description": "Skylence's Laravel + Livewire development tools",
+  "plugins": [
+    {
+      "name": "skylence-claude-code-laravel-livewire4",
+      "source": "./",
+      "description": "Laravel 11 + Livewire 4 beta plugin with 16 commands and 11 specialized agents",
+      "version": "1.0.0",
+      "author": {
+        "name": "Skylence"
+      },
+      "tags": ["laravel", "livewire", "php", "full-stack"]
+    }
+  ]
+}

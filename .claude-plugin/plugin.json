@@ -1,0 +1,56 @@
+{
+  "name": "skylence-claude-code-laravel-livewire4",
+  "version": "1.0.0",
+  "description": "Skylence's Laravel 11 + Livewire 4 beta development plugin with modern PHP patterns",
+  "author": {
+    "name": "Skylence"
+  },
+  "license": "MIT",
+  "keywords": [
+    "laravel",
+    "livewire",
+    "livewire4",
+    "php",
+    "eloquent",
+    "blade",
+    "full-stack"
+  ],
+  "commands": [
+    "./.claude/commands/new-task.md",
+    "./.claude/commands/laravel/controller-new.md",
+    "./.claude/commands/laravel/model-new.md",
+    "./.claude/commands/laravel/migration-new.md",
+    "./.claude/commands/laravel/seeder-new.md",
+    "./.claude/commands/laravel/command-new.md",
+    "./.claude/commands/laravel/job-new.md",
+    "./.claude/commands/laravel/event-new.md",
+    "./.claude/commands/laravel/middleware-new.md",
+    "./.claude/commands/laravel/policy-new.md",
+    "./.claude/commands/laravel/test-new.md",
+    "./.claude/commands/livewire/component-new.md",
+    "./.claude/commands/livewire/form-new.md",
+    "./.claude/commands/misc/code-optimize.md",
+    "./.claude/commands/misc/code-cleanup.md",
+    "./.claude/commands/misc/feature-plan.md"
+  ],
+  "agents": [
+    "./.claude/agents/laravel-architect.md",
+    "./.claude/agents/livewire-specialist.md",
+    "./.claude/agents/eloquent-expert.md",
+    "./.claude/agents/api-architect.md",
+    "./.claude/agents/security-engineer.md",
+    "./.claude/agents/performance-engineer.md",
+    "./.claude/agents/queue-specialist.md",
+    "./.claude/agents/testing-expert.md",
+    "./.claude/agents/database-architect.md",
+    "./.claude/agents/blade-specialist.md",
+    "./.claude/agents/devops-engineer.md"
+  ],
+  "mcpServers": {
+    "context7": {
+      "command": "npx",
+      "args": ["-y", "@upstash/context7-mcp"],
+      "description": "Access up-to-date Laravel and Livewire documentation"
+    }
+  }
+}

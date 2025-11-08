@@ -1,0 +1,57 @@
+{
+    "name": "skylence/laravel12-livewire4-filament4-claude-code",
+    "description": "Complete development toolkit for Laravel 12, Livewire 4, and Filament 4 with AI agents and slash commands for Claude Code",
+    "type": "claude-code-plugin",
+    "keywords": [
+        "laravel",
+        "livewire",
+        "filament",
+        "claude-code",
+        "ai-assistant",
+        "development-toolkit",
+        "pest",
+        "testing",
+        "modular-architecture"
+    ],
+    "homepage": "https://github.com/skylence/laravel12-livewire4-filament4-claude-code",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Skylence",
+            "email": "your-email@example.com"
+        }
+    ],
+    "require": {
+        "php": "^8.2"
+    },
+    "suggest": {
+        "nwidart/laravel-modules": "For modular architecture in medium-large projects",
+        "skylence/laravel-optimize-mcp": "For AI-assisted optimization and monitoring"
+    },
+    "extra": {
+        "claude-code": {
+            "plugin-version": "1.0.0",
+            "agents": 11,
+            "commands": 35,
+            "supports": {
+                "laravel": "^12.0",
+                "livewire": "^4.0",
+                "filament": "^4.0",
+                "pest": "^4.0"
+            },
+            "features": [
+                "laravel-12-support",
+                "livewire-4-reactive-components",
+                "filament-4-admin-panels",
+                "modular-architecture",
+                "pest-4-testing",
+                "ai-assisted-optimization",
+                "real-time-websockets",
+                "oauth-authentication",
+                "performance-monitoring"
+            ]
+        }
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true
+}
