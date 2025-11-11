@@ -1,89 +1,88 @@
-# Laravel + Livewire 4 + Filament 4 Development Kit
+# Multi-Framework Development Marketplace
 
-Complete development toolkit for Laravel 12, Livewire 4, and Filament 4 with **35 slash commands** and **11 specialized AI agents**.
+Professional development toolkit with **5 specialized plugins** featuring **24 AI agents** and **56 slash commands** for Laravel, Livewire, Filament, Vue/Nuxt, and Magento 2.
 
-## Features
+## 📦 Available Plugins
 
-- 🚀 **Laravel 12** - Latest Laravel framework support
-- ⚡ **Livewire 4** - Reactive components with new attributes system
-- 🎨 **Filament 4** - Admin panel builder integration
-- 🧩 **Modular Architecture** - nwidart/laravel-modules support for large projects
-- 📊 **Optimization Tools** - skylence/laravel-optimize-mcp integration
-- ✅ **Pest 4** - Modern testing with browser tests, type coverage, code coverage
-- 🔒 **Security First** - Best practices built-in
+Install only what you need - each plugin is completely isolated with its own agents and commands:
+
+### Backend PHP
+- 🚀 **laravel-development** - 9 agents, 21 commands (Laravel 12, Eloquent, testing, security)
+- ⚡ **livewire-development** - 1 agent, 4 commands (Livewire 4 reactive components)
+- 🎨 **filament-development** - 1 agent, 11 commands (Filament 4 admin panels)
+- 🛒 **magento2-development** - 4 agents, 8 commands (Magento 2 / Adobe Commerce)
+
+### Frontend
+- 🌐 **vue-nuxt-development** - 8 agents, 12 commands (Vue 3 + Nuxt 4 + TypeScript)
 
 ## Quick Install
 
 ```bash
-# Clone from GitHub
-git clone https://github.com/skylence-be/laravel12-livewire4-filament4-claude-code.git
+# Add the marketplace
+/plugin marketplace add skylence-be/multi-framework-dev-marketplace
 
-# Or install via Claude Code
-/plugin marketplace add skylence-be/laravel12-livewire4-filament4-claude-code
-/plugin install laravel12-livewire4-filament4-claude-code
+# Install the plugins you need
+/plugin install laravel-development
+/plugin install livewire-development
+/plugin install filament-development
+/plugin install vue-nuxt-development
+/plugin install magento2-development
 ```
 
-## What's Inside
+## Plugin Details
 
-### 📦 Slash Commands (35 Total)
+### 🚀 Laravel Development Plugin
 
-#### Laravel Commands (17)
-- `/laravel:model-new` - Eloquent model with migration
-- `/laravel:controller-new` - Resource/API controllers
-- `/laravel:migration-new` - Database migrations
-- `/laravel:factory-new` - Model factories for testing
-- `/laravel:seeder-new` - Database seeders
-- `/laravel:request-new` - Form requests with validation
-- `/laravel:policy-new` - Authorization policies
-- `/laravel:resource-new` - API resources
-- `/laravel:middleware-new` - HTTP middleware
-- `/laravel:job-new` - Queue jobs
-- `/laravel:event-new` - Events
-- `/laravel:listener-new` - Event listeners
-- `/laravel:mail-new` - Mailable classes
-- `/laravel:notification-new` - Multi-channel notifications
-- `/laravel:observer-new` - Model observers
-- `/laravel:rule-new` - Custom validation rules
-- `/laravel:command-new` - Artisan console commands
+**9 specialized agents:**
+- laravel-architect - Architecture, patterns, modular design
+- eloquent-expert - ORM, relationships, query optimization
+- testing-expert - Pest 4/PHPUnit with browser testing
+- security-engineer - Authentication, authorization, security
+- optimization-expert - Performance optimization
+- laravel-pulse-expert - Performance monitoring
+- laravel-reverb-expert - WebSocket real-time communication
+- laravel-socialite-expert - OAuth authentication
+- laravel-prompts-expert - CLI forms and console commands
 
-#### Livewire Commands (4)
-- `/livewire:component-new` - Livewire 4 components with reactive properties
-- `/livewire:form-new` - Livewire forms with validation
-- `/livewire:attribute-new` - Custom Livewire attributes
-- `/livewire:layout-new` - Livewire layout templates
+**21 commands:** Models, migrations, controllers, jobs, events, listeners, mail, middleware, notifications, observers, policies, requests, resources, rules, seeders, factories, commands, plus utilities
 
-#### Filament Commands (11)
-- `/filament:resource-new` - CRUD resources with pages
-- `/filament:page-new` - Custom pages
-- `/filament:widget-new` - Dashboard widgets (stats, charts, tables)
-- `/filament:relation-manager-new` - Relation managers
-- `/filament:panel-new` - Multi-panel applications
-- `/filament:cluster-new` - Resource organization clusters
-- `/filament:custom-field-new` - Custom form fields
-- `/filament:custom-column-new` - Custom table columns
-- `/filament:exporter-new` - Data exporters
-- `/filament:importer-new` - Data importers
-- `/filament:theme-new` - Custom panel themes
+### ⚡ Livewire Development Plugin
 
-#### Utility Commands (3)
-- `/new-task` - Analyze task complexity and create implementation plan
-- `/misc:code-cleanup` - Clean up code following best practices
-- `/misc:code-optimize` - Optimize code for performance
-- `/misc:feature-plan` - Plan feature implementation
+**1 specialized agent:**
+- livewire-specialist - Livewire 4 reactive components and patterns
 
-### 🤖 Specialized AI Agents (11)
+**4 commands:** Components, forms, layouts, attributes
 
-1. **eloquent-expert** - Eloquent ORM, relationships, query optimization
-2. **laravel-architect** - Architecture, patterns, modular design with nwidart/laravel-modules
-3. **livewire-specialist** - Livewire 4 reactive components and patterns
-4. **filament-specialist** - Filament 4 admin panels, resources, components
-5. **testing-expert** - Pest 4/PHPUnit with browser testing, code coverage
-6. **security-engineer** - Authentication, authorization, CSRF, SQL injection prevention
-7. **optimization-expert** - Performance optimization with skylence/laravel-optimize-mcp
-8. **laravel-prompts-expert** - CLI forms and console commands
-9. **laravel-pulse-expert** - Performance monitoring and bottleneck identification
-10. **laravel-reverb-expert** - WebSocket server and real-time communication
-11. **laravel-socialite-expert** - OAuth authentication and social login
+### 🎨 Filament Development Plugin
+
+**1 specialized agent:**
+- filament-specialist - Filament 4 admin panels, resources, components
+
+**11 commands:** Resources, pages, widgets, relation managers, panels, clusters, custom fields, custom columns, exporters, importers, themes
+
+### 🌐 Vue/Nuxt Development Plugin
+
+**8 specialized agents:**
+- vue-architect - Vue 3 architecture and patterns
+- nuxt-architect - Nuxt 4 SSR and routing
+- typescript-expert - Advanced TypeScript patterns
+- state-management - Pinia stores and composables
+- testing-specialist - Vitest and component testing
+- security-engineer - Frontend security best practices
+- ux-engineer - User experience and accessibility
+- frontend-performance - Performance optimization
+
+**12 commands:** Components, pages, layouts, composables, stores, plugins, middleware, API clients, plus utilities
+
+### 🛒 Magento 2 Development Plugin
+
+**4 specialized agents:**
+- magento-architect - Magento 2 architecture and patterns
+- ecommerce-specialist - E-commerce features and workflows
+- performance-engineer - Performance optimization
+- security-engineer - Security best practices
+
+**8 commands:** Modules, models, controllers, plugins, plus utilities
 
 ## Integrated Packages
 
@@ -150,82 +149,100 @@ Using `skylence/laravel-optimize-mcp`:
 
 ## Usage Examples
 
-### Create a Complete Feature
+### Laravel Full-Stack Development
 
 ```bash
-# Plan the feature
-/new-task "Create a blog system with posts, categories, and comments"
-
-# Generate components
+# Create complete backend feature
 /laravel:model-new Post
 /laravel:migration-new create_posts_table
 /laravel:controller-new PostController
-/livewire:component-new PostList
-/filament:resource-new PostResource
-
-# Set up testing
 /laravel:factory-new PostFactory
-php artisan test --coverage
+
+# Add reactive frontend
+/livewire:component-new PostList
+/livewire:form-new PostForm
+
+# Build admin panel
+/filament:resource-new PostResource
+/filament:widget-new PostStatsWidget
 ```
 
-### Optimize Your Application
+### Vue/Nuxt Frontend Development
 
-```
-"Analyze my Laravel project and help me optimize it"
-```
-
-The optimization-expert will use MCP tools to:
-- Check configuration for performance issues
-- Monitor database size and growth
-- Recommend package improvements
-- Analyze nginx configuration
-- Review project structure
-
-### Set Up Modular Architecture
-
-For projects with 10+ features:
 ```bash
-composer require nwidart/laravel-modules
-php artisan module:make Blog
-php artisan module:make Shop
+# Create Vue 3 + Nuxt 4 application
+/frontend:page-new blog/index
+/frontend:component-new BlogCard
+/frontend:composable-new useBlogPosts
+/frontend:store-new blog
+/frontend:api-client-new BlogApi
 ```
 
-Agents will guide you on:
-- Module structure and organization
-- Testing configuration for modules
-- Inter-module communication
-- Livewire/Filament in modules
+### Magento 2 E-Commerce
 
-## Best Practices Built-In
+```bash
+# Create custom module
+/magento:module-new Vendor_CustomCheckout
+/magento:model-new CustomOrder
+/magento:controller-new Checkout/Success
+/magento:plugin-new OrderProcessor
+```
 
-All commands and agents follow:
-- ✅ Laravel best practices and conventions
-- ✅ SOLID principles
-- ✅ Security-first approach (CSRF, SQL injection prevention)
-- ✅ Type safety with PHPStan
-- ✅ Test-driven development
-- ✅ Performance optimization
-- ✅ Modular architecture for scalability
+## Architecture Benefits
 
-## Configuration
+### Granular Installation
+- Install only the plugins you need
+- Minimal token usage - each plugin loads only its specific agents and commands
+- No unnecessary resources in context
 
-See `plugin.json` for complete feature configuration including:
-- All 35 slash commands
-- 11 specialized agents
-- Integrated package settings
-- Testing and quality tool configurations
+### Composable Workflows
+- Mix and match plugins for your stack
+- Laravel + Livewire + Filament for full-stack PHP
+- Laravel backend + Vue/Nuxt frontend for modern SPA
+- Magento 2 for e-commerce projects
+
+### Best Practices Built-In
+- Framework-specific conventions and patterns
+- SOLID principles and clean architecture
+- Security-first approach
+- Type safety and static analysis
+- Test-driven development
+- Performance optimization
+
+## Repository Structure
+
+```
+multi-framework-dev-marketplace/
+├── .claude-plugin/
+│   └── marketplace.json          # 5 plugins definition
+├── plugins/
+│   ├── laravel-development/
+│   │   ├── agents/               # 9 Laravel experts
+│   │   └── commands/             # 21 Laravel commands
+│   ├── livewire-development/
+│   │   ├── agents/               # Livewire specialist
+│   │   └── commands/             # 4 Livewire commands
+│   ├── filament-development/
+│   │   ├── agents/               # Filament specialist
+│   │   └── commands/             # 11 Filament commands
+│   ├── vue-nuxt-development/
+│   │   ├── agents/               # 8 frontend experts
+│   │   └── commands/             # 12 frontend commands
+│   └── magento2-development/
+│       ├── agents/               # 4 Magento experts
+│       └── commands/             # 8 Magento commands
+└── README.md
+```
 
 ## Contributing
 
-Contributions welcome! This is an open toolkit for the Laravel community.
+Contributions welcome! This is an open toolkit for the development community.
 
 1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add some amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
-
-See [CONTRIBUTING.md](CONTRIBUTING.md) for detailed guidelines.
+2. Create your feature branch
+3. Add agents or commands to the appropriate plugin
+4. Update plugin descriptions in marketplace.json
+5. Submit a Pull Request
 
 ## License
 
@@ -237,11 +254,11 @@ MIT License - See LICENSE file for details
 
 ## Support
 
-- **GitHub Issues**: [Report bugs and request features](https://github.com/skylence-be/laravel12-livewire4-filament4-claude-code/issues)
-- **Documentation**: See individual agent files in `.claude/agents/`
-- **Examples**: Check command files in `.claude/commands/`
+- **GitHub Issues**: [Report bugs and request features](https://github.com/skylence-be/multi-framework-dev-marketplace/issues)
+- **Documentation**: See individual agent files in `plugins/*/agents/`
+- **Examples**: Check command files in `plugins/*/commands/`
 - **Star the repo**: Help others discover this toolkit!
 
 ---
 
-**Built for Laravel developers who want AI-assisted development with best practices, comprehensive testing, and production-ready code.**
+**Built for developers who want AI-assisted development with best practices across Laravel, Livewire, Filament, Vue/Nuxt, and Magento 2.**

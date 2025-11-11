@@ -9,14 +9,54 @@
   },
   "plugins": [
     {
-      "name": "skylence-claude-code-laravel-livewire4",
-      "source": "./",
-      "description": "Laravel 11 + Livewire 4 beta plugin with 16 commands and 11 specialized agents",
+      "name": "laravel-development",
+      "source": "./plugins/laravel-development",
+      "description": "Core Laravel development with 9 specialized agents (architecture, Eloquent, testing, security, optimization, Pulse, Reverb, Socialite, Prompts) and 17 slash commands for models, migrations, controllers, jobs, and more",
       "version": "1.0.0",
       "author": {
         "name": "Skylence"
       },
-      "tags": ["laravel", "livewire", "php", "full-stack"]
+      "tags": ["laravel", "php", "backend", "eloquent", "artisan"]
+    },
+    {
+      "name": "livewire-development",
+      "source": "./plugins/livewire-development",
+      "description": "Livewire 4 reactive components with specialized agent and 4 slash commands for creating components, forms, layouts, and attributes",
+      "version": "1.0.0",
+      "author": {
+        "name": "Skylence"
+      },
+      "tags": ["livewire", "php", "reactive", "components", "frontend"]
+    },
+    {
+      "name": "filament-development",
+      "source": "./plugins/filament-development",
+      "description": "Filament 4 admin panels with specialized agent and 11 slash commands for resources, pages, widgets, themes, panels, clusters, importers, exporters, and custom fields",
+      "version": "1.0.0",
+      "author": {
+        "name": "Skylence"
+      },
+      "tags": ["filament", "php", "admin", "panels", "resources"]
+    },
+    {
+      "name": "vue-nuxt-development",
+      "source": "./plugins/vue-nuxt-development",
+      "description": "Vue 3 + Nuxt 4 + TypeScript development with 8 specialized agents (Vue/Nuxt architecture, TypeScript, state management, testing, security, UX, performance) and 8 slash commands for components, pages, layouts, composables, stores, plugins, middleware, and API clients",
+      "version": "1.0.0",
+      "author": {
+        "name": "Skylence"
+      },
+      "tags": ["vue", "nuxt4", "typescript", "frontend", "ssr", "composition-api"]
+    },
+    {
+      "name": "magento2-development",
+      "source": "./plugins/magento2-development",
+      "description": "Magento 2 / Adobe Commerce development with 4 specialized agents (Magento architecture, e-commerce specialist, performance, security) and 4 slash commands for modules, models, controllers, and plugins",
+      "version": "1.0.0",
+      "author": {
+        "name": "Skylence"
+      },
+      "tags": ["magento2", "adobe-commerce", "ecommerce", "php", "b2b", "retail"]
     }
   ]
 }
