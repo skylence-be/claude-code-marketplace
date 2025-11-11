@@ -46,7 +46,8 @@ Install only what you need - each plugin is completely isolated with its own age
 - laravel-socialite-expert - OAuth authentication
 - laravel-prompts-expert - CLI forms and console commands
 
-**6 specialized skills** (9,598 lines total):
+**7 specialized skills** (11,416 lines total):
+- laravel-coding-standards - Spatie guidelines, PSR compliance, modern PHP 8+ patterns (1,818 lines)
 - eloquent-relationships - Relationships, eager loading, N+1 prevention (1,771 lines)
 - laravel-queues-jobs - Queue architecture, batching, Horizon (1,812 lines)
 - laravel-testing-patterns - Pest 4, feature/unit tests, mocking (1,390 lines)
@@ -61,12 +62,23 @@ Install only what you need - each plugin is completely isolated with its own age
 **1 specialized agent:**
 - livewire-specialist - Livewire 4 reactive components and patterns
 
+**3 specialized skills** (5,723 lines total):
+- livewire4-reactive-patterns - #[Reactive], #[Computed], #[Locked], wire directives, lifecycle hooks (2,044 lines)
+- livewire-forms-validation - Form objects, real-time validation, multi-step wizards (2,065 lines)
+- livewire-performance-optimization - Query optimization, lazy loading, computed properties (1,614 lines)
+
 **4 commands:** Components, forms, layouts, attributes
 
 ### 🎨 Filament Development Plugin
 
 **1 specialized agent:**
 - filament-specialist - Filament 4 admin panels, resources, components
+
+**4 specialized skills** (7,094 lines total):
+- filament-resource-patterns - Resources, forms, tables, filters, actions, relation managers (2,048 lines)
+- filament-forms-advanced - Advanced layouts, conditional fields, repeaters, wizards (1,896 lines)
+- filament-tables-optimization - Query optimization, bulk actions, exports, summarizers (1,513 lines)
+- filament-multi-tenancy - Panel configuration, tenant models, billing, team management (1,637 lines)
 
 **11 commands:** Resources, pages, widgets, relation managers, panels, clusters, custom fields, custom columns, exporters, importers, themes
 
@@ -81,6 +93,14 @@ Install only what you need - each plugin is completely isolated with its own age
 - security-engineer - Frontend security best practices
 - ux-engineer - User experience and accessibility
 - frontend-performance - Performance optimization
+
+**6 specialized skills** (7,679 lines total):
+- vue3-composition-api-patterns - Composition API, composables, lifecycle, script setup (1,754 lines)
+- nuxt4-ssr-optimization - SSR lifecycle, data fetching, server routes, SEO (1,194 lines)
+- pinia-state-patterns - Store definition, getters, actions, plugins, SSR hydration (1,232 lines)
+- typescript-vue-patterns - Component types, generic components, type-safe routing (1,347 lines)
+- vitest-testing-patterns - Component testing, composable testing, mocking, E2E (1,135 lines)
+- nuxt-modules-integration - Essential modules, custom modules, plugins, layers (1,017 lines)
 
 **12 commands:** Components, pages, layouts, composables, stores, plugins, middleware, API clients, plus utilities
 
@@ -253,23 +273,30 @@ Using `skylence/laravel-optimize-mcp`:
 ```
 multi-framework-dev-marketplace/
 ├── .claude-plugin/
-│   └── marketplace.json          # 5 plugins definition
+│   └── marketplace.json          # 6 plugins definition
 ├── plugins/
 │   ├── laravel-development/
 │   │   ├── agents/               # 9 Laravel experts
-│   │   └── commands/             # 21 Laravel commands
+│   │   ├── commands/             # 21 Laravel commands
+│   │   └── skills/               # 7 Laravel skills (11,416 lines)
 │   ├── livewire-development/
 │   │   ├── agents/               # Livewire specialist
-│   │   └── commands/             # 4 Livewire commands
+│   │   ├── commands/             # 4 Livewire commands
+│   │   └── skills/               # 3 Livewire skills (5,723 lines)
 │   ├── filament-development/
 │   │   ├── agents/               # Filament specialist
-│   │   └── commands/             # 11 Filament commands
+│   │   ├── commands/             # 11 Filament commands
+│   │   └── skills/               # 4 Filament skills (7,094 lines)
 │   ├── vue-nuxt-development/
 │   │   ├── agents/               # 8 frontend experts
-│   │   └── commands/             # 12 frontend commands
-│   └── magento2-development/
-│       ├── agents/               # 4 Magento experts
-│       └── commands/             # 8 Magento commands
+│   │   ├── commands/             # 12 frontend commands
+│   │   └── skills/               # 6 Vue/Nuxt skills (7,679 lines)
+│   ├── magento2-development/
+│   │   ├── agents/               # 4 Magento experts
+│   │   └── commands/             # 8 Magento commands
+│   └── wordpress-development/
+│       ├── agents/               # 6 WordPress experts
+│       └── commands/             # 11 WordPress commands
 └── README.md
 ```
 
