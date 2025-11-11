@@ -1,6 +1,6 @@
 # Multi-Framework Development Marketplace
 
-Professional development toolkit with **5 specialized plugins** featuring **24 AI agents** and **56 slash commands** for Laravel, Livewire, Filament, Vue/Nuxt, and Magento 2.
+Professional development toolkit with **6 specialized plugins** featuring **30 AI agents** and **67 slash commands** for Laravel, Livewire, Filament, Vue/Nuxt, Magento 2, and WordPress.
 
 ## 📦 Available Plugins
 
@@ -11,6 +11,7 @@ Install only what you need - each plugin is completely isolated with its own age
 - ⚡ **livewire-development** - 1 agent, 4 commands (Livewire 4 reactive components)
 - 🎨 **filament-development** - 1 agent, 11 commands (Filament 4 admin panels)
 - 🛒 **magento2-development** - 4 agents, 8 commands (Magento 2 / Adobe Commerce)
+- 📰 **wordpress-development** - 6 agents, 11 commands (WordPress 6.0+, themes, plugins, Gutenberg, WooCommerce)
 
 ### Frontend
 - 🌐 **vue-nuxt-development** - 8 agents, 12 commands (Vue 3 + Nuxt 4 + TypeScript)
@@ -27,6 +28,7 @@ Install only what you need - each plugin is completely isolated with its own age
 /plugin install filament-development
 /plugin install vue-nuxt-development
 /plugin install magento2-development
+/plugin install wordpress-development
 ```
 
 ## Plugin Details
@@ -43,6 +45,14 @@ Install only what you need - each plugin is completely isolated with its own age
 - laravel-reverb-expert - WebSocket real-time communication
 - laravel-socialite-expert - OAuth authentication
 - laravel-prompts-expert - CLI forms and console commands
+
+**6 specialized skills** (9,598 lines total):
+- eloquent-relationships - Relationships, eager loading, N+1 prevention (1,771 lines)
+- laravel-queues-jobs - Queue architecture, batching, Horizon (1,812 lines)
+- laravel-testing-patterns - Pest 4, feature/unit tests, mocking (1,390 lines)
+- laravel-api-design - RESTful APIs, Sanctum, versioning (1,762 lines)
+- laravel-caching-strategies - Cache drivers, tags, optimization (1,343 lines)
+- laravel-security-patterns - CSRF, XSS, authentication, rate limiting (1,520 lines)
 
 **21 commands:** Models, migrations, controllers, jobs, events, listeners, mail, middleware, notifications, observers, policies, requests, resources, rules, seeders, factories, commands, plus utilities
 
@@ -83,6 +93,18 @@ Install only what you need - each plugin is completely isolated with its own age
 - security-engineer - Security best practices
 
 **8 commands:** Modules, models, controllers, plugins, plus utilities
+
+### 📰 WordPress Development Plugin
+
+**6 specialized agents:**
+- wordpress-architect - WordPress architecture, hooks, custom post types, REST API
+- theme-specialist - Theme development, template hierarchy, block themes
+- plugin-specialist - Plugin development, activation hooks, settings API
+- gutenberg-expert - Block editor, custom blocks, FSE (Full Site Editing)
+- woocommerce-specialist - WooCommerce customization, products, checkout, payments
+- wordpress-security - Security hardening, sanitization, nonce verification
+
+**11 commands:** Themes, plugins, Gutenberg blocks, custom post types, taxonomies, widgets, REST API endpoints, shortcodes, plus utilities
 
 ## Integrated Packages
 
@@ -186,6 +208,23 @@ Using `skylence/laravel-optimize-mcp`:
 /magento:model-new CustomOrder
 /magento:controller-new Checkout/Success
 /magento:plugin-new OrderProcessor
+```
+
+### WordPress Development
+
+```bash
+# Create custom theme and plugin
+/wordpress:theme-new PortfolioTheme
+/wordpress:plugin-new CustomFunctionality
+
+# Build custom Gutenberg blocks
+/wordpress:block-new TestimonialBlock
+/wordpress:post-type-new Portfolio
+/wordpress:taxonomy-new PortfolioCategory
+
+# Add WooCommerce customization
+/wordpress:shortcode-new ProductShowcase
+/wordpress:rest-endpoint-new PortfolioAPI
 ```
 
 ## Architecture Benefits

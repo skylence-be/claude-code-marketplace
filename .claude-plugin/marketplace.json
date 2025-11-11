@@ -57,6 +57,16 @@
         "name": "Skylence"
       },
       "tags": ["magento2", "adobe-commerce", "ecommerce", "php", "b2b", "retail"]
+    },
+    {
+      "name": "wordpress-development",
+      "source": "./plugins/wordpress-development",
+      "description": "WordPress 6.0+ development with 6 specialized agents (WordPress architecture, theme/plugin specialists, Gutenberg expert, WooCommerce specialist, security) and 11 slash commands for themes, plugins, blocks, post types, taxonomies, widgets, REST API, and shortcodes",
+      "version": "1.0.0",
+      "author": {
+        "name": "Skylence"
+      },
+      "tags": ["wordpress", "php", "cms", "gutenberg", "woocommerce", "block-editor", "themes", "plugins"]
     }
   ]
 }
