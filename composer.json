@@ -1,5 +1,5 @@
 {
-    "name": "skylence/laravel12-livewire4-filament4-claude-code",
+    "name": "skylence/claude-code-marketplace",
     "description": "Complete development toolkit for Laravel 12, Livewire 4, and Filament 4 with AI agents and slash commands for Claude Code",
     "type": "claude-code-plugin",
     "keywords": [
@@ -13,7 +13,7 @@
         "testing",
         "modular-architecture"
     ],
-    "homepage": "https://github.com/skylence-be/laravel12-livewire4-filament4-claude-code",
+    "homepage": "https://github.com/skylence-be/claude-code-marketplace",
     "license": "MIT",
     "authors": [
         {
