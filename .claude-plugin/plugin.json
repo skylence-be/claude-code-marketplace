@@ -1,7 +1,7 @@
 {
   "name": "skylence-claude-code-laravel-livewire4",
-  "version": "1.1.0",
-  "description": "Skylence's Laravel 11 + Livewire 4 development plugin with modern PHP patterns, Python hook system for delegating agents, security checks, and custom status lines",
+  "version": "1.2.0",
+  "description": "Full-stack development marketplace with 29 specialized AI agents across Laravel, Livewire, Filament, Vue/Nuxt, Magento2, and WordPress. Includes Python hook system for delegating agents, security checks, and custom status lines",
   "author": {
     "name": "Skylence"
   },
@@ -37,17 +37,35 @@
     "./.claude/commands/misc/feature-plan.md"
   ],
   "agents": [
-    "./.claude/agents/laravel-architect.md",
-    "./.claude/agents/livewire-specialist.md",
-    "./.claude/agents/eloquent-expert.md",
-    "./.claude/agents/api-architect.md",
-    "./.claude/agents/security-engineer.md",
-    "./.claude/agents/performance-engineer.md",
-    "./.claude/agents/queue-specialist.md",
-    "./.claude/agents/testing-expert.md",
-    "./.claude/agents/database-architect.md",
-    "./.claude/agents/blade-specialist.md",
-    "./.claude/agents/devops-engineer.md"
+    "./plugins/laravel-development/agents/laravel-architect.md",
+    "./plugins/laravel-development/agents/eloquent-expert.md",
+    "./plugins/laravel-development/agents/security-engineer.md",
+    "./plugins/laravel-development/agents/optimization-expert.md",
+    "./plugins/laravel-development/agents/testing-expert.md",
+    "./plugins/laravel-development/agents/laravel-prompts-expert.md",
+    "./plugins/laravel-development/agents/laravel-pulse-expert.md",
+    "./plugins/laravel-development/agents/laravel-reverb-expert.md",
+    "./plugins/laravel-development/agents/laravel-socialite-expert.md",
+    "./plugins/livewire-development/agents/livewire-specialist.md",
+    "./plugins/filament-development/agents/filament-specialist.md",
+    "./plugins/vue-nuxt-development/agents/vue-architect.md",
+    "./plugins/vue-nuxt-development/agents/nuxt-architect.md",
+    "./plugins/vue-nuxt-development/agents/typescript-expert.md",
+    "./plugins/vue-nuxt-development/agents/state-management.md",
+    "./plugins/vue-nuxt-development/agents/testing-specialist.md",
+    "./plugins/vue-nuxt-development/agents/security-engineer.md",
+    "./plugins/vue-nuxt-development/agents/ux-engineer.md",
+    "./plugins/vue-nuxt-development/agents/frontend-performance.md",
+    "./plugins/magento2-development/agents/magento-architect.md",
+    "./plugins/magento2-development/agents/ecommerce-specialist.md",
+    "./plugins/magento2-development/agents/performance-engineer.md",
+    "./plugins/magento2-development/agents/security-engineer.md",
+    "./plugins/wordpress-development/agents/wordpress-architect.md",
+    "./plugins/wordpress-development/agents/theme-specialist.md",
+    "./plugins/wordpress-development/agents/plugin-specialist.md",
+    "./plugins/wordpress-development/agents/gutenberg-expert.md",
+    "./plugins/wordpress-development/agents/woocommerce-specialist.md",
+    "./plugins/wordpress-development/agents/wordpress-security.md"
   ],
   "mcpServers": {
     "context7": {

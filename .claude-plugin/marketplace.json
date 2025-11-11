@@ -5,14 +5,14 @@
     "contact": "github.com/skylence"
   },
   "metadata": {
-    "description": "Professional Laravel and Livewire development toolkit featuring 11 specialized AI agents, 35 slash commands, Python hook system for delegating agents with security checks and session management, and custom status lines for building modern PHP applications with Laravel 12, Livewire 4, and Filament 4"
+    "description": "Professional full-stack development marketplace featuring 29 specialized AI agents across 6 frameworks (Laravel, Livewire, Filament, Vue/Nuxt, Magento2, WordPress), 50+ slash commands, Python hook system for delegating agents with security checks and session management, and custom status lines for building modern web applications"
   },
   "plugins": [
     {
       "name": "laravel-development",
       "source": "./plugins/laravel-development",
       "description": "Core Laravel development with 9 specialized agents (architecture, Eloquent, testing, security, optimization, Pulse, Reverb, Socialite, Prompts), 17 slash commands for models, migrations, controllers, jobs, and more. Includes Python hook system optimized for delegating agents with security checks (dangerous command blocking, .env protection), session management, transcript backups, sub-agent tracking, and custom status lines with git integration",
-      "version": "1.1.0",
+      "version": "1.2.0",
       "author": {
         "name": "Skylence"
       },
