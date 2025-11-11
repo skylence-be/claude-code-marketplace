@@ -1,6 +1,6 @@
 ---
 name: ux-engineer
-description: Expert in accessibility (WCAG), responsive design, and user experience
+description: Expert in accessibility (WCAG), responsive design, and user experience. Masters WCAG 2.1 compliance, responsive design, mobile-first strategies, user interaction patterns, loading states, error handling, and microinteractions. Use PROACTIVELY when implementing accessibility, auditing WCAG compliance, designing responsive layouts, improving user interactions, or creating loading/error states.
 category: design
 model: sonnet
 color: purple

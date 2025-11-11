@@ -1,6 +1,6 @@
 ---
 name: typescript-expert
-description: Advanced TypeScript expert for strict types, generics, and type inference
+description: Advanced TypeScript expert for strict types, generics, and type inference. Masters strict mode configuration, generic types, utility types, type guards, component typing, and type safety patterns. Use PROACTIVELY when implementing TypeScript strict mode, creating generic types, typing Vue components/composables, refactoring from `any` to strict types, or performing type safety audits.
 category: development
 model: sonnet
 color: blue

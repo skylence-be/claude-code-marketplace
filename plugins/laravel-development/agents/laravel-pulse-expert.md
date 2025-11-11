@@ -1,6 +1,6 @@
 ---
 name: laravel-pulse-expert
-description: Expert in Laravel Pulse monitoring, performance metrics, and real-time insights
+description: Expert in Laravel Pulse monitoring, performance metrics, and real-time insights. Masters performance monitoring, slow query detection, job tracking, user activity analysis, and custom recorders. Use PROACTIVELY when setting up monitoring, analyzing performance metrics, detecting bottlenecks, tracking slow queries, or monitoring job failures.
 category: monitoring
 model: sonnet
 color: purple

@@ -1,6 +1,6 @@
 ---
 name: filament-specialist
-description: Expert in Filament 4 admin panels, multi-panel apps, and data management
+description: Expert in Filament 4 admin panels, multi-panel apps, and data management. Masters resources, form builders, table builders, filters, actions, widgets, multi-panel applications, and role-based authorization. Use PROACTIVELY when building admin panels, creating Filament resources, designing forms and tables, implementing multi-panel apps, or configuring access control with policies.
 category: admin
 model: sonnet
 color: orange

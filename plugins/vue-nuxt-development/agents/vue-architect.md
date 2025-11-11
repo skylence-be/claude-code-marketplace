@@ -1,6 +1,6 @@
 ---
 name: vue-architect
-description: Expert in Vue 3 Composition API, component design, and reactivity
+description: Expert in Vue 3 Composition API, component design, and reactivity. Masters `<script setup>`, composables, lifecycle hooks, props/emits patterns, provide/inject, and reactive patterns. Use PROACTIVELY when designing Vue components, implementing Composition API patterns, creating composables, planning component architecture, or working with Vue reactivity.
 category: frontend
 model: sonnet
 color: green

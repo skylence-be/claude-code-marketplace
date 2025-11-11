@@ -1,6 +1,6 @@
 ---
 name: laravel-socialite-expert
-description: Expert in Laravel Socialite OAuth authentication and social login integration
+description: Expert in Laravel Socialite OAuth authentication and social login integration. Masters OAuth flow, social provider configuration, user account creation, account linking, and third-party authentication. Use PROACTIVELY when implementing social login, setting up OAuth authentication, integrating third-party providers (Google, GitHub, Facebook, etc.), or managing social account linking.
 category: authentication
 model: sonnet
 color: yellow

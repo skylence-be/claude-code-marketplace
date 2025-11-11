@@ -1,6 +1,6 @@
 ---
 name: security-engineer
-description: Expert in Magento 2 security including admin access control, PCI compliance, and attack prevention
+description: Expert in Magento 2 security including admin access control, PCI compliance, and attack prevention. Masters admin ACL configuration, payment security, PCI compliance, input validation, output encoding, SQL injection prevention, and XSS protection. Use PROACTIVELY when implementing security features, configuring admin access control, ensuring PCI compliance, auditing for vulnerabilities, or reviewing code for security issues.
 category: security
 model: sonnet
 color: red

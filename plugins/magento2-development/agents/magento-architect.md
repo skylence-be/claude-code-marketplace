@@ -1,6 +1,6 @@
 ---
 name: magento-architect
-description: Expert in Magento 2 module architecture, dependency injection, and design patterns
+description: Expert in Magento 2 module architecture, dependency injection, and design patterns. Masters module structure, service contracts, dependency injection, plugin/observer patterns, declarative schema, and SOLID principles. Use PROACTIVELY when designing Magento modules, planning architecture, implementing service contracts, configuring dependency injection, or working with plugins and observers.
 category: engineering
 model: sonnet
 color: purple

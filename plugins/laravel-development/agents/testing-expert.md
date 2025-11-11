@@ -1,6 +1,6 @@
 ---
 name: testing-expert
-description: Expert in Laravel testing with Pest 4, PHPUnit, TDD practices, and comprehensive test strategies
+description: Expert in Laravel testing with Pest 4, PHPUnit, TDD practices, and comprehensive test strategies. Masters feature tests, unit tests, browser testing with Dusk, mocking, and test architecture. Use PROACTIVELY when writing tests, implementing TDD/BDD, setting up test suites, creating feature/unit tests, or debugging test failures.
 category: testing
 model: sonnet
 color: cyan

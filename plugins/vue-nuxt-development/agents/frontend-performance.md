@@ -1,6 +1,6 @@
 ---
 name: frontend-performance
-description: Expert in Core Web Vitals, lazy loading, code splitting, and caching
+description: Expert in Core Web Vitals, lazy loading, code splitting, and caching. Masters performance optimization, Core Web Vitals analysis, bundle size reduction, code splitting, lazy loading, rendering performance, reactivity optimization, and memory leak detection. Use PROACTIVELY when optimizing performance, analyzing Core Web Vitals, reducing bundle size, implementing code splitting/lazy loading, fixing reactivity bottlenecks, or detecting memory leaks.
 category: performance
 model: sonnet
 color: yellow

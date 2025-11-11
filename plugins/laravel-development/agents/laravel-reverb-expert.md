@@ -1,6 +1,6 @@
 ---
 name: laravel-reverb-expert
-description: Expert in Laravel Reverb WebSockets, real-time communication, and event broadcasting
+description: Expert in Laravel Reverb WebSockets, real-time communication, and event broadcasting. Masters WebSocket server setup, presence channels, private channels, event broadcasting, and Livewire real-time integration. Use PROACTIVELY when implementing real-time features, setting up WebSocket communication, configuring event broadcasting, or integrating real-time updates with Livewire.
 category: real-time
 model: sonnet
 color: cyan

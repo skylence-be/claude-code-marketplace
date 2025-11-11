@@ -31,6 +31,24 @@ Install only what you need - each plugin is completely isolated with its own age
 /plugin install wordpress-development
 ```
 
+## Documentation & Guides
+
+### 📖 Agent Prompt Guide
+
+**[AGENT_PROMPT_GUIDE.md](./AGENT_PROMPT_GUIDE.md)** - Comprehensive guide on writing effective sub-agent descriptions that enable Claude Code to automatically delegate tasks.
+
+Learn how to:
+- Write agent descriptions that trigger automatic delegation
+- Use the "PROACTIVELY" keyword correctly
+- Define specific trigger scenarios
+- Understand the information flow between agents
+- Test your agent configurations
+
+**Quick reference:** For Claude Code to automatically use your sub-agents, follow this pattern:
+```markdown
+description: [What the agent does]. Use PROACTIVELY when [specific trigger scenarios].
+```
+
 ## Plugin Details
 
 ### 🚀 Laravel Development Plugin
