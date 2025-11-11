@@ -1,0 +1,12 @@
+{
+  "hooks": {
+    "session_start": {
+      "command": "php .claude/hooks/session_start.php",
+      "enabled": true
+    },
+    "pre_tool_use": {
+      "command": "node .claude/hooks/pre_tool_use.js",
+      "enabled": true
+    }
+  }
+}
