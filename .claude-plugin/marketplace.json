@@ -4,7 +4,9 @@
     "name": "Skylence",
     "contact": "github.com/skylence"
   },
-  "description": "Skylence's Laravel + Livewire development tools",
+  "metadata": {
+    "description": "Professional Laravel and Livewire development toolkit featuring 11 specialized AI agents, 35 slash commands, and comprehensive tools for building modern PHP applications with Laravel 12, Livewire 4, and Filament 4"
+  },
   "plugins": [
     {
       "name": "skylence-claude-code-laravel-livewire4",
