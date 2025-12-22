@@ -16,11 +16,11 @@ Load specific patterns based on your needs:
 
 | Pattern | File | Use Case |
 |---------|------|----------|
-| Query Optimization | `query-optimization.md` | Eager loading, efficient queries, indexes |
-| Custom Columns | `custom-columns.md` | Computed state, toggles, summarizers |
-| Bulk Operations | `bulk-operations.md` | Bulk actions, queued processing |
-| Advanced Filters | `filters-advanced.md` | Date ranges, relationships, query builder |
-| Export & Import | `export-import.md` | Queued export/import with progress |
+| Query Optimization | [query-optimization.md](query-optimization.md) | Eager loading, efficient queries, indexes |
+| Custom Columns | [custom-columns.md](custom-columns.md) | Computed state, toggles, summarizers |
+| Bulk Operations | [bulk-operations.md](bulk-operations.md) | Bulk actions, queued processing |
+| Advanced Filters | [filters-advanced.md](filters-advanced.md) | Date ranges, relationships, query builder |
+| Export & Import | [export-import.md](export-import.md) | Queued export/import with progress |
 
 ## Quick Reference
 

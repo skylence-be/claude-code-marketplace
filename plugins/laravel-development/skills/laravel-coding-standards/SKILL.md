@@ -19,10 +19,10 @@ Code style and best practices for Laravel applications.
 
 | Pattern | File | Use Case |
 |---------|------|----------|
-| Code Style | `code-style.md` | Formatting, naming, structure |
-| Classes | `classes.md` | Controllers, models, services |
-| PHP Patterns | `php-patterns.md` | Modern PHP 8+ features |
-| Documentation | `documentation.md` | Comments, docblocks |
+| Code Style | [code-style.md](code-style.md) | Formatting, naming, structure |
+| Classes | [classes.md](classes.md) | Controllers, models, services |
+| PHP Patterns | [php-patterns.md](php-patterns.md) | Modern PHP 8+ features |
+| Documentation | [documentation.md](documentation.md) | Comments, docblocks |
 
 ## Quick Reference
 

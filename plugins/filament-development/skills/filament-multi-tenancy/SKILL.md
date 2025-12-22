@@ -16,11 +16,11 @@ Load specific patterns based on your needs:
 
 | Pattern | File | Use Case |
 |---------|------|----------|
-| Panel Configuration | `panel-configuration.md` | Panel setup, tenant routes, middleware |
-| Tenant Models | `tenant-models.md` | Team/User models, relationships |
-| Tenant Resources | `tenant-resources.md` | Tenant-aware resources, global scopes |
-| Team Management | `team-management.md` | Registration, profile, members, invitations |
-| Billing & Storage | `tenant-billing.md` | Subscriptions, storage isolation |
+| Panel Configuration | [panel-configuration.md](panel-configuration.md) | Panel setup, tenant routes, middleware |
+| Tenant Models | [tenant-models.md](tenant-models.md) | Team/User models, relationships |
+| Tenant Resources | [tenant-resources.md](tenant-resources.md) | Tenant-aware resources, global scopes |
+| Team Management | [team-management.md](team-management.md) | Registration, profile, members, invitations |
+| Billing & Storage | [tenant-billing.md](tenant-billing.md) | Subscriptions, storage isolation |
 
 ## Quick Reference
 

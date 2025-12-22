@@ -16,11 +16,11 @@ Load specific patterns based on your needs:
 
 | Pattern | File | Use Case |
 |---------|------|----------|
-| Resource Structure | `resource-structure.md` | Complete resource class, navigation, pages |
-| Form Schemas | `form-schemas.md` | Advanced form components, validation |
-| Table Columns | `table-columns.md` | Column types, computed state, layouts |
-| Actions & Bulk | `actions-bulk.md` | Row actions, bulk operations, forms |
-| Relation Managers | `relation-managers.md` | HasMany, BelongsToMany, pivot data |
+| Resource Structure | [resource-structure.md](resource-structure.md) | Complete resource class, navigation, pages |
+| Form Schemas | [form-schemas.md](form-schemas.md) | Advanced form components, validation |
+| Table Columns | [table-columns.md](table-columns.md) | Column types, computed state, layouts |
+| Actions & Bulk | [actions-bulk.md](actions-bulk.md) | Row actions, bulk operations, forms |
+| Relation Managers | [relation-managers.md](relation-managers.md) | HasMany, BelongsToMany, pivot data |
 
 ## Quick Reference
 

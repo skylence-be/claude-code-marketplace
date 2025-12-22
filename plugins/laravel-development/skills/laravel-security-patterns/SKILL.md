@@ -19,11 +19,11 @@ Comprehensive guide to securing Laravel applications.
 
 | Pattern | File | Use Case |
 |---------|------|----------|
-| CSRF & XSS | `csrf-xss.md` | Cross-site protection |
-| SQL Injection | `sql-injection.md` | Database security |
-| Authentication | `authentication.md` | Login, passwords, 2FA |
-| Authorization | `authorization.md` | Gates, policies, roles |
-| Input Validation | `input-validation.md` | Sanitization, validation |
+| CSRF & XSS | [csrf-xss.md](csrf-xss.md) | Cross-site protection |
+| SQL Injection | [sql-injection.md](sql-injection.md) | Database security |
+| Authentication | [authentication.md](authentication.md) | Login, passwords, 2FA |
+| Authorization | [authorization.md](authorization.md) | Gates, policies, roles |
+| Input Validation | [input-validation.md](input-validation.md) | Sanitization, validation |
 
 ## Quick Start
 

@@ -19,10 +19,10 @@ Comprehensive guide to background job processing in Laravel.
 
 | Pattern | File | Use Case |
 |---------|------|----------|
-| Job Basics | `job-basics.md` | Creating and dispatching jobs |
-| Batching | `batching.md` | Processing jobs in batches |
-| Chains | `chains.md` | Sequential job processing |
-| Failures | `failure-handling.md` | Retries and error handling |
+| Job Basics | [job-basics.md](job-basics.md) | Creating and dispatching jobs |
+| Batching | [batching.md](batching.md) | Processing jobs in batches |
+| Chains | [chains.md](chains.md) | Sequential job processing |
+| Failures | [failure-handling.md](failure-handling.md) | Retries and error handling |
 
 ## Quick Start
 

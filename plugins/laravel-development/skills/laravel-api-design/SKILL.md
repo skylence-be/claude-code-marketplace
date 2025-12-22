@@ -19,12 +19,12 @@ Comprehensive guide to building RESTful APIs in Laravel.
 
 | Pattern | File | Use Case |
 |---------|------|----------|
-| Controllers | `controllers.md` | RESTful endpoints, responses |
-| Resources | `resources.md` | Data transformation, JSON |
-| Authentication | `authentication.md` | Sanctum, tokens, guards |
-| Validation | `validation.md` | Form requests, error handling |
-| Rate Limiting | `rate-limiting.md` | Throttling, protection |
-| Advanced | `advanced.md` | Versioning, pagination, webhooks |
+| Controllers | [controllers.md](controllers.md) | RESTful endpoints, responses |
+| Resources | [resources.md](resources.md) | Data transformation, JSON |
+| Authentication | [authentication.md](authentication.md) | Sanctum, tokens, guards |
+| Validation | [validation.md](validation.md) | Form requests, error handling |
+| Rate Limiting | [rate-limiting.md](rate-limiting.md) | Throttling, protection |
+| Advanced | [advanced.md](advanced.md) | Versioning, pagination, webhooks |
 
 ## Quick Start
 

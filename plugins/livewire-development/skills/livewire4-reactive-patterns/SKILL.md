@@ -20,11 +20,11 @@ Comprehensive guide to implementing reactive patterns in Livewire 4.
 
 | Pattern | File | Use Case |
 |---------|------|----------|
-| Reactive Attributes | `reactive-attributes.md` | #[Reactive], #[Computed], #[Locked], #[Modelable] |
-| Wire Directives | `wire-directives.md` | wire:model, wire:click, wire:loading, modifiers |
-| Lifecycle Hooks | `lifecycle-hooks.md` | mount, hydrate, updating, updated, booted |
-| Component Communication | `component-communication.md` | Events, dispatch, listen, parent-child |
-| Polling Patterns | `polling-patterns.md` | wire:poll, auto-refresh, visibility |
+| Reactive Attributes | [reactive-attributes.md](reactive-attributes.md) | #[Reactive], #[Computed], #[Locked], #[Modelable] |
+| Wire Directives | [wire-directives.md](wire-directives.md) | wire:model, wire:click, wire:loading, modifiers |
+| Lifecycle Hooks | [lifecycle-hooks.md](lifecycle-hooks.md) | mount, hydrate, updating, updated, booted |
+| Component Communication | [component-communication.md](component-communication.md) | Events, dispatch, listen, parent-child |
+| Polling Patterns | [polling-patterns.md](polling-patterns.md) | wire:poll, auto-refresh, visibility |
 
 ## Quick Reference
 

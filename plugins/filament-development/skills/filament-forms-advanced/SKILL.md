@@ -16,11 +16,11 @@ Load specific patterns based on your needs:
 
 | Pattern | File | Use Case |
 |---------|------|----------|
-| Form Layouts | `form-layouts.md` | Grid, Section, Tabs, Split, responsive designs |
-| Conditional Fields | `conditional-fields.md` | visible(), hidden(), reactive(), live() |
-| Repeaters & Builders | `repeaters-builders.md` | Dynamic content, relationships, calculations |
-| File Uploads | `file-uploads.md` | Images, documents, S3, validation |
-| Wizard Forms | `wizard-forms.md` | Multi-step workflows, step validation |
+| Form Layouts | [form-layouts.md](form-layouts.md) | Grid, Section, Tabs, Split, responsive designs |
+| Conditional Fields | [conditional-fields.md](conditional-fields.md) | visible(), hidden(), reactive(), live() |
+| Repeaters & Builders | [repeaters-builders.md](repeaters-builders.md) | Dynamic content, relationships, calculations |
+| File Uploads | [file-uploads.md](file-uploads.md) | Images, documents, S3, validation |
+| Wizard Forms | [wizard-forms.md](wizard-forms.md) | Multi-step workflows, step validation |
 
 ## Quick Reference
 

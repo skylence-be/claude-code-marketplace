@@ -21,14 +21,14 @@ For detailed implementations, read the specific pattern file:
 
 | Pattern | File | Use Case |
 |---------|------|----------|
-| One-to-One | `one-to-one.md` | User → Profile, User → Address |
-| One-to-Many | `one-to-many.md` | Post → Comments, User → Posts |
-| Many-to-Many | `many-to-many.md` | Users ↔ Roles, Posts ↔ Tags |
-| Through | `through.md` | Country → Posts (via Users) |
-| Polymorphic | `polymorphic.md` | Comments on Posts or Videos |
-| Eager Loading | `eager-loading.md` | **Critical for N+1 prevention** |
-| Query Methods | `queries.md` | exists(), create(), sync() |
-| Advanced | `advanced.md` | Caching, aggregates, defaults |
+| One-to-One | [one-to-one.md](one-to-one.md) | User → Profile, User → Address |
+| One-to-Many | [one-to-many.md](one-to-many.md) | Post → Comments, User → Posts |
+| Many-to-Many | [many-to-many.md](many-to-many.md) | Users ↔ Roles, Posts ↔ Tags |
+| Through | [through.md](through.md) | Country → Posts (via Users) |
+| Polymorphic | [polymorphic.md](polymorphic.md) | Comments on Posts or Videos |
+| Eager Loading | [eager-loading.md](eager-loading.md) | **Critical for N+1 prevention** |
+| Query Methods | [queries.md](queries.md) | exists(), create(), sync() |
+| Advanced | [advanced.md](advanced.md) | Caching, aggregates, defaults |
 
 ## Core Concepts
 

@@ -19,12 +19,12 @@ Comprehensive guide to testing Laravel applications using Pest 4.
 
 | Pattern | File | Use Case |
 |---------|------|----------|
-| Pest Basics | `pest-basics.md` | Test structure, assertions, setup |
-| HTTP Testing | `http-testing.md` | Endpoints, responses, validation |
-| Database Testing | `database-testing.md` | Factories, assertions, transactions |
-| Mocking | `mocking.md` | HTTP, Mail, Queue, Events |
-| Authentication | `auth-testing.md` | Login, logout, guards |
-| Advanced | `advanced.md` | Parallel, middleware, commands |
+| Pest Basics | [pest-basics.md](pest-basics.md) | Test structure, assertions, setup |
+| HTTP Testing | [http-testing.md](http-testing.md) | Endpoints, responses, validation |
+| Database Testing | [database-testing.md](database-testing.md) | Factories, assertions, transactions |
+| Mocking | [mocking.md](mocking.md) | HTTP, Mail, Queue, Events |
+| Authentication | [auth-testing.md](auth-testing.md) | Login, logout, guards |
+| Advanced | [advanced.md](advanced.md) | Parallel, middleware, commands |
 
 ## Quick Start
 

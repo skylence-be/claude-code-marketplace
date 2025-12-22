@@ -19,10 +19,10 @@ Comprehensive guide to implementing caching in Laravel.
 
 | Pattern | File | Use Case |
 |---------|------|----------|
-| Basic Operations | `basic-operations.md` | get, put, remember, forget |
-| Cache Tags | `cache-tags.md` | Organized cache management |
-| Query Caching | `query-caching.md` | Eloquent query caching |
-| Invalidation | `invalidation.md` | Cache clearing strategies |
+| Basic Operations | [basic-operations.md](basic-operations.md) | get, put, remember, forget |
+| Cache Tags | [cache-tags.md](cache-tags.md) | Organized cache management |
+| Query Caching | [query-caching.md](query-caching.md) | Eloquent query caching |
+| Invalidation | [invalidation.md](invalidation.md) | Cache clearing strategies |
 
 ## Quick Start
 

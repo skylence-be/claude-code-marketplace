@@ -20,10 +20,10 @@ Comprehensive guide to optimizing Livewire 4 applications for maximum performanc
 
 | Pattern | File | Use Case |
 |---------|------|----------|
-| Query Optimization | `query-optimization.md` | Eager loading, N+1, select columns |
-| Computed Caching | `computed-caching.md` | #[Computed], cache invalidation |
-| Lazy Loading | `lazy-loading.md` | #[Lazy], conditional loading |
-| Wire Navigate | `wire-navigate.md` | SPA navigation, prefetching |
+| Query Optimization | [query-optimization.md](query-optimization.md) | Eager loading, N+1, select columns |
+| Computed Caching | [computed-caching.md](computed-caching.md) | #[Computed], cache invalidation |
+| Lazy Loading | [lazy-loading.md](lazy-loading.md) | #[Lazy], conditional loading |
+| Wire Navigate | [wire-navigate.md](wire-navigate.md) | SPA navigation, prefetching |
 
 ## Quick Reference
 
