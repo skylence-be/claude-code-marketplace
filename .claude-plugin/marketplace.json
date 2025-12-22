@@ -12,7 +12,7 @@
       "name": "laravel-development",
       "source": "./plugins/laravel-development",
       "description": "Core Laravel development with 9 specialized agents (architecture, Eloquent, testing, security, optimization, Pulse, Reverb, Socialite, Prompts), 17 slash commands for models, migrations, controllers, jobs, and more. Includes Python hook system optimized for delegating agents with security checks (dangerous command blocking, .env protection), session management, transcript backups, sub-agent tracking, and custom status lines with git integration",
-      "version": "1.2.0",
+      "version": "1.2.1",
       "author": {
         "name": "Skylence"
       },
@@ -22,7 +22,7 @@
       "name": "livewire-development",
       "source": "./plugins/livewire-development",
       "description": "Livewire 4 reactive components with specialized agent and 4 slash commands for creating components, forms, layouts, and attributes",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "author": {
         "name": "Skylence"
       },
@@ -32,7 +32,7 @@
       "name": "filament-development",
       "source": "./plugins/filament-development",
       "description": "Filament 4 admin panels with specialized agent and 11 slash commands for resources, pages, widgets, themes, panels, clusters, importers, exporters, and custom fields",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "author": {
         "name": "Skylence"
       },
