@@ -20,7 +20,7 @@ Install only what you need - each plugin is completely isolated with its own age
 
 ```bash
 # Add the marketplace
-/plugin marketplace add skylence-be/multi-framework-dev-marketplace
+/plugin marketplace add https://github.com/skylence-be/claude-code-marketplace
 
 # Install the plugins you need
 /plugin install laravel-development
