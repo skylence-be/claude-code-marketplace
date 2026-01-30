@@ -1,6 +1,6 @@
 ---
 name: filament-multi-tenancy
-description: Master Filament 4 multi-tenancy patterns including panel configuration, tenant models, tenant-aware queries, global scopes, tenant switching, billing, team management, and security isolation. Use when building SaaS applications or multi-tenant systems.
+description: Master Filament 5 multi-tenancy patterns including panel configuration, tenant models, tenant-aware queries, global scopes, tenant switching, billing, team management, and security isolation. Use when building SaaS applications or multi-tenant systems.
 category: filament
 tags: [filament, multi-tenancy, saas, teams, security, isolation]
 related_skills: [filament-resource-patterns, laravel-security-patterns, eloquent-patterns]
@@ -8,7 +8,7 @@ related_skills: [filament-resource-patterns, laravel-security-patterns, eloquent
 
 # Filament Multi-Tenancy
 
-Multi-tenant SaaS application patterns for Filament 4.
+Multi-tenant SaaS application patterns for Filament 5.
 
 ## Pattern Files
 

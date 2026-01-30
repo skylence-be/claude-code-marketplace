@@ -1,9 +1,9 @@
 ---
-description: Create Filament 4 cluster for organizing resources
+description: Create Filament 5 cluster for organizing resources
 model: claude-sonnet-4-5
 ---
 
-Create a Filament 4 cluster.
+Create a Filament 5 cluster.
 
 ## Cluster Specification
 
@@ -54,4 +54,4 @@ class Shop extends Cluster
 // app/Filament/Clusters/Shop/Resources/OrderResource.php
 ```
 
-Generate complete Filament 4 cluster.
+Generate complete Filament 5 cluster.

@@ -1,9 +1,9 @@
 ---
-description: Create Filament 4 data importer
+description: Create Filament 5 data importer
 model: claude-sonnet-4-5
 ---
 
-Create a Filament 4 importer.
+Create a Filament 5 importer.
 
 ## Importer Specification
 
@@ -129,4 +129,4 @@ class PostImporter extends Importer
 }
 ```
 
-Generate complete Filament 4 importer with validation.
+Generate complete Filament 5 importer with validation.

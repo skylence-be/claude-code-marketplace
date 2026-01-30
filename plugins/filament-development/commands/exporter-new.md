@@ -1,9 +1,9 @@
 ---
-description: Create Filament 4 data exporter
+description: Create Filament 5 data exporter
 model: claude-sonnet-4-5
 ---
 
-Create a Filament 4 exporter.
+Create a Filament 5 exporter.
 
 ## Exporter Specification
 
@@ -99,4 +99,4 @@ class OrderExporter extends Exporter
 }
 ```
 
-Generate complete Filament 4 exporter.
+Generate complete Filament 5 exporter.

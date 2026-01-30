@@ -21,22 +21,22 @@
     {
       "name": "livewire-development",
       "source": "./plugins/livewire-development",
-      "description": "Livewire 4 reactive components with specialized agent and 4 slash commands for creating components, forms, layouts, and attributes",
-      "version": "1.0.1",
+      "description": "Livewire 4 reactive components with single-file components, islands architecture, specialized agent and 4 slash commands for creating components, forms, layouts, and attributes. Includes new v4 features: SFC/MFC formats, Route::livewire(), wire:sort, wire:intersect, #[Defer], #[Async], and slots support",
+      "version": "1.1.0",
       "author": {
         "name": "Skylence"
       },
-      "tags": ["livewire", "php", "reactive", "components", "frontend"]
+      "tags": ["livewire", "php", "reactive", "components", "frontend", "islands", "sfc"]
     },
     {
       "name": "filament-development",
       "source": "./plugins/filament-development",
-      "description": "Filament 4 admin panels with specialized agent and 11 slash commands for resources, pages, widgets, themes, panels, clusters, importers, exporters, and custom fields",
-      "version": "1.0.1",
+      "description": "Filament 5 admin panels with Blueprint AI planning, specialized agent and 11 slash commands for resources, pages, widgets, themes, panels, clusters, importers, exporters, and custom fields. Includes Blueprint planning format for creating detailed implementation specifications",
+      "version": "1.1.0",
       "author": {
         "name": "Skylence"
       },
-      "tags": ["filament", "php", "admin", "panels", "resources"]
+      "tags": ["filament", "php", "admin", "panels", "resources", "blueprint", "ai-planning"]
     },
     {
       "name": "vue-nuxt-development",

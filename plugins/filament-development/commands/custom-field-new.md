@@ -1,9 +1,9 @@
 ---
-description: Create Filament 4 custom form field
+description: Create Filament 5 custom form field
 model: claude-sonnet-4-5
 ---
 
-Create a Filament 4 custom form field.
+Create a Filament 5 custom form field.
 
 ## Custom Field Specification
 
@@ -103,4 +103,4 @@ class Signature extends Field
 }
 ```
 
-Generate complete Filament 4 custom form field with view.
+Generate complete Filament 5 custom form field with view.
