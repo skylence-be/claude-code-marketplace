@@ -1,7 +1,7 @@
 {
   "name": "skylence-claude-code-laravel-livewire4",
   "version": "1.2.0",
-  "description": "Full-stack development marketplace with 29 specialized AI agents across Laravel, Livewire, Filament, Vue/Nuxt, Magento2, and WordPress. Includes Python hook system for delegating agents, security checks, and custom status lines",
+  "description": "Full-stack development marketplace with 30 specialized AI agents across Laravel, Livewire, Filament, Vue/Nuxt, Magento2, WordPress, and Git workflow management. Includes Python hook system for delegating agents, security checks, and custom status lines",
   "author": {
     "name": "Skylence"
   },
@@ -16,7 +16,9 @@
     "full-stack",
     "hooks",
     "security",
-    "agents"
+    "agents",
+    "git",
+    "worktree"
   ],
   "commands": [
     "./.claude/commands/new-task.md",
@@ -34,7 +36,12 @@
     "./.claude/commands/livewire/form-new.md",
     "./.claude/commands/misc/code-optimize.md",
     "./.claude/commands/misc/code-cleanup.md",
-    "./.claude/commands/misc/feature-plan.md"
+    "./.claude/commands/misc/feature-plan.md",
+    "./plugins/git-worktree-management/commands/worktree-create.md",
+    "./plugins/git-worktree-management/commands/worktree-setup.md",
+    "./plugins/git-worktree-management/commands/worktree-cleanup.md",
+    "./plugins/git-worktree-management/commands/worktree-list.md",
+    "./plugins/git-worktree-management/commands/db-duplicate.md"
   ],
   "agents": [
     "./plugins/laravel-development/agents/laravel-architect.md",
@@ -65,7 +72,8 @@
     "./plugins/wordpress-development/agents/plugin-specialist.md",
     "./plugins/wordpress-development/agents/gutenberg-expert.md",
     "./plugins/wordpress-development/agents/woocommerce-specialist.md",
-    "./plugins/wordpress-development/agents/wordpress-security.md"
+    "./plugins/wordpress-development/agents/wordpress-security.md",
+    "./plugins/git-worktree-management/agents/git-worktree-manager.md"
   ],
   "mcpServers": {
     "context7": {

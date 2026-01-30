@@ -5,7 +5,7 @@
     "contact": "github.com/skylence"
   },
   "metadata": {
-    "description": "Professional full-stack development marketplace featuring 29 specialized AI agents across 6 frameworks (Laravel, Livewire, Filament, Vue/Nuxt, Magento2, WordPress), 50+ slash commands, Python hook system for delegating agents with security checks and session management, and custom status lines for building modern web applications"
+    "description": "Professional full-stack development marketplace featuring 30 specialized AI agents across 7 frameworks (Laravel, Livewire, Filament, Vue/Nuxt, Magento2, WordPress, Git worktree), 55+ slash commands, Python hook system for delegating agents with security checks and session management, and custom status lines for building modern web applications"
   },
   "plugins": [
     {
@@ -67,6 +67,16 @@
         "name": "Skylence"
       },
       "tags": ["wordpress", "php", "cms", "gutenberg", "woocommerce", "block-editor", "themes", "plugins"]
+    },
+    {
+      "name": "git-worktree-management",
+      "source": "./plugins/git-worktree-management",
+      "description": "Git worktree management with 1 specialized agent and 5 slash commands for creating, managing, and optimizing multi-worktree development workflows. Includes environment isolation, database duplication, and Laravel-specific setup patterns",
+      "version": "1.0.0",
+      "author": {
+        "name": "Skylence"
+      },
+      "tags": ["git", "worktree", "workflow", "development", "branching", "parallel-development"]
     }
   ]
 }
