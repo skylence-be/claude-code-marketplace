@@ -1,9 +1,9 @@
 ---
-description: Create Filament 4 relation manager
+description: Create Filament 5 relation manager
 model: claude-sonnet-4-5
 ---
 
-Create a Filament 4 relation manager.
+Create a Filament 5 relation manager.
 
 ## Relation Manager Specification
 
@@ -164,4 +164,4 @@ class TagsRelationManager extends RelationManager
 }
 ```
 
-Generate complete Filament 4 relation manager.
+Generate complete Filament 5 relation manager.

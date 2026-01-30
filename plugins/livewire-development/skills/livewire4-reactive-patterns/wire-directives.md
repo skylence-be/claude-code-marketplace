@@ -2,6 +2,10 @@
 
 Livewire 4 wire directives for data binding, actions, and UI states.
 
+## BREAKING CHANGE in v4: wire:model
+
+In Livewire 4, `wire:model` now only listens for events originating directly on the element itself. Use `.deep` modifier to capture child element events.
+
 ## wire:model - Data Binding
 
 ```php
@@ -19,6 +23,7 @@ class FormModifiers extends Component
     public $throttleInput = '';  // Updates at most every X milliseconds
     public $quantity = 1;        // Number casting
     public $isActive = false;    // Boolean casting
+    public $nested = [];         // Nested data from child elements
 
     public function render()
     {
@@ -33,7 +38,8 @@ class FormModifiers extends Component
     <input type="text" wire:model.live="liveInput">
 
     {{-- Blur - updates when input loses focus --}}
-    <input type="text" wire:model.blur="blurInput">
+    {{-- BREAKING: In v4, also controls client-side state sync timing --}}
+    <input type="text" wire:model.live.blur="blurInput">
 
     {{-- Debounce - updates after pause in typing --}}
     <input type="text" wire:model.live.debounce.500ms="debounceInput">
@@ -49,6 +55,11 @@ class FormModifiers extends Component
 
     {{-- Lazy - updates on blur or form submit --}}
     <input type="text" wire:model.lazy="lazyInput">
+
+    {{-- NEW in v4: .deep modifier for child element events --}}
+    <div wire:model.deep="nested">
+        <input type="text" name="child_input"> {{-- Captured! --}}
+    </div>
 </div>
 ```
 
@@ -305,10 +316,77 @@ class LoadingStates extends Component
     Delete
 </button>
 
-{{-- wire:transition for CSS transitions --}}
+{{-- wire:transition - now uses native View Transitions API in v4 --}}
 <div wire:transition>
     This will animate in/out
 </div>
+```
+
+## NEW in v4: Advanced Directives
+
+```blade
+{{-- wire:sort - Drag-and-drop sorting --}}
+<ul wire:sort="reorder">
+    @foreach($items as $item)
+        <li wire:key="{{ $item->id }}" wire:sort.item="{{ $item->id }}">
+            <span wire:sort.handle>⋮⋮</span>
+            {{ $item->name }}
+        </li>
+    @endforeach
+</ul>
+
+{{-- wire:intersect - Viewport intersection detection --}}
+<div wire:intersect="loadMore">
+    Load more when this becomes visible
+</div>
+
+<div wire:intersect.once="trackImpression">
+    Track only once
+</div>
+
+<div wire:intersect.half="halfVisible">
+    Triggers at 50% visibility
+</div>
+
+<div wire:intersect.full="fullyVisible">
+    Triggers at 100% visibility
+</div>
+
+<div wire:intersect.threshold.75="mostlyVisible">
+    Triggers at 75% visibility
+</div>
+
+{{-- wire:ref - Element reference for JavaScript --}}
+<canvas wire:ref="myCanvas"></canvas>
+<script>
+    // Access via this.$refs.myCanvas
+</script>
+
+{{-- wire:navigate:scroll - Preserve scroll position (replaces wire:scroll) --}}
+<div wire:navigate:scroll>
+    Scrollable content that preserves position
+</div>
+```
+
+## NEW in v4: Action Modifiers
+
+```blade
+{{-- .async - Run action in parallel, non-blocking --}}
+<button wire:click.async="refreshStats">Refresh (Non-blocking)</button>
+<button wire:click.async="refreshChart">Chart (Non-blocking)</button>
+
+{{-- .bundle - Bundle multiple parallel requests --}}
+<button wire:click.bundle="action1">Action 1</button>
+<button wire:click.bundle="action2">Action 2</button>
+
+{{-- .renderless - Execute action without re-rendering --}}
+<button wire:click.renderless="trackClick">Track (No Re-render)</button>
+
+{{-- .preserve-scroll - Maintain scroll position during update --}}
+<button wire:click.preserve-scroll="loadMore">Load More</button>
+
+{{-- data-loading attribute - Auto-applied to request-triggering elements --}}
+{{-- Style with CSS: [data-loading] { opacity: 0.5; } --}}
 ```
 
 ## Event Modifiers

@@ -1,9 +1,9 @@
 ---
-description: Create Filament 4 custom table column
+description: Create Filament 5 custom table column
 model: claude-sonnet-4-5
 ---
 
-Create a Filament 4 custom table column.
+Create a Filament 5 custom table column.
 
 ## Custom Column Specification
 
@@ -125,4 +125,4 @@ class ImageWithPreview extends Column
 </div>
 ```
 
-Generate complete Filament 4 custom table column with view.
+Generate complete Filament 5 custom table column with view.

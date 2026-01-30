@@ -1,9 +1,9 @@
 ---
-description: Create Filament 4 resource with CRUD pages
+description: Create Filament 5 resource with CRUD pages
 model: claude-sonnet-4-5
 ---
 
-Create a Filament 4 resource.
+Create a Filament 5 resource.
 
 ## Resource Specification
 
@@ -259,4 +259,4 @@ class PostResource extends Resource
 }
 ```
 
-Generate complete Filament 4 resource with form, table, and pages.
+Generate complete Filament 5 resource with form, table, and pages.

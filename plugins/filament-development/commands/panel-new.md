@@ -1,9 +1,9 @@
 ---
-description: Create new Filament 4 panel
+description: Create new Filament 5 panel
 model: claude-sonnet-4-5
 ---
 
-Create a new Filament 4 panel.
+Create a new Filament 5 panel.
 
 ## Panel Specification
 
@@ -109,4 +109,4 @@ return Panel::make()
     ]);
 ```
 
-Generate complete Filament 4 panel configuration.
+Generate complete Filament 5 panel configuration.

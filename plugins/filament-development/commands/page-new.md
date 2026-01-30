@@ -1,9 +1,9 @@
 ---
-description: Create custom Filament 4 page
+description: Create custom Filament 5 page
 model: claude-sonnet-4-5
 ---
 
-Create a custom Filament 4 page.
+Create a custom Filament 5 page.
 
 ## Page Specification
 
@@ -148,4 +148,4 @@ class Dashboard extends BaseDashboard
 }
 ```
 
-Generate complete Filament 4 custom page.
+Generate complete Filament 5 custom page.

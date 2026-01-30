@@ -1,6 +1,6 @@
 ---
 name: filament-forms-advanced
-description: Master advanced Filament 4 form patterns including complex layouts, conditional fields, repeaters, builders, custom fields, file uploads, wizards, and real-time validation. Use when building sophisticated data entry interfaces.
+description: Master advanced Filament 5 form patterns including complex layouts, conditional fields, repeaters, builders, custom fields, file uploads, wizards, and real-time validation. Use when building sophisticated data entry interfaces.
 category: filament
 tags: [filament, forms, validation, layouts, custom-fields]
 related_skills: [filament-resource-patterns, livewire-forms-validation, laravel-api-design]
@@ -8,7 +8,7 @@ related_skills: [filament-resource-patterns, livewire-forms-validation, laravel-
 
 # Filament Forms Advanced
 
-Advanced Filament 4 form patterns for complex data entry interfaces.
+Advanced Filament 5 form patterns for complex data entry interfaces.
 
 ## Pattern Files
 

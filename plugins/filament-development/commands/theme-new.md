@@ -1,9 +1,9 @@
 ---
-description: Create Filament 4 custom panel theme
+description: Create Filament 5 custom panel theme
 model: claude-sonnet-4-5
 ---
 
-Create a Filament 4 custom theme.
+Create a Filament 5 custom theme.
 
 ## Theme Specification
 
@@ -91,4 +91,4 @@ return Panel::make()
     ->font('Inter');
 ```
 
-Generate complete Filament 4 custom theme with Tailwind configuration.
+Generate complete Filament 5 custom theme with Tailwind configuration.

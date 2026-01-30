@@ -1,9 +1,9 @@
 ---
-description: Create Filament 4 dashboard widget
+description: Create Filament 5 dashboard widget
 model: claude-sonnet-4-5
 ---
 
-Create a Filament 4 widget.
+Create a Filament 5 widget.
 
 ## Widget Specification
 
@@ -166,4 +166,4 @@ class RecentOrders extends BaseWidget
 }
 ```
 
-Generate complete Filament 4 widget.
+Generate complete Filament 5 widget.
