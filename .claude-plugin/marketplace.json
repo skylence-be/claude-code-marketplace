@@ -5,7 +5,7 @@
     "contact": "github.com/skylence"
   },
   "metadata": {
-    "description": "Professional full-stack development marketplace featuring 30 specialized AI agents across 7 frameworks (Laravel, Livewire, Filament, Vue/Nuxt, Magento2, WordPress, Git worktree), 55+ slash commands, Python hook system for delegating agents with security checks and session management, and custom status lines for building modern web applications"
+    "description": "Professional full-stack development marketplace featuring 32 specialized AI agents across 8 frameworks (Laravel, Livewire, Filament, Vue/Nuxt, Magento2, WordPress, Electron, Git worktree), 57+ slash commands, Python hook system for delegating agents with security checks and session management, and custom status lines for building modern web and desktop applications"
   },
   "plugins": [
     {
@@ -77,6 +77,16 @@
         "name": "Skylence"
       },
       "tags": ["git", "worktree", "workflow", "development", "branching", "parallel-development"]
+    },
+    {
+      "name": "electron-development",
+      "source": "./plugins/electron-development",
+      "description": "Electron desktop application development with 2 specialized agents (Electron architect, React/TypeScript specialist) and 2 slash commands. Covers secure IPC patterns, system tray apps, React/TypeScript components, Radix UI, Tailwind CSS, and Electron Forge builds",
+      "version": "1.0.0",
+      "author": {
+        "name": "Skylence"
+      },
+      "tags": ["electron", "react", "typescript", "desktop", "ipc", "tray", "tailwind"]
     }
   ]
 }
