@@ -5,7 +5,7 @@
     "contact": "github.com/skylence"
   },
   "metadata": {
-    "description": "Professional full-stack development marketplace featuring 32 specialized AI agents across 8 frameworks (Laravel, Livewire, Filament, Vue/Nuxt, Magento2, WordPress, Electron, Git worktree), 57+ slash commands, Python hook system for delegating agents with security checks and session management, and custom status lines for building modern web and desktop applications"
+    "description": "Professional full-stack development marketplace featuring 34 specialized AI agents across 9 frameworks (Laravel, Livewire, Filament, Vue/Nuxt, Magento2, WordPress, Electron, Flutter, Git worktree), 59+ slash commands, Python hook system for delegating agents with security checks and session management, and custom status lines for building modern web, mobile, and desktop applications"
   },
   "plugins": [
     {
@@ -87,6 +87,16 @@
         "name": "Skylence"
       },
       "tags": ["electron", "react", "typescript", "desktop", "ipc", "tray", "tailwind"]
+    },
+    {
+      "name": "flutter-development",
+      "source": "./plugins/flutter-development",
+      "description": "Flutter 3.38+ mobile/desktop development with 2 specialized agents (Flutter architect, UI specialist) and 2 slash commands for feature modules and widgets. Covers clean architecture with feature modules, Riverpod 2.6+ state management with code generation, Material 3 theming, GoRouter navigation, and responsive/accessible UI patterns",
+      "version": "1.0.0",
+      "author": {
+        "name": "Skylence"
+      },
+      "tags": ["flutter", "dart", "mobile", "riverpod", "material3", "clean-architecture", "cross-platform"]
     }
   ]
 }
