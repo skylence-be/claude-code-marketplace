@@ -20,6 +20,7 @@
       "Bash(dir:*)",
       "Bash(for:*)",
       "Bash(done)",
+      "Bash(python3:*)",
       "Write",
       "Edit"
     ],
@@ -37,7 +38,18 @@
         "hooks": [
           {
             "type": "command",
-            "command": "uv run .claude/hooks/pre_tool_use.py"
+            "command": "uv run .claude/hooks/pre_tool_use.py --track-edits"
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "uv run .claude/hooks/post_tool_use.py"
           }
         ]
       }
@@ -48,7 +60,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "uv run .claude/hooks/stop.py --chat"
+            "command": "uv run .claude/hooks/stop.py --chat --learn-capture --session-check"
           }
         ]
       }
@@ -69,7 +81,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "uv run .claude/hooks/user_prompt_submit.py --log-only --store-last-prompt --name-agent"
+            "command": "uv run .claude/hooks/user_prompt_submit.py --log-only --store-last-prompt --name-agent --detect-corrections --detect-drift"
           }
         ]
       }
@@ -91,7 +103,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "uv run .claude/hooks/session_start.py"
+            "command": "uv run .claude/hooks/session_start.py --load-learnings"
           }
         ]
       }
