@@ -5,7 +5,7 @@
     "contact": "github.com/skylence"
   },
   "metadata": {
-    "description": "Professional full-stack development marketplace featuring 34 specialized AI agents across 9 frameworks (Laravel, Livewire, Filament, Vue/Nuxt, Magento2, WordPress, Electron, Flutter, Git worktree), 59+ slash commands, Python hook system for delegating agents with security checks and session management, and custom status lines for building modern web, mobile, and desktop applications"
+    "description": "Professional full-stack development marketplace featuring 37 specialized AI agents across 10 plugins (Laravel, Livewire, Filament, Vue/Nuxt, Magento2, WordPress, Electron, Flutter, Git worktree, Pro-Workflow), 64+ slash commands, Python hook system with edit tracking, quality gates, learning capture, drift detection, and session management, and custom status lines for building modern web, mobile, and desktop applications"
   },
   "plugins": [
     {
@@ -97,6 +97,17 @@
         "name": "Skylence"
       },
       "tags": ["flutter", "dart", "mobile", "riverpod", "material3", "clean-architecture", "cross-platform"]
+    },
+    {
+      "name": "pro-workflow",
+      "source": "./plugins/pro-workflow",
+      "description": "Self-correcting workflow system with 3 specialized agents (planner, reviewer, scout), 5 slash commands (wrap-up, learn-rule, commit, handoff, learn), 3 context modes (dev, research, review), and core rules. Features persistent learning capture to JSON, edit tracking with quality gate reminders, correction detection, drift detection, post-edit scanning for debug artifacts and secrets, and session handoff generation. All hook features are opt-in via argparse flags for backward compatibility",
+      "version": "1.0.0",
+      "author": {
+        "name": "Rohit Ghumare",
+        "url": "https://github.com/rohitg00"
+      },
+      "tags": ["workflow", "quality-gates", "learnings", "corrections", "drift-detection", "session-management", "code-review"]
     }
   ]
 }

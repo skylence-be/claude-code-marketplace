@@ -3,10 +3,12 @@
 # requires-python = ">=3.8"
 # ///
 
+import argparse
 import json
 import sys
 import re
 from pathlib import Path
+
 
 def is_dangerous_rm_command(command):
     """
@@ -15,7 +17,7 @@ def is_dangerous_rm_command(command):
     """
     # Normalize command by removing extra spaces and converting to lowercase
     normalized = ' '.join(command.lower().split())
-    
+
     # Pattern 1: Standard rm -rf variations
     patterns = [
         r'\brm\s+.*-[a-z]*r[a-z]*f',  # rm -rf, rm -fr, rm -Rf, etc.
@@ -25,12 +27,12 @@ def is_dangerous_rm_command(command):
         r'\brm\s+-r\s+.*-f',  # rm -r ... -f
         r'\brm\s+-f\s+.*-r',  # rm -f ... -r
     ]
-    
+
     # Check for dangerous patterns
     for pattern in patterns:
         if re.search(pattern, normalized):
             return True
-    
+
     # Pattern 2: Check for rm with recursive flag targeting dangerous paths
     dangerous_paths = [
         r'/',           # Root directory
@@ -43,13 +45,14 @@ def is_dangerous_rm_command(command):
         r'\.',          # Current directory
         r'\.\s*$',      # Current directory at end of command
     ]
-    
+
     if re.search(r'\brm\s+.*-[a-z]*r', normalized):  # If rm has recursive flag
         for path in dangerous_paths:
             if re.search(path, normalized):
                 return True
-    
+
     return False
+
 
 def is_env_file_access(tool_name, tool_input):
     """
@@ -61,7 +64,7 @@ def is_env_file_access(tool_name, tool_input):
             file_path = tool_input.get('file_path', '')
             if '.env' in file_path and not file_path.endswith('.env.sample'):
                 return True
-        
+
         # Check bash commands for .env file access
         elif tool_name == 'Bash':
             command = tool_input.get('command', '')
@@ -74,41 +77,92 @@ def is_env_file_access(tool_name, tool_input):
                 r'cp\s+.*\.env\b(?!\.sample)',  # cp .env
                 r'mv\s+.*\.env\b(?!\.sample)',  # mv .env
             ]
-            
+
             for pattern in env_patterns:
                 if re.search(pattern, command):
                     return True
-    
+
     return False
+
+
+def track_edits(tool_name, session_id):
+    """
+    Track edit count per session. Warn at 5, 10, and every 10 thereafter
+    to encourage running quality gates.
+    """
+    if tool_name not in ('Edit', 'Write', 'MultiEdit'):
+        return
+
+    # Store edit count in session data
+    sessions_dir = Path(".claude/data/sessions")
+    sessions_dir.mkdir(parents=True, exist_ok=True)
+    session_file = sessions_dir / f"{session_id}.json"
+
+    session_data = {}
+    if session_file.exists():
+        try:
+            with open(session_file, 'r') as f:
+                session_data = json.load(f)
+        except (json.JSONDecodeError, ValueError):
+            session_data = {}
+
+    edit_count = session_data.get('edit_count', 0) + 1
+    session_data['edit_count'] = edit_count
+
+    try:
+        with open(session_file, 'w') as f:
+            json.dump(session_data, f, indent=2)
+    except OSError:
+        pass
+
+    # Warn at thresholds
+    if edit_count == 5:
+        print("[pro-workflow] 5 edits this session. Consider running quality gates soon (/pro-workflow:commit).", file=sys.stderr)
+    elif edit_count == 10:
+        print("[pro-workflow] 10 edits this session. Strongly recommend running quality gates before continuing.", file=sys.stderr)
+    elif edit_count > 10 and edit_count % 10 == 0:
+        print(f"[pro-workflow] {edit_count} edits this session. Run quality gates: /pro-workflow:commit", file=sys.stderr)
+
 
 def main():
     try:
+        # Parse command line arguments
+        parser = argparse.ArgumentParser()
+        parser.add_argument('--track-edits', action='store_true',
+                          help='Track edit count and warn at thresholds')
+        args = parser.parse_args()
+
         # Read JSON input from stdin
         input_data = json.load(sys.stdin)
-        
+
         tool_name = input_data.get('tool_name', '')
         tool_input = input_data.get('tool_input', {})
-        
+        session_id = input_data.get('session_id', 'unknown')
+
         # Check for .env file access (blocks access to sensitive environment files)
         if is_env_file_access(tool_name, tool_input):
             print("BLOCKED: Access to .env files containing sensitive data is prohibited", file=sys.stderr)
             print("Use .env.sample for template files instead", file=sys.stderr)
             sys.exit(2)  # Exit code 2 blocks tool call and shows error to Claude
-        
+
         # Check for dangerous rm -rf commands
         if tool_name == 'Bash':
             command = tool_input.get('command', '')
-            
+
             # Block rm -rf commands with comprehensive pattern matching
             if is_dangerous_rm_command(command):
                 print("BLOCKED: Dangerous rm command detected and prevented", file=sys.stderr)
                 sys.exit(2)  # Exit code 2 blocks tool call and shows error to Claude
-        
+
+        # Track edits if flag is set
+        if args.track_edits:
+            track_edits(tool_name, session_id)
+
         # Ensure log directory exists
         log_dir = Path.cwd() / 'logs'
         log_dir.mkdir(parents=True, exist_ok=True)
         log_path = log_dir / 'pre_tool_use.json'
-        
+
         # Read existing log data or initialize empty list
         if log_path.exists():
             with open(log_path, 'r') as f:
@@ -118,16 +172,16 @@ def main():
                     log_data = []
         else:
             log_data = []
-        
+
         # Append new data
         log_data.append(input_data)
-        
+
         # Write back to file with formatting
         with open(log_path, 'w') as f:
             json.dump(log_data, f, indent=2)
-        
+
         sys.exit(0)
-        
+
     except json.JSONDecodeError:
         # Gracefully handle JSON decode errors
         sys.exit(0)
