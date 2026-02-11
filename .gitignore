@@ -12,6 +12,9 @@ Thumbs.db
 *.tmp
 *.log
 
+# Python
+__pycache__/
+
 # Force include .claude directory (overriding global gitignore)
 !.claude/
 
