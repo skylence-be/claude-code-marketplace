@@ -17,7 +17,7 @@ Load specific patterns based on your needs:
 | Pattern | File | Use Case |
 |---------|------|----------|
 | Form Layouts | [form-layouts.md](form-layouts.md) | Grid, Section, Tabs, Split, responsive designs |
-| Conditional Fields | [conditional-fields.md](conditional-fields.md) | visible(), hidden(), reactive(), live() |
+| Conditional Fields | [conditional-fields.md](conditional-fields.md) | visible(), hidden(), live(), live(onBlur: true) |
 | Repeaters & Builders | [repeaters-builders.md](repeaters-builders.md) | Dynamic content, relationships, calculations |
 | File Uploads | [file-uploads.md](file-uploads.md) | Images, documents, S3, validation |
 | Wizard Forms | [wizard-forms.md](wizard-forms.md) | Multi-step workflows, step validation |
@@ -42,7 +42,7 @@ Forms\Components\TextInput::make('field')
 ### Reactive Fields
 ```php
 Forms\Components\Select::make('category')
-    ->reactive()
+    ->live()
     ->afterStateUpdated(fn (Set $set) => $set('subcategory', null));
 ```
 

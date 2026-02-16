@@ -51,7 +51,7 @@ class PostResource extends Resource
                 Forms\Components\TextInput::make('slug')
                     ->required()
                     ->maxLength(255)
-                    ->unique(ignoreRecord: true),
+                    ->unique(),
 
                 Forms\Components\Select::make('category_id')
                     ->relationship('category', 'name')

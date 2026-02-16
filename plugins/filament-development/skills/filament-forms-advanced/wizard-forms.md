@@ -1,6 +1,6 @@
 # Wizard Forms
 
-Filament 4 multi-step wizard forms for complex workflows.
+Filament 5 multi-step wizard forms for complex workflows.
 
 ## Basic Wizard
 
@@ -182,7 +182,7 @@ Forms\Components\Select::make('account_type')
         'personal' => 'Personal',
         'business' => 'Business',
     ])
-    ->reactive()
+    ->live()
     ->required(),
 
 Wizard::make([
@@ -382,7 +382,7 @@ class CreateCompany extends CreateRecord
                                 'enterprise' => 'Enterprise - $299/mo',
                             ])
                             ->required()
-                            ->reactive(),
+                            ->live(),
 
                         Forms\Components\Toggle::make('annual_billing')
                             ->label('Annual Billing (Save 20%)')

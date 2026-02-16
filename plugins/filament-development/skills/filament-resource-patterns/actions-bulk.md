@@ -1,6 +1,6 @@
 # Actions & Bulk Actions
 
-Filament 4 table actions and bulk action patterns.
+Filament 5 table actions and bulk action patterns.
 
 ## Row Actions
 

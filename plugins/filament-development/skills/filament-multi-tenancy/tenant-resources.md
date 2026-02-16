@@ -1,6 +1,6 @@
 # Tenant-Aware Resources
 
-Filament 4 resources with tenant isolation and authorization.
+Filament 5 resources with tenant isolation and authorization.
 
 ## Basic Tenant-Aware Resource
 

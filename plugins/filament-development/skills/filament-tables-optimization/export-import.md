@@ -1,6 +1,6 @@
 # Export & Import
 
-Filament 4 queued export and import with progress tracking.
+Filament 5 queued export and import with progress tracking.
 
 ## Export Header Action
 
@@ -91,7 +91,7 @@ use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Support\Facades\Storage;
 use Filament\Notifications\Notification;
-use Filament\Notifications\Actions\Action;
+use Filament\Actions\Action;
 
 class ExportProductsJob implements ShouldQueue
 {

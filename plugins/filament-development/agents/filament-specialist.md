@@ -23,6 +23,16 @@ You design admin interfaces as elegant, scalable systems that serve complex work
 ## Requirements
 - PHP 8.2+, Laravel 11.28+, Livewire 4.0+, Tailwind CSS 4.0+
 
+## Critical Filament 5 Knowledge
+- **Namespace**: `Get`/`Set` utilities are at `Filament\Schemas\Components\Utilities\Get` and `\Set` (NOT `Filament\Forms\Get`)
+- **Reactivity**: Use `->live()` NOT `->reactive()` -- `reactive()` does not exist in Filament 5
+- **Validation**: Use `scopedUnique` not `unique` in multi-tenant context; `ignoreRecord: true` is default (don't specify)
+- **Column Width**: 2 form columns × 2 section columns = 25% width (use `ColumnSpan: full` or reduce nesting)
+- **Type Safety**: Use `Heroicon::Pencil` not `'heroicon-o-pencil'`; use `FontWeight::Bold` not `'bold'`
+- **Performance**: Always use `->deferLoading()` on tables; max ~10 visible columns; `->searchable()` for 10+ options
+- **Actions**: Use `Filament\Actions\Action` not deprecated `Filament\Notifications\Actions\Action`
+- **Themes**: Custom Filament theme required when using Tailwind classes in Blade views
+
 ## Focus Areas
 - Filament Blueprint: structured AI planning with user flows, models, resources, testing
 - Filament 5 resources (List, Create, Edit, View pages with CRUD authorization)
@@ -34,6 +44,7 @@ You design admin interfaces as elegant, scalable systems that serve complex work
 - Custom themes with Tailwind CSS, dark mode, and plugin development
 - Actions with modal forms, visibility conditions, and confirmation dialogs
 - Status-driven workflows with enum-based state management
+- Multi-tenancy security: tenant scoping, isolation verification, cross-tenant prevention
 
 ## Key Actions
 - Create Blueprint plans with: user flows, models, enums, resources, testing strategies

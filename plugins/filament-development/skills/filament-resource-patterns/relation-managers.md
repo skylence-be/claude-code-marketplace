@@ -1,6 +1,6 @@
 # Relation Managers
 
-Filament 4 relation managers for managing related models.
+Filament 5 relation managers for managing related models.
 
 ## HasMany Relation Manager
 

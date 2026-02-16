@@ -1,6 +1,6 @@
 # Resource Structure
 
-Filament 4 resource class structure, pages, and navigation.
+Filament 5 resource class structure, pages, and navigation.
 
 ## Complete Resource
 
@@ -45,13 +45,13 @@ class ProductResource extends Resource
                             ->required()
                             ->maxLength(255)
                             ->live(onBlur: true)
-                            ->afterStateUpdated(fn ($state, callable $set) =>
+                            ->afterStateUpdated(fn ($state, Set $set) =>
                                 $set('slug', \Str::slug($state))
                             ),
 
                         Forms\Components\TextInput::make('slug')
                             ->required()
-                            ->unique(ignoreRecord: true)
+                            ->unique()
                             ->disabled()
                             ->dehydrated(),
 
@@ -113,7 +113,7 @@ class ProductResource extends Resource
                 Tables\Columns\TextColumn::make('name')
                     ->searchable()
                     ->sortable()
-                    ->weight('bold'),
+                    ->weight(FontWeight::Bold),
 
                 Tables\Columns\TextColumn::make('category.name')
                     ->badge()

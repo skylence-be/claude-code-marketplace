@@ -1,6 +1,6 @@
 # Advanced Filters
 
-Filament 4 advanced table filtering with performance optimization.
+Filament 5 advanced table filtering with performance optimization.
 
 ## Multi-Select Filter
 

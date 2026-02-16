@@ -1,6 +1,6 @@
 # Tenant Billing & Storage
 
-Filament 4 subscription management and tenant storage isolation.
+Filament 5 subscription management and tenant storage isolation.
 
 ## Billing Page
 
@@ -77,7 +77,7 @@ class TeamBilling extends Page
                             'enterprise' => '100GB storage, all features',
                         ])
                         ->required()
-                        ->reactive(),
+                        ->live(),
 
                     Forms\Components\Actions::make([
                         Forms\Components\Actions\Action::make('update_plan')

@@ -1,13 +1,13 @@
 # Conditional Fields
 
-Filament 4 conditional field visibility, requirements, and dynamic state.
+Filament 5 conditional field visibility, requirements, and dynamic state.
 
 ## Basic Visibility
 
 ```php
 use Filament\Forms;
-use Filament\Forms\Get;
-use Filament\Forms\Set;
+use Filament\Schemas\Components\Utilities\Get;
+use Filament\Schemas\Components\Utilities\Set;
 
 // Show field based on another field's value
 Forms\Components\Select::make('account_type')
@@ -16,7 +16,7 @@ Forms\Components\Select::make('account_type')
         'business' => 'Business',
     ])
     ->required()
-    ->reactive(), // Required for conditional updates
+    ->live(), // Required for conditional updates
 
 Forms\Components\TextInput::make('company_name')
     ->visible(fn (Get $get): bool => $get('account_type') === 'business')
@@ -42,7 +42,7 @@ Forms\Components\TextInput::make('business_field')
 
 ```php
 Forms\Components\Toggle::make('has_discount')
-    ->reactive(),
+    ->live(),
 
 Forms\Components\TextInput::make('discount_code')
     ->visible(fn (Get $get): bool => $get('has_discount'))
@@ -65,7 +65,7 @@ Forms\Components\Select::make('subscription_plan')
         'pro' => 'Pro',
         'enterprise' => 'Enterprise',
     ])
-    ->reactive(),
+    ->live(),
 
 Forms\Components\TextInput::make('api_limit')
     ->disabled(fn (Get $get): bool => $get('subscription_plan') === 'free')
@@ -82,7 +82,7 @@ Forms\Components\TextInput::make('api_limit')
 ```php
 Forms\Components\Select::make('category_id')
     ->options(Category::pluck('name', 'id'))
-    ->reactive()
+    ->live()
     ->afterStateUpdated(function (Set $set, $state) {
         // Clear dependent fields when category changes
         $set('subcategory_id', null);
@@ -104,7 +104,7 @@ Forms\Components\Select::make('subcategory_id')
         return Category::where('parent_id', $categoryId)->pluck('name', 'id');
     })
     ->disabled(fn (Get $get): bool => !$get('category_id'))
-    ->reactive()
+    ->live()
     ->afterStateUpdated(fn (Set $set) => $set('product_type_id', null)),
 ```
 
@@ -142,10 +142,10 @@ Forms\Components\TextInput::make('search')
 ```php
 Forms\Components\Select::make('order_type')
     ->options(['delivery' => 'Delivery', 'pickup' => 'Pickup', 'dine_in' => 'Dine In'])
-    ->reactive(),
+    ->live(),
 
 Forms\Components\Toggle::make('express_delivery')
-    ->reactive()
+    ->live()
     ->visible(fn (Get $get): bool => $get('order_type') === 'delivery'),
 
 // Show only for express delivery orders
@@ -208,7 +208,7 @@ class OrderResource extends Resource
                     'pickup' => 'Pickup',
                     'dine_in' => 'Dine In',
                 ])
-                ->reactive()
+                ->live()
                 ->afterStateUpdated(function (Set $set, $state) {
                     // Reset all conditional fields
                     if ($state !== 'delivery') {
