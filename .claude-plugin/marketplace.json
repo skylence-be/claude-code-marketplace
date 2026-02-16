@@ -5,7 +5,7 @@
     "contact": "github.com/skylence"
   },
   "metadata": {
-    "description": "Professional full-stack development marketplace featuring 37 specialized AI agents across 10 plugins (Laravel, Livewire, Filament, Vue/Nuxt, Magento2, WordPress, Electron, Flutter, Git worktree, Pro-Workflow), 64+ slash commands, Python hook system with edit tracking, quality gates, learning capture, drift detection, and session management, and custom status lines for building modern web, mobile, and desktop applications"
+    "description": "Professional full-stack development marketplace featuring 40 specialized AI agents across 11 plugins (Laravel, Livewire, Filament, Vue/Nuxt, Magento2, WordPress, Electron, Flutter, NativePHP, Git worktree, Pro-Workflow), 68+ slash commands, Python hook system with edit tracking, quality gates, learning capture, drift detection, and session management, and custom status lines for building modern web, mobile, and desktop applications"
   },
   "plugins": [
     {
@@ -97,6 +97,16 @@
         "name": "Skylence"
       },
       "tags": ["flutter", "dart", "mobile", "riverpod", "material3", "clean-architecture", "cross-platform"]
+    },
+    {
+      "name": "nativephp-development",
+      "source": "./plugins/nativephp-development",
+      "description": "NativePHP desktop and mobile app development with 3 specialized agents (NativePHP architect, desktop expert, mobile expert), 4 slash commands for windows, menus, native providers, and mobile plugins, and 3 skill patterns for desktop, mobile, and testing. Covers NativeAppServiceProvider, window management, menu systems, event broadcasting, mobile bridge functions, and cross-platform deployment",
+      "version": "1.0.0",
+      "author": {
+        "name": "Skylence"
+      },
+      "tags": ["nativephp", "desktop", "mobile", "electron", "laravel", "php", "ios", "android", "cross-platform"]
     },
     {
       "name": "pro-workflow",
