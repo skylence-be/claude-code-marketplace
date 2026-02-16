@@ -1,6 +1,6 @@
 # Table Columns
 
-Filament 4 table column patterns and custom rendering.
+Filament 5 table column patterns and custom rendering.
 
 ## Text Columns
 
@@ -8,7 +8,7 @@ Filament 4 table column patterns and custom rendering.
 Tables\Columns\TextColumn::make('name')
     ->searchable()
     ->sortable()
-    ->weight('bold')
+    ->weight(FontWeight::Bold)
     ->copyable()
     ->copyMessage('Copied!')
     ->limit(50)
@@ -176,7 +176,7 @@ Tables\Columns\TextColumn::make('full_address')
 // Stack layout
 Tables\Columns\Layout\Stack::make([
     Tables\Columns\TextColumn::make('name')
-        ->weight('bold'),
+        ->weight(FontWeight::Bold),
     Tables\Columns\TextColumn::make('email')
         ->size('sm')
         ->color('gray'),

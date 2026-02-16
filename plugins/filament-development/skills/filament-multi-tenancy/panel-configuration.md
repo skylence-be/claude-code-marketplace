@@ -1,6 +1,6 @@
 # Panel Configuration
 
-Filament 4 multi-tenancy panel setup and configuration.
+Filament 5 multi-tenancy panel setup and configuration.
 
 ## Basic Panel Tenancy
 

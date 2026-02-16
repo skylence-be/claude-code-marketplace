@@ -1,6 +1,6 @@
 # Query Optimization
 
-Filament 4 table query optimization with eager loading and efficient queries.
+Filament 5 table query optimization with eager loading and efficient queries.
 
 ## Eager Loading
 

@@ -1,6 +1,6 @@
 # Form Schemas
 
-Filament 4 advanced form component patterns.
+Filament 5 advanced form component patterns.
 
 ## Tabbed Form
 
@@ -17,13 +17,13 @@ public static function form(Form $form): Form
                                 ->required()
                                 ->maxLength(255)
                                 ->live(onBlur: true)
-                                ->afterStateUpdated(fn ($state, callable $set) =>
+                                ->afterStateUpdated(fn ($state, Set $set) =>
                                     $set('slug', \Str::slug($state))
                                 ),
 
                             Forms\Components\TextInput::make('slug')
                                 ->required()
-                                ->unique(ignoreRecord: true),
+                                ->unique(),
 
                             Forms\Components\Select::make('author_id')
                                 ->relationship('author', 'name')
@@ -177,7 +177,7 @@ Forms\Components\Select::make('type')
         'service' => 'Service',
     ])
     ->required()
-    ->reactive(),
+    ->live(),
 
 // Physical product fields
 Forms\Components\Section::make('Shipping')
@@ -248,7 +248,7 @@ Forms\Components\Section::make('Media')
 Forms\Components\TextInput::make('email')
     ->email()
     ->required()
-    ->unique(ignoreRecord: true)
+    ->unique()
     ->rules(['email:rfc,dns']),
 
 Forms\Components\TextInput::make('password')
@@ -264,7 +264,7 @@ Forms\Components\TextInput::make('password')
 
 Forms\Components\TextInput::make('sku')
     ->required()
-    ->unique(ignoreRecord: true)
+    ->unique()
     ->rules([
         fn (): \Closure => function (string $attribute, $value, \Closure $fail) {
             if (!preg_match('/^[A-Z]{2}-\d{4}$/', $value)) {

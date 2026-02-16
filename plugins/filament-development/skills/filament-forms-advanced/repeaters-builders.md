@@ -1,13 +1,13 @@
 # Repeaters & Builders
 
-Filament 4 Repeater and Builder components for dynamic form content.
+Filament 5 Repeater and Builder components for dynamic form content.
 
 ## Basic Repeater
 
 ```php
 use Filament\Forms;
-use Filament\Forms\Get;
-use Filament\Forms\Set;
+use Filament\Schemas\Components\Utilities\Get;
+use Filament\Schemas\Components\Utilities\Set;
 
 Forms\Components\Repeater::make('items')
     ->schema([
@@ -74,7 +74,7 @@ Forms\Components\Section::make('Invoice Items')
                 Forms\Components\Select::make('product_id')
                     ->options(Product::pluck('name', 'id'))
                     ->required()
-                    ->reactive()
+                    ->live()
                     ->afterStateUpdated(function (Get $get, Set $set, $state) {
                         $product = Product::find($state);
                         if ($product) {
@@ -88,7 +88,7 @@ Forms\Components\Section::make('Invoice Items')
                     ->numeric()
                     ->default(1)
                     ->minValue(1)
-                    ->reactive()
+                    ->live()
                     ->afterStateUpdated(fn (Get $get, Set $set) =>
                         self::calculateLineTotal($get, $set)
                     )
@@ -97,7 +97,7 @@ Forms\Components\Section::make('Invoice Items')
                 Forms\Components\TextInput::make('unit_price')
                     ->numeric()
                     ->prefix('$')
-                    ->reactive()
+                    ->live()
                     ->afterStateUpdated(fn (Get $get, Set $set) =>
                         self::calculateLineTotal($get, $set)
                     )
@@ -226,7 +226,7 @@ Forms\Components\Builder::make('content')
                         'vimeo' => 'Vimeo',
                     ])
                     ->required()
-                    ->reactive(),
+                    ->live(),
 
                 Forms\Components\TextInput::make('url')
                     ->url()

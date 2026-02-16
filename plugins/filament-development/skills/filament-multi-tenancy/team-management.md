@@ -1,6 +1,6 @@
 # Team Management
 
-Filament 4 team registration, profile, and member management.
+Filament 5 team registration, profile, and member management.
 
 ## Team Registration Page
 
@@ -32,7 +32,7 @@ class RegisterTeam extends RegisterTenant
                     ->required()
                     ->maxLength(255)
                     ->live(onBlur: true)
-                    ->afterStateUpdated(fn ($state, callable $set) =>
+                    ->afterStateUpdated(fn ($state, Set $set) =>
                         $set('slug', \Str::slug($state))
                     ),
 
@@ -119,7 +119,7 @@ class EditTeam extends EditTenantProfile
 
                         TextInput::make('slug')
                             ->required()
-                            ->unique(Team::class, ignoreRecord: true),
+                            ->unique(Team::class),
 
                         FileUpload::make('logo')
                             ->image()
@@ -153,7 +153,7 @@ class EditTeam extends EditTenantProfile
                     ->schema([
                         Toggle::make('delete_confirmation')
                             ->label('I understand deletion is permanent')
-                            ->reactive(),
+                            ->live(),
 
                         \Filament\Forms\Components\Actions::make([
                             \Filament\Forms\Components\Actions\Action::make('delete_team')

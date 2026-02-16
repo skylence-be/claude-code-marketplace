@@ -94,6 +94,34 @@ return $table
     ->poll('30s');
 ```
 
+## Performance Rules
+
+### Max ~10 Visible Columns
+Tables with more than 10 visible columns create poor UX and performance issues. Use `->toggleable(isToggledHiddenByDefault: true)` for less important columns like `created_at`, `updated_at`, `id`.
+
+### Always Defer Loading
+Every table should use `->deferLoading()` to load data via AJAX after initial page render. This dramatically improves page load time.
+
+### Searchable for Large Option Lists
+Select, CheckboxList, and Radio components with 10+ options MUST have `->searchable()` for usability.
+
+### Use Heroicon Enum for Icons
+```php
+// Prefer enum over string
+use Filament\Support\Icons\Heroicon;
+
+Tables\Actions\BulkAction::make('export')
+    ->icon(Heroicon::ArrowDownTray),
+```
+
+### Use FontWeight Enum
+```php
+use Filament\Support\Enums\FontWeight;
+
+Tables\Columns\TextColumn::make('name')
+    ->weight(FontWeight::Bold),
+```
+
 ## Best Practices
 
 1. Always eager load relationships used in columns
@@ -106,3 +134,6 @@ return $table
 8. Limit options in relationship filters
 9. Use summarizers for aggregate data display
 10. Monitor query performance with debugbar
+11. Keep visible columns under 10, use toggleable for extras
+12. Use `Heroicon::*` enum instead of string icons
+13. Use `FontWeight::*` enum instead of string weights

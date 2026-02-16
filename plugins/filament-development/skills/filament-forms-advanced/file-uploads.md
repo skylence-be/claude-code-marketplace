@@ -1,6 +1,6 @@
 # File Uploads
 
-Filament 4 FileUpload component with image editing and validation.
+Filament 5 FileUpload component with image editing and validation.
 
 ## Basic Image Upload
 

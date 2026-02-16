@@ -1,6 +1,6 @@
 # Custom Columns
 
-Filament 4 custom table columns with state, computed values, and interactions.
+Filament 5 custom table columns with state, computed values, and interactions.
 
 ## Computed State Column
 

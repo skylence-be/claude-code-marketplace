@@ -388,6 +388,116 @@ Action::make('recordPayment')
 ```
 ```
 
+## Filament 5 Namespace Reference
+
+Every Blueprint component MUST use full namespaces. This is the #1 source of errors.
+
+| Category | Namespace Pattern | Example |
+|----------|------------------|---------|
+| Form fields | `Filament\Forms\Components\{Component}` | `Filament\Forms\Components\TextInput` |
+| Table columns | `Filament\Tables\Columns\{Column}` | `Filament\Tables\Columns\TextColumn` |
+| Table filters | `Filament\Tables\Filters\{Filter}` | `Filament\Tables\Filters\SelectFilter` |
+| Actions | `Filament\Actions\{Action}` | `Filament\Actions\Action` (NOT `Filament\Notifications\Actions\Action`) |
+| Bulk actions | `Filament\Actions\BulkAction` | `Filament\Actions\BulkAction` |
+| Icons (enum) | `Filament\Support\Icons\Heroicon` | `Heroicon::Pencil`, `Heroicon::PencilSquare` |
+| Font weights (enum) | `Filament\Support\Enums\FontWeight` | `FontWeight::Bold`, `FontWeight::SemiBold` |
+| Infolist entries | `Filament\Infolists\Components\{Entry}` | `Filament\Infolists\Components\TextEntry` |
+| Layouts | `Filament\Schemas\Components\{Component}` | `Filament\Schemas\Components\Section` |
+| Reactive utils | `Filament\Schemas\Components\Utilities\{Class}` | `Filament\Schemas\Components\Utilities\Get` |
+
+**CRITICAL**: The reactive utilities `Get` and `Set` are at `Filament\Schemas\Components\Utilities\Get` and `Filament\Schemas\Components\Utilities\Set`. NOT `Filament\Forms\Get` or `Filament\Forms\Set`.
+
+**CRITICAL**: Use `->live()` NOT `->reactive()`. The `reactive()` method does not exist in Filament 5.
+
+## Form Field Selection by Data Type
+
+| Data Type | Component | When to Use |
+|-----------|-----------|-------------|
+| String (short) | `TextInput` | Names, titles, codes |
+| String (long) | `Textarea` | Descriptions, notes |
+| Rich text | `RichEditor` | Formatted content |
+| Enum (many options) | `Select` | Searchable, >10 options |
+| Enum (few options) | `Radio` or `ToggleButtons` | 2-5 visible options |
+| Enum (multi-select) | `CheckboxList` | Select multiple from <10 fixed |
+| Boolean (setting) | `Toggle` | On/off preferences |
+| Boolean (agreement) | `Checkbox` | Terms, confirmations |
+| Date | `DatePicker` | Date only |
+| DateTime | `DateTimePicker` | Date and time |
+| Foreign key | `Select->relationship()` | Simple belongsTo |
+| Foreign key (complex) | `ModalTableSelect` | Need multi-column search |
+| belongsToMany | `Select->relationship()->multiple()` | Variable options, compact |
+| hasMany (few) | `Repeater` | Inline editing, drag-reorder |
+| hasMany (many) | RelationManager | Search, filter, independent lifecycle |
+| JSON array | `TagsInput` | Free-form tags |
+| Key-value pairs | `KeyValue` | Settings, metadata |
+| File | `FileUpload` | Images, documents |
+| Number (integer) | `TextInput->integer()` | Whole numbers |
+| Number (decimal) | `TextInput->numeric()->step(0.01)` | Prices, measurements |
+| Money | `TextInput->numeric()->prefix('$')` | Store as cents |
+
+## Relationship Decision Tree
+
+| Relationship | When to Use Select | When to Use ModalTableSelect | When to Use Repeater | When to Use RelationManager |
+|-------------|-------------------|-----------------------------|--------------------|---------------------------|
+| belongsTo | Default choice, simple title search | Need multi-column search, many records | N/A | N/A |
+| hasMany | N/A | N/A | Few items, inline edit, drag-reorder | Many items, search/filter needed |
+| belongsToMany | Variable options, compact UI | Need multi-column display | N/A | Need pivot data editing |
+
+## Column Width Rules (CRITICAL)
+
+Columns multiply through nesting. This is the most common layout mistake.
+
+| Form Columns | Section Columns | Effective Width | Result |
+|-------------|-----------------|-----------------|--------|
+| 2 | 2 | 25% | TOO NARROW |
+| 2 | 1 | 50% | OK |
+| 1 | 2 | 50% | OK |
+| 2 (with ColumnSpan: full) | 2 | 50% | OK |
+
+**Rule**: If form has 2 columns and section has 2 columns, fields are 25% wide (too narrow for most inputs). Either set section `Columns: 1` or field `ColumnSpan: full`.
+
+## Code Quality Checklist (FilaCheck Rules)
+
+Before finalizing any Blueprint plan or implementation, verify against these rules:
+
+### Performance Rules
+| Rule | What to Check | Fix |
+|------|--------------|-----|
+| **Max ~10 visible columns** | Tables with >10 visible columns | Use `->toggleable(isToggledHiddenByDefault: true)` for less important columns |
+| **Always defer loading** | Every `table()` method must use `->deferLoading()` | Loads data via AJAX after page render |
+| **Eager load relationships** | Any dot-notation column (`user.name`) needs eager loading | Add `->modifyQueryUsing(fn (Builder $query) => $query->with([...]))` |
+| **Searchable for 10+ options** | Select/CheckboxList/Radio with >=10 options | Add `->searchable()` for usability |
+
+### Type Safety Rules
+| Rule | Wrong | Correct |
+|------|-------|---------|
+| **Use Heroicon enum** | `->icon('heroicon-o-pencil')` | `->icon(Heroicon::Pencil)` with `use Filament\Support\Icons\Heroicon` |
+| **Use FontWeight enum** | `->weight('bold')` | `->weight(FontWeight::Bold)` with `use Filament\Support\Enums\FontWeight` |
+| **Use consolidated Action namespace** | `Filament\Notifications\Actions\Action` | `Filament\Actions\Action` |
+
+### Redundancy Rules
+| Rule | What to Check | Fix |
+|------|--------------|-----|
+| **No redundant ignoreRecord** | `->unique(ignoreRecord: true)` | `->unique()` -- `ignoreRecord: true` is the default in Filament 5 |
+| **Custom theme for Tailwind** | Using Tailwind classes in Blade views | Must configure custom Filament theme via `->viteTheme()` and compile CSS |
+
+## Common Planning Mistakes Checklist
+
+| Mistake | Impact | Fix |
+|---------|--------|-----|
+| Missing namespaces | Implementing agent guesses wrong | Include full namespace for EVERY component |
+| Vague specifications | "Add a status field" | Specify Component, Config, Validation, Docs URL |
+| Missing scaffold commands | Files not created | Include all `php artisan make:*` commands |
+| Nested columns too narrow | Fields cramped at 25% width | Check column multiplication rules |
+| Components that don't exist | `Card` (use `Section`), `BadgeColumn` (use `TextColumn->badge()`) | Verify against Filament 5 docs |
+| Wrong namespaces | `Filament\Forms\Get` | Use `Filament\Schemas\Components\Utilities\Get` |
+| Wrong methods | `->reactive()` | Use `->live()` in Filament 5 |
+| String icons/weights | `'heroicon-o-pencil'`, `'bold'` | Use `Heroicon::Pencil`, `FontWeight::Bold` enums |
+| Missing tests | No quality assurance | Include authorization, validation, action tests |
+| Unclear authorization | Vague permission rules | Specify exact ability + condition in plain English |
+| `unique` in multi-tenant | Data leak across tenants | Use `scopedUnique:table,column` |
+| Redundant ignoreRecord | Unnecessary code | `ignoreRecord: true` is default in Filament 5 |
+
 ## Best Practices
 
 1. **Be explicit** - Include namespaces, method signatures, exact syntax
@@ -402,6 +512,8 @@ Action::make('recordPayment')
 10. **Define relationships** - Document both directions with cardinality
 11. **Test with datasets** - Parameterized tests for validation rules
 12. **File inventory** - Categorized list of all generated files
+13. **Plan in order** - Models → Resources → Authorization → Tests
+14. **Verify syntax** - Check Filament docs that methods exist before planning
 
 ## Anti-Patterns to Avoid
 

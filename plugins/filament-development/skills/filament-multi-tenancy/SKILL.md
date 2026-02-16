@@ -83,6 +83,65 @@ public static function getNavigationBadge(): ?string
 }
 ```
 
+## Security Gotchas (CRITICAL)
+
+### 1. Use `scopedUnique` NOT `unique` for Tenant Isolation
+```php
+// WRONG - checks uniqueness across ALL tenants
+Forms\Components\TextInput::make('slug')
+    ->unique();
+
+// CORRECT - checks uniqueness within current tenant only
+Forms\Components\TextInput::make('slug')
+    ->unique(modifyRuleUsing: fn ($rule) =>
+        $rule->where('team_id', Filament::getTenant()->id)
+    );
+// Note: ignoreRecord: true is the default in Filament 5, no need to specify
+```
+
+### 2. `canAccessTenant()` is the ONLY Defense Against URL Manipulation
+```php
+// This is the ONLY thing preventing /team/999/posts URL manipulation
+public function canAccessTenant(Model $tenant): bool
+{
+    return $this->teams->contains($tenant);
+}
+// If this returns true for wrong tenants, ALL data is exposed
+```
+
+### 3. Soft-Deleted Records Can Bypass Tenant Scoping
+```php
+// WRONG - soft-deleted records from other tenants may leak
+public static function getEloquentQuery(): Builder
+{
+    return parent::getEloquentQuery()
+        ->withoutGlobalScopes([SoftDeletingScope::class]);
+}
+
+// CORRECT - always maintain tenant scope when removing soft delete scope
+public static function getEloquentQuery(): Builder
+{
+    return parent::getEloquentQuery()
+        ->withoutGlobalScopes([SoftDeletingScope::class])
+        ->whereBelongsTo(Filament::getTenant());
+}
+```
+
+### 4. Relationship Options Must Be Tenant-Scoped
+```php
+// WRONG - shows categories from ALL tenants
+Forms\Components\Select::make('category_id')
+    ->relationship('category', 'name');
+
+// CORRECT - scope to current tenant
+Forms\Components\Select::make('category_id')
+    ->relationship(
+        'category',
+        'name',
+        fn (Builder $query) => $query->whereBelongsTo(Filament::getTenant())
+    );
+```
+
 ## Best Practices
 
 1. Always scope queries to current tenant using `getEloquentQuery()`
@@ -95,3 +154,5 @@ public static function getNavigationBadge(): ?string
 8. Isolate file storage per tenant
 9. Clear caches when switching tenants
 10. Test cross-tenant access prevention
+11. Use `scopedUnique` validation, never bare `unique` in multi-tenant context
+12. Always maintain tenant scope even when disabling other global scopes

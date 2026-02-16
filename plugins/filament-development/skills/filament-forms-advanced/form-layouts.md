@@ -1,6 +1,6 @@
 # Form Layouts
 
-Filament 4 form layout components for organizing complex forms.
+Filament 5 form layout components for organizing complex forms.
 
 ## Grid Layout
 

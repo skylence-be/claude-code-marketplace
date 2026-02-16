@@ -1,6 +1,6 @@
 # Bulk Operations
 
-Filament 4 bulk actions with queue processing for large datasets.
+Filament 5 bulk actions with queue processing for large datasets.
 
 ## Standard Bulk Actions
 
@@ -48,7 +48,7 @@ Tables\Actions\BulkAction::make('update_prices')
                 'set' => 'Set to',
             ])
             ->required()
-            ->reactive(),
+            ->live(),
 
         Forms\Components\TextInput::make('value')
             ->numeric()

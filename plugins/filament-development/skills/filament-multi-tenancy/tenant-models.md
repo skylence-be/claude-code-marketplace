@@ -1,6 +1,6 @@
 # Tenant Models
 
-Filament 4 tenant and user models with relationships.
+Filament 5 tenant and user models with relationships.
 
 ## Team (Tenant) Model
 
