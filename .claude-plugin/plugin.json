@@ -21,7 +21,10 @@
     "worktree",
     "pro-workflow",
     "quality-gates",
-    "learnings"
+    "learnings",
+    "nativephp",
+    "desktop",
+    "mobile"
   ],
   "commands": [
     "./.claude/commands/new-task.md",
@@ -49,7 +52,11 @@
     "./plugins/pro-workflow/commands/learn-rule.md",
     "./plugins/pro-workflow/commands/commit.md",
     "./plugins/pro-workflow/commands/handoff.md",
-    "./plugins/pro-workflow/commands/learn.md"
+    "./plugins/pro-workflow/commands/learn.md",
+    "./plugins/nativephp-development/commands/window-new.md",
+    "./plugins/nativephp-development/commands/menu-new.md",
+    "./plugins/nativephp-development/commands/native-provider-new.md",
+    "./plugins/nativephp-development/commands/mobile-plugin-new.md"
   ],
   "agents": [
     "./plugins/laravel-development/agents/laravel-architect.md",
@@ -84,7 +91,10 @@
     "./plugins/git-worktree-management/agents/git-worktree-manager.md",
     "./plugins/pro-workflow/agents/planner.md",
     "./plugins/pro-workflow/agents/reviewer.md",
-    "./plugins/pro-workflow/agents/scout.md"
+    "./plugins/pro-workflow/agents/scout.md",
+    "./plugins/nativephp-development/agents/nativephp-architect.md",
+    "./plugins/nativephp-development/agents/desktop-expert.md",
+    "./plugins/nativephp-development/agents/mobile-expert.md"
   ],
   "mcpServers": {
     "context7": {
