@@ -1,6 +1,6 @@
 # Multi-Framework Development Marketplace
 
-Professional development toolkit with **10 specialized plugins** featuring **37 AI agents**, **64+ slash commands**, and a **self-correcting workflow system** for Laravel, Livewire, Filament, Vue/Nuxt, Magento 2, WordPress, Electron, Flutter, Git worktree management, and Pro-Workflow.
+Professional development toolkit with **11 specialized plugins** featuring **40 AI agents**, **68+ slash commands**, and a **self-correcting workflow system** for Laravel, Livewire, Filament, Vue/Nuxt, Magento 2, WordPress, Electron, Flutter, NativePHP, Git worktree management, and Pro-Workflow.
 
 ## Available Plugins
 
@@ -19,6 +19,7 @@ Install only what you need — each plugin is completely isolated with its own a
 ### Desktop & Mobile
 - **electron-development** - 2 agents, 2 commands (Electron + React/TypeScript)
 - **flutter-development** - 2 agents, 2 commands (Flutter 3.38+ with Riverpod)
+- **nativephp-development** - 3 agents, 4 commands (NativePHP desktop & mobile with Laravel)
 
 ### DevOps & Workflow
 - **git-worktree-management** - 1 agent, 5 commands (parallel development workflows)
@@ -39,6 +40,7 @@ Install only what you need — each plugin is completely isolated with its own a
 /plugin install wordpress-development
 /plugin install electron-development
 /plugin install flutter-development
+/plugin install nativephp-development
 /plugin install git-worktree-management
 /plugin install pro-workflow
 ```
@@ -212,6 +214,20 @@ description: [What the agent does]. Use PROACTIVELY when [specific trigger scena
 
 **2 commands:** Feature modules and widget scaffolding
 
+### NativePHP Development Plugin
+
+**3 specialized agents:**
+- nativephp-architect - NativePHP application architecture, window management, menu systems, cross-platform deployment
+- desktop-expert - NativePHP Desktop v2 APIs, notifications, dialogs, clipboard, global hotkeys, auto-updates
+- mobile-expert - NativePHP Mobile v3 plugin architecture, EDGE native components, bridge functions, biometrics
+
+**3 specialized skills** (1,822 lines total):
+- nativephp-desktop-patterns - Window management, menus, system tray, notifications, child processes (729 lines)
+- nativephp-mobile-patterns - Plugin architecture, EDGE components, bridge functions, camera, push notifications (735 lines)
+- nativephp-testing-patterns - Facade fakes, assertion methods, integration testing strategies (358 lines)
+
+**4 commands:** Windows, menus, native providers, mobile plugins
+
 ### Git Worktree Management Plugin
 
 **1 specialized agent:**
@@ -264,6 +280,7 @@ All hooks use `uv run` with inline dependencies — zero installation required.
 - **Vue 3 + Nuxt 4** - Frontend framework with TypeScript
 - **Flutter 3.38+** - Cross-platform mobile/desktop
 - **Electron** - Desktop applications
+- **NativePHP** - Desktop & mobile apps with Laravel
 - **Tailwind CSS** - Utility-first styling
 - **Alpine.js** - Lightweight JavaScript
 
@@ -324,6 +341,20 @@ All hooks use `uv run` with inline dependencies — zero installation required.
 /git-worktree:worktree-cleanup feature/auth
 ```
 
+### NativePHP Desktop & Mobile
+
+```bash
+# Create native app service provider
+/nativephp:native-provider-new MyApp
+
+# Create windows and menus
+/nativephp:window-new MainWindow
+/nativephp:menu-new ApplicationMenu
+
+# Create mobile plugin with Swift/Kotlin bridges
+/nativephp:mobile-plugin-new CameraScanner
+```
+
 ### Magento 2 E-Commerce
 
 ```bash
@@ -352,13 +383,14 @@ All hooks use `uv run` with inline dependencies — zero installation required.
 ```
 claude-code-marketplace/
 ├── .claude/
+│   ├── agents/                      # plugin-architect agent
 │   ├── hooks/                       # 7 Python hook scripts
 │   ├── output-styles/               # 8 output formatting styles
 │   ├── status_lines/                # Custom status line generators
 │   └── settings.json                # Hook configuration + permissions
 ├── .claude-plugin/
-│   ├── plugin.json                  # 64+ commands, 37 agents
-│   └── marketplace.json             # 10 plugins definition
+│   ├── plugin.json                  # 68+ commands, 40 agents
+│   └── marketplace.json             # 11 plugins definition
 ├── plugins/
 │   ├── laravel-development/
 │   │   ├── agents/                  # 9 Laravel experts
@@ -388,6 +420,10 @@ claude-code-marketplace/
 │   ├── flutter-development/
 │   │   ├── agents/                  # 2 Flutter experts
 │   │   └── commands/                # 2 Flutter commands
+│   ├── nativephp-development/
+│   │   ├── agents/                  # 3 NativePHP experts
+│   │   ├── commands/                # 4 NativePHP commands
+│   │   └── skills/                  # 3 NativePHP skills (1,822 lines)
 │   ├── git-worktree-management/
 │   │   ├── agents/                  # Git worktree manager
 │   │   ├── commands/                # 5 worktree commands
@@ -427,4 +463,4 @@ MIT License - See LICENSE file for details
 
 ---
 
-**Built for developers who want AI-assisted development with best practices across Laravel, Livewire, Filament, Vue/Nuxt, Magento 2, WordPress, Electron, Flutter, and more.**
+**Built for developers who want AI-assisted development with best practices across Laravel, Livewire, Filament, Vue/Nuxt, Magento 2, WordPress, Electron, Flutter, NativePHP, and more.**
