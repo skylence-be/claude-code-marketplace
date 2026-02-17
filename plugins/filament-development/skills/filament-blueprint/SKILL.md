@@ -254,21 +254,20 @@ A vague plan answers "what to build" but leaves "how" to interpretation. A Bluep
 
 ### ✅ BLUEPRINT (Implementation-Ready)
 
-```markdown
-## InvoiceResource
-**Namespace**: App\Filament\Resources\InvoiceResource
+**InvoiceResource**
+**Namespace**: `App\Filament\Resources\InvoiceResource`
 **Docs**: https://filamentphp.com/docs/5.x/panels/resources
 
-### Form Schema
+**Form Schema — Section: Invoice Details:**
 
-#### Section: Invoice Details
 | Field | Component | Configuration |
 |-------|-----------|---------------|
 | customer_id | Select | `->relationship('customer', 'name')->searchable()->preload()->required()` |
 | number | TextInput | `->required()->disabled(fn ($context) => $context === 'edit')->default(fn () => 'INV-' . str_pad(Invoice::count() + 1, 5, '0', STR_PAD_LEFT))` |
 | status | Select | `->options(InvoiceStatus::class)->default(InvoiceStatus::Draft)->required()` |
 
-#### Section: Line Items
+**Form Schema — Section: Line Items:**
+
 ```php
 Repeater::make('items')
     ->relationship()
@@ -312,9 +311,8 @@ Repeater::make('items')
     ->collapsible()
 ```
 
-### Actions
+**Actions — Mark as Sent:**
 
-#### Mark as Sent
 ```php
 Action::make('markAsSent')
     ->icon('heroicon-o-paper-airplane')
@@ -338,7 +336,8 @@ Action::make('markAsSent')
     })
 ```
 
-#### Record Payment
+**Actions — Record Payment:**
+
 ```php
 Action::make('recordPayment')
     ->icon('heroicon-o-currency-dollar')
@@ -385,7 +384,6 @@ Action::make('recordPayment')
             ->success()
             ->send();
     })
-```
 ```
 
 ## Filament 5 Namespace Reference
