@@ -174,19 +174,35 @@ export class InitialsPipe implements PipeTransform {
 // Usage: {{ user.name | initials }} => "JD"
 ```
 
-### 7. **Safe Navigation Pipe**
+### 7. **Safe Resource URL Pipe (with Validation)**
 
 ```typescript
+import { inject } from '@angular/core';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+
 @Pipe({ name: 'safeUrl', pure: true })
 export class SafeUrlPipe implements PipeTransform {
   private readonly sanitizer = inject(DomSanitizer);
 
+  // WARNING: bypassSecurityTrustResourceUrl disables Angular's XSS protection.
+  // Always validate URLs against a trusted allowlist before bypassing sanitization.
+  private readonly allowedPatterns = [
+    /^https:\/\/(www\.)?youtube\.com\/embed\//,
+    /^https:\/\/(www\.)?vimeo\.com\/video\//,
+    /^https:\/\/player\.vimeo\.com\//,
+  ];
+
   transform(url: string): SafeResourceUrl {
+    const isAllowed = this.allowedPatterns.some(pattern => pattern.test(url));
+    if (!isAllowed) {
+      throw new Error(`SafeUrlPipe: URL not in allowlist: ${url}`);
+    }
     return this.sanitizer.bypassSecurityTrustResourceUrl(url);
   }
 }
 
 // Usage: <iframe [src]="videoUrl | safeUrl"></iframe>
+// Customize allowedPatterns for your trusted domains
 ```
 
 ### 8. **Pipe with Injection**

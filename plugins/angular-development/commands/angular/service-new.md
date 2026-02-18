@@ -135,23 +135,33 @@ export class UserProfileService {
 ### 5. **Service with Effects**
 
 ```typescript
+import { Injectable, signal, computed, effect, inject, PLATFORM_ID } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
+
 @Injectable({ providedIn: 'root' })
 export class ThemeService {
   private readonly _theme = signal<'light' | 'dark'>('light');
   readonly theme = this._theme.asReadonly();
   readonly isDark = computed(() => this._theme() === 'dark');
 
+  private readonly platformId = inject(PLATFORM_ID);
+
   constructor() {
-    // Load persisted theme on creation
-    const saved = localStorage.getItem('theme') as 'light' | 'dark' | null;
-    if (saved) {
-      this._theme.set(saved);
+    // Load persisted theme on creation (browser only)
+    if (isPlatformBrowser(this.platformId)) {
+      const saved = localStorage.getItem('theme') as 'light' | 'dark' | null;
+      if (saved) {
+        this._theme.set(saved);
+      }
     }
 
-    // Persist theme changes
+    // Persist theme changes (browser only)
     effect(() => {
-      localStorage.setItem('theme', this._theme());
-      document.documentElement.setAttribute('data-theme', this._theme());
+      const theme = this._theme();
+      if (isPlatformBrowser(this.platformId)) {
+        localStorage.setItem('theme', theme);
+        document.documentElement.setAttribute('data-theme', theme);
+      }
     });
   }
 
