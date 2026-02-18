@@ -407,7 +407,7 @@ if (typeof Worker !== 'undefined') {
 **State**
 - ✓ `computed()` for all derived state (memoized)
 - ✓ Constants are not wrapped in signals
-- ✓ `shallowRef` equivalents for large objects where deep tracking is unnecessary
+- ✓ Avoid deep-nesting signals; flatten state or use separate signals for large objects
 - ✓ Minimal `effect()` usage
 
 **SSR**

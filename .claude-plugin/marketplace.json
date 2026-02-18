@@ -5,7 +5,7 @@
     "contact": "github.com/skylence"
   },
   "metadata": {
-    "description": "Professional full-stack development marketplace featuring 40 specialized AI agents across 11 plugins (Laravel, Livewire, Filament, Vue/Nuxt, Magento2, WordPress, Electron, Flutter, NativePHP, Git worktree, Pro-Workflow), 68+ slash commands, Python hook system with edit tracking, quality gates, learning capture, drift detection, and session management, and custom status lines for building modern web, mobile, and desktop applications"
+    "description": "Professional full-stack development marketplace featuring 48 specialized AI agents across 12 plugins (Laravel, Livewire, Filament, Vue/Nuxt, Angular, Magento2, WordPress, Electron, Flutter, NativePHP, Git worktree, Pro-Workflow), 80+ slash commands, Python hook system with edit tracking, quality gates, learning capture, drift detection, and session management, and custom status lines for building modern web, mobile, and desktop applications"
   },
   "plugins": [
     {
@@ -107,6 +107,16 @@
         "name": "Skylence"
       },
       "tags": ["nativephp", "desktop", "mobile", "electron", "laravel", "php", "ios", "android", "cross-platform"]
+    },
+    {
+      "name": "angular-development",
+      "source": "./plugins/angular-development",
+      "description": "Angular 21+ development with 8 specialized agents (Angular architect, TypeScript expert, RxJS specialist, state management, testing, security, performance, SSR), 12 slash commands for components, services, guards, interceptors, pipes, directives, routes, and stores, and 8 skill patterns covering signals, DI, testing, SSR/hydration, routing, RxJS, performance optimization, and Blueprint planning",
+      "version": "1.0.0",
+      "author": {
+        "name": "Skylence"
+      },
+      "tags": ["angular", "angular21", "typescript", "signals", "rxjs", "zoneless", "ssr", "standalone"]
     },
     {
       "name": "pro-workflow",

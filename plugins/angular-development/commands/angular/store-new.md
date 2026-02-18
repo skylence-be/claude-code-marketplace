@@ -330,9 +330,14 @@ export class UserStore {
 ### 4. **Store with Persistence (localStorage)**
 
 ```typescript
+import { Injectable, signal, computed, effect, inject, PLATFORM_ID } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
+
 @Injectable({ providedIn: 'root' })
 export class PreferencesStore {
-  // State with initial values from localStorage
+  private readonly platformId = inject(PLATFORM_ID);
+
+  // State with initial values from localStorage (SSR-safe)
   private readonly _theme = signal<'light' | 'dark'>(
     this.load('theme', 'light')
   );
@@ -352,7 +357,7 @@ export class PreferencesStore {
   readonly isDark = computed(() => this._theme() === 'dark');
 
   constructor() {
-    // Persist changes to localStorage
+    // Persist changes to localStorage (browser only)
     effect(() => this.save('theme', this._theme()));
     effect(() => this.save('language', this._language()));
     effect(() => this.save('sidebarCollapsed', this._sidebarCollapsed()));
@@ -375,6 +380,7 @@ export class PreferencesStore {
   }
 
   private load<T>(key: string, fallback: T): T {
+    if (!isPlatformBrowser(this.platformId)) return fallback;
     try {
       const stored = localStorage.getItem(`prefs:${key}`);
       return stored ? JSON.parse(stored) : fallback;
@@ -384,6 +390,7 @@ export class PreferencesStore {
   }
 
   private save<T>(key: string, value: T): void {
+    if (!isPlatformBrowser(this.platformId)) return;
     localStorage.setItem(`prefs:${key}`, JSON.stringify(value));
   }
 }

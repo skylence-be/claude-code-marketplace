@@ -91,7 +91,7 @@ import { CartService } from '../../core/services/cart.service';
 describe('ProductList', () => {
   let fixture: ComponentFixture<ProductList>;
   let component: ProductList;
-  let mockCartService: jasmine.SpyObj<CartService>;
+  let mockCartService: Record<string, unknown>;
 
   beforeEach(async () => {
     // Create mock service with signal support
@@ -253,7 +253,7 @@ describe('Signal Patterns', () => {
     expect(total()).toBe(550);
   });
 
-  it('should handle linkedSignal reset', () => {
+  it('should handle linkedSignal reset', async () => {
     const { linkedSignal } = await import('@angular/core');
 
     const options = signal(['Red', 'Blue', 'Green']);

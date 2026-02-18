@@ -71,7 +71,7 @@ export class TooltipDirective {
 ### 3. **Click Outside Directive**
 
 ```typescript
-import { Directive, ElementRef, inject, output } from '@angular/core';
+import { Directive, ElementRef, inject, output, afterNextRender, DestroyRef } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 
 @Directive({
@@ -107,7 +107,7 @@ export class ClickOutsideDirective {
 ### 4. **Intersection Observer Directive (Lazy Loading)**
 
 ```typescript
-import { Directive, ElementRef, inject, output } from '@angular/core';
+import { Directive, ElementRef, inject, output, input, afterNextRender, DestroyRef } from '@angular/core';
 
 @Directive({
   selector: '[appInView]',
@@ -183,7 +183,7 @@ export class IfPermissionDirective {
 ### 6. **Auto-Focus Directive**
 
 ```typescript
-import { Directive, ElementRef, inject, input, afterNextRender } from '@angular/core';
+import { Directive, ElementRef, inject, input, afterNextRender, booleanAttribute } from '@angular/core';
 
 @Directive({
   selector: '[appAutoFocus]',
@@ -228,10 +228,14 @@ export class DebounceInputDirective {
 
   private readonly input$ = new Subject<string>();
 
+  private readonly destroyRef = inject(DestroyRef);
+
   constructor() {
+    // Read delay once at construction; for dynamic delay, use switchMap + timer
+    const initialDelay = this.delay();
     this.input$.pipe(
-      debounceTime(this.delay()),
-      takeUntilDestroyed()
+      debounceTime(initialDelay),
+      takeUntilDestroyed(this.destroyRef)
     ).subscribe(value => {
       this.debounced.emit(value);
     });

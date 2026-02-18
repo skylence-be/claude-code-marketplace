@@ -226,11 +226,13 @@ export class ThemeManager {
   readonly theme = signal<'light' | 'dark' | 'system'>('system');
 
   constructor() {
-    // Effect: sync theme to DOM and localStorage
+    // Effect: sync theme to DOM and localStorage (browser only)
     effect(() => {
       const currentTheme = this.theme();
       this.document.documentElement.setAttribute('data-theme', currentTheme);
-      localStorage.setItem('theme', currentTheme);
+      if (typeof localStorage !== 'undefined') {
+        localStorage.setItem('theme', currentTheme);
+      }
     });
 
     // Effect with cleanup

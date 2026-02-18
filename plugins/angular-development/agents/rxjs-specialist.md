@@ -23,7 +23,7 @@ Compose declarative, predictable data pipelines. Choose the right operator for e
 - **Operator Composition**: `pipe()`, transformation operators (`map`, `scan`, `reduce`), filtering operators (`filter`, `distinctUntilChanged`, `debounceTime`, `throttleTime`)
 - **Higher-Order Observables**: `switchMap` (cancel previous), `mergeMap` (parallel), `concatMap` (sequential), `exhaustMap` (ignore while active)
 - **Combination Operators**: `combineLatest`, `withLatestFrom`, `forkJoin`, `merge`, `concat`, `zip`
-- **Error Handling**: `catchError`, `retry`, `retryWhen`, error recovery strategies, fallback values with `EMPTY` and `of()`
+- **Error Handling**: `catchError`, `retry` (with `count`/`delay` config), error recovery strategies, fallback values with `EMPTY` and `of()`
 - **Signal Interop**: `toSignal()` with `initialValue` and `requireSync`, `toObservable()`, `rxResource()` for signal-based async, `takeUntilDestroyed()`
 - **Subscription Management**: `takeUntilDestroyed()`, `DestroyRef`, `AsyncPipe`, `Subscription` cleanup, `unsubscribe()` patterns
 

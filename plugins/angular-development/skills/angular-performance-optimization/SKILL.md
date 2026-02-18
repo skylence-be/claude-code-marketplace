@@ -355,7 +355,7 @@ import { ScrollingModule, CdkVirtualScrollViewport } from '@angular/cdk/scrollin
         [class.bg-yellow-50]="log.level === 'warn'"
       >
         <span class="w-24 font-mono text-sm">{{ log.timestamp }}</span>
-        <span class="w-16 uppercase text-xs font-bold" [class]="levelClass(log.level)">
+        <span class="w-16 uppercase text-xs font-bold" [ngClass]="levelClassMap[log.level] ?? 'text-gray-600'">
           {{ log.level }}
         </span>
         <span class="flex-1 truncate">{{ log.message }}</span>
@@ -366,18 +366,16 @@ import { ScrollingModule, CdkVirtualScrollViewport } from '@angular/cdk/scrollin
 export class LogViewer {
   readonly logs = signal<LogEntry[]>([]);
 
+  // Use a constant lookup map instead of a method call in the template
+  readonly levelClassMap: Record<string, string> = {
+    error: 'text-red-600',
+    warn: 'text-yellow-600',
+    info: 'text-blue-600',
+    debug: 'text-gray-400',
+  };
+
   trackById(index: number, item: LogEntry): string {
     return item.id;
-  }
-
-  levelClass(level: string): string {
-    const classes: Record<string, string> = {
-      error: 'text-red-600',
-      warn: 'text-yellow-600',
-      info: 'text-blue-600',
-      debug: 'text-gray-400',
-    };
-    return classes[level] ?? 'text-gray-600';
   }
 
   constructor() {

@@ -113,7 +113,7 @@ export const retryInterceptor: HttpInterceptorFn = (req, next) => {
       delay: (error, retryCount) => {
         // Exponential backoff: 1s, 2s, 4s
         const delayMs = Math.pow(2, retryCount - 1) * 1000;
-        console.warn(`Retry attempt ${retryCount} for ${req.url} in ${delayMs}ms`);
+        // In production, use a proper logging service instead of console.warn
         return timer(delayMs);
       },
       resetOnSuccess: true,
@@ -126,7 +126,7 @@ export const retryInterceptor: HttpInterceptorFn = (req, next) => {
 
 ```typescript
 import { HttpInterceptorFn, HttpResponse } from '@angular/common/http';
-import { inject } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { of, tap } from 'rxjs';
 
 interface CacheEntry {
