@@ -1,7 +1,7 @@
 {
   "name": "skylence-claude-code-laravel-livewire4",
   "version": "1.2.0",
-  "description": "Full-stack development marketplace with 30 specialized AI agents across Laravel, Livewire, Filament, Vue/Nuxt, Magento2, WordPress, and Git workflow management. Includes Python hook system for delegating agents, security checks, and custom status lines",
+  "description": "Full-stack development marketplace with 38+ specialized AI agents across Laravel, Livewire, Filament, Vue/Nuxt, Angular, Magento2, WordPress, and Git workflow management. Includes Python hook system for delegating agents, security checks, and custom status lines",
   "author": {
     "name": "Skylence"
   },
@@ -24,7 +24,14 @@
     "learnings",
     "nativephp",
     "desktop",
-    "mobile"
+    "mobile",
+    "angular",
+    "angular21",
+    "signals",
+    "rxjs",
+    "typescript",
+    "zoneless",
+    "ssr"
   ],
   "commands": [
     "./.claude/commands/new-task.md",
@@ -56,7 +63,19 @@
     "./plugins/nativephp-development/commands/window-new.md",
     "./plugins/nativephp-development/commands/menu-new.md",
     "./plugins/nativephp-development/commands/native-provider-new.md",
-    "./plugins/nativephp-development/commands/mobile-plugin-new.md"
+    "./plugins/nativephp-development/commands/mobile-plugin-new.md",
+    "./plugins/angular-development/commands/new-task.md",
+    "./plugins/angular-development/commands/angular/component-new.md",
+    "./plugins/angular-development/commands/angular/service-new.md",
+    "./plugins/angular-development/commands/angular/guard-new.md",
+    "./plugins/angular-development/commands/angular/interceptor-new.md",
+    "./plugins/angular-development/commands/angular/pipe-new.md",
+    "./plugins/angular-development/commands/angular/directive-new.md",
+    "./plugins/angular-development/commands/angular/route-new.md",
+    "./plugins/angular-development/commands/angular/store-new.md",
+    "./plugins/angular-development/commands/misc/code-cleanup.md",
+    "./plugins/angular-development/commands/misc/code-optimize.md",
+    "./plugins/angular-development/commands/misc/feature-plan.md"
   ],
   "agents": [
     "./plugins/laravel-development/agents/laravel-architect.md",
@@ -94,7 +113,15 @@
     "./plugins/pro-workflow/agents/scout.md",
     "./plugins/nativephp-development/agents/nativephp-architect.md",
     "./plugins/nativephp-development/agents/desktop-expert.md",
-    "./plugins/nativephp-development/agents/mobile-expert.md"
+    "./plugins/nativephp-development/agents/mobile-expert.md",
+    "./plugins/angular-development/agents/angular-architect.md",
+    "./plugins/angular-development/agents/typescript-expert.md",
+    "./plugins/angular-development/agents/rxjs-specialist.md",
+    "./plugins/angular-development/agents/state-management.md",
+    "./plugins/angular-development/agents/testing-specialist.md",
+    "./plugins/angular-development/agents/security-engineer.md",
+    "./plugins/angular-development/agents/performance-expert.md",
+    "./plugins/angular-development/agents/ssr-specialist.md"
   ],
   "mcpServers": {
     "context7": {
