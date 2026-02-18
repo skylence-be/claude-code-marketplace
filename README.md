@@ -1,6 +1,6 @@
 # Multi-Framework Development Marketplace
 
-Professional development toolkit with **11 specialized plugins** featuring **40 AI agents**, **68+ slash commands**, and a **self-correcting workflow system** for Laravel, Livewire, Filament, Vue/Nuxt, Magento 2, WordPress, Electron, Flutter, NativePHP, Git worktree management, and Pro-Workflow.
+Professional development toolkit with **12 specialized plugins** featuring **48 AI agents**, **80+ slash commands**, and a **self-correcting workflow system** for Laravel, Livewire, Filament, Vue/Nuxt, Angular, Magento 2, WordPress, Electron, Flutter, NativePHP, Git worktree management, and Pro-Workflow.
 
 ## Available Plugins
 
@@ -15,6 +15,7 @@ Install only what you need — each plugin is completely isolated with its own a
 
 ### Frontend
 - **vue-nuxt-development** - 8 agents, 12 commands (Vue 3 + Nuxt 4 + TypeScript)
+- **angular-development** - 8 agents, 12 commands (Angular 21+, signals, zoneless, SSR)
 
 ### Desktop & Mobile
 - **electron-development** - 2 agents, 2 commands (Electron + React/TypeScript)
@@ -36,6 +37,7 @@ Install only what you need — each plugin is completely isolated with its own a
 /plugin install livewire-development
 /plugin install filament-development
 /plugin install vue-nuxt-development
+/plugin install angular-development
 /plugin install magento2-development
 /plugin install wordpress-development
 /plugin install electron-development
@@ -176,6 +178,30 @@ description: [What the agent does]. Use PROACTIVELY when [specific trigger scena
 
 **12 commands:** Components, pages, layouts, composables, stores, plugins, middleware, API clients, plus utilities
 
+### Angular Development Plugin
+
+**8 specialized agents:**
+- angular-architect - Angular 21+ architecture, standalone components, signals, zoneless
+- typescript-expert - Strict TypeScript patterns, signal typing, utility types
+- rxjs-specialist - RxJS operators, signal interop, subscription management
+- state-management - Signal stores, NgRx SignalStore, state patterns
+- testing-specialist - Vitest, TestBed, zoneless testing
+- security-engineer - DomSanitizer, CSP, CSRF, content security
+- performance-expert - Zoneless, @defer, lazy loading, Core Web Vitals
+- ssr-specialist - @angular/ssr, incremental hydration, render modes
+
+**8 specialized skills** (8,240 lines total):
+- angular-blueprint - Master planning format for Angular projects (1,135 lines)
+- angular-signals-patterns - 15 signal patterns: computed, effect, linkedSignal, toSignal (1,321 lines)
+- angular-dependency-injection - 12 DI patterns: inject(), InjectionToken, providers (1,086 lines)
+- angular-testing-patterns - 12 testing patterns: Vitest, TestBed, signal testing (1,077 lines)
+- angular-ssr-hydration - 12 SSR patterns: incremental hydration, render modes (892 lines)
+- angular-routing-patterns - 11 routing patterns: lazy loading, guards, resolvers (843 lines)
+- rxjs-angular-patterns - 10 RxJS patterns: operators, signal interop, error handling (958 lines)
+- angular-performance-optimization - 12 performance patterns: zoneless, @defer, virtual scrolling (928 lines)
+
+**12 commands:** Components, services, guards, interceptors, pipes, directives, routes, stores, plus utilities
+
 ### Magento 2 Development Plugin
 
 **4 specialized agents:**
@@ -278,6 +304,7 @@ All hooks use `uv run` with inline dependencies — zero installation required.
 - **PHP 8.2+** - Modern PHP features
 - **Pest 4** - Testing with type and code coverage
 - **Vue 3 + Nuxt 4** - Frontend framework with TypeScript
+- **Angular 21** - Signals, zoneless change detection, SSR/hydration
 - **Flutter 3.38+** - Cross-platform mobile/desktop
 - **Electron** - Desktop applications
 - **NativePHP** - Desktop & mobile apps with Laravel
@@ -355,6 +382,24 @@ All hooks use `uv run` with inline dependencies — zero installation required.
 /nativephp:mobile-plugin-new CameraScanner
 ```
 
+### Angular Development
+
+```bash
+# Create Angular 21+ components with signals
+/angular:component-new ProductList
+/angular:service-new CartService
+/angular:store-new ProductStore
+
+# Add routing, guards, interceptors
+/angular:route-new products
+/angular:guard-new auth
+/angular:interceptor-new auth-token
+
+# Create pipes and directives
+/angular:pipe-new currency
+/angular:directive-new tooltip
+```
+
 ### Magento 2 E-Commerce
 
 ```bash
@@ -389,8 +434,8 @@ claude-code-marketplace/
 │   ├── status_lines/                # Custom status line generators
 │   └── settings.json                # Hook configuration + permissions
 ├── .claude-plugin/
-│   ├── plugin.json                  # 68+ commands, 40 agents
-│   └── marketplace.json             # 11 plugins definition
+│   ├── plugin.json                  # 80+ commands, 48 agents
+│   └── marketplace.json             # 12 plugins definition
 ├── plugins/
 │   ├── laravel-development/
 │   │   ├── agents/                  # 9 Laravel experts
@@ -408,6 +453,10 @@ claude-code-marketplace/
 │   │   ├── agents/                  # 8 frontend experts
 │   │   ├── commands/                # 12 frontend commands
 │   │   └── skills/                  # 6 Vue/Nuxt skills (7,679 lines)
+│   ├── angular-development/
+│   │   ├── agents/                  # 8 Angular experts
+│   │   ├── commands/                # 12 Angular commands
+│   │   └── skills/                  # 8 Angular skills (8,240 lines)
 │   ├── magento2-development/
 │   │   ├── agents/                  # 4 Magento experts
 │   │   └── commands/                # 8 Magento commands
@@ -463,4 +512,4 @@ MIT License - See LICENSE file for details
 
 ---
 
-**Built for developers who want AI-assisted development with best practices across Laravel, Livewire, Filament, Vue/Nuxt, Magento 2, WordPress, Electron, Flutter, NativePHP, and more.**
+**Built for developers who want AI-assisted development with best practices across Laravel, Livewire, Filament, Vue/Nuxt, Angular, Magento 2, WordPress, Electron, Flutter, NativePHP, and more.**
