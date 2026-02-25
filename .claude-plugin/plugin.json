@@ -1,7 +1,7 @@
 {
   "name": "skylence-claude-code-laravel-livewire4",
   "version": "1.2.0",
-  "description": "Full-stack development marketplace with 48 specialized AI agents across 12 plugins (Laravel, Livewire, Filament, Vue/Nuxt, Angular, Magento2, WordPress, Electron, Flutter, NativePHP, Git worktree, Pro-Workflow), 80+ slash commands, Python hook system for delegating agents, security checks, and custom status lines",
+  "description": "Full-stack development marketplace with 49 specialized AI agents across 12 plugins (Laravel, Livewire, Filament, Vue/Nuxt, Angular, Magento2, WordPress, Electron, Flutter, NativePHP, Git worktree, Pro-Workflow), 80+ slash commands, Python hook system for delegating agents, security checks, and custom status lines",
   "author": {
     "name": "Skylence"
   },
