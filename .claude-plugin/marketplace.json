@@ -5,7 +5,7 @@
     "contact": "github.com/skylence"
   },
   "metadata": {
-    "description": "Professional full-stack development marketplace featuring 48 specialized AI agents across 12 plugins (Laravel, Livewire, Filament, Vue/Nuxt, Angular, Magento2, WordPress, Electron, Flutter, NativePHP, Git worktree, Pro-Workflow), 80+ slash commands, Python hook system with edit tracking, quality gates, learning capture, drift detection, and session management, and custom status lines for building modern web, mobile, and desktop applications"
+    "description": "Professional full-stack development marketplace featuring 49 specialized AI agents across 12 plugins (Laravel, Livewire, Filament, Vue/Nuxt, Angular, Magento2, WordPress, Electron, Flutter, NativePHP, Git worktree, Pro-Workflow), 80+ slash commands, Python hook system with edit tracking, quality gates, learning capture, drift detection, and session management, and custom status lines for building modern web, mobile, and desktop applications"
   },
   "plugins": [
     {
@@ -21,12 +21,12 @@
     {
       "name": "livewire-development",
       "source": "./plugins/livewire-development",
-      "description": "Livewire 4 reactive components with single-file components, islands architecture, specialized agent and 4 slash commands for creating components, forms, layouts, and attributes. Includes new v4 features: SFC/MFC formats, Route::livewire(), wire:sort, wire:intersect, #[Defer], #[Async], and slots support",
-      "version": "1.1.0",
+      "description": "Livewire 4 reactive components with single-file components, islands architecture, 2 specialized agents (Livewire specialist, Blaze specialist) and 5 slash commands for creating components, forms, layouts, attributes, and enabling Blaze optimization. Includes Blaze skill with 4 pattern files (function compilation, folding, memoization, debugging) and new v4 features: SFC/MFC formats, Route::livewire(), wire:sort, wire:intersect, #[Defer], #[Async], and slots support",
+      "version": "1.2.0",
       "author": {
         "name": "Skylence"
       },
-      "tags": ["livewire", "php", "reactive", "components", "frontend", "islands", "sfc"]
+      "tags": ["livewire", "php", "reactive", "components", "frontend", "islands", "sfc", "blaze", "blade-optimization"]
     },
     {
       "name": "filament-development",
