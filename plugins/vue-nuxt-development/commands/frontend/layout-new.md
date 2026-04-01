@@ -1,6 +1,5 @@
 ---
 description: Create a new Nuxt layout
-model: claude-sonnet-4-5
 ---
 
 Create a new Nuxt layout.

@@ -1,6 +1,5 @@
 ---
 description: Create React component for Electron renderer
-model: claude-sonnet-4-5
 ---
 
 Create a React TypeScript component for Electron renderer.

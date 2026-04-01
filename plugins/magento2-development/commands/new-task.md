@@ -1,6 +1,5 @@
 ---
 description: Analyze task complexity and create actionable Magento 2 implementation plan
-model: claude-sonnet-4-5
 ---
 
 Analyze the following Magento 2 task and create a detailed implementation plan.

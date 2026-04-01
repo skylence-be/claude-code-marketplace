@@ -1,6 +1,5 @@
 ---
 description: Analyze task complexity and create actionable implementation plan
-model: claude-sonnet-4-5
 ---
 
 Analyze the following task and create a detailed implementation plan.

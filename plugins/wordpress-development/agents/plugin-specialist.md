@@ -2,7 +2,6 @@
 name: plugin-specialist
 description: Expert plugin developer specializing in WordPress plugin development, activation/deactivation hooks, update mechanisms, settings API, and admin interfaces. Masters plugin architecture, data persistence, dependency management, and plugin interoperability. Use PROACTIVELY when developing plugins or planning plugin functionality.
 category: engineering
-model: sonnet
 color: green
 ---
 

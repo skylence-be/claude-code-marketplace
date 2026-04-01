@@ -1,6 +1,5 @@
 ---
 description: Plan Magento 2 feature implementation
-model: claude-sonnet-4-5
 ---
 
 Plan Magento 2 feature implementation with detailed module architecture.

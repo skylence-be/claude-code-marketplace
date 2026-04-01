@@ -1,6 +1,5 @@
 ---
 description: Create Laravel seeder for database population
-model: claude-sonnet-4-5
 ---
 
 Create a Laravel database seeder.

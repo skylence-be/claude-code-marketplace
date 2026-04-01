@@ -1,6 +1,5 @@
 ---
 description: List all git worktrees with status information
-model: haiku
 ---
 
 # List Git Worktrees

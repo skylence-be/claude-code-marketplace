@@ -1,6 +1,5 @@
 ---
 description: Create Laravel policy for authorization logic
-model: claude-sonnet-4-5
 ---
 
 Create a Laravel policy for authorization.

@@ -1,6 +1,5 @@
 ---
 description: Create Laravel controller with resource methods
-model: claude-sonnet-4-5
 ---
 
 Create a Laravel controller.

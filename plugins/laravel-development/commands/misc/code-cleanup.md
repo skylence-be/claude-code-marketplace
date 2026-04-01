@@ -1,6 +1,5 @@
 ---
 description: Clean up Laravel/Livewire code following best practices
-model: claude-sonnet-4-5
 ---
 
 Clean up Laravel/Livewire code following best practices.

@@ -1,6 +1,5 @@
 ---
 description: WordPress security audit and vulnerability assessment
-model: claude-sonnet-4-5
 ---
 
 Perform a comprehensive WordPress security audit.

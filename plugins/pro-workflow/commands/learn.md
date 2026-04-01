@@ -1,6 +1,5 @@
 ---
 description: Claude Code best practices guide and persistent learning capture
-model: claude-sonnet-4-5
 ---
 
 # /learn — Claude Code Best Practices & Learning Capture

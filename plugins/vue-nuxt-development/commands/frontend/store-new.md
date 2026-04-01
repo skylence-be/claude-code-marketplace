@@ -1,6 +1,5 @@
 ---
 description: Create a new Pinia store for state management
-model: claude-sonnet-4-5
 ---
 
 Create a new Pinia store following best practices.

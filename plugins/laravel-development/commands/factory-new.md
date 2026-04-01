@@ -1,6 +1,5 @@
 ---
 description: Create Laravel factory for model test data generation
-model: claude-sonnet-4-5
 ---
 
 Create a Laravel model factory.

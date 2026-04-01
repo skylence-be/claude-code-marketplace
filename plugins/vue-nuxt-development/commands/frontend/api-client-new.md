@@ -1,6 +1,5 @@
 ---
 description: Create API client/service for backend integration
-model: claude-sonnet-4-5
 ---
 
 Create an API client or service for backend integration.

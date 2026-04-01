@@ -2,7 +2,6 @@
 name: reviewer
 description: Code review and security audit agent that checks for logic errors, edge cases, security vulnerabilities, and performance issues. Can run tests but cannot modify code. Use PROACTIVELY before committing, during PR reviews, after major changes, or for security audits.
 tools: ["Read", "Glob", "Grep", "Bash"]
-model: opus
 color: red
 category: workflow
 ---

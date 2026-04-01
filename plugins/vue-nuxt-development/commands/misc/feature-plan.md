@@ -1,6 +1,5 @@
 ---
 description: Plan Vue/Nuxt feature implementation
-model: claude-sonnet-4-5
 ---
 
 Create a detailed implementation plan for the following Vue/Nuxt feature.

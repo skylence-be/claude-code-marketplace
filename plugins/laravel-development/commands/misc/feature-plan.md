@@ -1,6 +1,5 @@
 ---
 description: Plan Laravel/Livewire feature implementation
-model: claude-sonnet-4-5
 ---
 
 Plan Laravel/Livewire feature implementation.

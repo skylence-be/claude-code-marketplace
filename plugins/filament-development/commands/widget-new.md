@@ -1,6 +1,5 @@
 ---
 description: Create Filament 5 dashboard widget
-model: claude-sonnet-4-5
 ---
 
 Create a Filament 5 widget.

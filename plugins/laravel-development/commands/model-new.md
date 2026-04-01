@@ -1,6 +1,5 @@
 ---
 description: Create Laravel Eloquent model with migration
-model: claude-sonnet-4-5
 ---
 
 Create a Laravel Eloquent model with migration and relationships.

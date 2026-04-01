@@ -1,6 +1,5 @@
 ---
 description: Create custom Filament 5 page
-model: claude-sonnet-4-5
 ---
 
 Create a custom Filament 5 page.

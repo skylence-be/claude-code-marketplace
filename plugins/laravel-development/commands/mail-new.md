@@ -1,6 +1,5 @@
 ---
 description: Create Laravel mailable for email sending
-model: claude-sonnet-4-5
 ---
 
 Create a Laravel mailable class.

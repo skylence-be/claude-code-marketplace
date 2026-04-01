@@ -1,6 +1,5 @@
 ---
 description: Create Laravel event for application events
-model: claude-sonnet-4-5
 ---
 
 Create a Laravel event.

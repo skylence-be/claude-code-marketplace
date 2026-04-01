@@ -1,6 +1,5 @@
 ---
 description: Capture a correction or lesson as a persistent rule in learnings.json
-model: claude-sonnet-4-5
 ---
 
 # /learn-rule — Extract Correction to Memory

@@ -1,6 +1,5 @@
 ---
 description: Setup environment for existing worktree (env, database, dependencies)
-model: haiku
 ---
 
 # Setup Worktree Environment

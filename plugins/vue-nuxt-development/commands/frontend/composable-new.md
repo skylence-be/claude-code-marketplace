@@ -1,6 +1,5 @@
 ---
 description: Create a new Vue composable for reusable logic
-model: claude-sonnet-4-5
 ---
 
 Create a new Vue composable following best practices.

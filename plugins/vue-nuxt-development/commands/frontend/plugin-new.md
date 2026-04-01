@@ -1,6 +1,5 @@
 ---
 description: Create Nuxt plugin
-model: claude-sonnet-4-5
 ---
 
 Create a Nuxt plugin.

@@ -1,6 +1,5 @@
 ---
 description: Remove worktree and cleanup associated resources (database, branch)
-model: haiku
 ---
 
 # Cleanup Git Worktree

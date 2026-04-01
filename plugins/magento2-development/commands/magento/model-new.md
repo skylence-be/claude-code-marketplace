@@ -1,6 +1,5 @@
 ---
 description: Create Magento 2 Model, ResourceModel, and Collection
-model: claude-sonnet-4-5
 ---
 
 Create Magento 2 Model with ResourceModel and Collection.

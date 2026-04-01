@@ -2,7 +2,6 @@
 name: planner
 description: Read-only planning agent that breaks down complex tasks into structured implementation plans. Explores code thoroughly before proposing changes. Use PROACTIVELY when facing multi-file changes, architectural decisions, unclear requirements, or tasks expecting >10 tool calls.
 tools: ["Read", "Glob", "Grep"]
-model: opus
 color: blue
 category: workflow
 ---

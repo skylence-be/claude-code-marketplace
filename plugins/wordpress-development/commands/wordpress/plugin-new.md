@@ -1,6 +1,5 @@
 ---
 description: Create WordPress plugin with activation/deactivation hooks
-model: claude-sonnet-4-5
 ---
 
 Create a WordPress plugin.

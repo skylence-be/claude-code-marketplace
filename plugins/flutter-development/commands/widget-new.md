@@ -1,6 +1,5 @@
 ---
 description: Create Flutter widget with Material 3 styling
-model: claude-sonnet-4-5
 ---
 
 Create a Flutter widget following Material 3 design patterns.

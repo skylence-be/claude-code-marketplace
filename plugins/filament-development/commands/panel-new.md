@@ -1,6 +1,5 @@
 ---
 description: Create new Filament 5 panel
-model: claude-sonnet-4-5
 ---
 
 Create a new Filament 5 panel.

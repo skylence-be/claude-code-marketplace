@@ -1,6 +1,5 @@
 ---
 description: Create Filament 5 resource with CRUD pages
-model: claude-sonnet-4-5
 ---
 
 Create a Filament 5 resource.

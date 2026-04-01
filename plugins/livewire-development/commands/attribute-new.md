@@ -1,6 +1,5 @@
 ---
 description: Create Livewire 4 custom attribute
-model: claude-sonnet-4-5
 ---
 
 Create a Livewire 4 custom attribute.

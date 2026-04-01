@@ -1,6 +1,5 @@
 ---
 description: Create Laravel job for queue processing
-model: claude-sonnet-4-5
 ---
 
 Create a Laravel queued job.

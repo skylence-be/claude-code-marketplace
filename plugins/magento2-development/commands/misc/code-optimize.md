@@ -1,6 +1,5 @@
 ---
 description: Optimize Magento 2 code for performance
-model: claude-sonnet-4-5
 ---
 
 Analyze and optimize Magento 2 code for performance.

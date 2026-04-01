@@ -1,6 +1,5 @@
 ---
 description: Clean up and refactor Vue/Nuxt code
-model: claude-sonnet-4-5
 ---
 
 Clean up and refactor the following Vue/Nuxt code following best practices.

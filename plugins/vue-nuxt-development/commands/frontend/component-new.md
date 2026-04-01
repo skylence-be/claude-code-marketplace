@@ -1,6 +1,5 @@
 ---
 description: Create a new Vue 3 component with TypeScript and Composition API
-model: claude-sonnet-4-5
 ---
 
 Create a new Vue 3 component following modern best practices.

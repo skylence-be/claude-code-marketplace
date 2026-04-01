@@ -1,6 +1,5 @@
 ---
 description: Optimize Laravel/Livewire code for performance
-model: claude-sonnet-4-5
 ---
 
 Analyze and optimize Laravel/Livewire code for performance.

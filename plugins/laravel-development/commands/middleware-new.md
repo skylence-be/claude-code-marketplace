@@ -1,6 +1,5 @@
 ---
 description: Create Laravel middleware for request filtering
-model: claude-sonnet-4-5
 ---
 
 Create a Laravel middleware.
