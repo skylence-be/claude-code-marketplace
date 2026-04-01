@@ -11,22 +11,22 @@
     {
       "name": "laravel-development",
       "source": "./plugins/laravel-development",
-      "description": "Core Laravel development with 9 specialized agents (architecture, Eloquent, testing, security, optimization, Pulse, Reverb, Socialite, Prompts), 17 slash commands for models, migrations, controllers, jobs, and more. Includes Python hook system optimized for delegating agents with security checks (dangerous command blocking, .env protection), session management, transcript backups, sub-agent tracking, and custom status lines with git integration",
-      "version": "1.2.1",
+      "description": "Core Laravel development with 9 specialized agents (architecture, Eloquent, testing, security, optimization, Pulse, Reverb, Socialite, Prompts), 18 slash commands for models, migrations, controllers, jobs, upgrades, and more. Includes skills for Tailwind v3/v4 migration, Pennant feature flags, Folio file-based routing, Wayfinder type-safe routes, PHP 8.4/8.5 modern features, and Pest 4 browser testing. Python hook system with security checks, session management, and custom status lines",
+      "version": "1.3.0",
       "author": {
         "name": "Skylence"
       },
-      "tags": ["laravel", "php", "backend", "eloquent", "artisan", "hooks", "security"]
+      "tags": ["laravel", "php", "backend", "eloquent", "artisan", "hooks", "security", "tailwind", "pennant", "folio", "wayfinder", "pest"]
     },
     {
       "name": "livewire-development",
       "source": "./plugins/livewire-development",
-      "description": "Livewire 4 reactive components with single-file components, islands architecture, 2 specialized agents (Livewire specialist, Blaze specialist) and 5 slash commands for creating components, forms, layouts, attributes, and enabling Blaze optimization. Includes Blaze skill with 4 pattern files (function compilation, folding, memoization, debugging) and new v4 features: SFC/MFC formats, Route::livewire(), wire:sort, wire:intersect, #[Defer], #[Async], and slots support",
-      "version": "1.2.0",
+      "description": "Livewire 4 reactive components with single-file components, islands architecture, 2 specialized agents (Livewire specialist, Blaze specialist) and 5 slash commands. Includes Volt single-file component skill, Blaze skill with 4 pattern files, and v4 features: SFC/MFC formats, Route::livewire(), wire:sort, wire:intersect, #[Defer], #[Async], and slots support",
+      "version": "1.3.0",
       "author": {
         "name": "Skylence"
       },
-      "tags": ["livewire", "php", "reactive", "components", "frontend", "islands", "sfc", "blaze", "blade-optimization"]
+      "tags": ["livewire", "php", "reactive", "components", "frontend", "islands", "sfc", "blaze", "blade-optimization", "volt"]
     },
     {
       "name": "filament-development",
@@ -41,12 +41,12 @@
     {
       "name": "vue-nuxt-development",
       "source": "./plugins/vue-nuxt-development",
-      "description": "Vue 3 + Nuxt 4 + TypeScript development with 8 specialized agents (Vue/Nuxt architecture, TypeScript, state management, testing, security, UX, performance) and 8 slash commands for components, pages, layouts, composables, stores, plugins, middleware, and API clients",
-      "version": "1.0.0",
+      "description": "Vue 3 + Nuxt 4 + TypeScript development with 8 specialized agents (Vue/Nuxt architecture, TypeScript, state management, testing, security, UX, performance) and 8 slash commands. Includes Inertia.js v2 patterns skill (deferred props, WhenVisible infinite scroll, usePoll, prefetching, useForm)",
+      "version": "1.1.0",
       "author": {
         "name": "Skylence"
       },
-      "tags": ["vue", "nuxt4", "typescript", "frontend", "ssr", "composition-api"]
+      "tags": ["vue", "nuxt4", "typescript", "frontend", "ssr", "composition-api", "inertia"]
     },
     {
       "name": "magento2-development",
