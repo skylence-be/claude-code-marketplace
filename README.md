@@ -1,30 +1,33 @@
 # Multi-Framework Development Marketplace
 
-Professional development toolkit with **12 specialized plugins** featuring **48 AI agents**, **80+ slash commands**, and a **self-correcting workflow system** for Laravel, Livewire, Filament, Vue/Nuxt, Angular, Magento 2, WordPress, Electron, Flutter, NativePHP, Git worktree management, and Pro-Workflow.
+Professional development toolkit with **13 specialized plugins** featuring **50 AI agents**, **90+ slash commands**, a **self-reflection scoring code review pipeline**, **post-compaction context recovery**, and a **self-correcting workflow system** for Laravel, Livewire, Filament, Vue/Nuxt, Angular, Magento 2, WordPress, Electron, Flutter, NativePHP, Git worktree management, Code Review, and Pro-Workflow.
 
 ## Available Plugins
 
 Install only what you need — each plugin is completely isolated with its own agents and commands:
 
 ### Backend PHP
-- **laravel-development** - 9 agents, 21 commands (Laravel 12, Eloquent, testing, security)
-- **livewire-development** - 1 agent, 4 commands (Livewire 4 reactive components)
-- **filament-development** - 1 agent, 11 commands (Filament 5 admin panels)
+- **laravel-development** - 9 agents, 18 commands, 13 skills (Laravel 12, Eloquent, testing, security, Tailwind, Pennant, Folio, Wayfinder, PHP 8.4/8.5)
+- **livewire-development** - 2 agents, 5 commands, 7 skills (Livewire 4, Blaze optimization, Volt single-file components)
+- **filament-development** - 1 agent, 11 commands, 5 skills (Filament 5 admin panels, Blueprint planning)
 - **magento2-development** - 4 agents, 8 commands (Magento 2 / Adobe Commerce)
 - **wordpress-development** - 6 agents, 11 commands (WordPress 6.0+, themes, plugins, Gutenberg, WooCommerce)
 
 ### Frontend
-- **vue-nuxt-development** - 8 agents, 12 commands (Vue 3 + Nuxt 4 + TypeScript)
-- **angular-development** - 8 agents, 12 commands (Angular 21+, signals, zoneless, SSR)
+- **vue-nuxt-development** - 8 agents, 12 commands, 7 skills (Vue 3 + Nuxt 4 + TypeScript + Inertia.js v2)
+- **angular-development** - 8 agents, 12 commands, 8 skills (Angular 21+, signals, zoneless, SSR)
 
 ### Desktop & Mobile
 - **electron-development** - 2 agents, 2 commands (Electron + React/TypeScript)
 - **flutter-development** - 2 agents, 2 commands (Flutter 3.38+ with Riverpod)
-- **nativephp-development** - 3 agents, 4 commands (NativePHP desktop & mobile with Laravel)
+- **nativephp-development** - 3 agents, 4 commands, 3 skills (NativePHP desktop & mobile with Laravel)
+
+### Code Quality
+- **code-review** - 1 agent, 2 commands, 4 skills, 12 technology contexts (self-reflection scoring, team review)
 
 ### DevOps & Workflow
 - **git-worktree-management** - 1 agent, 5 commands (parallel development workflows)
-- **pro-workflow** - 3 agents, 5 commands (self-correcting memory, quality gates, learning capture)
+- **pro-workflow** - 2 agents, 5 commands (learning capture, quality gates, post-compaction recovery)
 
 ## Quick Install
 
@@ -44,32 +47,67 @@ Install only what you need — each plugin is completely isolated with its own a
 /plugin install flutter-development
 /plugin install nativephp-development
 /plugin install git-worktree-management
+/plugin install code-review
 /plugin install pro-workflow
 ```
 
-## Pro-Workflow Plugin
+## Code Review Plugin
 
-Self-correcting workflow system that turns the marketplace from a reference library into a learning system. Ported from [rohitg00/claude-code-pro-workflow](https://github.com/rohitg00/claude-code-pro-workflow) with Python hooks and JSON storage.
+Advanced code review with a two-pass self-reflection scoring pipeline inspired by [PR-Agent](https://github.com/qodo-ai/pr-agent) and [Kodus AI](https://github.com/kodustech/kodus-ai):
 
-### Agents
-- **planner** - Read-only planning agent that breaks down complex tasks (opus)
-- **reviewer** - Code review + security audit agent (opus)
-- **scout** - Confidence-gated exploration with 0-100 scoring across 5 dimensions (opus)
+1. **Generate** — Find all potential issues (universal + technology-specific rules)
+2. **Score** — Re-evaluate each finding with confidence 1-10
+3. **Filter** — Remove noise below mode threshold
+4. **Report** — Severity-grouped output with fix suggestions
 
 ### Commands
-- `/pro-workflow:commit` - Smart commit with quality gates, multi-language code scan, conventional commits
-- `/pro-workflow:wrap-up` - End-of-session checklist: audit changes, verify quality, capture learnings
-- `/pro-workflow:handoff` - Generate session handoff document for next session continuity
-- `/pro-workflow:learn` - Claude Code best practices guide + save learnings to JSON
-- `/pro-workflow:learn-rule` - Capture a correction as a persistent rule
+- `/code-review:code-review` — Single-agent review with `--mode` (quick/thorough/security/pr) and `--threshold`
+- `/code-review:team-review` — Spawn parallel reviewers (security, performance, correctness) using agent teams
+
+### Technology Contexts (12)
+Auto-detected and loaded based on project files — Laravel, Livewire, Filament, Vue/Nuxt, Angular, Magento 2, WordPress, Electron, Flutter, NativePHP, TypeScript, PHP.
+
+### Confidence Scoring
+
+| Score | Meaning | Adjustments |
+|-------|---------|-------------|
+| 9-10 | Certain bug or vulnerability | +2 for known anti-pattern |
+| 7-8 | Very likely a real issue | +1 for untrusted input |
+| 5-6 | Probably an issue | -1 for explanatory comment |
+| 3-4 | Might be intentional | -1 for test/fixture code |
+| 1-2 | Likely intentional or stylistic | -2 for codebase convention |
+
+### Mode Thresholds
+
+| Mode | Threshold | Use Case |
+|------|-----------|----------|
+| Quick scan | >= 7 | Small changes, fast feedback |
+| Thorough | >= 4 | Large changes, quality gate |
+| Security | >= 3 (security) / >= 7 (other) | Security audits |
+| PR review | >= 5 | Pull request with verdict |
+
+## Pro-Workflow Plugin
+
+Self-correcting workflow system with persistent learning capture. Ported from [rohitg00/claude-code-pro-workflow](https://github.com/rohitg00/claude-code-pro-workflow).
+
+### Agents
+- **planner** — Read-only planning agent for multi-file changes and architecture decisions
+- **scout** — Confidence-gated exploration with 0-100 scoring across 5 dimensions
+
+### Commands
+- `/pro-workflow:commit` — Smart commit with quality gates and conventional commits
+- `/pro-workflow:wrap-up` — End-of-session checklist: audit changes, verify quality, capture learnings
+- `/pro-workflow:handoff` — Generate session handoff document for next session continuity
+- `/pro-workflow:learn` — Best practices guide + save learnings to JSON
+- `/pro-workflow:learn-rule` — Capture a correction as a persistent rule
 
 ### Context Modes
-- **dev** - "Code first, explain after" — working > right > clean
-- **research** - "Explore broadly, don't change code yet"
-- **review** - "Security > Performance > Style"
+- **dev** — "Code first, explain after" — working > right > clean
+- **research** — "Explore broadly, don't change code yet"
 
-### Hook Features (opt-in via flags)
-All features are behind argparse flags — backward-compatible if not enabled:
+## Python Hook System
+
+Automated quality enforcement with post-compaction context recovery:
 
 | Hook | Flag | Behavior |
 |------|------|----------|
@@ -77,258 +115,146 @@ All features are behind argparse flags — backward-compatible if not enabled:
 | PostToolUse | *(always on)* | Scan edited files for debug statements, TODO/FIXME, hardcoded secrets |
 | Stop | `--learn-capture` | Parse `[LEARN]` blocks from responses → append to `learnings.json` |
 | Stop | `--session-check` | Periodic wrap-up reminders every 20 responses |
-| UserPromptSubmit | `--detect-corrections` | Detect "wrong"/"undo"/"wait"/"actually" → track correction count |
-| UserPromptSubmit | `--detect-drift` | Track original intent keywords, warn after 6+ edits if relevance < 20% |
+| UserPromptSubmit | `--detect-corrections` | Detect "wrong"/"undo"/"wait" → track correction count |
+| UserPromptSubmit | `--detect-drift` | Track original intent, warn after 6+ edits if relevance < 20% |
 | SessionStart | `--load-learnings` | Display recent project-scoped learnings on startup |
+| SessionStart | `--recover-compact` | Re-inject context after compaction (branch, files, stack, prompts, learnings) |
+| PreCompact | `--save-context` | Save context snapshot before compaction for post-compaction recovery |
+| SubagentStop | `--notify` | TTS notification when subagent completes |
 
-### Storage
-- `.claude/data/learnings.json` — persistent learning rules (JSON, no SQLite)
-- `.claude/data/sessions/{id}.json` — session state (edit count, corrections, response count)
-- `$TMPDIR/pro-workflow/intent-{id}.json` — ephemeral drift detection state
-- `.claude/data/handoffs/` — handoff documents (created by `/handoff`)
+### Post-Compaction Context Recovery
 
-## Documentation & Guides
+Addresses the "post-compaction rule amnesia" problem ([7+ GitHub issues](https://github.com/anthropics/claude-code/issues/3537)). Before compaction, `PreCompact` saves a snapshot of:
+- Git branch and recent commits
+- Modified files list
+- Detected technology stack
+- Session progress (edit count, responses, agent name)
+- Last 3 user prompts (task continuity)
+- Top 10 project learnings
 
-### Agent Prompt Guide
+After compaction, `SessionStart` detects `source="compact"` and re-injects the snapshot. The snapshot is consumed once (deleted after use) to avoid stale data.
 
-**[AGENT_PROMPT_GUIDE.md](./AGENT_PROMPT_GUIDE.md)** - Comprehensive guide on writing effective sub-agent descriptions that enable Claude Code to automatically delegate tasks.
+## Laravel Ecosystem Skills
 
-Learn how to:
-- Write agent descriptions that trigger automatic delegation
-- Use the "PROACTIVELY" keyword correctly
-- Define specific trigger scenarios
-- Understand the information flow between agents
-- Test your agent configurations
+Skills inspired by [Laravel Boost](https://github.com/laravel/boost) analysis, covering gaps Boost doesn't fill:
 
-**Quick reference:** For Claude Code to automatically use your sub-agents, follow this pattern:
-```markdown
-description: [What the agent does]. Use PROACTIVELY when [specific trigger scenarios].
-```
+| Skill | Plugin | What It Covers |
+|-------|--------|----------------|
+| tailwind-migration | laravel | Tailwind v3→v4: `@import` syntax, `@theme`, deprecated utilities |
+| pennant-feature-flags | laravel | Feature flags: define, check, activate, Blade `@feature` |
+| folio-routing | laravel | File-based routing: pages, model binding, named routes |
+| wayfinder-routes | laravel | TypeScript route generation for Inertia/Vue/React |
+| php-modern-features | laravel | PHP 8.4/8.5: `array_find`, pipe operator, `clone()` |
+| pest-browser-testing | laravel | Pest 4: `visit/click/fill`, smoke testing, visual regression |
+| volt-components | livewire | Volt single-file components: functional + class-based |
+| inertia-patterns | vue-nuxt | Inertia v2: deferred props, WhenVisible, usePoll, prefetching |
+| /upgrade command | laravel | Systematic framework upgrade with codebase scanning |
 
 ## Plugin Details
 
 ### Laravel Development Plugin
 
 **9 specialized agents:**
-- laravel-architect - Architecture, patterns, modular design
-- eloquent-expert - ORM, relationships, query optimization
-- testing-expert - Pest 4/PHPUnit with browser testing
-- security-engineer - Authentication, authorization, security
-- optimization-expert - Performance optimization
-- laravel-pulse-expert - Performance monitoring
-- laravel-reverb-expert - WebSocket real-time communication
-- laravel-socialite-expert - OAuth authentication
-- laravel-prompts-expert - CLI forms and console commands
+- laravel-architect — Architecture, patterns, modular design
+- eloquent-expert — ORM, relationships, query optimization (defers to Boost for core patterns)
+- testing-expert — Pest 4/PHPUnit with browser testing (defers to Boost for specific patterns)
+- security-engineer — Threat modeling, audit methodology (defers to Boost for OWASP checklist)
+- optimization-expert — Performance, infrastructure, capacity planning
+- laravel-pulse-expert — Performance monitoring and observability
+- laravel-reverb-expert — WebSocket real-time communication
+- laravel-socialite-expert — OAuth authentication
+- laravel-prompts-expert — CLI forms and console commands
 
-**7 specialized skills** (11,416 lines total):
-- laravel-coding-standards - Spatie guidelines, PSR compliance, modern PHP 8+ patterns (1,818 lines)
-- eloquent-relationships - Relationships, eager loading, N+1 prevention (1,771 lines)
-- laravel-queues-jobs - Queue architecture, batching, Horizon (1,812 lines)
-- laravel-testing-patterns - Pest 4, feature/unit tests, mocking (1,390 lines)
-- laravel-api-design - RESTful APIs, Sanctum, versioning (1,762 lines)
-- laravel-caching-strategies - Cache drivers, tags, optimization (1,343 lines)
-- laravel-security-patterns - CSRF, XSS, authentication, rate limiting (1,520 lines)
+**13 skills:** coding-standards, eloquent-relationships, queues-jobs, testing-patterns (with browser testing), api-design, caching-strategies, security-patterns, blueprint, tailwind-migration, pennant-feature-flags, folio-routing, wayfinder-routes, php-modern-features
 
-**21 commands:** Models, migrations, controllers, jobs, events, listeners, mail, middleware, notifications, observers, policies, requests, resources, rules, seeders, factories, commands, plus utilities
+**18 commands:** Models, migrations, controllers, jobs, events, listeners, mail, middleware, notifications, observers, policies, requests, resources, rules, seeders, factories, commands, upgrade
 
 ### Livewire Development Plugin
 
-**1 specialized agent:**
-- livewire-specialist - Livewire 4 reactive components and patterns
+**2 specialized agents:**
+- livewire-specialist — Livewire 4 reactive components, islands architecture, SFC/MFC
+- blaze-specialist — Blade component optimization (91-97% overhead reduction)
 
-**3 specialized skills** (5,723 lines total):
-- livewire4-reactive-patterns - #[Reactive], #[Computed], #[Locked], wire directives, lifecycle hooks (2,044 lines)
-- livewire-forms-validation - Form objects, real-time validation, multi-step wizards (2,065 lines)
-- livewire-performance-optimization - Query optimization, lazy loading, computed properties (1,614 lines)
+**7 skills:** livewire4-reactive-patterns, livewire-forms-validation, livewire-performance-optimization, blaze-optimization, livewire-blueprint, volt-components
 
-**4 commands:** Components, forms, layouts, attributes
+**5 commands:** Components, forms, layouts, attributes, blaze-enable
 
 ### Filament Development Plugin
 
 **1 specialized agent:**
-- filament-specialist - Filament 5 admin panels, resources, components
+- filament-specialist — Filament 5 admin panels, Blueprint planning, multi-panel apps
 
-**4 specialized skills** (7,094 lines total):
-- filament-resource-patterns - Resources, forms, tables, filters, actions, relation managers (2,048 lines)
-- filament-forms-advanced - Advanced layouts, conditional fields, repeaters, wizards (1,896 lines)
-- filament-tables-optimization - Query optimization, bulk actions, exports, summarizers (1,513 lines)
-- filament-multi-tenancy - Panel configuration, tenant models, billing, team management (1,637 lines)
+**5 skills:** filament-resource-patterns, filament-forms-advanced, filament-tables-optimization, filament-multi-tenancy, filament-blueprint
 
 **11 commands:** Resources, pages, widgets, relation managers, panels, clusters, custom fields, custom columns, exporters, importers, themes
 
 ### Vue/Nuxt Development Plugin
 
 **8 specialized agents:**
-- vue-architect - Vue 3 architecture and patterns
-- nuxt-architect - Nuxt 4 SSR and routing
-- typescript-expert - Advanced TypeScript patterns
-- state-management - Pinia stores and composables
-- testing-specialist - Vitest and component testing
-- security-engineer - Frontend security best practices
-- ux-engineer - User experience and accessibility
-- frontend-performance - Performance optimization
+- vue-architect, nuxt-architect, typescript-expert, state-management, testing-specialist, security-engineer, ux-engineer, frontend-performance
 
-**6 specialized skills** (7,679 lines total):
-- vue3-composition-api-patterns - Composition API, composables, lifecycle, script setup (1,754 lines)
-- nuxt4-ssr-optimization - SSR lifecycle, data fetching, server routes, SEO (1,194 lines)
-- pinia-state-patterns - Store definition, getters, actions, plugins, SSR hydration (1,232 lines)
-- typescript-vue-patterns - Component types, generic components, type-safe routing (1,347 lines)
-- vitest-testing-patterns - Component testing, composable testing, mocking, E2E (1,135 lines)
-- nuxt-modules-integration - Essential modules, custom modules, plugins, layers (1,017 lines)
+**7 skills:** vue3-composition-api-patterns, nuxt4-ssr-optimization, pinia-state-patterns, typescript-vue-patterns, vitest-testing-patterns, nuxt-modules-integration, inertia-patterns
 
 **12 commands:** Components, pages, layouts, composables, stores, plugins, middleware, API clients, plus utilities
 
-### Angular Development Plugin
-
-**8 specialized agents:**
-- angular-architect - Angular 21+ architecture, standalone components, signals, zoneless
-- typescript-expert - Strict TypeScript patterns, signal typing, utility types
-- rxjs-specialist - RxJS operators, signal interop, subscription management
-- state-management - Signal stores, NgRx SignalStore, state patterns
-- testing-specialist - Vitest, TestBed, zoneless testing
-- security-engineer - DomSanitizer, CSP, CSRF, content security
-- performance-expert - Zoneless, @defer, lazy loading, Core Web Vitals
-- ssr-specialist - @angular/ssr, incremental hydration, render modes
-
-**8 specialized skills** (8,240 lines total):
-- angular-blueprint - Master planning format for Angular projects (1,135 lines)
-- angular-signals-patterns - 15 signal patterns: computed, effect, linkedSignal, toSignal (1,321 lines)
-- angular-dependency-injection - 12 DI patterns: inject(), InjectionToken, providers (1,086 lines)
-- angular-testing-patterns - 12 testing patterns: Vitest, TestBed, signal testing (1,077 lines)
-- angular-ssr-hydration - 12 SSR patterns: incremental hydration, render modes (892 lines)
-- angular-routing-patterns - 11 routing patterns: lazy loading, guards, resolvers (843 lines)
-- rxjs-angular-patterns - 10 RxJS patterns: operators, signal interop, error handling (958 lines)
-- angular-performance-optimization - 12 performance patterns: zoneless, @defer, virtual scrolling (928 lines)
-
-**12 commands:** Components, services, guards, interceptors, pipes, directives, routes, stores, plus utilities
-
-### Magento 2 Development Plugin
-
-**4 specialized agents:**
-- magento-architect - Magento 2 architecture and patterns
-- ecommerce-specialist - E-commerce features and workflows
-- performance-engineer - Performance optimization
-- security-engineer - Security best practices
-
-**8 commands:** Modules, models, controllers, plugins, plus utilities
-
-### WordPress Development Plugin
-
-**6 specialized agents:**
-- wordpress-architect - WordPress architecture, hooks, custom post types, REST API
-- theme-specialist - Theme development, template hierarchy, block themes
-- plugin-specialist - Plugin development, activation hooks, settings API
-- gutenberg-expert - Block editor, custom blocks, FSE (Full Site Editing)
-- woocommerce-specialist - WooCommerce customization, products, checkout, payments
-- wordpress-security - Security hardening, sanitization, nonce verification
-
-**11 commands:** Themes, plugins, Gutenberg blocks, custom post types, taxonomies, widgets, REST API endpoints, shortcodes, plus utilities
-
-### Electron Development Plugin
-
-**2 specialized agents:**
-- electron-architect - Electron architecture, secure IPC, system tray, Forge builds
-- react-typescript-specialist - React/TypeScript components, Radix UI, Tailwind CSS
-
-**2 commands:** Feature modules and component scaffolding
-
-### Flutter Development Plugin
-
-**2 specialized agents:**
-- flutter-architect - Flutter 3.38+ clean architecture, Riverpod, GoRouter
-- flutter-ui-specialist - Material 3, responsive layouts, animations, accessibility
-
-**2 commands:** Feature modules and widget scaffolding
-
-### NativePHP Development Plugin
-
-**3 specialized agents:**
-- nativephp-architect - NativePHP application architecture, window management, menu systems, cross-platform deployment
-- desktop-expert - NativePHP Desktop v2 APIs, notifications, dialogs, clipboard, global hotkeys, auto-updates
-- mobile-expert - NativePHP Mobile v3 plugin architecture, EDGE native components, bridge functions, biometrics
-
-**3 specialized skills** (1,822 lines total):
-- nativephp-desktop-patterns - Window management, menus, system tray, notifications, child processes (729 lines)
-- nativephp-mobile-patterns - Plugin architecture, EDGE components, bridge functions, camera, push notifications (735 lines)
-- nativephp-testing-patterns - Facade fakes, assertion methods, integration testing strategies (358 lines)
-
-**4 commands:** Windows, menus, native providers, mobile plugins
-
-### Git Worktree Management Plugin
+### Code Review Plugin
 
 **1 specialized agent:**
-- git-worktree-manager - Worktree creation, environment isolation, database duplication
+- code-reviewer — Two-pass self-reflection scoring with technology-aware rule loading
 
-**5 commands:** Create, setup, cleanup, list worktrees, and database duplication
+**2 commands:**
+- `/code-review:code-review` — Single-agent review (quick/thorough/security/PR modes)
+- `/code-review:team-review` — Parallel review team (security + performance + correctness reviewers)
 
-## Python Hook System
+**4 skills:** self-reflection-scoring, review-modes, git-diff-analysis, finding-taxonomy
 
-The marketplace includes a Python hook system for automated quality enforcement:
+**12 technology contexts:** Laravel, Livewire, Filament, Vue/Nuxt, Angular, Magento 2, WordPress, Electron, Flutter, NativePHP, TypeScript, PHP
 
-- **PreToolUse** - Block dangerous operations (rm -rf, .env access), track edits
-- **PostToolUse** - Scan edited files for debug artifacts and secrets
-- **UserPromptSubmit** - Log prompts, detect corrections, detect drift
-- **Stop** - Copy transcripts, capture learnings, session reminders
-- **SessionStart** - Load context, display learnings
-- **PreCompact** - Pre-context compaction handling
-- **SubagentStop** - Sub-agent completion notifications
+### Other Plugins
 
-All hooks use `uv run` with inline dependencies — zero installation required.
-
-## Integrated Packages
-
-### Laravel Ecosystem
-- **Laravel Octane** - In-memory application server awareness
-- **Laravel Pennant** - Feature flags for gradual rollouts
-- **Laravel Precognition** - Live validation without duplicating rules
-- **Laravel Pulse** - Performance monitoring and insights
-- **Laravel Reverb** - Real-time WebSocket communication
-- **Laravel Socialite** - OAuth authentication
-- **Laravel Prompts** - Beautiful CLI forms
-
-### Development Tools
-- **nwidart/laravel-modules** - Modular architecture for medium-large projects
-- **skylence/laravel-optimize-mcp** - AI-assisted optimization with MCP tools
-
-### Testing & Quality
-- **Pest 4** - Modern testing framework
-- **PHPStan/Larastan** - Static analysis for type safety
-- **Laravel Pint** - Code style fixer
-- **Laravel Dusk** - Browser testing
-
-## Technology Stack
-
-- **Laravel 12** - Latest framework version
-- **Livewire 4** - Reactive components with #[Reactive], #[Computed], #[Locked]
-- **Filament 5** - Admin panel framework
-- **PHP 8.2+** - Modern PHP features
-- **Pest 4** - Testing with type and code coverage
-- **Vue 3 + Nuxt 4** - Frontend framework with TypeScript
-- **Angular 21** - Signals, zoneless change detection, SSR/hydration
-- **Flutter 3.38+** - Cross-platform mobile/desktop
-- **Electron** - Desktop applications
-- **NativePHP** - Desktop & mobile apps with Laravel
-- **Tailwind CSS** - Utility-first styling
-- **Alpine.js** - Lightweight JavaScript
+- **angular-development** — 8 agents, 12 commands, 8 skills (Angular 21+, signals, zoneless, SSR)
+- **magento2-development** — 4 agents, 8 commands (Magento 2 / Adobe Commerce)
+- **wordpress-development** — 6 agents, 11 commands (WordPress 6.0+, WooCommerce, Gutenberg)
+- **electron-development** — 2 agents, 2 commands (Electron + React/TypeScript)
+- **flutter-development** — 2 agents, 2 commands (Flutter 3.38+ with Riverpod)
+- **nativephp-development** — 3 agents, 4 commands, 3 skills (NativePHP desktop & mobile)
+- **git-worktree-management** — 1 agent, 5 commands (parallel development workflows)
 
 ## Usage Examples
+
+### Code Review
+
+```bash
+# Review staged changes
+/code-review:code-review
+
+# Review a PR with thorough mode
+/code-review:code-review --pr 42 --mode thorough
+
+# Spawn parallel review team for a PR
+/code-review:team-review --pr 42
+
+# Security-focused team review
+/code-review:team-review --pr 42 --reviewers security,security,correctness
+```
 
 ### Laravel Full-Stack Development
 
 ```bash
 # Create complete backend feature
-/laravel:model-new Post
-/laravel:migration-new create_posts_table
-/laravel:controller-new PostController
-/laravel:factory-new PostFactory
+/laravel-development:model-new Post
+/laravel-development:migration-new create_posts_table
+/laravel-development:controller-new PostController
+
+# Upgrade framework
+/laravel-development:upgrade --laravel 13
 
 # Add reactive frontend
-/livewire:component-new PostList
-/livewire:form-new PostForm
+/livewire-development:component-new PostList
+/livewire-development:form-new PostForm
 
 # Build admin panel
-/filament:resource-new PostResource
-/filament:widget-new PostStatsWidget
+/filament-development:resource-new PostResource
 ```
 
 ### Pro-Workflow Session
@@ -345,82 +271,13 @@ All hooks use `uv run` with inline dependencies — zero installation required.
 /pro-workflow:learn-rule
 ```
 
-### Vue/Nuxt Frontend Development
+### Vue/Nuxt + Inertia
 
 ```bash
-# Create Vue 3 + Nuxt 4 application
-/frontend:page-new blog/index
-/frontend:component-new BlogCard
-/frontend:composable-new useBlogPosts
-/frontend:store-new blog
-/frontend:api-client-new BlogApi
-```
-
-### Git Worktree Parallel Development
-
-```bash
-# Create isolated worktree for a feature
-/git-worktree:worktree-create feature/auth
-/git-worktree:db-duplicate feature_auth
-
-# List and manage worktrees
-/git-worktree:worktree-list
-/git-worktree:worktree-cleanup feature/auth
-```
-
-### NativePHP Desktop & Mobile
-
-```bash
-# Create native app service provider
-/nativephp:native-provider-new MyApp
-
-# Create windows and menus
-/nativephp:window-new MainWindow
-/nativephp:menu-new ApplicationMenu
-
-# Create mobile plugin with Swift/Kotlin bridges
-/nativephp:mobile-plugin-new CameraScanner
-```
-
-### Angular Development
-
-```bash
-# Create Angular 21+ components with signals
-/angular:component-new ProductList
-/angular:service-new CartService
-/angular:store-new ProductStore
-
-# Add routing, guards, interceptors
-/angular:route-new products
-/angular:guard-new auth
-/angular:interceptor-new auth-token
-
-# Create pipes and directives
-/angular:pipe-new currency
-/angular:directive-new tooltip
-```
-
-### Magento 2 E-Commerce
-
-```bash
-# Create custom module
-/magento:module-new Vendor_CustomCheckout
-/magento:model-new CustomOrder
-/magento:controller-new Checkout/Success
-/magento:plugin-new OrderProcessor
-```
-
-### WordPress Development
-
-```bash
-# Create custom theme and plugin
-/wordpress:theme-new PortfolioTheme
-/wordpress:plugin-new CustomFunctionality
-
-# Build custom Gutenberg blocks
-/wordpress:block-new TestimonialBlock
-/wordpress:post-type-new Portfolio
-/wordpress:taxonomy-new PortfolioCategory
+/vue-nuxt-development:\frontend:page-new blog/index
+/vue-nuxt-development:\frontend:component-new BlogCard
+/vue-nuxt-development:\frontend:composable-new useBlogPosts
+/vue-nuxt-development:\frontend:store-new blog
 ```
 
 ## Repository Structure
@@ -429,59 +286,26 @@ All hooks use `uv run` with inline dependencies — zero installation required.
 claude-code-marketplace/
 ├── .claude/
 │   ├── agents/                      # plugin-architect agent
-│   ├── hooks/                       # 7 Python hook scripts
+│   ├── hooks/                       # 7 Python hook scripts + utils
 │   ├── output-styles/               # 8 output formatting styles
 │   ├── status_lines/                # Custom status line generators
 │   └── settings.json                # Hook configuration + permissions
 ├── .claude-plugin/
-│   ├── plugin.json                  # 80+ commands, 48 agents
-│   └── marketplace.json             # 12 plugins definition
+│   └── marketplace.json             # 13 plugins definition
 ├── plugins/
-│   ├── laravel-development/
-│   │   ├── agents/                  # 9 Laravel experts
-│   │   ├── commands/                # 21 Laravel commands
-│   │   └── skills/                  # 7 Laravel skills (11,416 lines)
-│   ├── livewire-development/
-│   │   ├── agents/                  # Livewire specialist
-│   │   ├── commands/                # 4 Livewire commands
-│   │   └── skills/                  # 3 Livewire skills (5,723 lines)
-│   ├── filament-development/
-│   │   ├── agents/                  # Filament specialist
-│   │   ├── commands/                # 11 Filament commands
-│   │   └── skills/                  # 4 Filament skills (7,094 lines)
-│   ├── vue-nuxt-development/
-│   │   ├── agents/                  # 8 frontend experts
-│   │   ├── commands/                # 12 frontend commands
-│   │   └── skills/                  # 6 Vue/Nuxt skills (7,679 lines)
-│   ├── angular-development/
-│   │   ├── agents/                  # 8 Angular experts
-│   │   ├── commands/                # 12 Angular commands
-│   │   └── skills/                  # 8 Angular skills (8,240 lines)
-│   ├── magento2-development/
-│   │   ├── agents/                  # 4 Magento experts
-│   │   └── commands/                # 8 Magento commands
-│   ├── wordpress-development/
-│   │   ├── agents/                  # 6 WordPress experts
-│   │   └── commands/                # 11 WordPress commands
-│   ├── electron-development/
-│   │   ├── agents/                  # 2 Electron experts
-│   │   └── commands/                # 2 Electron commands
-│   ├── flutter-development/
-│   │   ├── agents/                  # 2 Flutter experts
-│   │   └── commands/                # 2 Flutter commands
-│   ├── nativephp-development/
-│   │   ├── agents/                  # 3 NativePHP experts
-│   │   ├── commands/                # 4 NativePHP commands
-│   │   └── skills/                  # 3 NativePHP skills (1,822 lines)
-│   ├── git-worktree-management/
-│   │   ├── agents/                  # Git worktree manager
-│   │   ├── commands/                # 5 worktree commands
-│   │   └── skills/                  # Worktree patterns
-│   └── pro-workflow/
-│       ├── agents/                  # 3 workflow agents (planner, reviewer, scout)
-│       ├── commands/                # 5 workflow commands
-│       ├── contexts/                # 3 context modes (dev, research, review)
-│       └── rules/                   # Core quality rules
+│   ├── laravel-development/         # 9 agents, 18 commands, 13 skills
+│   ├── livewire-development/        # 2 agents, 5 commands, 7 skills
+│   ├── filament-development/        # 1 agent, 11 commands, 5 skills
+│   ├── vue-nuxt-development/        # 8 agents, 12 commands, 7 skills
+│   ├── angular-development/         # 8 agents, 12 commands, 8 skills
+│   ├── magento2-development/        # 4 agents, 8 commands
+│   ├── wordpress-development/       # 6 agents, 11 commands
+│   ├── electron-development/        # 2 agents, 2 commands
+│   ├── flutter-development/         # 2 agents, 2 commands
+│   ├── nativephp-development/       # 3 agents, 4 commands, 3 skills
+│   ├── code-review/                 # 1 agent, 2 commands, 4 skills, 12 contexts
+│   ├── git-worktree-management/     # 1 agent, 5 commands
+│   └── pro-workflow/                # 2 agents, 5 commands, 2 contexts
 └── README.md
 ```
 
@@ -508,7 +332,6 @@ MIT License - See LICENSE file for details
 - **GitHub Issues**: [Report bugs and request features](https://github.com/skylence-be/claude-code-marketplace/issues)
 - **Documentation**: See individual agent files in `plugins/*/agents/`
 - **Examples**: Check command files in `plugins/*/commands/`
-- **Star the repo**: Help others discover this toolkit!
 
 ---
 
