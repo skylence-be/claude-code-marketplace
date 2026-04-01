@@ -1,6 +1,5 @@
 ---
 description: Create Magento 2 Plugin/Interceptor
-model: claude-sonnet-4-5
 ---
 
 Create a Magento 2 Plugin (Interceptor).

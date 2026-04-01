@@ -1,6 +1,5 @@
 ---
 description: WordPress code cleanup following best practices
-model: claude-sonnet-4-5
 ---
 
 Clean up WordPress code following best practices and coding standards.

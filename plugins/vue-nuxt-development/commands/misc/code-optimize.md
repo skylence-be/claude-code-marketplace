@@ -1,6 +1,5 @@
 ---
 description: Optimize Vue/Nuxt code for performance
-model: claude-sonnet-4-5
 ---
 
 Analyze and optimize the following Vue/Nuxt code for performance.

@@ -1,6 +1,5 @@
 ---
 description: Create custom WordPress taxonomy
-model: claude-sonnet-4-5
 ---
 
 Create a custom WordPress taxonomy.

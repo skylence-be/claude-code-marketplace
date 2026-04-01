@@ -2,7 +2,6 @@
 name: flutter-architect
 description: Expert in Flutter 3.38+ and Dart 3.10+ application architecture with Riverpod state management, GoRouter navigation, clean architecture patterns, and platform-specific development. Masters widget composition, performance optimization, and production-ready mobile app development. Use PROACTIVELY when building Flutter apps, designing state management, implementing navigation, or optimizing performance.
 category: mobile
-model: sonnet
 color: blue
 ---
 

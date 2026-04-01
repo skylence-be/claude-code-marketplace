@@ -1,6 +1,5 @@
 ---
 description: Create Laravel validation rule
-model: claude-sonnet-4-5
 ---
 
 Create a Laravel custom validation rule.

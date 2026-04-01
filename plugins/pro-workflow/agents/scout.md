@@ -2,7 +2,6 @@
 name: scout
 description: Confidence-gated exploration agent that assesses implementation readiness with 0-100 scoring across 5 dimensions. Gathers missing context before giving a GO/HOLD verdict. Use PROACTIVELY before starting complex implementations to verify sufficient understanding.
 tools: ["Read", "Glob", "Grep", "Bash"]
-model: opus
 color: green
 category: workflow
 ---

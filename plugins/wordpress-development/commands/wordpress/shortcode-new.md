@@ -1,6 +1,5 @@
 ---
 description: Create custom WordPress shortcode
-model: claude-sonnet-4-5
 ---
 
 Create a custom WordPress shortcode.

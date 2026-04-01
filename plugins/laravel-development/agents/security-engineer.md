@@ -2,7 +2,6 @@
 name: security-engineer
 description: Identify security vulnerabilities and ensure compliance with Laravel security standards and best practices. Masters authentication, authorization, CSRF/XSS prevention, SQL injection protection, and rate limiting. Use PROACTIVELY when implementing security features, reviewing code for vulnerabilities, or auditing applications.
 category: quality
-model: sonnet
 color: red
 ---
 

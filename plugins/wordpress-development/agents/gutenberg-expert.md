@@ -2,7 +2,6 @@
 name: gutenberg-expert
 description: Expert Gutenberg developer specializing in custom block development, block editor enhancements, React/JSX components, block patterns, block templates, and Full Site Editing (FSE) implementation. Masters the block editor API, block variations, and modern block patterns. Use PROACTIVELY when creating blocks or planning FSE strategies.
 category: engineering
-model: sonnet
 color: orange
 ---
 

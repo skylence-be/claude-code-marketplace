@@ -1,6 +1,5 @@
 ---
 description: Create Laravel artisan console command
-model: claude-sonnet-4-5
 ---
 
 Create a Laravel artisan console command.

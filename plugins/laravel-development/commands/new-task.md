@@ -1,6 +1,5 @@
 ---
 description: Analyze task complexity and create actionable Laravel/Livewire implementation plan
-model: claude-sonnet-4-5
 ---
 
 Analyze the following Laravel/Livewire task and create a detailed implementation plan.

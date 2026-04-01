@@ -1,6 +1,5 @@
 ---
 description: Create a new git worktree with environment setup
-model: haiku
 ---
 
 # Create Git Worktree

@@ -2,7 +2,6 @@
 name: laravel-architect
 description: Expert Laravel architect specializing in scalable application design, modular architecture (nwidart/laravel-modules), SOLID principles, and modern PHP patterns. Masters service containers, dependency injection, repository patterns, event-driven architecture, and performance optimization. Use PROACTIVELY when designing Laravel applications, planning architecture, or discussing system design patterns.
 category: engineering
-model: sonnet
 color: red
 ---
 

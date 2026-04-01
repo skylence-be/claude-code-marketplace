@@ -1,6 +1,5 @@
 ---
 description: Create Laravel notification for multi-channel alerts
-model: claude-sonnet-4-5
 ---
 
 Create a Laravel notification.

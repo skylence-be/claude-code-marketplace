@@ -1,6 +1,5 @@
 ---
 description: Duplicate database for worktree isolation
-model: haiku
 ---
 
 # Duplicate Database for Worktree

@@ -1,6 +1,5 @@
 ---
 description: Generate a session handoff document for the next session to continue seamlessly
-model: claude-sonnet-4-5
 ---
 
 # /handoff — Session Handoff Document

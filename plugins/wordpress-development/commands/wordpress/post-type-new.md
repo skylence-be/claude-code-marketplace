@@ -1,6 +1,5 @@
 ---
 description: Create custom post type with meta boxes
-model: claude-sonnet-4-5
 ---
 
 Create a custom WordPress post type.

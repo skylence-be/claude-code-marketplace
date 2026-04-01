@@ -1,6 +1,5 @@
 ---
 description: Clean up Magento 2 code following best practices
-model: claude-sonnet-4-5
 ---
 
 Clean up Magento 2 code following coding standards and best practices.

@@ -1,6 +1,5 @@
 ---
 description: Create Laravel Form Request with validation rules
-model: claude-sonnet-4-5
 ---
 
 Create a Laravel Form Request for validation.

@@ -1,6 +1,5 @@
 ---
 description: Create a new Nuxt 4 page with SSR/SSG support and TypeScript
-model: claude-sonnet-4-5
 ---
 
 Create a new Nuxt 4 page following modern conventions and best practices.

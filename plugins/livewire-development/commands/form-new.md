@@ -1,6 +1,5 @@
 ---
 description: Create Livewire 4 form with validation and state management
-model: claude-sonnet-4-5
 ---
 
 Create a Livewire 4 form component with validation.

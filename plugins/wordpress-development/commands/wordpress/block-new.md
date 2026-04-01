@@ -1,6 +1,5 @@
 ---
 description: Create custom Gutenberg block with React
-model: claude-sonnet-4-5
 ---
 
 Create a custom Gutenberg block.

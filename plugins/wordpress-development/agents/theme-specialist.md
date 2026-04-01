@@ -2,7 +2,6 @@
 name: theme-specialist
 description: Expert theme developer specializing in WordPress theme development, template hierarchy, block themes, Gutenberg integration, and responsive design. Masters theme structure, child themes, customization APIs, and accessibility standards. Use PROACTIVELY when creating themes or planning theme architecture.
 category: engineering
-model: sonnet
 color: purple
 ---
 

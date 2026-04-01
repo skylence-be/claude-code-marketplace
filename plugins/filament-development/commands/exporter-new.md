@@ -1,6 +1,5 @@
 ---
 description: Create Filament 5 data exporter
-model: claude-sonnet-4-5
 ---
 
 Create a Filament 5 exporter.

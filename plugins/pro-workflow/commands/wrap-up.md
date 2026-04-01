@@ -1,6 +1,5 @@
 ---
 description: End-of-session checklist — audit changes, verify quality, capture learnings
-model: claude-sonnet-4-5
 ---
 
 # /wrap-up — Session Wrap-Up

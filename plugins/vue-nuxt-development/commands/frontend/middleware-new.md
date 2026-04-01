@@ -1,6 +1,5 @@
 ---
 description: Create Nuxt route middleware
-model: claude-sonnet-4-5
 ---
 
 Create Nuxt route middleware.

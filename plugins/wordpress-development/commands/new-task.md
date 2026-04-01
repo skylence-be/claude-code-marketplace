@@ -1,6 +1,5 @@
 ---
 description: Analyze task complexity and create actionable WordPress implementation plan
-model: claude-sonnet-4-5
 ---
 
 Analyze the following WordPress task and create a detailed implementation plan.

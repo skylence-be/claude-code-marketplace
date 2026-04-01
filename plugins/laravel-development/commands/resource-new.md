@@ -1,6 +1,5 @@
 ---
 description: Create Laravel API resource for data transformation
-model: claude-sonnet-4-5
 ---
 
 Create a Laravel API resource.

@@ -1,6 +1,5 @@
 ---
 description: Create complete Magento 2 module with proper structure
-model: claude-sonnet-4-5
 ---
 
 Create a complete Magento 2 module following best practices.

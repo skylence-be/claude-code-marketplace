@@ -1,6 +1,5 @@
 ---
 description: Create Flutter feature module with clean architecture
-model: claude-sonnet-4-5
 ---
 
 Create a new feature module with data/domain/presentation layers.

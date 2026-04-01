@@ -1,6 +1,5 @@
 ---
 description: Create Livewire 4 component with reactive properties
-model: claude-sonnet-4-5
 ---
 
 Create a Livewire 4 component following modern patterns.

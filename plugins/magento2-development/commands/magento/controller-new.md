@@ -1,6 +1,5 @@
 ---
 description: Create Magento 2 controller (admin or frontend)
-model: claude-sonnet-4-5
 ---
 
 Create a Magento 2 controller.

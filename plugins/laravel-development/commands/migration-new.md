@@ -1,6 +1,5 @@
 ---
 description: Create Laravel migration for database schema changes
-model: claude-sonnet-4-5
 ---
 
 Create a Laravel migration file.

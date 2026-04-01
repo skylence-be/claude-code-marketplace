@@ -1,6 +1,5 @@
 ---
 description: Create Electron IPC handler with preload bridge
-model: claude-sonnet-4-5
 ---
 
 Create a complete IPC handler with main process handler and preload bridge.

@@ -1,6 +1,5 @@
 ---
 description: Create Laravel observer for model lifecycle events
-model: claude-sonnet-4-5
 ---
 
 Create a Laravel model observer.

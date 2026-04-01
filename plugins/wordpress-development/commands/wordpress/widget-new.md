@@ -1,6 +1,5 @@
 ---
 description: Create custom WordPress widget
-model: claude-sonnet-4-5
 ---
 
 Create a custom WordPress widget.

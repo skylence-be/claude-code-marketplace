@@ -1,6 +1,5 @@
 ---
 description: Smart commit with quality gates, code scan, and conventional commit message
-model: claude-sonnet-4-5
 ---
 
 # /commit — Smart Commit with Quality Gates
