@@ -25,6 +25,7 @@ Comprehensive guide to testing Laravel applications using Pest 4.
 | Mocking | [mocking.md](mocking.md) | HTTP, Mail, Queue, Events |
 | Authentication | [auth-testing.md](auth-testing.md) | Login, logout, guards |
 | Advanced | [advanced.md](advanced.md) | Parallel, middleware, commands |
+| Browser Testing | [pest-browser-testing.md](pest-browser-testing.md) | Pest 4 real browser tests, smoke testing, visual regression, sharding |
 
 ## Quick Start
 
