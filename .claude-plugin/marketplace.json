@@ -131,8 +131,8 @@
     {
       "name": "pro-workflow",
       "source": "./plugins/pro-workflow",
-      "description": "Self-correcting workflow system with 2 specialized agents (planner, scout), 5 slash commands (wrap-up, learn-rule, commit, handoff, learn), 2 context modes (dev, research), and core rules. Features persistent learning capture to JSON, edit tracking with quality gate reminders, correction detection, drift detection, post-edit scanning for debug artifacts and secrets, and session handoff generation. Review capabilities moved to dedicated code-review plugin. All hook features are opt-in via argparse flags for backward compatibility",
-      "version": "1.0.0",
+      "description": "Self-correcting workflow system with 2 specialized agents (planner, scout), 5 slash commands (wrap-up, learn-rule, commit, handoff, learn), 2 context modes (dev, research), and core rules. Features persistent learning capture, edit tracking with quality gate reminders, correction detection, drift detection, post-edit scanning, post-compaction context recovery (saves and re-injects session state after context compaction), and session handoff generation. Review capabilities in dedicated code-review plugin",
+      "version": "1.1.0",
       "author": {
         "name": "Rohit Ghumare",
         "url": "https://github.com/rohitg00"
