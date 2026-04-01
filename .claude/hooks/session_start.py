@@ -194,6 +194,95 @@ def load_learnings():
     return "\n".join(lines)
 
 
+def load_post_compact_context():
+    """
+    Load context snapshot saved by PreCompact hook and format it for re-injection.
+    This is the key mechanism for surviving context loss after compaction.
+
+    Addresses the "post-compaction rule amnesia" problem documented in 7+ GitHub issues.
+    """
+    snapshot_path = Path('.claude/data/pre_compact_snapshot.json')
+    if not snapshot_path.exists():
+        return None
+
+    try:
+        with open(snapshot_path, 'r') as f:
+            snapshot = json.load(f)
+    except (json.JSONDecodeError, ValueError, OSError):
+        return None
+
+    if not snapshot:
+        return None
+
+    parts = []
+    parts.append("=" * 50)
+    parts.append("POST-COMPACTION CONTEXT RECOVERY")
+    parts.append("The conversation was just compacted. Here is the context")
+    parts.append("that was saved before compaction to maintain continuity.")
+    parts.append("=" * 50)
+
+    # Git state
+    branch = snapshot.get("git_branch")
+    if branch:
+        parts.append(f"\nGit branch: {branch}")
+
+    commits = snapshot.get("recent_commits")
+    if commits:
+        parts.append(f"\nRecent commits:\n{commits}")
+
+    # Modified files
+    modified = snapshot.get("modified_files")
+    if modified:
+        parts.append(f"\nModified files ({len(modified)}):")
+        for f in modified[:20]:
+            parts.append(f"  - {f}")
+        if len(modified) > 20:
+            parts.append(f"  ... and {len(modified) - 20} more")
+
+    # Technology stack
+    stack = snapshot.get("tech_stack")
+    if stack:
+        parts.append(f"\nDetected stack: {', '.join(stack)}")
+
+    # Session progress
+    edit_count = snapshot.get("edit_count", 0)
+    response_count = snapshot.get("response_count", 0)
+    agent_name = snapshot.get("agent_name", "")
+    if edit_count or response_count:
+        progress = f"\nSession progress: {edit_count} edits, {response_count} responses"
+        if agent_name:
+            progress += f" (agent: {agent_name})"
+        parts.append(progress)
+
+    # Recent prompts (what the user was working on)
+    recent_prompts = snapshot.get("recent_prompts")
+    if recent_prompts:
+        parts.append("\nRecent user prompts (for task continuity):")
+        for i, prompt in enumerate(recent_prompts, 1):
+            # Truncate long prompts
+            truncated = prompt[:200] + "..." if len(prompt) > 200 else prompt
+            parts.append(f"  {i}. {truncated}")
+
+    # Learnings
+    learnings = snapshot.get("learnings")
+    if learnings:
+        parts.append(f"\nKey learnings ({len(learnings)}):")
+        for l in learnings:
+            parts.append(f"  - {l}")
+
+    parts.append("\n" + "=" * 50)
+    parts.append("Continue working on the task described in the recent prompts above.")
+    parts.append("=" * 50)
+
+    # Clean up the snapshot file (one-time use)
+    try:
+        snapshot_path.unlink()
+    except Exception:
+        pass
+
+    return "\n".join(parts)
+
+
 def main():
     try:
         # Parse command line arguments
@@ -204,6 +293,8 @@ def main():
                           help='Announce session start via TTS')
         parser.add_argument('--load-learnings', action='store_true',
                           help='Load recent learnings from .claude/data/learnings.json')
+        parser.add_argument('--recover-compact', action='store_true',
+                          help='Re-inject context after compaction from saved snapshot')
         args = parser.parse_args()
 
         # Read JSON input from stdin
@@ -211,13 +302,19 @@ def main():
 
         # Extract fields
         session_id = input_data.get('session_id', 'unknown')
-        source = input_data.get('source', 'unknown')  # "startup", "resume", or "clear"
+        source = input_data.get('source', 'unknown')  # "startup", "resume", "compact", or "clear"
 
         # Log the session start event
         log_session_start(input_data)
 
         # Collect context parts
         context_parts = []
+
+        # Post-compaction recovery — highest priority
+        if args.recover_compact and source == "compact":
+            compact_context = load_post_compact_context()
+            if compact_context:
+                context_parts.append(compact_context)
 
         # Load development context if requested
         if args.load_context:
@@ -257,6 +354,7 @@ def main():
                     messages = {
                         "startup": "Claude Code session started",
                         "resume": "Resuming previous session",
+                        "compact": "Context recovered after compaction",
                         "clear": "Starting fresh session"
                     }
                     message = messages.get(source, "Session started")
