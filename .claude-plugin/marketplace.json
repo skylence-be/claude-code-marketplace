@@ -121,12 +121,12 @@
     {
       "name": "code-review",
       "source": "./plugins/code-review",
-      "description": "Advanced code review with self-reflection scoring pipeline (generate findings, score confidence 1-10, filter by threshold). Features 1 specialized agent, 1 slash command, 4 skill patterns, and 12 technology-specific rule contexts (Laravel, Livewire, Filament, Vue/Nuxt, Angular, Magento2, WordPress, Electron, Flutter, NativePHP, TypeScript, PHP). Supports 4 review modes (quick scan, thorough, security-focused, PR review) with auto-detection of technology stack",
-      "version": "1.0.0",
+      "description": "Advanced code review with self-reflection scoring pipeline (generate findings, score confidence 1-10, filter by threshold). Features 1 specialized agent, 2 slash commands (code-review, team-review), 4 skill patterns, and 12 technology-specific rule contexts. Team review spawns parallel reviewers (security, performance, correctness) using agent teams for multi-perspective analysis. Supports 4 review modes with auto-detection of technology stack",
+      "version": "1.1.0",
       "author": {
         "name": "Skylence"
       },
-      "tags": ["code-review", "self-reflection", "scoring", "security", "quality", "multi-framework"]
+      "tags": ["code-review", "self-reflection", "scoring", "security", "quality", "multi-framework", "agent-teams"]
     },
     {
       "name": "pro-workflow",
