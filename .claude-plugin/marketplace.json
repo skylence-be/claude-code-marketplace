@@ -5,7 +5,7 @@
     "contact": "github.com/skylence"
   },
   "metadata": {
-    "description": "Professional full-stack development marketplace featuring 49 specialized AI agents across 12 plugins (Laravel, Livewire, Filament, Vue/Nuxt, Angular, Magento2, WordPress, Electron, Flutter, NativePHP, Git worktree, Pro-Workflow), 80+ slash commands, Python hook system with edit tracking, quality gates, learning capture, drift detection, and session management, and custom status lines for building modern web, mobile, and desktop applications"
+    "description": "Professional full-stack development marketplace featuring 50 specialized AI agents across 13 plugins (Laravel, Livewire, Filament, Vue/Nuxt, Angular, Magento2, WordPress, Electron, Flutter, NativePHP, Git worktree, Pro-Workflow, Code Review), 80+ slash commands, self-reflection scoring code review pipeline, Python hook system with edit tracking, quality gates, learning capture, drift detection, and session management, and custom status lines for building modern web, mobile, and desktop applications"
   },
   "plugins": [
     {
@@ -119,15 +119,25 @@
       "tags": ["angular", "angular21", "typescript", "signals", "rxjs", "zoneless", "ssr", "standalone"]
     },
     {
+      "name": "code-review",
+      "source": "./plugins/code-review",
+      "description": "Advanced code review with self-reflection scoring pipeline (generate findings, score confidence 1-10, filter by threshold). Features 1 specialized agent, 1 slash command, 4 skill patterns, and 12 technology-specific rule contexts (Laravel, Livewire, Filament, Vue/Nuxt, Angular, Magento2, WordPress, Electron, Flutter, NativePHP, TypeScript, PHP). Supports 4 review modes (quick scan, thorough, security-focused, PR review) with auto-detection of technology stack",
+      "version": "1.0.0",
+      "author": {
+        "name": "Skylence"
+      },
+      "tags": ["code-review", "self-reflection", "scoring", "security", "quality", "multi-framework"]
+    },
+    {
       "name": "pro-workflow",
       "source": "./plugins/pro-workflow",
-      "description": "Self-correcting workflow system with 3 specialized agents (planner, reviewer, scout), 5 slash commands (wrap-up, learn-rule, commit, handoff, learn), 3 context modes (dev, research, review), and core rules. Features persistent learning capture to JSON, edit tracking with quality gate reminders, correction detection, drift detection, post-edit scanning for debug artifacts and secrets, and session handoff generation. All hook features are opt-in via argparse flags for backward compatibility",
+      "description": "Self-correcting workflow system with 2 specialized agents (planner, scout), 5 slash commands (wrap-up, learn-rule, commit, handoff, learn), 2 context modes (dev, research), and core rules. Features persistent learning capture to JSON, edit tracking with quality gate reminders, correction detection, drift detection, post-edit scanning for debug artifacts and secrets, and session handoff generation. Review capabilities moved to dedicated code-review plugin. All hook features are opt-in via argparse flags for backward compatibility",
       "version": "1.0.0",
       "author": {
         "name": "Rohit Ghumare",
         "url": "https://github.com/rohitg00"
       },
-      "tags": ["workflow", "quality-gates", "learnings", "corrections", "drift-detection", "session-management", "code-review"]
+      "tags": ["workflow", "quality-gates", "learnings", "corrections", "drift-detection", "session-management"]
     }
   ]
 }
