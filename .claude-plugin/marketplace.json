@@ -142,12 +142,12 @@
     {
       "name": "archon-workflows",
       "source": "./plugins/archon-workflows",
-      "description": "Complete Archon AI workflow engine expertise (coleam00/Archon v0.3.5). One specialized agent (archon-workflow-author) and 7 comprehensive skills: (1) DAG workflow authoring covering all 3 execution modes and 7 node types (command, prompt, bash, loop, script, approval, cancel), (2) CLI reference for all 15 commands with examples, (3) reference for all 20 bundled archon-* workflows with triggers and override patterns, (4) reference for all 36 bundled archon-* command prompts, (5) GitHub adapter patterns including webhook events, @archon routing, SSO PAT requirements, and BOT_RESPONSE_MARKER cleanup, (6) PR review patterns covering top-level anchor-linked, true inline review comments via gh api pulls/reviews, and review→fix→re-review loop closure, (7) worktree isolation system with 7-step resolution, port allocation, scheduled cleanup, and duplicate codebase deduplication. Captures early-adopter knowledge from the v0.3 rewrite that the public docs don't yet cover.",
-      "version": "1.0.0",
+      "description": "Complete Archon AI workflow engine expertise (coleam00/Archon v0.3.5). One specialized agent (archon-workflow-author) and 12 comprehensive skills covering every layer of the platform: (1) DAG workflow authoring across all 3 execution modes and 7 node types with every base field documented, (2) CLI reference for all 15 commands, (3) reference for all 20 bundled archon-* workflows, (4) reference for all 36 bundled archon-* command prompts, (5) GitHub adapter patterns (webhook events, @archon routing, SSO PAT requirements, BOT_RESPONSE_MARKER cleanup), (6) PR review patterns (top-level anchor-linked, true inline review via gh api pulls/reviews, review→fix→re-review loop), (7) worktree isolation (7-step resolution, port allocation, cleanup, duplicate codebase dedup), (8) architecture deep-dive (message flow, workflow execution internals, session lifecycle, IDatabase abstraction, 4-layer config merge, SSE streaming) with file:line pointers, (9) adapter implementation guide (IPlatformAdapter, lazy logger, constructor-whitelist auth, message splitting, per-platform details), (10) script node patterns (TypeScript via bun, Python via uv, deps, inline vs file-based), (11) per-node hooks system (all 21 event types with matcher/response/timeout), (12) per-node MCP integration (mcp: path, wildcards, env var substitution, Haiku warnings). Captures early-adopter knowledge from the v0.3 rewrite that the public docs don't yet cover.",
+      "version": "1.1.0",
       "author": {
         "name": "Skylence"
       },
-      "tags": ["archon", "workflow", "dag", "ai-agents", "github", "pr-review", "harness", "claude-code", "worktree", "isolation", "cli"]
+      "tags": ["archon", "workflow", "dag", "ai-agents", "github", "pr-review", "harness", "claude-code", "worktree", "isolation", "cli", "hooks", "mcp", "adapter", "script-node"]
     }
   ]
 }

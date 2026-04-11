@@ -122,15 +122,32 @@ nodes:
 
 ### Node Fields (All Types Share These)
 
+Base schema from `packages/workflows/src/schemas/dag-node.ts:113` (`dagNodeBaseSchema`):
+
 | Field | Type | Default | Description |
 |---|---|---|---|
 | `id` | string | required | Unique. Used in `$<id>.output` references |
 | `depends_on` | string[] | `[]` | Upstream node IDs — determines order |
 | `when` | string | — | Condition expression (see below) |
 | `trigger_rule` | string | `all_success` | Join semantics for deps |
-| `provider` | string | inherited | Per-node provider override |
+| `provider` | `claude` \| `codex` | inherited | Per-node provider override |
 | `model` | string | inherited | Per-node model override |
+| `context` | `fresh` \| `shared` | — | `fresh` = new AI session; `shared` = inherit from upstream |
 | `idle_timeout` | number (ms) | 300000 | Inactivity timeout (per-iteration on loop nodes) |
+| `retry` | object | — | Retry config (not valid on loop nodes — hard error) |
+| `output_format` | object | — | JSON Schema for structured output (Claude only) |
+| `allowed_tools` | string[] | all | Tool whitelist (Claude only). `[]` = MCP-only |
+| `denied_tools` | string[] | none | Tool blacklist (Claude only) |
+| `hooks` | object | — | Per-node SDK hooks — see `archon-hooks-system` skill |
+| `mcp` | string (path) | — | Relative path to MCP config JSON — see `archon-mcp-integration` skill |
+| `skills` | string[] | — | Skill names to load into the node's AI session |
+| `effort` | `low`\|`medium`\|`high`\|`max` | — | Claude reasoning effort level |
+| `thinking` | string \| object | — | Claude `ThinkingConfig` shorthand or full object |
+| `maxBudgetUsd` | number | — | Per-node USD budget cap |
+| `systemPrompt` | string | — | Custom system prompt override |
+| `fallbackModel` | string | — | Backup model if primary fails |
+| `betas` | string[] | — | Array of beta feature flags to enable |
+| `sandbox` | object | — | `SandboxSettings` — command + args for sandboxed execution |
 
 ## The Seven DAG Node Types
 
