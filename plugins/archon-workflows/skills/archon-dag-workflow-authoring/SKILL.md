@@ -212,6 +212,37 @@ AI prompt that iterates until a signal or external check.
 
 **Never set `retry:` on a loop node** — hard parse error. Loop nodes have their own retry via `max_iterations`.
 
+**Interactive loop nodes** — a loop node can pause between iterations for user approval via the in-conversation `/workflow approve <run-id>` command. Two extra fields unlock this:
+
+```yaml
+- id: ralph-with-checkpoints
+  depends_on: [plan]
+  loop:
+    prompt: |
+      Read plan, implement next unchecked task, mark it done.
+      When all tasks done: <promise>COMPLETE</promise>
+    until: COMPLETE
+    max_iterations: 20
+    fresh_context: true
+    interactive: true                                    # pause between iterations
+    gate_message: |                                      # required when interactive: true
+      Iteration complete. Review the diff and approve to continue,
+      or reject with a reason to abort.
+```
+
+| Field | Type | Default | Description |
+|---|---|---|---|
+| `interactive` | boolean | `false` | When true, the loop pauses after each iteration and waits for user approval |
+| `gate_message` | string | — | Required when `interactive: true`. The message shown to the user at each pause point |
+
+Interactive loops differ from standalone approval nodes in that:
+- Approval is required on **every iteration**, not once
+- The workflow status becomes `paused` between iterations (see `archon-architecture-deep-dive` for pause/resume semantics)
+- The user resumes via `/workflow approve <run-id>` in the same conversation
+- Rejection via `/workflow reject <run-id> <reason>` cancels the loop node (and cascades to downstream nodes unless they have `trigger_rule: all_done`)
+
+Use case: supervised autonomous implementation — the AI does one story per iteration but a human reviews each before the next starts.
+
 ### 5. Script Node (v0.3.3+)
 
 TypeScript or Python via `bun` or `uv`. **Not** AI — deterministic like bash, but with dependency installation.
@@ -265,6 +296,29 @@ Terminates the workflow run with a reason. Useful as a conditional endpoint.
   when: "$fetch-pr.output.isDraft == 'true'"
 ```
 
+## Retry Config (`retry:`)
+
+From `packages/workflows/src/schemas/retry.ts`. Available on command, prompt, bash, and script nodes. **Hard error on loop nodes** — loops have their own retry via `max_iterations`.
+
+```yaml
+- id: flaky-api-call
+  bash: "curl -sf https://some-api.com/endpoint"
+  retry:
+    max_attempts: 3          # required, integer 1-5 (retries, not including initial attempt)
+    delay_ms: 2000           # optional, 1000-60000, doubled each attempt (exponential backoff)
+    on_error: transient      # optional, 'transient' | 'all' — default 'transient'
+```
+
+| Field | Type | Default | Description |
+|---|---|---|---|
+| `max_attempts` | integer 1-5 | **required** | Retries (not counting the initial attempt). Max 5. |
+| `delay_ms` | integer 1000-60000 | — | Initial delay before first retry. Doubled on each subsequent attempt. |
+| `on_error` | `transient` \| `all` | `transient` | Which errors trigger retry. `transient` = network, timeouts, 5xx. `all` = any error including validation/4xx/permission. |
+
+**Exponential backoff math**: with `delay_ms: 2000` and `max_attempts: 3`, delays are `2000ms → 4000ms → 8000ms` between the initial call and retries. Total wallclock in worst case: initial + 14 seconds + 4 × subprocess times.
+
+**Interaction with `trigger_rule`**: retries are transparent to downstream nodes. A node that eventually succeeds after 2 retries is still `completed` to its dependents. A node that exhausts retries is `failed` and trigger rules apply normally.
+
 ## Trigger Rules
 
 | Rule | Behavior |
@@ -275,6 +329,65 @@ Terminates the workflow run with a reason. Useful as a conditional endpoint.
 | `all_done` | All upstreams terminal (completed, failed, or skipped all count) |
 
 Use `all_done` on cleanup/reporting nodes that should run even if upstream failed.
+
+## Workflow-Level Inheritance
+
+From `packages/workflows/src/schemas/workflow.ts:workflowBaseSchema`, these fields appear at the **workflow top level** in addition to per-node. When set at the workflow level, they apply to every node unless the node overrides them:
+
+| Field | At workflow level | At node level | Precedence |
+|---|---|---|---|
+| `provider` | ✓ (default for all nodes) | ✓ (override) | Node > workflow > config > SDK default |
+| `model` | ✓ (default for all nodes) | ✓ (override) | Node > workflow > config > SDK default |
+| `modelReasoningEffort` | ✓ (Codex only) | ✗ | Workflow-level only |
+| `webSearchMode` | ✓ (Codex only) | ✗ | Workflow-level only |
+| `additionalDirectories` | ✓ (Codex only) | ✗ | Workflow-level only |
+| `effort` | ✓ (Claude reasoning) | ✓ (override) | Node > workflow |
+| `thinking` | ✓ (Claude thinking) | ✓ (override) | Node > workflow |
+| `fallbackModel` | ✓ | ✓ (override) | Node > workflow |
+| `betas` | ✓ | ✓ (override) | Node > workflow |
+| `sandbox` | ✓ | ✓ (override) | Node > workflow (deep-merged) |
+| `interactive` | ✓ (legacy) | ✗ | Workflow-level only |
+
+Example:
+
+```yaml
+name: hardened-deploy
+description: ...
+provider: claude
+model: sonnet
+
+# Workflow-level defaults — all nodes inherit
+effort: high
+thinking: enabled
+fallbackModel: opus
+sandbox:
+  enabled: true
+  network:
+    allowManagedDomainsOnly: true
+    allowedDomains: [api.github.com, api.vercel.com]
+
+nodes:
+  - id: plan
+    command: archon-plan
+    # Inherits: provider=claude, model=sonnet, effort=high, thinking=enabled,
+    #           fallbackModel=opus, sandbox={...}
+
+  - id: quick-check
+    prompt: "Lint pass?"
+    model: haiku                   # override — sonnet → haiku
+    effort: low                    # override — high → low
+    # Still inherits: sandbox, thinking, fallbackModel
+
+  - id: deploy
+    command: archon-deploy
+    sandbox:                       # override — deep-merges with workflow-level
+      filesystem:
+        denyWrite: [.env, secrets/]
+    # Still inherits: provider, model, effort, thinking, fallbackModel,
+    #                 PLUS sandbox.network from workflow level
+```
+
+**Top-level `modelReasoningEffort`, `webSearchMode`, `additionalDirectories`** are Codex-only and cannot be overridden per-node. If you need per-node reasoning effort, use per-node `effort:` (Claude's equivalent) instead.
 
 ## Conditions (`when:`)
 
