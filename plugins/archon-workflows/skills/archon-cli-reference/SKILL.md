@@ -178,6 +178,97 @@ archon <command> --help
 | `--verbose` / `-v` | Show debug-level output |
 | `--json` | Machine-readable output (for `workflow list`) |
 
+## In-Conversation `/workflow` Subcommands
+
+Separate from the top-level `archon` binary, there's a set of **orchestrator subcommands** you invoke from inside an active conversation (web UI, Slack, Telegram, GitHub @archon mention). These control workflows that are already running.
+
+These are deterministic — the orchestrator intercepts them before the AI router and handles them directly.
+
+### `/workflow run <name> [message]`
+
+Dispatch a workflow from inside a conversation. Same as the CLI's `archon workflow run` but scoped to the current conversation's codebase and session.
+
+```
+/workflow run archon-fix-github-issue #42
+/workflow run archon-smart-pr-review #17
+```
+
+### `/workflow status`
+
+Show the current workflow run's state (if any). Returns:
+- `running` — currently executing
+- `paused` — waiting on approval or interactive loop gate
+- `completed` — finished successfully
+- `failed` — finished with an error
+- `cancelled` — terminated via cancel node or rejection
+
+```
+/workflow status
+```
+
+### `/workflow approve [run-id]`
+
+**Resume a paused workflow run.** Used when:
+- An `approval` node is waiting for human response
+- An `interactive: true` loop node is paused between iterations
+
+```
+/workflow approve                    # approves the current conversation's paused run
+/workflow approve abc123def456       # explicit run ID
+```
+
+If no `run-id` is provided, Archon picks the most recently paused run in the current conversation.
+
+Positive responses also recognized as approval (no command needed):
+- `yes`, `y`, `approve`, `approved`, `lgtm`, `looks good`, `ok`, `okay`
+
+### `/workflow reject <run-id> <reason>`
+
+**Reject a paused workflow run with a reason.** The reason is captured in the workflow event log and (for approval nodes with `on_reject` configured) drives the revision loop.
+
+```
+/workflow reject abc123 "Plan scope is too broad"
+```
+
+If no `run-id` is provided, Archon picks the most recently paused run. Negative responses also recognized as rejection:
+- `no`, `n`, `reject`, `rejected`, `deny`, `denied` (case-insensitive, no reason captured)
+
+For explicit rejection with a reason, use the full `/workflow reject` form.
+
+### `/workflow cancel <run-id>`
+
+Force-cancel a running or paused workflow. Unlike `reject`, which only fires the approval/revision loop, `cancel` terminates the entire run immediately.
+
+```
+/workflow cancel abc123def456
+```
+
+Use when a workflow is clearly stuck and you don't want to wait for idle_timeout to fire.
+
+### `/register-project <path>`
+
+Register a new codebase with Archon from inside a conversation. Equivalent to the web UI's Settings → Projects → Add Project.
+
+```
+/register-project /Users/me/webdev/new-project
+```
+
+If the repo has sensitive keys in its `.env`, you'll hit the env-leak gate and need to consent via `--allow-env-keys` CLI or the UI toggle (see `archon-security-and-sandboxing` skill).
+
+### The Five Deterministic Commands
+
+Only these five `/`-prefixed commands bypass the AI router:
+
+| Command | Handler |
+|---|---|
+| `/help` | Show available commands + tips |
+| `/status` | Show conversation state (codebase, session, paused workflows) |
+| `/reset` | Deactivate current session + create new on next message |
+| `/workflow <subcommand>` | All `/workflow *` subcommands above |
+| `/register-project <path>` | Codebase registration |
+
+**Everything else is AI-routed.** A command like `/deploy` or `/test` goes to the orchestrator's AI router and is interpreted as a natural-language request. The router may or may not dispatch a workflow, depending on what it matches against workflow descriptions.
+
 ## Common Workflows
 
 ### Full PR lifecycle

@@ -260,6 +260,148 @@ Workflow executor emits events → WorkflowEventEmitter singleton
 
 `SSETransport.removeStream()` schedules cleanup after `RECONNECT_GRACE_MS = 5000ms`. If the browser reconnects within 5s (navigation, tab switch), `registerStream()` cancels the cleanup timer and persistence state is preserved.
 
+## 8. Paused Workflow State
+
+Workflows have three success states, not two. The `WorkflowExecutionResult` type from `packages/workflows/src/schemas/workflow.ts` is a discriminated union:
+
+```typescript
+type WorkflowExecutionResult =
+  | { success: true;  workflowRunId: string; summary?: string }     // completed
+  | { success: false; workflowRunId?: string; error: string }        // failed
+  | { success: true;  paused: true; workflowRunId: string };         // paused
+```
+
+### When Workflows Pause
+
+Two situations trigger `paused`:
+
+1. **An approval node is waiting** — the DAG executor sends the approval message and suspends until the user responds via `/workflow approve` or `/workflow reject`
+2. **An interactive loop node is between iterations** — `loop.interactive: true` means the workflow pauses after each iteration and waits for `/workflow approve` before the next one runs
+
+### Database State
+
+The `remote_agent_workflow_runs` table tracks status. Look for `status = 'paused'`:
+
+```sql
+SELECT id, workflow_name, status, current_step_index, started_at, last_activity_at
+FROM remote_agent_workflow_runs
+WHERE status = 'paused'
+ORDER BY started_at DESC;
+```
+
+### Resume Mechanics
+
+When `/workflow approve <run-id>` fires:
+
+1. `commandHandler.handleCommand()` intercepts the slash command deterministically (no AI router involvement)
+2. The paused run's session is fetched via `sessionDb.getActiveSession()`
+3. The DAG executor resumes the suspended node (approval or loop iteration)
+4. Downstream nodes proceed normally
+5. Status transitions: `paused` → `running` → eventually `completed` / `failed` / `cancelled`
+
+Session preservation: `assistant_session_id` on the paused node's session is kept intact across the pause, so the SDK resumes the conversation with full history. See Flow 4 for session lifecycle details.
+
+### Pause-to-Completion Timeline
+
+A workflow with approval gates can have multiple pause/resume cycles:
+
+```
+t+0s    running → (approval node fires) → paused
+t+300s  user sends /workflow approve → running
+t+320s  (interactive loop iteration 1 done) → paused
+t+600s  /workflow approve → running
+t+640s  (interactive loop iteration 2 done) → paused
+...
+t+Nh    (all iterations done) → completed
+```
+
+Each pause creates a `workflow_paused` event in `remote_agent_workflow_events`. Each resume creates a `workflow_resumed` event. Full audit trail via:
+
+```sql
+SELECT event_type, step_name, substr(data, 1, 150) as data, created_at
+FROM remote_agent_workflow_events
+WHERE workflow_run_id = '<run-id>'
+ORDER BY created_at;
+```
+
+### Idle Timeout for Paused States
+
+Paused workflows still respect `idle_timeout` (default 300000ms = 5 min). If no response lands within the idle window, the node fails with `workflow_idle_timeout`. Bump `idle_timeout` on approval/interactive-loop nodes when you expect long pauses:
+
+```yaml
+- id: overnight-approval
+  idle_timeout: 86400000               # 24 hours
+  approval:
+    message: "Approve overnight deploy?"
+```
+
+### Forcing a Paused Run to Complete Without Response
+
+If a paused workflow needs to be terminated without approval:
+
+```bash
+# In conversation:
+/workflow cancel <run-id>
+
+# Or from outside, via DB + process kill:
+sqlite3 ~/.archon/archon.db "UPDATE remote_agent_workflow_runs SET status='cancelled', completed_at=datetime('now') WHERE id='<run-id>'"
+ps -ef | grep claude-agent-sdk | grep -v grep
+kill <pid>
+```
+
+The CLI's `archon workflow status` command shows paused runs alongside running ones — use it to find orphaned paused runs.
+
+## Command Loading Failure Modes
+
+`LoadCommandResult` from `workflow.ts` is a discriminated union that fully enumerates command file load failures:
+
+```typescript
+type LoadCommandResult =
+  | { success: true; content: string }
+  | {
+      success: false;
+      reason: 'invalid_name' | 'empty_file' | 'not_found' | 'permission_denied' | 'read_error';
+      message: string;
+    };
+```
+
+Failure reasons:
+
+| `reason` | When it fires | Fix |
+|---|---|---|
+| `invalid_name` | Command name contains `/`, `\`, `..`, starts with `.`, or is empty | Pick a valid name (kebab-case, no special chars) |
+| `empty_file` | The `.md` file exists but has zero non-whitespace content | Add at least a minimal prompt body |
+| `not_found` | No matching file in any discovery path (repo → repo-defaults → bundled) | Create the file OR use a bundled name that exists |
+| `permission_denied` | File exists but OS permissions prevent read | `chmod +r .archon/commands/<name>.md` |
+| `read_error` | Unexpected I/O error (disk, corruption, etc.) | Check file integrity, server logs |
+
+Discovery order (from `loader.ts`):
+
+1. `<repo>/.archon/commands/<name>.md` — highest priority
+2. `<repo>/.archon/commands/defaults/<name>.md` — repo-level override of bundled defaults
+3. `/Users/jv/Archon/.archon/commands/defaults/<name>.md` — bundled default
+
+First match wins. A `not_found` error means all three locations were checked and none had the file.
+
+## Workflow Source Discriminator
+
+`WorkflowSource = 'bundled' | 'project'` — every loaded workflow is tagged with its source. The `WorkflowWithSource` wrapper surfaces this alongside the definition:
+
+```typescript
+interface WorkflowWithSource {
+  readonly workflow: WorkflowDefinition;
+  readonly source: WorkflowSource;
+  readonly filepath: string;        // absolute path
+}
+```
+
+Use cases:
+- **Filter the dashboard** to show only `project` workflows (hiding bundled defaults)
+- **Distinguish overrides from bundled** when inspecting the workflow list — if two entries share a name, the `project` one wins at load time
+- **Debug override failures** — if you expected your override to take effect but the bundled one is running, check `source` for each discovered workflow
+
+Query via `discoverWorkflowsWithConfig()` in `loader.ts:1013`.
+
 ## Cross-Cutting Patterns
 
 ### Lazy Logger
