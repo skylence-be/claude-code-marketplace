@@ -11,7 +11,7 @@ test('index returns posts', function () {
     Post::factory()->count(5)->create();
 
     get('/posts')
-        ->assertStatus(200)
+        ->assertSuccessful()
         ->assertViewIs('posts.index')
         ->assertViewHas('posts', fn($posts) => $posts->count() === 5);
 });
@@ -58,7 +58,7 @@ test('api returns posts', function () {
     Post::factory()->count(3)->create();
 
     get('/api/posts')
-        ->assertStatus(200)
+        ->assertSuccessful()
         ->assertJsonCount(3, 'data')
         ->assertJsonStructure([
             'data' => [
@@ -75,7 +75,7 @@ test('api creates post', function () {
         'title' => 'API Post',
         'content' => 'Created via API',
     ])
-        ->assertStatus(201)
+        ->assertCreated()
         ->assertJsonPath('data.title', 'API Post');
 });
 
@@ -84,7 +84,7 @@ test('api validates input', function () {
     Sanctum::actingAs($user);
 
     postJson('/api/posts', [])
-        ->assertStatus(422)
+        ->assertUnprocessable()
         ->assertJsonValidationErrors(['title', 'content']);
 });
 

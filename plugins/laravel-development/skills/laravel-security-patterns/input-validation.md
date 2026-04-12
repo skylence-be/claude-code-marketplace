@@ -21,13 +21,13 @@ class StorePostRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'title' => 'required|string|max:255',
-            'content' => 'required|string|max:50000',
-            'category_id' => 'required|exists:categories,id',
-            'tags' => 'array|max:10',
-            'tags.*' => 'string|max:50',
-            'published_at' => 'nullable|date|after:now',
-            'featured_image' => 'nullable|image|max:2048',
+            'title' => ['required', 'string', 'max:255'],
+            'content' => ['required', 'string', 'max:50000'],
+            'category_id' => ['required', 'exists:categories,id'],
+            'tags' => ['array', 'max:10'],
+            'tags.*' => ['string', 'max:50'],
+            'published_at' => ['nullable', 'date', 'after:now'],
+            'featured_image' => ['nullable', 'image', 'max:2048'],
         ];
     }
 
@@ -53,34 +53,34 @@ class StorePostRequest extends FormRequest
 ```php
 $rules = [
     // Strings
-    'name' => 'required|string|min:2|max:255',
-    'bio' => 'nullable|string|max:1000',
+    'name' => ['required', 'string', 'min:2', 'max:255'],
+    'bio' => ['nullable', 'string', 'max:1000'],
 
     // Email
-    'email' => 'required|email:rfc,dns|unique:users,email',
+    'email' => ['required', 'email:rfc,dns', 'unique:users,email'],
 
     // URLs
-    'website' => 'nullable|url',
+    'website' => ['nullable', 'url'],
 
     // Numeric
-    'age' => 'required|integer|min:18|max:120',
-    'price' => 'required|numeric|min:0|max:999999.99',
+    'age' => ['required', 'integer', 'min:18', 'max:120'],
+    'price' => ['required', 'numeric', 'min:0', 'max:999999.99'],
 
     // Files
-    'avatar' => 'nullable|image|mimes:jpg,png|max:2048',
-    'document' => 'nullable|file|mimes:pdf,doc,docx|max:10240',
+    'avatar' => ['nullable', 'image', 'mimes:jpg,png', 'max:2048'],
+    'document' => ['nullable', 'file', 'mimes:pdf,doc,docx', 'max:10240'],
 
     // Arrays
-    'items' => 'required|array|min:1|max:100',
-    'items.*.id' => 'required|exists:products,id',
-    'items.*.quantity' => 'required|integer|min:1',
+    'items' => ['required', 'array', 'min:1', 'max:100'],
+    'items.*.id' => ['required', 'exists:products,id'],
+    'items.*.quantity' => ['required', 'integer', 'min:1'],
 
     // Dates
-    'start_date' => 'required|date|after:today',
-    'end_date' => 'required|date|after:start_date',
+    'start_date' => ['required', 'date', 'after:today'],
+    'end_date' => ['required', 'date', 'after:start_date'],
 
     // Conditional
-    'reason' => 'required_if:action,cancel',
+    'reason' => ['required_if:action,cancel'],
 ];
 ```
 

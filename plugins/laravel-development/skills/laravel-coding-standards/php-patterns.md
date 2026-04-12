@@ -49,20 +49,19 @@ public function fail(string $message): never
 
 ```php
 // PHP 8.0+
-class UserService
+final class CreateUserAction
 {
     public function __construct(
-        private readonly UserRepository $repository,
-        private readonly CacheService $cache,
+        private readonly UserNotificationService $notifications,
         private readonly int $cacheTimeout = 3600
     ) {}
 }
 
 // With attributes
-class CreateUserAction
+final class SyncInventoryAction
 {
     public function __construct(
-        #[Autowire] private readonly UserRepository $users,
+        #[Autowire] private readonly WarehouseApiService $warehouse,
         #[Value('app.timezone')] private readonly string $timezone
     ) {}
 }
@@ -227,10 +226,10 @@ class Validate
 
 class CreateUserRequest
 {
-    #[Validate('required|email')]
+    #[Validate(['required', 'email'])]
     public string $email;
 
-    #[Validate('required|min:8')]
+    #[Validate(['required', 'min:8'])]
     public string $password;
 }
 ```

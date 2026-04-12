@@ -110,14 +110,11 @@ DB::table('users')
 ```php
 class User extends Model
 {
-    // Whitelist (recommended)
+    // Always use $fillable (allowlist) — never $guarded (blocklist)
     protected $fillable = ['name', 'email', 'bio'];
-
-    // Or blacklist
-    protected $guarded = ['id', 'role', 'is_admin', 'password'];
 }
 
-// Safe usage
+// Safe usage — fill only validated data
 $user->fill($request->only(['name', 'email', 'bio']));
 $user->fill($request->validated()); // From Form Request
 ```

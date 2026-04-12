@@ -56,15 +56,15 @@ public function calculateTotal(
 
 ```php
 /**
- * Service for processing user orders.
+ * Action for processing user orders.
  *
- * This service handles the complete order lifecycle including
+ * This action handles the complete order processing including
  * validation, payment processing, and notification dispatch.
  *
  * @see OrderController For HTTP layer handling
  * @see Order For the order model
  */
-final class OrderService
+final class ProcessOrderAction
 {
     // ...
 }
@@ -73,7 +73,7 @@ final class OrderService
 ## Property Documentation
 
 ```php
-class OrderService
+class ProcessOrderAction
 {
     /**
      * Maximum retry attempts for failed payments.
