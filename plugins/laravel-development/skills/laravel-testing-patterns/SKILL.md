@@ -331,6 +331,25 @@ arch('models never import controllers or HTTP')
     ->not->toUse('App\Http');
 ```
 
+```php
+// tests/Arch/NamingConventionsTest.php (Pest 4.5+)
+arch('all app classes follow PSR casing')
+    ->expect('App')
+    ->toBeCasedCorrectly();
+
+arch('all test classes follow PSR casing')
+    ->expect('Tests')
+    ->toBeCasedCorrectly();
+```
+
+```php
+// tests/Arch/FlakyTest.php (Pest 4.5+)
+// Mark known flaky tests (browser, external API) for auto-retry
+it('renders the dashboard after login', function (): void {
+    // browser test that occasionally times out
+})->flaky(retries: 3);
+```
+
 ## Pipeline and DDD Test Templates
 
 ### Unit Test Per Pipe
