@@ -90,13 +90,10 @@ protected $except = ['/webhook'];
 
 ### Mass Assignment
 ```php
-// Whitelist approach (recommended)
+// Always use $fillable (allowlist) — never $guarded (blocklist)
 protected $fillable = ['name', 'email', 'bio'];
 
-// Blacklist approach
-protected $guarded = ['id', 'role', 'is_admin'];
-
-// Fill only validated data
+// Fill only validated data via typed DTO
 $user->fill($request->validated());
 ```
 
@@ -134,5 +131,5 @@ $this->authorize('update', $post);
 | {!! $input !!} | Use {{ }} for user input |
 | DB::raw($input) | Use bindings or Eloquent |
 | Missing @csrf | Always include in forms |
-| $guarded = [] | Never leave guarded empty |
+| $guarded = [] | Always use $fillable, never $guarded |
 | Secrets in code | Use .env variables |

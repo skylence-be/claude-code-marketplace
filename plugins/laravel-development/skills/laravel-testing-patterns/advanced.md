@@ -119,41 +119,42 @@ test('model casts', function () {
 });
 ```
 
-## Service Testing
+## Action Testing
+
+Each test sets up its own factories and dependencies -- no shared `beforeEach` state.
 
 ```php
-beforeEach(function () {
-    $this->orderService = new OrderService();
-});
-
 test('calculates total', function () {
+    $action = app(CalculateOrderTotalAction::class);
     $order = Order::factory()->create();
     $order->items()->create([
         'product_id' => Product::factory()->create(['price' => 10])->id,
         'quantity' => 2,
     ]);
 
-    $total = $this->orderService->calculateTotal($order);
+    $total = $action->execute($order);
 
     expect($total)->toBe(20.0);
 });
 
 test('applies discount', function () {
+    $action = app(CalculateOrderTotalAction::class);
     $order = Order::factory()->create();
     $order->items()->create([
         'product_id' => Product::factory()->create(['price' => 100])->id,
         'quantity' => 1,
     ]);
 
-    $total = $this->orderService->calculateTotal($order, discountPercent: 10);
+    $total = $action->execute($order, discountPercent: 10);
 
     expect($total)->toBe(90.0);
 });
 
 test('throws for invalid order', function () {
+    $action = app(ProcessOrderAction::class);
     $order = Order::factory()->create();
 
-    expect(fn () => $this->orderService->process($order))
+    expect(fn () => $action->execute($order))
         ->toThrow(\InvalidArgumentException::class);
 });
 ```

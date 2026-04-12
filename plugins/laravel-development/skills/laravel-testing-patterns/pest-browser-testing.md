@@ -126,7 +126,7 @@ arch('no debugging')
 ## Common Pitfalls
 
 - Not importing `use function Pest\Laravel\mock;` before using mock
-- Using `assertStatus(200)` instead of `assertSuccessful()`
+- Using `assertStatus(200)` instead of `assertSuccessful()` -- always prefer semantic assertions
 - Forgetting `assertNoJavaScriptErrors()` in browser tests
 - Not using `RefreshDatabase` for clean state per test
 - Deleting tests without approval — tests are core application code

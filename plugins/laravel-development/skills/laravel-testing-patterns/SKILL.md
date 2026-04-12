@@ -27,6 +27,23 @@ Comprehensive guide to testing Laravel applications using Pest 4.
 | Advanced | [advanced.md](advanced.md) | Parallel, middleware, commands |
 | Browser Testing | [pest-browser-testing.md](pest-browser-testing.md) | Pest 4 real browser tests, smoke testing, visual regression, sharding |
 
+## Test File Naming
+
+Test files follow `{Verb}{Noun}Test.php` naming in `tests/Feature/{Domain}/`:
+
+```
+tests/
+  Feature/
+    Posts/
+      CreatePostTest.php
+      UpdatePostTest.php
+      ArchivePostTest.php
+  Unit/
+    Actions/
+      Posts/
+        CreatePostActionTest.php
+```
+
 ## Quick Start
 
 ```php
@@ -40,7 +57,7 @@ test('user can create post', function () {
 
     actingAs($user)
         ->post('/posts', ['title' => 'Test', 'content' => 'Content'])
-        ->assertStatus(302);
+        ->assertRedirect();
 
     $this->assertDatabaseHas('posts', ['title' => 'Test']);
 });
@@ -67,7 +84,7 @@ test('example', function () {
     $response = actingAs($user)->get('/dashboard');
 
     // Assert - Verify results
-    $response->assertStatus(200);
+    $response->assertSuccessful();
 });
 ```
 
@@ -75,11 +92,12 @@ test('example', function () {
 
 ### HTTP Assertions
 ```php
-$response->assertStatus(200);
-$response->assertOk();
+// Use semantic assertions — never assertStatus() with numeric codes
+$response->assertSuccessful();   // 2xx (prefer over assertStatus(200))
+$response->assertOk();           // 200
 $response->assertCreated();      // 201
 $response->assertNoContent();    // 204
-$response->assertNotFound();     // 404
+$response->assertNotFound();     // 404 (prefer over assertStatus(404))
 $response->assertForbidden();    // 403
 $response->assertUnauthorized(); // 401
 
@@ -164,3 +182,6 @@ Storage::disk('public')->assertExists('file.txt');
 | Testing implementation | Test observable behavior |
 | Over-mocking | Only mock external services |
 | No assertions | Every test must assert something |
+| assertStatus(200) | Use assertSuccessful() or assertOk() |
+| assertStatus(404) | Use assertNotFound() |
+| Shared beforeEach state | Each test sets up its own factories |

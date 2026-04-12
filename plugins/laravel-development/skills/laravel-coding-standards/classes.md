@@ -1,6 +1,6 @@
 # Class Patterns
 
-Controllers, models, services, and other class conventions.
+Controllers, models, actions, DTOs, and other class conventions.
 
 ## Controllers
 
@@ -13,20 +13,24 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StorePostRequest;
 use App\Http\Requests\UpdatePostRequest;
+use App\Actions\Posts\CreatePostAction;
+use App\Actions\Posts\UpdatePostAction;
 use App\Http\Resources\PostResource;
 use App\Models\Post;
-use App\Services\PostService;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 
 final class PostController extends Controller
 {
     public function __construct(
-        private readonly PostService $posts
+        private readonly CreatePostAction $createPostAction,
+        private readonly UpdatePostAction $updatePostAction,
     ) {}
 
     public function index(): AnonymousResourceCollection
     {
+        $this->authorize('viewAny', Post::class);
+
         return PostResource::collection(
             Post::with('author')->latest()->paginate()
         );
@@ -34,7 +38,9 @@ final class PostController extends Controller
 
     public function store(StorePostRequest $request): RedirectResponse
     {
-        $post = $this->posts->create($request->validated());
+        $this->authorize('create', Post::class);
+
+        $post = $this->createPostAction->execute($request->toData());
 
         return redirect()->route('posts.show', $post)
             ->with('success', 'Post created successfully.');
@@ -42,12 +48,16 @@ final class PostController extends Controller
 
     public function show(Post $post): PostResource
     {
+        $this->authorize('view', $post);
+
         return new PostResource($post->load('author', 'comments'));
     }
 
     public function update(UpdatePostRequest $request, Post $post): RedirectResponse
     {
-        $this->posts->update($post, $request->validated());
+        $this->authorize('update', $post);
+
+        $this->updatePostAction->execute($post, $request->toData());
 
         return redirect()->route('posts.show', $post)
             ->with('success', 'Post updated successfully.');
@@ -152,82 +162,120 @@ final class Post extends Model
 }
 ```
 
-## Services
+## Actions
+
+Actions are the business logic layer. Named `{Verb}{Noun}Action`, they live in `app/Actions/{Domain}/`. Each action has a single `execute()` method that takes a typed DTO -- never `array $data`.
 
 ```php
 <?php
 
 declare(strict_types=1);
 
-namespace App\Services;
+namespace App\Actions\Posts;
 
+use App\Data\Posts\CreatePostData;
+use App\Events\Posts\PostCreated;
 use App\Models\Post;
-use App\Repositories\PostRepository;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
 
-final class PostService
+final class CreatePostAction
 {
-    public function __construct(
-        private readonly PostRepository $repository
-    ) {}
-
-    public function create(array $data): Post
+    public function execute(CreatePostData $data): Post
     {
-        return DB::transaction(function () use ($data) {
-            $post = $this->repository->create($data);
+        return DB::transaction(function () use ($data): Post {
+            $post = Post::create([
+                'user_id' => $data->user_id,
+                'title' => $data->title,
+                'slug' => Str::slug($data->title),
+                'content' => $data->content,
+                'status' => $data->status,
+            ]);
 
-            if (isset($data['tags'])) {
-                $post->tags()->sync($data['tags']);
+            if ($data->tag_ids !== null) {
+                $post->tags()->sync($data->tag_ids);
             }
+
+            PostCreated::dispatch($post);
 
             return $post;
         });
     }
-
-    public function update(Post $post, array $data): Post
-    {
-        return DB::transaction(function () use ($post, $data) {
-            $post->update($data);
-
-            if (isset($data['tags'])) {
-                $post->tags()->sync($data['tags']);
-            }
-
-            return $post->fresh();
-        });
-    }
 }
+
+// Usage (from controller):
+// $post = $this->createPostAction->execute($request->toData());
 ```
 
-## Actions
+## DTOs
+
+DTOs (Data Transfer Objects) are named `{Verb}{Noun}Data` and live in `app/Data/{Domain}/`. They are `final readonly class` with constructor-promoted properties. They carry IDs, not Eloquent models.
 
 ```php
 <?php
 
 declare(strict_types=1);
 
-namespace App\Actions;
+namespace App\Data\Posts;
 
-use App\Models\Post;
-use App\Models\User;
-use Illuminate\Support\Str;
-
-final class CreatePost
+final readonly class CreatePostData
 {
-    public function execute(User $user, array $data): Post
+    public function __construct(
+        public int $user_id,
+        public string $title,
+        public string $content,
+        public string $status = 'draft',
+        /** @var array<int>|null */
+        public ?array $tag_ids = null,
+    ) {}
+}
+```
+
+### Form Request `toData()` Bridge
+
+Form requests map validated data to DTOs. Controllers never see raw request data.
+
+```php
+<?php
+
+declare(strict_types=1);
+
+namespace App\Http\Requests;
+
+use App\Data\Posts\CreatePostData;
+use Illuminate\Foundation\Http\FormRequest;
+
+final class StorePostRequest extends FormRequest
+{
+    public function authorize(): bool
     {
-        return $user->posts()->create([
-            'title' => $data['title'],
-            'slug' => Str::slug($data['title']),
-            'content' => $data['content'],
-            'status' => $data['status'] ?? 'draft',
-        ]);
+        return true;
+    }
+
+    public function rules(): array
+    {
+        return [
+            'title' => ['required', 'string', 'max:255'],
+            'content' => ['required', 'string', 'max:50000'],
+            'status' => ['sometimes', 'string', 'in:draft,published'],
+            'tag_ids' => ['nullable', 'array'],
+            'tag_ids.*' => ['integer', 'exists:tags,id'],
+        ];
+    }
+
+    public function toData(): CreatePostData
+    {
+        $validated = $this->validated();
+
+        return new CreatePostData(
+            user_id: $this->user()->id,
+            title: $validated['title'],
+            content: $validated['content'],
+            status: $validated['status'] ?? 'draft',
+            tag_ids: $validated['tag_ids'] ?? null,
+        );
     }
 }
-
-// Usage
-$action = app(CreatePost::class);
-$post = $action->execute($user, $validated);
 ```
 
 ## Enums

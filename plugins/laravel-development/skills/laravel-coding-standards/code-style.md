@@ -9,21 +9,16 @@ Formatting and style conventions.
 
 declare(strict_types=1);
 
-namespace App\Services;
+namespace App\Actions\Users;
 
 use App\Models\User;
-use App\Repositories\UserRepository;
 use Illuminate\Support\Collection;
 
-final class UserService
+final class ListActiveUsersAction
 {
-    public function __construct(
-        private readonly UserRepository $repository
-    ) {}
-
-    public function findActiveUsers(): Collection
+    public function execute(): Collection
     {
-        return $this->repository->getActive();
+        return User::query()->active()->get();
     }
 }
 ```

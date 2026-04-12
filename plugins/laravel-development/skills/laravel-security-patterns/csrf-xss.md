@@ -129,8 +129,8 @@ $clean = strip_tags($input, '<p><br><b><i>');
 
 // Validate and sanitize
 $request->validate([
-    'email' => 'required|email',
-    'url' => 'required|url',
-    'content' => 'required|string|max:10000',
+    'email' => ['required', 'email'],
+    'url' => ['required', 'url'],
+    'content' => ['required', 'string', 'max:10000'],
 ]);
 ```

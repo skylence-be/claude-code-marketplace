@@ -20,7 +20,7 @@ Code style and best practices for Laravel applications.
 | Pattern | File | Use Case |
 |---------|------|----------|
 | Code Style | [code-style.md](code-style.md) | Formatting, naming, structure |
-| Classes | [classes.md](classes.md) | Controllers, models, services |
+| Classes | [classes.md](classes.md) | Controllers, models, actions, DTOs |
 | PHP Patterns | [php-patterns.md](php-patterns.md) | Modern PHP 8+ features |
 | Documentation | [documentation.md](documentation.md) | Comments, docblocks |
 
@@ -62,8 +62,8 @@ app/
 │   ├── Resources/
 │   └── Middleware/
 ├── Models/
-├── Services/
-├── Actions/
+├── Actions/{Domain}/
+├── Data/{Domain}/
 ├── Enums/
 ├── Events/
 ├── Jobs/
@@ -127,12 +127,12 @@ $value = $request->input('key') ?? $default;
 class PostController extends Controller
 {
     public function __construct(
-        private readonly PostService $posts
+        private readonly CreatePostAction $createPostAction
     ) {}
 
     public function store(StorePostRequest $request): RedirectResponse
     {
-        $post = $this->posts->create($request->validated());
+        $post = $this->createPostAction->execute($request->toData());
 
         return redirect()->route('posts.show', $post)
             ->with('success', 'Post created.');
@@ -140,35 +140,30 @@ class PostController extends Controller
 }
 ```
 
-### Service Pattern
+### Action Pattern
 ```php
-final class PostService
+final class CreatePostAction
 {
-    public function __construct(
-        private readonly PostRepository $repository
-    ) {}
-
-    public function create(array $data): Post
+    public function execute(CreatePostData $data): Post
     {
-        return $this->repository->create($data);
+        return Post::create([
+            'title' => $data->title,
+            'slug' => Str::slug($data->title),
+            'content' => $data->content,
+            'status' => $data->status,
+        ]);
     }
 }
 ```
 
-### Action Pattern
+### DTO Pattern
 ```php
-final class CreatePost
+final readonly class CreatePostData
 {
     public function __construct(
-        private readonly PostRepository $repository
+        public string $title,
+        public string $content,
+        public string $status = 'draft',
     ) {}
-
-    public function execute(array $data): Post
-    {
-        return $this->repository->create([
-            ...$data,
-            'slug' => Str::slug($data['title']),
-        ]);
-    }
 }
 ```

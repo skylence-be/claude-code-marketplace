@@ -11,14 +11,11 @@ use App\Models\User;
 use App\Models\Post;
 use function Pest\Laravel\{get, post, put, delete, actingAs};
 
-// Setup for all tests in file
-beforeEach(function () {
-    $this->user = User::factory()->create();
-});
+// Each test sets up its own factories — no shared beforeEach state
 
 // Basic test
 test('homepage loads', function () {
-    get('/')->assertStatus(200);
+    get('/')->assertSuccessful();
 });
 
 // With description
@@ -26,16 +23,18 @@ it('allows users to login', function () {
     // Test code
 });
 
-// Using actingAs helper
+// Using actingAs helper — each test creates its own user
 test('authenticated user can create post', function () {
-    actingAs($this->user)
+    $user = User::factory()->create();
+
+    actingAs($user)
         ->post('/posts', ['title' => 'Test', 'content' => 'Content'])
-        ->assertStatus(302)
+        ->assertRedirect()
         ->assertSessionHas('success');
 
     $this->assertDatabaseHas('posts', [
         'title' => 'Test',
-        'user_id' => $this->user->id,
+        'user_id' => $user->id,
     ]);
 });
 ```
@@ -110,19 +109,17 @@ test('rejects invalid emails', function (string $email) {
 ## Hooks
 
 ```php
-// Before each test
-beforeEach(function () {
-    $this->user = User::factory()->create();
-});
+// Avoid shared beforeEach state — each test should set up its own factories.
+// Use beforeEach only for non-data setup (e.g., configuration, fakes).
 
 // After each test
 afterEach(function () {
-    // Cleanup
+    // Cleanup if needed
 });
 
 // Before all tests in file
 beforeAll(function () {
-    // One-time setup
+    // One-time setup (non-data)
 });
 
 // After all tests

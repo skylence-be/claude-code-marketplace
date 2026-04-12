@@ -59,7 +59,7 @@ test('authenticated user can access dashboard', function () {
 
     actingAs($user)
         ->get('/dashboard')
-        ->assertStatus(200);
+        ->assertSuccessful();
 });
 
 test('authenticated user redirected from login', function () {
@@ -87,7 +87,7 @@ test('verified user can access', function () {
 
     actingAs($user)
         ->get('/dashboard')
-        ->assertStatus(200);
+        ->assertSuccessful();
 });
 ```
 
@@ -110,7 +110,7 @@ test('user cannot update others post', function () {
 
     actingAs($user2)
         ->put("/posts/{$post->id}", ['title' => 'Hacked'])
-        ->assertStatus(403);
+        ->assertForbidden();
 });
 
 test('admin can update any post', function () {
@@ -130,7 +130,7 @@ use Laravel\Sanctum\Sanctum;
 
 test('api requires authentication', function () {
     getJson('/api/posts')
-        ->assertStatus(401);
+        ->assertUnauthorized();
 });
 
 test('api with token', function () {
@@ -138,7 +138,7 @@ test('api with token', function () {
     Sanctum::actingAs($user);
 
     getJson('/api/posts')
-        ->assertStatus(200);
+        ->assertSuccessful();
 });
 
 test('api with specific abilities', function () {
