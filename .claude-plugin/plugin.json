@@ -1,7 +1,7 @@
 {
     "name": "skylence-claude-code-laravel-livewire4",
-    "version": "1.5.0",
-    "description": "Full-stack development marketplace with 50+ specialized AI agents across 14 plugins (Laravel, Livewire, Filament, Vue/Nuxt, Angular, Magento2, WordPress, Electron, Flutter, NativePHP, Git worktree, Pro-Workflow, Code Review, Archon Workflows), 90+ slash commands, 16 Laravel skills aligned with action-driven architecture",
+    "version": "1.6.0",
+    "description": "Full-stack development marketplace with 50+ specialized AI agents across 15 plugins (Laravel, Livewire, Filament, Vue/Nuxt, Angular, Magento2, WordPress, Electron, Flutter, NativePHP, Go, Git worktree, Pro-Workflow, Code Review, Archon Workflows), 90+ slash commands, 16 Laravel skills aligned with action-driven architecture",
     "author": {
         "name": "Skylence"
     },
@@ -77,7 +77,10 @@
         "./plugins/angular-development/commands/angular/store-new.md",
         "./plugins/angular-development/commands/misc/code-cleanup.md",
         "./plugins/angular-development/commands/misc/code-optimize.md",
-        "./plugins/angular-development/commands/misc/feature-plan.md"
+        "./plugins/angular-development/commands/misc/feature-plan.md",
+        "./plugins/golang-development/commands/go-project-new.md",
+        "./plugins/golang-development/commands/go-test-new.md",
+        "./plugins/golang-development/commands/go-lint-setup.md"
     ],
     "agents": [
         "./plugins/laravel-development/agents/laravel-architect.md",
@@ -124,7 +127,9 @@
         "./plugins/angular-development/agents/testing-specialist.md",
         "./plugins/angular-development/agents/security-engineer.md",
         "./plugins/angular-development/agents/performance-expert.md",
-        "./plugins/angular-development/agents/ssr-specialist.md"
+        "./plugins/angular-development/agents/ssr-specialist.md",
+        "./plugins/golang-development/agents/go-expert.md",
+        "./plugins/golang-development/agents/go-reviewer.md"
     ],
     "mcpServers": {
         "context7": {

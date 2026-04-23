@@ -1,6 +1,6 @@
 # Multi-Framework Development Marketplace
 
-Professional development toolkit with **13 specialized plugins** featuring **50 AI agents**, **90+ slash commands**, a **self-reflection scoring code review pipeline**, **post-compaction context recovery**, and a **self-correcting workflow system** for Laravel, Livewire, Filament, Vue/Nuxt, Angular, Magento 2, WordPress, Electron, Flutter, NativePHP, Git worktree management, Code Review, and Pro-Workflow.
+Professional development toolkit with **15 specialized plugins** featuring **52 AI agents**, **93+ slash commands**, a **self-reflection scoring code review pipeline**, **post-compaction context recovery**, and a **self-correcting workflow system** for Laravel, Livewire, Filament, Vue/Nuxt, Angular, Go, Magento 2, WordPress, Electron, Flutter, NativePHP, Git worktree management, Code Review, Archon Workflows, and Pro-Workflow.
 
 ## Available Plugins
 
@@ -22,8 +22,11 @@ Install only what you need — each plugin is completely isolated with its own a
 - **flutter-development** - 2 agents, 2 commands (Flutter 3.38+ with Riverpod)
 - **nativephp-development** - 3 agents, 4 commands, 3 skills (NativePHP desktop & mobile with Laravel)
 
+### Backend Go
+- **golang-development** - 2 agents, 3 commands, 7 skills (idiomatic Go, error handling, concurrency, testing, project structure, interface design, performance)
+
 ### Code Quality
-- **code-review** - 1 agent, 2 commands, 4 skills, 12 technology contexts (self-reflection scoring, team review)
+- **code-review** - 1 agent, 2 commands, 4 skills, 13 technology contexts (self-reflection scoring, team review, includes Go rules)
 
 ### DevOps & Workflow
 - **git-worktree-management** - 1 agent, 5 commands (parallel development workflows)
@@ -46,6 +49,7 @@ Install only what you need — each plugin is completely isolated with its own a
 /plugin install electron-development
 /plugin install flutter-development
 /plugin install nativephp-development
+/plugin install golang-development
 /plugin install git-worktree-management
 /plugin install code-review
 /plugin install pro-workflow

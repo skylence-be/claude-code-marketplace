@@ -5,7 +5,7 @@
         "contact": "github.com/skylence"
     },
     "metadata": {
-        "description": "Professional full-stack development marketplace featuring 50+ specialized AI agents across 14 plugins (Laravel, Livewire, Filament, Vue/Nuxt, Angular, Magento2, WordPress, Electron, Flutter, NativePHP, Git worktree, Pro-Workflow, Code Review, Archon Workflows), 90+ slash commands, self-reflection scoring code review pipeline, Python hook system with edit tracking, quality gates, learning capture, drift detection, and session management, and custom status lines for building modern web, mobile, and desktop applications"
+        "description": "Professional full-stack development marketplace featuring 50+ specialized AI agents across 15 plugins (Laravel, Livewire, Filament, Vue/Nuxt, Angular, Magento2, WordPress, Electron, Flutter, NativePHP, Go, Git worktree, Pro-Workflow, Code Review, Archon Workflows), 90+ slash commands, self-reflection scoring code review pipeline, Python hook system with edit tracking, quality gates, learning capture, drift detection, and session management, and custom status lines for building modern web, mobile, and desktop applications"
     },
     "plugins": [
         {
@@ -219,7 +219,7 @@
         {
             "name": "code-review",
             "source": "./plugins/code-review",
-            "description": "Advanced code review with self-reflection scoring pipeline (generate findings, score confidence 1-10, filter by threshold). Features 1 specialized agent, 2 slash commands (code-review, team-review), 4 skill patterns, and 12 technology-specific rule contexts. Team review spawns parallel reviewers (security, performance, correctness) using agent teams for multi-perspective analysis. Supports 4 review modes with auto-detection of technology stack",
+            "description": "Advanced code review with self-reflection scoring pipeline (generate findings, score confidence 1-10, filter by threshold). Features 1 specialized agent, 2 slash commands (code-review, team-review), 4 skill patterns, and 13 technology-specific rule contexts. Team review spawns parallel reviewers (security, performance, correctness) using agent teams for multi-perspective analysis. Supports 4 review modes with auto-detection of technology stack",
             "version": "1.2.0",
             "author": {
                 "name": "Skylence"
@@ -250,6 +250,28 @@
                 "corrections",
                 "drift-detection",
                 "session-management"
+            ]
+        },
+        {
+            "name": "golang-development",
+            "source": "./plugins/golang-development",
+            "description": "Go (Golang) development with 2 specialized agents (go-expert, go-reviewer), 3 slash commands (go-project-new, go-test-new, go-lint-setup), and 7 skills covering coding standards, error handling, testing patterns, concurrency, project structure, interface design, and performance optimization",
+            "version": "1.0.0",
+            "author": {
+                "name": "Skylence"
+            },
+            "tags": [
+                "go",
+                "golang",
+                "backend",
+                "concurrency",
+                "goroutines",
+                "channels",
+                "testing",
+                "performance",
+                "modules",
+                "cli",
+                "microservices"
             ]
         },
         {
