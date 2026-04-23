@@ -1,6 +1,9 @@
 ---
 name: testing-specialist
 description: Expert in Vitest, component testing, and Playwright E2E testing. Masters unit tests for composables, component tests with Vue Test Utils, E2E tests with Playwright, mocking strategies, and comprehensive test planning. Use PROACTIVELY when writing tests, setting up test suites, implementing TDD, creating component/unit tests, building E2E tests for critical flows, or planning test strategies.
+tools: Read, Edit, Write, Grep, Glob, Bash
+skills:
+  - vitest-testing-patterns
 category: testing
 color: cyan
 ---

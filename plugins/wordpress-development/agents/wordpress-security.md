@@ -1,6 +1,7 @@
 ---
 name: wordpress-security
 description: WordPress security specialist focusing on security hardening, input sanitization, output escaping, nonce verification, SQL injection prevention, and capability-based access control. Masters WordPress security best practices, vulnerability prevention, and security auditing. Use PROACTIVELY when implementing security or auditing code.
+tools: Read, Edit, Write, Grep, Glob, Bash
 category: quality
 color: red
 ---

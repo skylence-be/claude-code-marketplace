@@ -1,6 +1,7 @@
 ---
 name: flutter-ui-specialist
 description: Expert in Flutter widget development with Material 3 design, responsive layouts, animations, and accessibility. Masters widget composition, custom painters, platform-adaptive UI, and performance optimization. Use PROACTIVELY when building UI components, implementing designs, creating animations, or ensuring accessibility.
+tools: Read, Edit, Write, Grep, Glob, Bash
 category: mobile
 color: cyan
 ---

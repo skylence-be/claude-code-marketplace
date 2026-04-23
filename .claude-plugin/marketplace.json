@@ -12,7 +12,7 @@
             "name": "laravel-development",
             "source": "./plugins/laravel-development",
             "description": "Core Laravel development with 9 specialized agents, 18 slash commands, 16 skills (including action-driven-design, pipeline-patterns, ddd-bounded-contexts, Tailwind v3/v4, Pennant, Folio, Wayfinder, PHP 8.5, Pest 4). All skills aligned with action-driven architecture conventions.",
-            "version": "1.4.0",
+            "version": "1.5.0",
             "author": {
                 "name": "Skylence"
             },
@@ -35,7 +35,7 @@
             "name": "livewire-development",
             "source": "./plugins/livewire-development",
             "description": "Livewire 4 reactive components with single-file components, islands architecture, 2 specialized agents (Livewire specialist, Blaze specialist) and 5 slash commands. Includes Volt single-file component skill, Blaze skill with 4 pattern files, and v4 features: SFC/MFC formats, Route::livewire(), wire:sort, wire:intersect, #[Defer], #[Async], and slots support",
-            "version": "1.3.0",
+            "version": "1.4.0",
             "author": {
                 "name": "Skylence"
             },
@@ -56,7 +56,7 @@
             "name": "filament-development",
             "source": "./plugins/filament-development",
             "description": "Filament 5 admin panels with Blueprint AI planning, specialized agent and 11 slash commands for resources, pages, widgets, themes, panels, clusters, importers, exporters, and custom fields. Includes Blueprint planning format for creating detailed implementation specifications",
-            "version": "1.1.0",
+            "version": "1.2.0",
             "author": {
                 "name": "Skylence"
             },
@@ -74,7 +74,7 @@
             "name": "vue-nuxt-development",
             "source": "./plugins/vue-nuxt-development",
             "description": "Vue 3 + Nuxt 4 + TypeScript development with 8 specialized agents (Vue/Nuxt architecture, TypeScript, state management, testing, security, UX, performance) and 8 slash commands. Includes Inertia.js v2 patterns skill (deferred props, WhenVisible infinite scroll, usePoll, prefetching, useForm)",
-            "version": "1.1.0",
+            "version": "1.2.0",
             "author": {
                 "name": "Skylence"
             },
@@ -92,7 +92,7 @@
             "name": "magento2-development",
             "source": "./plugins/magento2-development",
             "description": "Magento 2 / Adobe Commerce development with 4 specialized agents (Magento architecture, e-commerce specialist, performance, security) and 4 slash commands for modules, models, controllers, and plugins",
-            "version": "1.0.0",
+            "version": "1.1.0",
             "author": {
                 "name": "Skylence"
             },
@@ -109,7 +109,7 @@
             "name": "wordpress-development",
             "source": "./plugins/wordpress-development",
             "description": "WordPress 6.0+ development with 6 specialized agents (WordPress architecture, theme/plugin specialists, Gutenberg expert, WooCommerce specialist, security) and 11 slash commands for themes, plugins, blocks, post types, taxonomies, widgets, REST API, and shortcodes",
-            "version": "1.0.0",
+            "version": "1.1.0",
             "author": {
                 "name": "Skylence"
             },
@@ -128,7 +128,7 @@
             "name": "git-worktree-management",
             "source": "./plugins/git-worktree-management",
             "description": "Git worktree management with 1 specialized agent and 5 slash commands for creating, managing, and optimizing multi-worktree development workflows. Includes environment isolation, database duplication, and Laravel-specific setup patterns",
-            "version": "1.0.0",
+            "version": "1.1.0",
             "author": {
                 "name": "Skylence"
             },
@@ -145,7 +145,7 @@
             "name": "electron-development",
             "source": "./plugins/electron-development",
             "description": "Electron desktop application development with 2 specialized agents (Electron architect, React/TypeScript specialist) and 2 slash commands. Covers secure IPC patterns, system tray apps, React/TypeScript components, Radix UI, Tailwind CSS, and Electron Forge builds",
-            "version": "1.0.0",
+            "version": "1.1.0",
             "author": {
                 "name": "Skylence"
             },
@@ -163,7 +163,7 @@
             "name": "flutter-development",
             "source": "./plugins/flutter-development",
             "description": "Flutter 3.38+ mobile/desktop development with 2 specialized agents (Flutter architect, UI specialist) and 2 slash commands for feature modules and widgets. Covers clean architecture with feature modules, Riverpod 2.6+ state management with code generation, Material 3 theming, GoRouter navigation, and responsive/accessible UI patterns",
-            "version": "1.0.0",
+            "version": "1.1.0",
             "author": {
                 "name": "Skylence"
             },
@@ -181,7 +181,7 @@
             "name": "nativephp-development",
             "source": "./plugins/nativephp-development",
             "description": "NativePHP desktop and mobile app development with 3 specialized agents (NativePHP architect, desktop expert, mobile expert), 4 slash commands for windows, menus, native providers, and mobile plugins, and 3 skill patterns for desktop, mobile, and testing. Covers NativeAppServiceProvider, window management, menu systems, event broadcasting, mobile bridge functions, and cross-platform deployment",
-            "version": "1.0.0",
+            "version": "1.1.0",
             "author": {
                 "name": "Skylence"
             },
@@ -201,7 +201,7 @@
             "name": "angular-development",
             "source": "./plugins/angular-development",
             "description": "Angular 21+ development with 8 specialized agents (Angular architect, TypeScript expert, RxJS specialist, state management, testing, security, performance, SSR), 12 slash commands for components, services, guards, interceptors, pipes, directives, routes, and stores, and 8 skill patterns covering signals, DI, testing, SSR/hydration, routing, RxJS, performance optimization, and Blueprint planning",
-            "version": "1.0.0",
+            "version": "1.1.0",
             "author": {
                 "name": "Skylence"
             },
@@ -220,7 +220,7 @@
             "name": "code-review",
             "source": "./plugins/code-review",
             "description": "Advanced code review with self-reflection scoring pipeline (generate findings, score confidence 1-10, filter by threshold). Features 1 specialized agent, 2 slash commands (code-review, team-review), 4 skill patterns, and 12 technology-specific rule contexts. Team review spawns parallel reviewers (security, performance, correctness) using agent teams for multi-perspective analysis. Supports 4 review modes with auto-detection of technology stack",
-            "version": "1.1.0",
+            "version": "1.2.0",
             "author": {
                 "name": "Skylence"
             },
@@ -238,7 +238,7 @@
             "name": "pro-workflow",
             "source": "./plugins/pro-workflow",
             "description": "Self-correcting workflow system with 2 specialized agents (planner, scout), 5 slash commands (wrap-up, learn-rule, commit, handoff, learn), 2 context modes (dev, research), and core rules. Features persistent learning capture, edit tracking with quality gate reminders, correction detection, drift detection, post-edit scanning, post-compaction context recovery (saves and re-injects session state after context compaction), and session handoff generation. Review capabilities in dedicated code-review plugin",
-            "version": "1.1.0",
+            "version": "1.2.0",
             "author": {
                 "name": "Rohit Ghumare",
                 "url": "https://github.com/rohitg00"
@@ -256,7 +256,7 @@
             "name": "archon-workflows",
             "source": "./plugins/archon-workflows",
             "description": "Total Archon AI workflow engine expertise (coleam00/Archon v0.3.5). One specialized agent (archon-workflow-author) and 15 comprehensive skills covering every layer of the platform: (1) DAG workflow authoring across all 3 execution modes and 7 node types with every base field documented, (2) CLI reference for all 15 commands, (3) all 20 bundled archon-* workflows, (4) all 36 bundled archon-* command prompts, (5) GitHub adapter patterns, (6) PR review patterns including true inline review comments and review\u2192fix\u2192re-review loops, (7) worktree isolation (7-step resolution, port allocation, cleanup, duplicate codebase dedup), (8) architecture deep-dive (message flow, workflow execution internals, session lifecycle, IDatabase abstraction, 4-layer config merge, SSE streaming) with file:line pointers, (9) adapter implementation (IPlatformAdapter, lazy logger, constructor-whitelist auth, per-platform details), (10) script node patterns (TypeScript via bun, Python via uv, deps, inline vs file-based), (11) per-node hooks system (all 21 event types), (12) per-node MCP integration (path, wildcards, env var substitution, Haiku warnings), (13) approval and cancel nodes (human-in-the-loop gates, on_reject retry loops, CancelWorkflowError propagation, per-adapter UX), (14) Codex provider specifics (modelReasoningEffort, webSearchMode, additionalDirectories, codex vs claude tradeoffs), (15) three-layer security (env-leak gate with allow_env_keys consent, SUBPROCESS_ENV_ALLOWLIST, SandboxSettings filesystem/network restrictions). Captures early-adopter knowledge from the v0.3 rewrite that the public docs don't yet cover.",
-            "version": "1.2.1",
+            "version": "1.3.0",
             "author": {
                 "name": "Skylence"
             },

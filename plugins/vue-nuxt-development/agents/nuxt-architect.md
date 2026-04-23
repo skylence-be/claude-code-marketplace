@@ -1,6 +1,10 @@
 ---
 name: nuxt-architect
 description: Expert in Nuxt 4 SSR, routing, server routes, modules, and deployment. Masters SSR/SSG/hybrid rendering, file-based routing, data fetching (useFetch/useAsyncData), middleware, server routes, and deployment strategies. Use PROACTIVELY when designing Nuxt applications, implementing SSR/SSG, configuring routing, planning data fetching strategies, or setting up deployment.
+tools: Read, Edit, Write, Grep, Glob, Bash
+skills:
+  - vue-nuxt-blueprint
+  - nuxt4-ssr-optimization
 category: frontend
 color: blue
 ---

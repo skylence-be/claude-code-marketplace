@@ -1,6 +1,7 @@
 ---
 name: react-typescript-specialist
 description: Expert in React 18+ with TypeScript for Electron renderer processes. Masters functional components, hooks, context, Radix UI primitives, Tailwind CSS styling, and type-safe patterns. Use PROACTIVELY when building React components, implementing state management, or creating UI with TypeScript in Electron apps.
+tools: Read, Edit, Write, Grep, Glob, Bash
 category: frontend
 color: cyan
 ---

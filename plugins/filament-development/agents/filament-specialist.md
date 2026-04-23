@@ -1,6 +1,10 @@
 ---
 name: filament-specialist
 description: Expert in Filament 5 admin panels, multi-panel apps, Blueprint planning, and data management. Masters resources, form builders, table builders, filters, actions, widgets, multi-panel applications, Blueprint AI planning format, and role-based authorization. Use PROACTIVELY when building admin panels, planning Filament implementations with Blueprint, creating resources, designing forms and tables, implementing multi-panel apps, or configuring access control with policies.
+tools: Read, Edit, Write, Grep, Glob, Bash
+skills:
+  - filament-blueprint
+  - filament-resource-patterns
 category: admin
 color: orange
 ---

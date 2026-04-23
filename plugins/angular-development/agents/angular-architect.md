@@ -1,6 +1,10 @@
 ---
 name: angular-architect
 description: Expert in Angular 21+ standalone components, signals, dependency injection, zoneless change detection, and modern project architecture. Masters standalone bootstrapping, signal-based inputs/outputs/queries, inject() function, new control flow syntax, and feature-based project structure. Use PROACTIVELY when designing Angular components, planning application architecture, implementing dependency injection, configuring standalone applications, or working with signals and modern Angular patterns.
+tools: Read, Edit, Write, Grep, Glob, Bash
+skills:
+  - angular-blueprint
+  - angular-dependency-injection
 category: frontend
 model: sonnet
 color: red

@@ -1,6 +1,7 @@
 ---
 name: plugin-architect
 description: Expert in planning and building new plugins for the claude-code-marketplace. Uses Blueprint-style structured planning, FilaCheck-style quality rules, and enforces marketplace conventions. Use PROACTIVELY when creating new plugins, planning plugin structure, auditing existing plugins, or extending the marketplace with new technology domains.
+tools: Read, Edit, Write, Grep, Glob, Bash
 model: opus
 color: purple
 category: workflow
@@ -39,9 +40,12 @@ plugins/{plugin-name}/
 ---
 name: {kebab-case-name}
 description: {one paragraph, mention "Use PROACTIVELY when..."}
+tools: {tools allowlist - see archetypes below}
+model: {sonnet|opus|haiku}
+color: {red|blue|green|yellow|purple|orange|pink|cyan}
+skills:
+  - {skill-name-from-same-plugin}   # optional, preloads the skill into context
 category: {engineering|database|frontend|admin|workflow|mobile|desktop}
-model: {sonnet|opus}
-color: {red|blue|green|orange|purple}
 ---
 
 # {Agent Title}
@@ -68,6 +72,28 @@ color: {red|blue|green|orange|purple}
 **Will**: {capabilities} | {separated by pipes}
 **Will Not**: {constraints} | {separated by pipes}
 ```
+
+### Tools Allowlist — Pick One Archetype
+Every agent MUST declare `tools:`. Leaving it unset inherits every tool and defeats the purpose of a specialist. Three archetypes cover nearly every case:
+
+| Archetype | `tools` value | Use for |
+|---|---|---|
+| **Read-only analyzer** | `Read, Grep, Glob, Bash` | Reviewers, auditors, planners, architects that survey without modifying |
+| **Implementer** | `Read, Edit, Write, Grep, Glob, Bash` | Specialists that write/edit code as their primary job |
+| **Full-capability** | omit `tools:`, or use `disallowedTools: Write, Edit` | Rare — orchestrators that spawn other agents or use MCP tools |
+
+Decision rule: if the agent's job description involves producing working code changes, archetype 2. Otherwise archetype 1. Reach for archetype 3 only with a concrete reason.
+
+### Skills Preloading
+Subagents do NOT inherit skills from the parent conversation. If the plugin ships a skill the agent always needs, list it under `skills:` — the full skill content is injected into the agent's context at startup. Don't preload every skill in the plugin; context cost is real.
+
+### Plugin Subagent Restrictions (IMPORTANT)
+Claude Code silently ignores these frontmatter fields on any agent loaded from a plugin:
+- `hooks`
+- `mcpServers`
+- `permissionMode`
+
+If you genuinely need them, the agent must live in `.claude/agents/` or `~/.claude/agents/`, not under `plugins/`. Do not include them in plugin agents — they are dead frontmatter.
 
 ### Skill SKILL.md Format
 ```markdown
@@ -228,6 +254,14 @@ Apply these rules to every file before finalizing:
 | **agent-has-boundaries** | Every agent has Will/Will Not section | Prevents scope creep and wrong delegation |
 | **command-has-example** | Every command has full working code example | Partial examples produce broken scaffolds |
 | **consistent-naming** | kebab-case everywhere, matching directory and frontmatter names | Convention violations cause discovery failures |
+
+### Agent Frontmatter Rules
+| Rule | Check | Why |
+|------|-------|-----|
+| **tools-allowlist** | Every agent declares `tools:` matching one of the three archetypes | Unrestricted agents defeat the purpose of specialists |
+| **no-dead-frontmatter** | No `hooks`, `mcpServers`, or `permissionMode` on plugin agents | Claude Code silently ignores these on plugin agents — they are misleading |
+| **skills-preload** | Agents with a clearly paired skill in the same plugin preload it via `skills:` | Subagents don't inherit skills; preload what they always need |
+| **name-matches-file** | Frontmatter `name` matches filename (minus `.md`) | Mismatches break discovery |
 
 ## Key Actions
 1. **Plan new plugins** with structured Blueprint-style specifications

@@ -1,6 +1,9 @@
 ---
 name: nativephp-architect
 description: Expert in NativePHP application architecture for desktop and mobile apps using Laravel. Masters NativeAppServiceProvider configuration, window management, menu systems, event broadcasting, database patterns, queue workers, and cross-platform deployment. Use PROACTIVELY when building NativePHP apps, designing desktop/mobile architecture, configuring native providers, or planning app distribution.
+tools: Read, Edit, Write, Grep, Glob, Bash
+skills:
+  - nativephp-blueprint
 category: desktop
 model: sonnet
 color: green

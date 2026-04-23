@@ -1,6 +1,9 @@
 ---
 name: eloquent-expert
 description: Expert in Laravel Eloquent ORM, relationships, query optimization, and database patterns. Masters model relationships, eager loading, query scopes, and N+1 prevention. Use PROACTIVELY when designing database schemas, implementing relationships, optimizing queries, fixing N+1 problems, or working with Eloquent models.
+tools: Read, Edit, Write, Grep, Glob, Bash
+skills:
+  - eloquent-relationships
 category: database
 color: blue
 ---

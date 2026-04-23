@@ -1,6 +1,9 @@
 ---
 name: state-management
 description: Expert in Pinia stores, composables, state patterns, and persistence. Masters Pinia setup/options API, global vs local state decisions, composable-based state sharing, SSR-safe state with useState, and state persistence strategies. Use PROACTIVELY when designing state management, creating Pinia stores, implementing composable-based state, planning state architecture, or handling SSR state hydration.
+tools: Read, Edit, Write, Grep, Glob, Bash
+skills:
+  - pinia-state-patterns
 category: architecture
 color: green
 ---

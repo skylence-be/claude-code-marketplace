@@ -1,6 +1,9 @@
 ---
 name: ssr-specialist
 description: Expert in Angular SSR with @angular/ssr, incremental hydration, route-level render modes, and HTTP transfer cache. Masters server-side rendering setup, client hydration with provideClientHydration, incremental hydration with @defer triggers, RenderMode configuration (Prerender/Server/Client), event replay, PendingTasks for async SSR, and deployment strategies. Use PROACTIVELY when setting up SSR, configuring hydration, choosing render modes per route, optimizing SSR performance, or handling browser-only API compatibility.
+tools: Read, Edit, Write, Grep, Glob, Bash
+skills:
+  - angular-ssr-hydration
 category: frontend
 model: sonnet
 color: blue

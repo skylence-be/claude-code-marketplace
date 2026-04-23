@@ -1,6 +1,9 @@
 ---
 name: testing-expert
 description: Expert in Laravel testing with Pest 4, TDD practices, and comprehensive test strategies. Masters test architecture, Pest syntax, browser testing with Dusk, and CI/CD integration. Use PROACTIVELY when writing tests, implementing TDD/BDD, setting up test suites, creating feature/unit tests, or debugging test failures.
+tools: Read, Edit, Write, Grep, Glob, Bash
+skills:
+  - laravel-testing-patterns
 category: testing
 color: cyan
 ---

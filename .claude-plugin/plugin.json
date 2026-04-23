@@ -1,6 +1,6 @@
 {
     "name": "skylence-claude-code-laravel-livewire4",
-    "version": "1.4.0",
+    "version": "1.5.0",
     "description": "Full-stack development marketplace with 50+ specialized AI agents across 14 plugins (Laravel, Livewire, Filament, Vue/Nuxt, Angular, Magento2, WordPress, Electron, Flutter, NativePHP, Git worktree, Pro-Workflow, Code Review, Archon Workflows), 90+ slash commands, 16 Laravel skills aligned with action-driven architecture",
     "author": {
         "name": "Skylence"

@@ -1,6 +1,10 @@
 ---
 name: electron-architect
 description: Expert in Electron desktop application architecture with React, TypeScript, and modern tooling. Masters main/renderer process separation, IPC communication, system tray apps, auto-updates, security best practices, and Electron Forge builds. Use PROACTIVELY when building desktop apps, implementing IPC patterns, creating system tray applications, or configuring Electron builds.
+tools: Read, Edit, Write, Grep, Glob, Bash
+skills:
+  - electron-blueprint
+  - electron-ipc-patterns
 category: desktop
 color: blue
 ---

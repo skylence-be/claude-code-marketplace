@@ -1,6 +1,10 @@
 ---
 name: livewire-specialist
 description: Expert in Livewire 4 reactive components and real-time interactions. Masters single-file components, islands architecture, #[Reactive], #[Computed], #[Locked], #[Defer], #[Async] attributes, wire directives, form objects, real-time validation, event dispatching, and component lifecycle. Use PROACTIVELY when building reactive components, implementing real-time validation, creating Livewire forms, working with wire:model bindings, or developing event-driven Livewire components.
+tools: Read, Edit, Write, Grep, Glob, Bash
+skills:
+  - livewire-blueprint
+  - livewire4-reactive-patterns
 category: frontend
 color: purple
 ---

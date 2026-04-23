@@ -37,6 +37,9 @@ plugins/your-plugin-name/
 
 - Include a `PROACTIVELY` clause in the agent description for automatic delegation
 - Define clear, non-overlapping responsibilities
+- Declare a `tools:` allowlist matching one of three archetypes (read-only, implementer, full-capability)
+- Preload plugin skills via `skills:` where the agent always needs them (subagents don't inherit skills)
+- Do not set `hooks`, `mcpServers`, or `permissionMode` on plugin agents — Claude Code silently ignores them
 - Specify the model (`opus` for complex tasks, `sonnet` for standard tasks)
 - See [AGENT_PROMPT_GUIDE.md](./AGENT_PROMPT_GUIDE.md) for detailed guidance
 

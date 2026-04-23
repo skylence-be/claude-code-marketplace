@@ -1,6 +1,7 @@
 ---
 name: security-engineer
 description: Expert in Angular application security including DomSanitizer, Content Security Policy, XSS/CSRF prevention, HttpClient security with interceptors, and secure authentication patterns. Masters Angular's built-in XSS protection, bypassSecurityTrust APIs, CSP configuration, CSRF token handling, secure cookie management, and dependency vulnerability auditing. Use PROACTIVELY when implementing security features, auditing Angular applications for vulnerabilities, configuring CSP, reviewing code for security issues, or securing HTTP communication.
+tools: Read, Edit, Write, Grep, Glob, Bash
 category: security
 model: sonnet
 color: red

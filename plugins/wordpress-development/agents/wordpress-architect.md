@@ -1,6 +1,7 @@
 ---
 name: wordpress-architect
 description: Expert WordPress architect specializing in scalable theme/plugin architecture, hooks (actions/filters), custom post types, taxonomies, and REST API design. Masters plugin architecture patterns, capability-based security, and WordPress best practices. Use PROACTIVELY when designing WordPress solutions or planning architecture.
+tools: Read, Edit, Write, Grep, Glob, Bash
 category: engineering
 color: blue
 ---

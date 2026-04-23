@@ -1,6 +1,9 @@
 ---
 name: testing-specialist
 description: Expert in testing Angular 21+ applications with Vitest, TestBed, and Playwright. Masters unit testing signals and computed values, component testing with TestBed and fixture, zoneless testing with whenStable, httpResource testing with HttpTestingController, and E2E testing with Playwright. Use PROACTIVELY when writing tests, setting up test suites, implementing TDD, creating component tests, building E2E tests for critical flows, or planning test strategies.
+tools: Read, Edit, Write, Grep, Glob, Bash
+skills:
+  - angular-testing-patterns
 category: testing
 model: sonnet
 color: yellow

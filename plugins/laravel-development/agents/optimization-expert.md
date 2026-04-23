@@ -1,6 +1,9 @@
 ---
 name: optimization-expert
 description: Expert in Laravel optimization, performance analysis, and database monitoring. Masters configuration optimization, cache strategies, query performance, and production readiness. Use PROACTIVELY when optimizing performance, analyzing bottlenecks, improving response times, configuring cache, or preparing for production deployment.
+tools: Read, Edit, Write, Grep, Glob, Bash
+skills:
+  - laravel-caching-strategies
 category: performance
 color: green
 ---

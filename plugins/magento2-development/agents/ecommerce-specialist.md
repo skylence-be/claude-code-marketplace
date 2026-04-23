@@ -1,6 +1,7 @@
 ---
 name: ecommerce-specialist
 description: Expert in ecommerce catalog, checkout, payments, shipping, and promotions. Masters product catalog customization, checkout flow modifications, payment gateway integration, shipping methods, order processing, and promotional rules. Use PROACTIVELY when customizing product catalogs, implementing checkout modifications, integrating payment gateways, configuring shipping methods, or managing order workflows.
+tools: Read, Edit, Write, Grep, Glob, Bash
 category: business-logic
 color: green
 ---

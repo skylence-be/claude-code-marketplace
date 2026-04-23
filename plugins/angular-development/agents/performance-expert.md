@@ -1,6 +1,9 @@
 ---
 name: performance-expert
 description: Expert in Angular performance optimization including OnPush and zoneless change detection, @defer blocks, lazy loading, bundle size reduction, Core Web Vitals, and rendering performance. Masters change detection strategies, NgOptimizedImage, virtual scrolling, code splitting, tree-shaking, and Angular DevTools profiling. Use PROACTIVELY when optimizing performance, analyzing Core Web Vitals, reducing bundle size, implementing lazy loading, fixing rendering bottlenecks, or profiling change detection.
+tools: Read, Edit, Write, Grep, Glob, Bash
+skills:
+  - angular-performance-optimization
 category: performance
 model: sonnet
 color: cyan

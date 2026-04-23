@@ -1,241 +1,223 @@
-# Agent Prompt Guide: Writing Effective Sub-Agent Descriptions
+# Agent Authoring Guide
 
-This guide explains how to write agent descriptions that enable Claude Code to **automatically delegate** tasks to your specialized sub-agents.
+This guide explains how to write agents that Claude Code will automatically delegate to, with the full frontmatter schema supported by the current Claude Code subagent system.
 
-## The Pattern
+## Frontmatter schema
 
-For Claude Code to proactively use your sub-agents, your agent description must follow this pattern:
+Every marketplace agent is a Markdown file with YAML frontmatter. Only `name` and `description` are required by Claude Code; the rest shape delegation, security, and runtime behavior.
 
-```markdown
-description: [What the agent does]. Use PROACTIVELY when [specific trigger scenarios].
+### Fields supported for plugin agents
+
+These work everywhere in this marketplace (all agents live under `plugins/*/agents/` except `plugin-architect`):
+
+| Field | Type | Purpose |
+|---|---|---|
+| `name` | string | Kebab-case identifier. Must match the filename (minus `.md`). **Required.** |
+| `description` | string | When Claude should delegate to this agent. Must follow the "Use PROACTIVELY when…" pattern below. **Required.** |
+| `tools` | csv or array | Allowlist of tools the agent may use. Omit to inherit all tools. **Strongly recommended.** |
+| `disallowedTools` | csv or array | Denylist applied before `tools` is resolved. Use when you want "everything except X". |
+| `model` | `sonnet` \| `opus` \| `haiku` \| full model ID \| `inherit` | Defaults to `inherit`. Use `opus` only when reasoning depth genuinely matters. |
+| `skills` | list | Skill names to preload into the agent's context at startup. Subagents **do not inherit** skills from the parent conversation — list them explicitly. |
+| `maxTurns` | integer | Hard ceiling on agentic turns. Rarely needed. |
+| `effort` | `low` \| `medium` \| `high` \| `xhigh` \| `max` | Overrides session effort. Rarely needed. |
+| `isolation` | `worktree` | Runs the agent in a temporary git worktree. Useful for agents that speculatively modify many files. |
+| `color` | `red` \| `blue` \| `green` \| `yellow` \| `purple` \| `orange` \| `pink` \| `cyan` | UI color. Keep consistent within a plugin. |
+| `memory` | `user` \| `project` \| `local` | Enables a persistent memory directory. Use only for agents that genuinely benefit from cross-session learning (reviewers, auditors). |
+| `background` | boolean | Always run as a background task. Usually leave unset. |
+| `initialPrompt` | string | Auto-submitted first user turn when the agent runs as the main session (`claude --agent <name>`). |
+
+### Fields that DO NOT work in plugin agents
+
+Claude Code silently ignores these on any agent loaded from a plugin (security restriction):
+
+- `hooks`
+- `mcpServers`
+- `permissionMode`
+
+If you need them, the agent must live in `.claude/agents/` or `~/.claude/agents/`, not under `plugins/`. The only marketplace agent that qualifies today is `.claude/agents/plugin-architect.md`.
+
+### Custom marketplace fields
+
+- `category` — internal taxonomy only. Claude Code ignores unknown fields, so this is purely for our own organization (and for the README grouping). Not required, not enforced.
+
+## The description field
+
+This is the most important field. Claude Code reads it on every user prompt to decide whether to delegate.
+
+### The pattern
+
+```
+description: <What the agent does>. <Expertise areas>. Use PROACTIVELY when <scenario 1>, <scenario 2>, or <scenario 3>.
 ```
 
-## Required Components
+### Required components
 
-### 1. The PROACTIVELY Keyword
+1. **The PROACTIVELY keyword** — signals automatic delegation. Acceptable variants: `Use PROACTIVELY when…`, `Use proactively for…`, `Must be used when…`.
+2. **A specific WHEN clause** — name concrete scenarios, not vague categories.
+3. **Optional phrase triggers** — `If they say "optimize", "N+1", or "slow query", use this agent.`
 
-This signals to Claude Code that it should use this agent without being explicitly asked.
+### Good vs. bad WHEN clauses
 
-```markdown
-Use PROACTIVELY when...
+**Good** — specific and actionable:
+- `when designing Laravel applications, planning architecture, or discussing system design patterns`
+- `when optimizing Eloquent queries, fixing N+1 problems, or implementing eager loading`
+- `when writing Pest tests, implementing TDD, or creating feature/unit tests`
+
+**Bad** — vague:
+- `when needed`
+- `for Laravel development`
+- `when appropriate`
+
+### Real examples
+
+**Laravel Architect**
 ```
-
-**Alternative phrasing:**
-- `Specialist for [task]. Use proactively for...`
-- `Use this agent proactively when...`
-- `Must be used when...`
-
-### 2. The WHEN Clause
-
-This tells Claude Code **exactly when** to trigger this agent. Be specific!
-
-**Good WHEN clauses:**
-```markdown
-when designing Laravel applications, planning architecture, or discussing system design patterns
-when implementing security features, reviewing code for vulnerabilities, or auditing applications
-when optimizing database queries, fixing N+1 problems, or improving performance
-when writing tests, implementing TDD, or building test suites
-```
-
-**Bad WHEN clauses (too vague):**
-```markdown
-when needed
-when appropriate
-for Laravel development
-```
-
-## Real Examples from This Marketplace
-
-### Laravel Architect
-```markdown
 description: Expert Laravel architect specializing in scalable application design, modular architecture (nwidart/laravel-modules), SOLID principles, and modern PHP patterns. Masters service containers, dependency injection, repository patterns, event-driven architecture, and performance optimization. Use PROACTIVELY when designing Laravel applications, planning architecture, or discussing system design patterns.
 ```
 
-**Why this works:**
-- ✅ Clearly states expertise
-- ✅ Uses "PROACTIVELY" keyword
-- ✅ Specifies concrete scenarios: designing, planning, discussing architecture
-- ✅ Claude Code knows to delegate when user asks about architecture
-
-### Security Engineer
-```markdown
+**Security Engineer**
+```
 description: Identify security vulnerabilities and ensure compliance with Laravel security standards and best practices. Masters authentication, authorization, CSRF/XSS prevention, SQL injection protection, and rate limiting. Use PROACTIVELY when implementing security features, reviewing code for vulnerabilities, or auditing applications.
 ```
 
-**Why this works:**
-- ✅ States what it identifies/ensures
-- ✅ Lists specific security areas
-- ✅ Clear triggers: implementing, reviewing, auditing
-- ✅ Claude Code knows to delegate on security-related prompts
+## The `tools` field: three archetypes
 
-## Adding Concrete Trigger Phrases
+Every agent in this marketplace should declare `tools:`. Leaving it off gives the agent every tool including Write/Edit/Bash, which defeats the point of a specialist. Pick one of three archetypes:
 
-You can also add explicit keyword triggers:
+### 1. Read-only analyzer
 
-```markdown
-description: Generates completion summaries with text-to-speech output. Use PROACTIVELY when tasks complete. If they say "TTS", "TTS summary", or "text to speech", use this agent.
+For reviewers, auditors, planners, and architects that *survey* code without modifying it.
+
+```yaml
+tools: Read, Grep, Glob, Bash
 ```
 
-This helps Claude Code match specific user phrases to your agent.
+Examples in this marketplace: `code-reviewer`, `planner`, `scout`, any `security-engineer`, `*-performance` / `performance-expert`, architects whose job is review rather than implementation.
 
-## The Information Flow
+### 2. Implementer
 
-Understanding **who talks to whom** is critical:
+For specialists that write and edit code as their primary job.
 
+```yaml
+tools: Read, Edit, Write, Grep, Glob, Bash
 ```
-User → Claude Code (primary agent) → Sub-agent → Primary agent → User
+
+Examples: `laravel-architect`, `eloquent-expert`, `testing-expert`, `flutter-ui-specialist`, most `*-specialist` agents.
+
+### 3. Full-capability (rare)
+
+For orchestrators that need to spawn other agents or use MCP tools. Omit `tools:` entirely, or use `disallowedTools:` to subtract a few things:
+
+```yaml
+disallowedTools: Write, Edit
 ```
 
-**Key insight:** Sub-agents respond to the **primary agent**, not to the user. Your description helps the primary agent know:
-1. When to call your sub-agent
-2. How to prompt your sub-agent
-3. What to expect back
+Only use this archetype when there's a concrete reason. Default to archetype 1 or 2.
 
-## Best Practices
+### When in doubt
 
-### ✅ DO:
+Ask: "Does this agent's job description involve producing working code changes?" If yes, archetype 2. If no, archetype 1.
 
-1. **Be specific about triggers**
-   ```markdown
-   Use PROACTIVELY when optimizing Eloquent queries, fixing N+1 problems, or implementing eager loading
-   ```
+## The `skills` field: preload domain knowledge
 
-2. **List concrete scenarios**
-   ```markdown
-   when writing Pest tests, implementing TDD, or creating feature/unit tests
-   ```
+Subagents don't inherit skills from the parent conversation. If your plugin ships a skill that's directly relevant to the agent's job, wire it up:
 
-3. **Include relevant keywords**
-   ```markdown
-   Masters authentication, authorization, CSRF/XSS prevention, SQL injection protection
-   ```
+```yaml
+skills:
+  - laravel-testing-patterns
+  - action-driven-design
+```
 
-4. **State the expertise clearly**
-   ```markdown
-   Expert in Laravel Eloquent ORM, relationships, query optimization, and database patterns
-   ```
+The full skill content is injected into the agent's context at startup. The agent doesn't have to discover or invoke it — it's already loaded.
 
-5. **Add explicit phrase triggers when helpful**
-   ```markdown
-   If they say "optimize", "performance", or "slow query", use this agent
-   ```
+**Pair agents with skills by name**, e.g.:
+- `testing-expert` → `laravel-testing-patterns`
+- `laravel-architect` → `laravel-blueprint`, `action-driven-design`
+- `filament-specialist` → `filament-blueprint`, `filament-resource-patterns`
+- `eloquent-expert` → `eloquent-relationships`
 
-### ❌ DON'T:
+Don't preload every skill in the plugin — only the ones the agent genuinely always needs. Context cost is real.
 
-1. **Be vague**
-   ```markdown
-   Use when needed for Laravel stuff
-   ```
+## The `model` field
 
-2. **Forget the WHEN clause**
-   ```markdown
-   Expert Laravel developer. Use PROACTIVELY.
-   ```
-
-3. **Overlap too much with other agents**
-   - Each agent should have distinct trigger scenarios
-   - Avoid ambiguity about which agent to use
-
-4. **Make descriptions too long**
-   - Claude Code reads these for every decision
-   - Keep focused on key triggers and expertise
+- **`sonnet`** (default for most agents) — balances capability and speed.
+- **`opus`** — reserve for agents that must reason across architecture, tradeoffs, or ambiguous requirements. Examples: `plugin-architect`, planners for multi-file changes.
+- **`haiku`** — fast and cheap, good for narrow lookup/classification agents.
+- **`inherit`** (the silent default if you omit `model`) — matches the parent conversation.
 
 ## Template
-
-Use this template for new agents:
 
 ```markdown
 ---
 name: your-agent-name
-description: [Brief expertise statement]. Masters [key skills/areas]. Use PROACTIVELY when [scenario 1], [scenario 2], or [scenario 3]. If they say "[keyword1]", "[keyword2]", use this agent.
-category: engineering | quality | architecture | performance
-model: sonnet | opus | haiku
-color: red | blue | green | yellow | purple | orange | pink | cyan
+description: Brief expertise statement. Masters key skills/areas. Use PROACTIVELY when scenario 1, scenario 2, or scenario 3. If they say "keyword1", "keyword2", use this agent.
+tools: Read, Edit, Write, Grep, Glob, Bash
+model: sonnet
+color: blue
+skills:
+  - relevant-skill-1
+category: engineering
 ---
 
 # Agent Name
 
-You are a [role definition].
+## Triggers
+- When to invoke (5–7 items)
 
-## Instructions
+## Behavioral Mindset
+2–3 sentences on philosophy and approach.
 
-When invoked, you must:
-1. [Step-by-step instructions]
-2. [...]
+## Critical Knowledge
+- Version-specific gotchas the agent MUST know.
 
-**Best Practices:**
-- [Domain-specific best practices]
-- [...]
+## Focus Areas
+- 8–12 bullet points of competencies.
 
-## Report
+## Key Actions
+- 6–8 primary responsibilities.
 
-Provide your response to the **primary agent** (not the user) with:
-- [What information to return]
-- [Expected format]
+## Outputs
+- What the agent produces.
+
+## Boundaries
+**Will**: capability 1 | capability 2 | capability 3
+**Will Not**: constraint 1 | constraint 2 | constraint 3
 ```
 
-## Testing Your Agent Descriptions
+## The information flow
 
-After creating/updating agent descriptions:
+```
+User → Claude Code (primary agent) → Your sub-agent → Primary agent → User
+```
 
-1. **Test explicit invocation:**
-   ```
-   User: "Use the security-engineer agent to review this code"
-   ```
+Sub-agents respond to the primary agent, not the user. The description is what the primary agent reads to decide: (1) whether to call you, (2) how to prompt you, (3) what to expect back.
 
-2. **Test proactive triggering:**
-   ```
-   User: "Review this authentication code for security issues"
-   ```
-   Claude Code should automatically use security-engineer
+## Testing a new agent
 
-3. **Check the logs:**
-   - Hooks will log when sub-agents are called
-   - Review `logs/subagent_stop.json` to see which agents ran
+1. **Explicit invocation** — `Use the <name> agent to review this code`
+2. **Proactive triggering** — describe a problem that matches your WHEN clauses and confirm Claude routes to the agent without being told.
+3. **Tool constraints** — if you set `tools: Read, Grep, Glob, Bash`, ask the agent to write a file. It should refuse or fail — that's the allowlist working.
 
-## Common Trigger Scenarios by Domain
+## Common trigger vocabulary
 
-### Architecture/Design
-- designing applications
-- planning architecture
-- discussing system design patterns
-- evaluating architectural decisions
-
-### Security
-- implementing security features
-- reviewing code for vulnerabilities
-- auditing applications
-- security assessments
-
-### Performance
-- optimizing performance
-- fixing slow queries
-- improving response times
-- identifying bottlenecks
-
-### Testing
-- writing tests
-- implementing TDD
-- creating test suites
-- testing strategies
-
-### Database
-- designing schemas
-- optimizing queries
-- fixing N+1 problems
-- implementing relationships
+**Architecture/Design**: designing applications, planning architecture, discussing system design, evaluating architectural decisions
+**Security**: implementing security features, reviewing for vulnerabilities, auditing applications, threat modeling
+**Performance**: optimizing performance, fixing slow queries, improving response times, identifying bottlenecks
+**Testing**: writing tests, implementing TDD, creating test suites, testing strategies
+**Database**: designing schemas, optimizing queries, fixing N+1, implementing relationships
 
 ## Summary
 
-**The magic formula:**
 ```
-What it does + Use PROACTIVELY when + Specific scenarios + Optional keyword triggers
+Correct frontmatter schema
++ Specific WHEN clauses in description
++ Tools allowlist matching the agent's job
++ Skills preloaded where applicable
+= An agent Claude Code delegates to reliably, safely, and with the right context.
 ```
-
-When done correctly, Claude Code will automatically route tasks to your specialized agents based on user intent, creating a powerful multi-agent workflow without requiring explicit agent selection.
 
 ---
 
-**For more information:**
-- Claude Code Sub-Agents Docs: https://docs.anthropic.com/en/docs/claude-code/sub-agents
-- Dev Dan's Sub-Agents Video: https://www.youtube.com/watch?v=example
+**References**
+- Claude Code subagents: https://docs.claude.com/en/docs/claude-code/sub-agents
+- Plugin subagent restrictions: same page, "Choose the subagent scope" section

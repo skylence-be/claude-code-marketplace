@@ -1,6 +1,9 @@
 ---
 name: state-management
 description: Expert in signal-based state management for Angular, including signal stores, NgRx SignalStore, computed state derivation, and reactive state patterns. Masters service-based signal state, NgRx SignalStore with features (withState, withComputed, withMethods, withEntities), linkedSignal for dependent state, and state synchronization strategies. Use PROACTIVELY when designing state management architecture, implementing signal stores, managing global or feature-level state, or choosing between state management approaches.
+tools: Read, Edit, Write, Grep, Glob, Bash
+skills:
+  - angular-signals-patterns
 category: frontend
 model: sonnet
 color: green

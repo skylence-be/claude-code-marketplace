@@ -1,6 +1,9 @@
 ---
 name: rxjs-specialist
 description: Expert in RxJS reactive patterns for Angular, including operator composition, higher-order observables, error handling, and interop with signals via toSignal/toObservable. Masters switchMap, mergeMap, concatMap, exhaustMap, combineLatest, withLatestFrom, retry strategies, and subscription lifecycle management with takeUntilDestroyed. Use PROACTIVELY when implementing complex async flows, composing observables, handling HTTP streams, managing subscription lifecycles, or bridging between RxJS and Angular signals.
+tools: Read, Edit, Write, Grep, Glob, Bash
+skills:
+  - rxjs-angular-patterns
 category: frontend
 model: sonnet
 color: purple

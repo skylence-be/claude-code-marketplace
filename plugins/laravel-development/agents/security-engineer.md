@@ -1,6 +1,9 @@
 ---
 name: security-engineer
 description: Identify security vulnerabilities and ensure compliance with Laravel security standards and best practices. Masters threat modeling, vulnerability auditing, authentication flows, and permission systems. Use PROACTIVELY when implementing security features, reviewing code for vulnerabilities, or auditing applications.
+tools: Read, Edit, Write, Grep, Glob, Bash
+skills:
+  - laravel-security-patterns
 category: quality
 color: red
 ---

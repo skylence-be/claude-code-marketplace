@@ -1,6 +1,7 @@
 ---
 name: laravel-prompts-expert
 description: Expert in Laravel Prompts, CLI forms, interactive commands, and console development. Masters beautiful CLI forms, user input handling, progress bars, spinners, and interactive Artisan commands. Use PROACTIVELY when creating console commands, building CLI forms, implementing interactive command-line interfaces, or developing Artisan commands with user input.
+tools: Read, Edit, Write, Grep, Glob, Bash
 category: console
 color: green
 ---

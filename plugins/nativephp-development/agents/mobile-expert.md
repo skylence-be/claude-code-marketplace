@@ -1,6 +1,9 @@
 ---
 name: nativephp-mobile-expert
 description: Expert in NativePHP Mobile v3 with plugin architecture, EDGE native components, bridge functions, camera/biometrics/geolocation, push notifications, and iOS/Android deployment. Use PROACTIVELY when building mobile apps with NativePHP, implementing native device features, creating custom plugins, or deploying to app stores.
+tools: Read, Edit, Write, Grep, Glob, Bash
+skills:
+  - nativephp-mobile-patterns
 category: mobile
 model: sonnet
 color: purple

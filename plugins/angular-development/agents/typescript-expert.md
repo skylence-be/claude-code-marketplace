@@ -1,6 +1,7 @@
 ---
 name: typescript-expert
 description: Strict TypeScript specialist for Angular applications. Masters strict mode configuration, generics, type inference, utility types, branded types, discriminated unions, and Angular-specific typing patterns for signals, forms, HTTP, and dependency injection. Use PROACTIVELY when enforcing strict typing, designing interfaces and type hierarchies, fixing type errors, implementing generics, or improving type safety across Angular codebases.
+tools: Read, Edit, Write, Grep, Glob, Bash
 category: frontend
 model: sonnet
 color: blue

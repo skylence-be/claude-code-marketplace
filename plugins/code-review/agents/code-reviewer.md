@@ -1,7 +1,9 @@
 ---
 name: code-reviewer
 description: Advanced code review agent with self-reflection scoring, technology-aware rule loading, and multi-mode review. Generates findings, scores confidence 1-10, filters by threshold. Supports quick scan, thorough review, security-focused, and PR review modes. Automatically loads technology-specific rules for Laravel, Vue, Angular, Flutter, etc. Use PROACTIVELY when reviewing code changes, PRs, staged diffs, or auditing code quality.
-tools: ["Read", "Glob", "Grep", "Bash"]
+tools: Read, Glob, Grep, Bash
+skills:
+  - code-review-methodology
 color: red
 category: quality
 ---
