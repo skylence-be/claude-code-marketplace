@@ -1,6 +1,6 @@
 ---
 name: angular-dependency-injection
-description: Master Angular dependency injection patterns including inject() function, InjectionToken, providedIn options, hierarchical injectors, route-level providers, factory functions, functional interceptors, and testing DI configurations.
+description: Angular DI: inject(), InjectionToken, hierarchical injectors. Use when configuring DI.
 category: angular
 tags: [angular, dependency-injection, inject, injection-token, providers, services, interceptors]
 related_skills: [angular-blueprint, angular-signals-patterns, angular-routing-patterns, angular-testing-patterns]

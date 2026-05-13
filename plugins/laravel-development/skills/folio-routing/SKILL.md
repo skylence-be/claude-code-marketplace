@@ -1,6 +1,6 @@
 ---
 name: folio-routing
-description: Laravel Folio file-based routing patterns including page creation, route parameters, model binding, named routes, middleware, and render hooks. Use when creating Folio pages, debugging 404s, or choosing between Folio and traditional routing.
+description: Laravel Folio: file-based routing, route parameters, model binding. Use when creating Folio pages.
 category: laravel
 tags: [folio, routing, file-based, pages, blade]
 related_skills: [laravel-blueprint, laravel-security-patterns]

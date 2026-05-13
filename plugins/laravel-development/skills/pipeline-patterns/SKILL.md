@@ -1,6 +1,6 @@
 ---
 name: pipeline-patterns
-description: Master Laravel Pipeline patterns for multi-step payload transformations. Use when implementing 3+ sequential data transformations, checkout flows, or processing pipelines.
+description: Laravel Pipeline: multi-step payload transformations. Use when implementing 3+ sequential transformations.
 ---
 
 # Pipeline Patterns — Multi-Step Transformations of Typed Payload

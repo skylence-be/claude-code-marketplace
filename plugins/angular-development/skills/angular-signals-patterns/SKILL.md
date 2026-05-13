@@ -1,6 +1,6 @@
 ---
 name: angular-signals-patterns
-description: Complete guide to Angular signals including signal(), computed(), effect(), linkedSignal(), model signals, signal-based inputs/outputs/queries, toSignal(), toObservable(), and real-world patterns for state management, form handling, and component communication.
+description: Angular signals: signal, computed, effect, linkedSignal, signal I/O, toSignal. Use when managing reactive state.
 category: angular
 tags: [angular, signals, reactivity, computed, effect, linkedSignal, toSignal, state-management]
 related_skills: [angular-blueprint, angular-dependency-injection, rxjs-angular-patterns, angular-performance-optimization]

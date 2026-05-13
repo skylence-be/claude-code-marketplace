@@ -1,6 +1,6 @@
 ---
 name: inertia-patterns
-description: Inertia.js v2 patterns for Laravel + Vue/React SPAs including deferred props, infinite scroll with WhenVisible, polling with usePoll, prefetching, useForm composable, and client-side navigation with Link. Use when building Inertia apps or upgrading from v1 to v2.
+description: Inertia.js v2: deferred props, WhenVisible, usePoll, prefetching, useForm. Use when building Inertia apps.
 category: frontend
 tags: [inertia, vue, react, spa, laravel, deferred-props, polling]
 related_skills: [vue3-composition-api-patterns, pinia-state-patterns, nuxt4-ssr-optimization]

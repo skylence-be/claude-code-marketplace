@@ -1,6 +1,6 @@
 ---
 name: tailwind-migration
-description: Tailwind CSS v3 to v4 migration patterns including CSS-first configuration, replaced utilities, import syntax changes, and deprecated class replacements. Use when upgrading Tailwind, fixing deprecated utilities, or choosing between v3 and v4 patterns.
+description: Tailwind v3 to v4: CSS-first config, replaced utilities, import syntax. Use when upgrading Tailwind.
 category: frontend
 tags: [tailwind, css, migration, v4, styling]
 related_skills: [livewire-forms-validation, vue3-composition-api-patterns]

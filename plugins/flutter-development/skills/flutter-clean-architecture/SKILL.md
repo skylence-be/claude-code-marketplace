@@ -1,6 +1,6 @@
 ---
 name: flutter-clean-architecture
-description: Master Flutter clean architecture with feature modules, data/domain/presentation layers, repository pattern, and dependency injection. Use when structuring Flutter projects, implementing data layers, or organizing feature modules.
+description: Flutter clean architecture: feature modules, data/domain/presentation layers. Use when structuring Flutter apps.
 category: flutter
 tags: [flutter, architecture, clean-architecture, repository, features]
 ---

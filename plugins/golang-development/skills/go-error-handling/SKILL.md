@@ -1,6 +1,6 @@
 ---
 name: go-error-handling
-description: Idiomatic Go error handling patterns including sentinel errors, error wrapping with %w, errors.Is/As, custom error types, and single-point handling. Use when implementing error handling in Go, reviewing code for missed errors, designing package error contracts, or migrating from pre-1.13 error patterns.
+description: Go error handling: sentinel errors, %w wrapping, errors.Is/As. Use when implementing errors or designing contracts.
 ---
 
 # Go Error Handling

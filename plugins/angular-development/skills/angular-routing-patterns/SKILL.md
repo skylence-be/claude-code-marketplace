@@ -1,6 +1,6 @@
 ---
 name: angular-routing-patterns
-description: Master modern Angular routing including lazy loading with loadComponent/loadChildren, functional guards, functional resolvers, async redirects, preloading strategies, feature route files, route-level providers, and component input binding.
+description: Angular routing: loadComponent/loadChildren, functional guards/resolvers, preloading. Use when configuring routes.
 category: angular
 tags: [angular, routing, lazy-loading, guards, resolvers, preloading, loadComponent, loadChildren]
 related_skills: [angular-blueprint, angular-dependency-injection, angular-ssr-hydration, angular-performance-optimization]

@@ -1,6 +1,6 @@
 ---
 name: go-performance
-description: Go performance patterns covering allocation reduction, sync.Pool, escape analysis, slice pre-allocation, strconv vs fmt, and benchmark-driven optimization. Use when optimizing hot paths, reducing GC pressure, writing benchmarks, or profiling with pprof.
+description: Go performance: allocation reduction, sync.Pool, escape analysis, pprof. Use when optimizing hot paths.
 ---
 
 # Go Performance

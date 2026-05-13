@@ -1,6 +1,6 @@
 ---
 name: skylence-sky-format
-description: The .sky workflow file format used by Skylence. Covers the four Unicode delimiter blocks (meta, node config, prompt body, doc), trigger routing, conditional execution, node types (claude/bash/script/cancel/emit), chain semantics, and template expansion rules. Use when authoring, editing, or debugging .sky files.
+description: .sky format: Unicode delimiters, trigger routing, node types (claude/bash/script/emit). Use when authoring .sky files.
 ---
 
 # .sky File Format

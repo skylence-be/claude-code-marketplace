@@ -1,6 +1,6 @@
 ---
 name: laravel-coding-standards
-description: Comprehensive Laravel and PHP coding standards derived from Spatie guidelines. Use when writing Laravel code, refactoring, or reviewing code quality. Ensures PSR compliance, Laravel conventions, and modern PHP patterns.
+description: Laravel/PHP standards from Spatie: PSR compliance, Laravel conventions. Use when writing Laravel code.
 ---
 
 # Laravel Coding Standards

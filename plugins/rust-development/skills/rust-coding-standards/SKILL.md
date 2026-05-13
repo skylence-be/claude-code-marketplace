@@ -1,6 +1,6 @@
 ---
 name: rust-coding-standards
-description: Idiomatic Rust coding standards covering rustfmt formatting, naming conventions, edition 2024 idioms, workspace lints, and LLM-specific anti-patterns (reflexive .clone(), String overuse, premature Box<dyn Trait>). Use when writing new Rust code, reviewing for style, enforcing team standards, or onboarding to a Rust codebase.
+description: Rust standards: rustfmt, naming, edition 2024 idioms, workspace lints. Use when writing Rust or reviewing for style.
 ---
 
 # Rust Coding Standards

@@ -1,6 +1,6 @@
 ---
 name: laravel-security-patterns
-description: Master Laravel security with CSRF protection, XSS prevention, SQL injection defense, mass assignment protection, rate limiting, authentication, authorization, input validation, and comprehensive security best practices. Use when securing applications, preventing attacks, or implementing defense-in-depth strategies.
+description: Laravel security: CSRF, XSS, SQL injection, mass assignment, rate limiting. Use when securing applications.
 ---
 
 # Laravel Security Patterns

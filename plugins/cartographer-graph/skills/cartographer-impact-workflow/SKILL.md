@@ -1,6 +1,6 @@
 ---
 name: cartographer-impact-workflow
-description: The always-run-impact-before-edit workflow with cartographer. Real impact tool output shape (depthUsed, risk, byDepth), how to interpret each risk tier (CRITICAL/HIGH/MEDIUM/LOW/UNKNOWN), depth semantics (direct callers will break, depth-2 likely, depth-3 may), and the safe-edit sequence. Use before editing any symbol in an indexed repository.
+description: Impact-before-edit: risk tiers (CRITICAL/HIGH/MEDIUM/LOW), safe-edit sequence. Use before editing in an indexed repo.
 ---
 
 # Cartographer Impact Workflow

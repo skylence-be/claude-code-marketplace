@@ -1,6 +1,6 @@
 ---
 name: cartographer-rules
-description: Imperative MUST/MUST NOT rules for using Cartographer in any repository. Loads when invoking the cartographer CLI, calling cartographer MCP tools, or editing code in an indexed repo. Read this first; the rules prevent stale-graph false confidence, destructive cypher writes, and unverified rename refactors.
+description: MUST/MUST NOT rules for Cartographer. Prevents stale-graph errors, destructive writes, bad renames. Read before editing.
 ---
 
 # Cartographer Rules

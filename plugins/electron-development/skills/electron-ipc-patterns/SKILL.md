@@ -1,6 +1,6 @@
 ---
 name: electron-ipc-patterns
-description: Master Electron IPC communication patterns including secure context bridges, typed channels, bidirectional messaging, and main/renderer process coordination. Use when implementing IPC handlers, creating preload scripts, or designing cross-process communication.
+description: Electron IPC: context bridges, typed channels, main/renderer coordination. Use when implementing IPC.
 category: electron
 tags: [electron, ipc, security, typescript, preload]
 ---

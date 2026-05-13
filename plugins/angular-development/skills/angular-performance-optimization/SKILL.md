@@ -1,6 +1,6 @@
 ---
 name: angular-performance-optimization
-description: Master Angular performance optimization including OnPush and zoneless change detection, @defer blocks for lazy loading, bundle optimization, NgOptimizedImage, virtual scrolling, HTTP caching, computed() vs methods in templates, and Core Web Vitals improvement strategies.
+description: Angular performance: OnPush/zoneless, @defer, NgOptimizedImage, virtual scrolling. Use when profiling slow Angular apps.
 category: angular
 tags: [angular, performance, zoneless, defer, lazy-loading, onpush, virtual-scrolling, optimization]
 related_skills: [angular-blueprint, angular-signals-patterns, angular-ssr-hydration, angular-routing-patterns]

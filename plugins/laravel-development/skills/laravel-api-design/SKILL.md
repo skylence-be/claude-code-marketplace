@@ -1,6 +1,6 @@
 ---
 name: laravel-api-design
-description: Master RESTful API design with Laravel including API resources, Sanctum authentication, rate limiting, pagination, versioning, error handling, and comprehensive API development patterns. Use when building REST APIs, mobile backends, or third-party integrations.
+description: Laravel API design: API resources, Sanctum, rate limiting, pagination. Use when building REST APIs or mobile backends.
 ---
 
 # Laravel API Design

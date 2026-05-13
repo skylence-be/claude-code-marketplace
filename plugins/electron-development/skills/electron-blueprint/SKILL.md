@@ -1,6 +1,6 @@
 ---
 name: electron-blueprint
-description: Structured planning format for Electron desktop apps — bridges requirements to production-ready code. Use when planning complex Electron implementations, creating detailed specifications, or generating code from requirements. Blueprint ensures vague plans don't lead to vague code.
+description: Electron Blueprint: planning format for Electron desktop apps. Use when planning implementations or generating code.
 category: electron
 tags: [electron, blueprint, desktop, planning, architecture]
 related_skills: [electron-ipc-patterns]

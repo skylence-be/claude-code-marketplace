@@ -1,6 +1,6 @@
 ---
 name: nuxt4-ssr-optimization
-description: Master Nuxt 4 server-side rendering including data fetching (useAsyncData, useFetch), route middleware, server routes, Nitro optimization, caching strategies, SEO, and performance monitoring. Use when building SSR applications, optimizing Core Web Vitals, or implementing edge rendering.
+description: Nuxt 4 SSR: useAsyncData/useFetch, route middleware, Nitro, caching. Use when building SSR apps.
 category: frontend
 tags: [nuxt4, ssr, performance, seo, nitro, edge]
 related_skills: [vue3-composition-api-patterns, nuxt-modules-integration, vitest-testing-patterns]

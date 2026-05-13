@@ -1,6 +1,6 @@
 ---
 name: nativephp-desktop-patterns
-description: Master NativePHP Desktop v2 patterns including window management, menus, system tray, notifications, dialogs, clipboard, global shortcuts, child processes, auto-updates, and cross-platform desktop development. Use when building desktop applications, implementing native OS features, or packaging apps for distribution.
+description: NativePHP Desktop v2: windows, menus, system tray, shortcuts. Use when building desktop apps.
 category: nativephp
 tags: [nativephp, desktop, electron, laravel, php, windows, menus, tray, notifications]
 ---

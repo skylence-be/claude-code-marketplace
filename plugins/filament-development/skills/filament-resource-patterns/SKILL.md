@@ -1,6 +1,6 @@
 ---
 name: filament-resource-patterns
-description: Master Filament 5 resource patterns including form schemas, table columns, filters, actions, relation managers, and multi-tenant resources. Use when building admin panels, CRUD interfaces, or data management systems.
+description: Filament 5 resources: form schemas, table columns, filters, actions, relation managers. Use when building Filament panels.
 category: filament
 tags: [filament, resources, crud, admin-panel, forms, tables]
 related_skills: [filament-forms-advanced, filament-tables-optimization, filament-multi-tenancy]

@@ -1,6 +1,6 @@
 ---
 name: pennant-feature-flags
-description: Laravel Pennant feature flag patterns including flag definition, user-scoped activation, Blade directives, class-based features, and gradual rollout strategies. Use when implementing feature flags, A/B testing, or gradual feature rollouts.
+description: Laravel Pennant: flag definition, user-scoped activation, Blade directives. Use when adding feature flags.
 category: laravel
 tags: [pennant, feature-flags, toggles, rollout, ab-testing]
 related_skills: [laravel-blueprint, laravel-testing-patterns]

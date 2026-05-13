@@ -1,6 +1,6 @@
 ---
 name: rust-ownership-borrowing
-description: Rust ownership, borrowing, and lifetime patterns covering move vs borrow vs copy, lifetime elision, Cow for sometimes-owned data, Arc vs Rc vs Box, and interior mutability (Cell/RefCell/Mutex/RwLock). Use when designing APIs with lifetime parameters, choosing between owned and borrowed data, or debugging borrow checker errors.
+description: Rust ownership/lifetimes: move/borrow/copy, Cow, Arc/Rc/Box, interior mutability. Use when debugging borrow checker issues.
 ---
 
 # Rust Ownership and Borrowing

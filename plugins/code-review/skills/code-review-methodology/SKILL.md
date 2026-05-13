@@ -1,6 +1,6 @@
 ---
 name: code-review-methodology
-description: Master the self-reflection scoring code review pipeline with technology-aware rule loading, multi-mode review, git diff analysis, and structured finding taxonomy. Use when reviewing code, understanding the review pipeline, or customizing review behavior.
+description: Self-reflection scoring review pipeline: technology-aware rules, multi-mode review. Use when reviewing code.
 category: quality
 tags: [code-review, self-reflection, scoring, security, quality, pipeline]
 related_skills: [laravel-security-patterns, laravel-testing-patterns, vitest-testing-patterns, typescript-vue-patterns]

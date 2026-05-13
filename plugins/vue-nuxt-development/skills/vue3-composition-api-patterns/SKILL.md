@@ -1,6 +1,6 @@
 ---
 name: vue3-composition-api-patterns
-description: Master Vue 3 Composition API including ref, reactive, computed, watch, composables, lifecycle hooks, template refs, provide/inject, and script setup syntax. Use when building reactive components, creating reusable composables, or implementing complex state logic.
+description: Vue 3 Composition API: ref, reactive, computed, watch, composables. Use when building Vue components.
 category: frontend
 tags: [vue3, composition-api, composables, reactivity, typescript]
 related_skills: [typescript-vue-patterns, pinia-state-patterns, vitest-testing-patterns]

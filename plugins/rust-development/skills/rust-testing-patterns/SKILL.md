@@ -1,6 +1,6 @@
 ---
 name: rust-testing-patterns
-description: Rust testing patterns covering unit tests with #[cfg(test)], integration tests in tests/, cargo-nextest, insta snapshots, rstest parametric tests, mockito for HTTP, proptest for invariants, and edition 2024 env isolation (std::env::set_var is unsafe). Use when writing Rust tests, reviewing test quality, or setting up a test suite.
+description: Rust testing: #[cfg(test)], cargo-nextest, insta snapshots, rstest, proptest. Use when writing Rust tests.
 ---
 
 # Rust Testing Patterns

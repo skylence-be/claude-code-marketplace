@@ -1,6 +1,6 @@
 ---
 name: laravel-blueprint
-description: Master Laravel Blueprint - the AI planning format for generating accurate, production-ready Laravel 12 code. Use when planning complex Laravel implementations, creating detailed specifications, or generating code from requirements. Blueprint ensures vague plans don't lead to vague code.
+description: Laravel Blueprint: AI planning format for Laravel 12. Use when planning implementations, creating specifications, or generating code from requirements.
 category: laravel
 tags: [laravel, blueprint, ai, planning, architecture, specification, scaffolding]
 related_skills: [eloquent-relationships, laravel-api-design, laravel-testing-patterns, laravel-coding-standards, laravel-security-patterns, laravel-queues-jobs, laravel-caching-strategies]

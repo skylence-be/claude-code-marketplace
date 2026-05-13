@@ -1,6 +1,6 @@
 ---
 name: angular-blueprint
-description: Master Angular Blueprint - the AI planning format for generating accurate, production-ready Angular 21+ code. Use when planning complex frontend implementations, creating detailed specifications, or generating code from requirements. Blueprint ensures vague plans don't lead to vague code.
+description: Angular Blueprint: planning format for Angular 21+. Use when planning Angular implementations.
 category: angular
 tags: [angular, blueprint, ai, planning, architecture, specification, signals, zoneless, ssr]
 related_skills: [angular-signals-patterns, angular-dependency-injection, angular-testing-patterns, angular-ssr-hydration, angular-routing-patterns, rxjs-angular-patterns, angular-performance-optimization]

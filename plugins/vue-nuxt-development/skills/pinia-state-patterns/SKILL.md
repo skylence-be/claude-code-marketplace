@@ -1,6 +1,6 @@
 ---
 name: pinia-state-patterns
-description: Master Pinia state management including store definition (setup stores, options API), getters, actions, plugins, TypeScript integration, SSR hydration, and testing patterns. Use when managing global state, implementing complex business logic, or building scalable state architecture.
+description: Pinia: setup stores, getters, actions, plugins, TypeScript, SSR hydration. Use when managing global state.
 category: frontend
 tags: [pinia, state-management, vuex-alternative, typescript, ssr]
 related_skills: [vue3-composition-api-patterns, nuxt4-ssr-optimization, vitest-testing-patterns]

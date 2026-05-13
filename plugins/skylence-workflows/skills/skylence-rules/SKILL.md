@@ -1,6 +1,6 @@
 ---
 name: skylence-rules
-description: Imperative MUST/MUST NOT rules for working with Skylence in any repository. Loads when authoring .sky workflows, running sky commands, or modifying anything in .sky/. Read this skill before invoking any sky command or editing a .sky file; the rules prevent destructive runs, broken trigger routing, and webhook payload leaks.
+description: MUST/MUST NOT rules for Skylence. Prevents destructive runs, broken routing, webhook leaks. Read before invoking sky.
 ---
 
 # Skylence Rules

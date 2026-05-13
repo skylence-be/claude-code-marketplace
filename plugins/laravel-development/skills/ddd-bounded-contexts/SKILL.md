@@ -1,6 +1,6 @@
 ---
 name: ddd-bounded-contexts
-description: Master Domain-Driven Design bounded contexts in Laravel with proper folder structure, cross-context communication via events, and public/private contracts. Use when the architecture classifier scores ddd >= 3.
+description: DDD bounded contexts in Laravel: folder structure, cross-context events, contracts. Use when ddd score >= 3.
 ---
 
 # DDD Bounded Contexts in Laravel

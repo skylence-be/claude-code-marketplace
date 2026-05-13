@@ -1,6 +1,6 @@
 ---
 name: volt-components
-description: Laravel Volt single-file Livewire component patterns including functional and class-based styles, state management, computed properties, and testing with Volt::test(). Use when creating Volt components or converting Livewire to single-file format.
+description: Volt single-file components: functional/class styles, state, computed, Volt::test(). Use when creating Volt components.
 category: livewire
 tags: [volt, livewire, single-file, components, functional]
 related_skills: [livewire4-reactive-patterns, livewire-forms-validation, livewire-blueprint]

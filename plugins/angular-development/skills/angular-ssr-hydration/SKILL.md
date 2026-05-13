@@ -1,6 +1,6 @@
 ---
 name: angular-ssr-hydration
-description: Master Angular SSR with @angular/ssr, incremental hydration with @defer hydrate triggers, route-level render modes (Server/Client/Prerender), HTTP transfer cache, event replay, and deployment strategies for high-performance Angular applications.
+description: Angular SSR: incremental hydration, @defer, route render modes, HTTP transfer cache. Use when setting up SSR.
 category: angular
 tags: [angular, ssr, hydration, incremental-hydration, prerender, ssg, defer, render-modes]
 related_skills: [angular-blueprint, angular-performance-optimization, angular-routing-patterns, angular-signals-patterns]

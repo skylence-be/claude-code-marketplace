@@ -1,6 +1,6 @@
 ---
 name: git-worktree-patterns
-description: Comprehensive git worktree patterns for parallel development, environment isolation, and workflow optimization. Use when setting up worktrees, managing multiple branches, configuring isolated environments, or optimizing development workflows.
+description: Git worktree patterns: parallel development, environment isolation. Use when setting up worktrees.
 ---
 
 # Git Worktree Patterns

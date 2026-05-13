@@ -1,6 +1,6 @@
 ---
 name: angular-testing-patterns
-description: Master Angular testing with Vitest (Angular 21 default), TestBed configuration, component testing with signal inputs/outputs, signal testing, httpResource testing, zoneless testing patterns, service testing, and E2E with Playwright.
+description: Angular testing with Vitest: TestBed, signal I/O, httpResource, zoneless. Use when writing tests.
 category: angular
 tags: [angular, testing, vitest, testbed, playwright, signals, zoneless, httpResource]
 related_skills: [angular-signals-patterns, angular-dependency-injection, angular-blueprint, angular-performance-optimization]

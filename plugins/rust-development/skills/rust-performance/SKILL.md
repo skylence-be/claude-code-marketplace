@@ -1,6 +1,6 @@
 ---
 name: rust-performance
-description: Rust performance patterns covering profiling with cargo-flamegraph and criterion, pre-allocation, &str vs String vs Cow, Box<dyn Trait> indirection cost, #[inline] guidance, escape analysis, and SmallVec/SmolStr. Use when optimizing hot paths, writing benchmarks, or reviewing code for avoidable allocations.
+description: Rust performance: flamegraph/criterion, pre-allocation, &str vs Cow, dyn Trait. Use when optimizing hot paths.
 ---
 
 # Rust Performance

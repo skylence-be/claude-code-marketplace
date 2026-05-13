@@ -1,6 +1,6 @@
 ---
 name: filament-blueprint
-description: Master Filament Blueprint - the AI planning format for generating accurate, production-ready Filament code. Use when planning complex Filament implementations, creating detailed specifications, or generating code from requirements. Blueprint ensures vague plans don't lead to vague code.
+description: Filament Blueprint: planning format for Filament admin panels. Use when planning implementations or generating code.
 category: filament
 tags: [filament, blueprint, ai, planning, architecture, specification]
 related_skills: [filament-resource-patterns, filament-forms-advanced, filament-tables-optimization]

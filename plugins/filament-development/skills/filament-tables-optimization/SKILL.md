@@ -1,6 +1,6 @@
 ---
 name: filament-tables-optimization
-description: Master Filament 5 table optimization including query performance, custom columns, bulk actions, filters, exports, imports, summarizers, and pagination strategies. Use when building high-performance data tables and list views.
+description: Filament 5 tables: query performance, custom columns, bulk actions, exports. Use when building data tables.
 category: filament
 tags: [filament, tables, performance, optimization, export, import]
 related_skills: [filament-resource-patterns, laravel-caching-strategies, eloquent-patterns]

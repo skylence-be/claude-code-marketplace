@@ -1,6 +1,6 @@
 ---
 name: flutter-riverpod-patterns
-description: Master Riverpod 2.6+ state management patterns including code generation, AsyncValue handling, Notifiers, provider families, and proper dispose patterns. Use when implementing state management, handling async data, or building reactive UIs.
+description: Riverpod 2.6+: code generation, AsyncValue, Notifiers, provider families. Use when implementing state management.
 category: flutter
 tags: [flutter, riverpod, state-management, providers, async]
 ---

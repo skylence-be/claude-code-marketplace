@@ -1,6 +1,6 @@
 ---
 name: skylence-cli-reference
-description: Reference for the Skylence sky CLI (./bin/sky). Covers run, logs, lint, serve, setup, doctor, webhook, learning, codebase, examples, mcp, upgrade. Use when invoking any sky command, registering webhooks, managing learnings, configuring MCP servers, or troubleshooting daemon issues.
+description: sky CLI: run, logs, lint, serve, webhook, learning, mcp. Use when invoking sky or troubleshooting daemon issues.
 ---
 
 # Skylence CLI Reference

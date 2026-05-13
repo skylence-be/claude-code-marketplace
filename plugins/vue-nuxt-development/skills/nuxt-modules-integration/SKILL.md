@@ -1,6 +1,6 @@
 ---
 name: nuxt-modules-integration
-description: Master Nuxt 4 modules integration including essential modules (@nuxtjs/tailwindcss, @pinia/nuxt), module configuration, auto-imports, creating custom modules, runtime config, plugin system, middleware registration, server routes, build hooks, and layer architecture. Use when extending Nuxt functionality or building reusable module packages.
+description: Nuxt 4 modules: auto-imports, custom modules, runtime config, middleware, and layer architecture. Use when extending Nuxt or building reusable modules.
 category: frontend
 tags: [nuxt4, modules, plugins, configuration, layers]
 related_skills: [nuxt4-ssr-optimization, vue3-composition-api-patterns, pinia-state-patterns]

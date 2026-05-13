@@ -1,6 +1,6 @@
 ---
 name: cartographer-cli-reference
-description: Reference for the cartographer CLI binary covering register, index, query, search, status, group, mcp, serve, augment, snapshot, hooks, watch, wiki, drift, and gateway subcommands. Use when invoking any cartographer command or setting up cartographer in a new repo.
+description: Cartographer CLI: register, index, query, search, mcp, serve, snapshot, drift. Use when invoking CLI subcommands.
 ---
 
 # Cartographer CLI Reference

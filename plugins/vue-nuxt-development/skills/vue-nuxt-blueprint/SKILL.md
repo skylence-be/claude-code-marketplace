@@ -1,6 +1,6 @@
 ---
 name: vue-nuxt-blueprint
-description: Master Vue/Nuxt Blueprint - the AI planning format for generating accurate, production-ready Vue 3 and Nuxt 3-4 code. Use when planning complex frontend implementations, creating detailed specifications, or generating code from requirements. Blueprint ensures vague plans don't lead to vague code.
+description: Vue/Nuxt Blueprint: planning format for Vue 3 and Nuxt 3-4. Use when planning implementations.
 category: vue-nuxt
 tags: [vue3, nuxt, blueprint, ai, planning, architecture, specification]
 related_skills: [vue3-composition-api-patterns, pinia-state-patterns, nuxt4-ssr-optimization, nuxt-modules-integration, typescript-vue-patterns, vitest-testing-patterns]

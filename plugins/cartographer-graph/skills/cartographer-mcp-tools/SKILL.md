@@ -1,6 +1,6 @@
 ---
 name: cartographer-mcp-tools
-description: Reference for the Cartographer MCP server tools (query, cypher, context, impact, detect_changes, rename, route_map, tool_map, api_impact, shape_check, list_repos, repo_status, group_*). Each tool's purpose, parameters, when to use it, and the staleness contract. Use when invoking any cartographer MCP tool or wiring cartographer into a Claude Code project config.
+description: Cartographer MCP tools reference (query, cypher, context, impact, detect_changes, rename, route_map, api_impact, shape_check, group_*). Use when invoking cartographer MCP tools.
 ---
 
 # Cartographer MCP Tools

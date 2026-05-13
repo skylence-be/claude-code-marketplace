@@ -1,6 +1,6 @@
 ---
 name: laravel-queues-jobs
-description: Master Laravel queues and job processing with queue drivers, job batching, chaining, failure handling, Horizon monitoring, and advanced queue patterns. Use when implementing background job processing, async tasks, scheduled work, or building scalable job pipelines.
+description: Laravel queues: drivers, job batching, chaining, failure handling, Horizon. Use when implementing background jobs.
 ---
 
 # Laravel Queues & Jobs

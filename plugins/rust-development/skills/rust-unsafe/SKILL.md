@@ -1,6 +1,6 @@
 ---
 name: rust-unsafe
-description: Rust unsafe code patterns covering when unsafe is justified (FFI, raw pointers, MaybeUninit, manual Send/Sync), required // SAFETY: comments, the unsafe_op_in_unsafe_fn lint, and safe abstraction crates (bytemuck, zerocopy). Use when writing FFI, implementing low-level data structures, or reviewing unsafe blocks for soundness.
+description: Rust unsafe: FFI, raw pointers, MaybeUninit, SAFETY: comments. Use when writing FFI or reviewing unsafe soundness.
 ---
 
 # Rust Unsafe Code

@@ -1,6 +1,6 @@
 ---
 name: go-concurrency-patterns
-description: Idiomatic Go concurrency patterns covering context propagation, goroutine lifecycle management, errgroup, channels, sync primitives, and worker pools. Use when implementing concurrent programs, reviewing for goroutine leaks, designing concurrent APIs, or debugging deadlocks and race conditions.
+description: Go concurrency: context, goroutine lifecycle, errgroup, channels, worker pools. Use when implementing concurrency.
 ---
 
 # Go Concurrency Patterns

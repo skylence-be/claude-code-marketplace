@@ -1,6 +1,6 @@
 ---
 name: typescript-vue-patterns
-description: Master TypeScript integration with Vue 3 including component prop types (defineProps<T>), emit types (defineEmits<T>), template refs, composable types, generic components, type-safe routing, API client types, and tsconfig optimization. Use when building type-safe Vue applications with full IDE support.
+description: TypeScript + Vue 3: defineProps<T>, defineEmits<T>, composable types. Use when building type-safe Vue apps.
 category: frontend
 tags: [typescript, vue3, type-safety, generics, inference]
 related_skills: [vue3-composition-api-patterns, pinia-state-patterns, vitest-testing-patterns]

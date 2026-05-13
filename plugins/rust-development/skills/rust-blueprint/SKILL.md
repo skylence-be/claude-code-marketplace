@@ -1,6 +1,6 @@
 ---
 name: rust-blueprint
-description: Structured planning format for Rust crates and workspaces. Bridges requirements to production-ready code by specifying every decision before writing. Use when planning new Rust projects, designing crate APIs, specifying async service architecture, or generating code from requirements. Blueprint ensures vague plans don't lead to vague code.
+description: Rust Blueprint: planning format specifying edition, layout, error strategy, async runtime. Use when planning Rust projects.
 ---
 
 # Rust Blueprint

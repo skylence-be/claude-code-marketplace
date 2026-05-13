@@ -1,6 +1,6 @@
 ---
 name: go-interface-design
-description: Idiomatic Go interface design patterns covering small single-method interfaces, consumer-defined interfaces, accept-interfaces-return-concretes, compile-time verification, and avoiding interface pollution. Use when designing package APIs, choosing between concrete types and interfaces, reviewing for fat interfaces, or enabling testability through dependency injection.
+description: Go interface design: single-method, consumer-defined, accept-interfaces-return-concretes. Use when designing package APIs or enabling testability.
 ---
 
 # Go Interface Design

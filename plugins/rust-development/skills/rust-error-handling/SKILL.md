@@ -1,6 +1,6 @@
 ---
 name: rust-error-handling
-description: Idiomatic Rust error handling covering thiserror for libraries, anyhow for binaries, the ? operator, error wrapping, custom error types, and the library/binary split. Use when implementing error handling, designing crate error contracts, reviewing code for .unwrap() misuse, or deciding between error strategies.
+description: Rust error handling: thiserror for libs, anyhow for binaries, ? operator. Use when designing error contracts.
 ---
 
 # Rust Error Handling

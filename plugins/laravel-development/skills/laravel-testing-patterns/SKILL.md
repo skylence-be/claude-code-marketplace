@@ -1,6 +1,6 @@
 ---
 name: laravel-testing-patterns
-description: Master Laravel testing with Pest 4 syntax, feature tests, unit tests, database testing, factories, mocking, browser testing with Dusk, and comprehensive testing strategies. Use when writing tests, implementing TDD, or building robust test suites.
+description: Laravel testing with Pest 4: feature/unit tests, factories, mocking, Dusk. Use when writing tests.
 ---
 
 # Laravel Testing Patterns

@@ -1,6 +1,6 @@
 ---
 name: rxjs-angular-patterns
-description: Master RxJS in Angular covering operators for HTTP, signal interop (toSignal, toObservable), takeUntilDestroyed for cleanup, switchMap/concatMap/exhaustMap patterns, error handling, HTTP interceptors, and testing observables.
+description: RxJS in Angular: HTTP operators, toSignal/toObservable, takeUntilDestroyed. Use when implementing reactive data flows.
 category: angular
 tags: [angular, rxjs, observables, operators, toSignal, toObservable, takeUntilDestroyed, http]
 related_skills: [angular-signals-patterns, angular-dependency-injection, angular-testing-patterns, angular-performance-optimization]

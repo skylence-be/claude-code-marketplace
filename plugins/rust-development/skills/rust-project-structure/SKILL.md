@@ -1,6 +1,6 @@
 ---
 name: rust-project-structure
-description: Rust project structure covering src/lib.rs vs src/main.rs, examples/, benches/, tests/, Cargo workspace layout with shared [workspace.dependencies] and [workspace.lints], feature flag hygiene, and Cargo.toml best practices. Use when scaffolding a new crate, setting up a multi-crate workspace, or publishing a library.
+description: Rust project layout: lib.rs vs main.rs, workspace, [workspace.dependencies]. Use when scaffolding a crate or workspace.
 ---
 
 # Rust Project Structure

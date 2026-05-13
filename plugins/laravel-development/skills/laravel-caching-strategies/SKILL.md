@@ -1,6 +1,6 @@
 ---
 name: laravel-caching-strategies
-description: Master Laravel caching with Redis, File, Database drivers, cache tags, query caching, model caching, cache invalidation strategies, and Laravel Octane integration. Use when optimizing application performance, reducing database load, or scaling high-traffic applications.
+description: Laravel caching: Redis/File/DB drivers, cache tags, query/model caching. Use when reducing database load.
 ---
 
 # Laravel Caching Strategies

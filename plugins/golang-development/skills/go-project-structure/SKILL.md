@@ -1,6 +1,6 @@
 ---
 name: go-project-structure
-description: Standard Go project layout covering cmd/, internal/, pkg/ conventions, go.mod hygiene, workspace files, and versioning. Use when starting a new Go project, refactoring a flat layout that has grown too large, setting up a monorepo with multiple modules, or publishing a Go library.
+description: Go project layout: cmd/, internal/, pkg/, go.mod hygiene. Use when starting a Go project or monorepo.
 ---
 
 # Go Project Structure

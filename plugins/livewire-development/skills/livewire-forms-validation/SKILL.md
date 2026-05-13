@@ -1,6 +1,6 @@
 ---
 name: livewire-forms-validation
-description: Master Livewire 4 form handling including form objects, real-time validation, custom validation rules, file uploads, multi-step forms, and error handling. Use when building complex forms, implementing validation logic, or handling user input.
+description: Livewire 4 forms: form objects, real-time validation, custom rules, file uploads. Use when building forms.
 ---
 
 # Livewire Forms and Validation

@@ -1,6 +1,6 @@
 ---
 name: livewire-blueprint
-description: Master Livewire Blueprint - the AI planning format for generating accurate, production-ready Livewire v4 code. Use when planning complex Livewire implementations, creating detailed specifications, or generating code from requirements. Blueprint ensures vague plans don't lead to vague code.
+description: Livewire Blueprint: planning format for Livewire v4. Use when planning Livewire implementations.
 category: livewire
 tags: [livewire, blueprint, ai, planning, architecture, specification, alpine, islands]
 related_skills: [livewire-forms-validation, livewire-performance-optimization, livewire4-reactive-patterns]

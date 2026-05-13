@@ -1,6 +1,6 @@
 ---
 name: nativephp-blueprint
-description: Master NativePHP Blueprint - the AI planning format for generating accurate, production-ready NativePHP code for Desktop v2 and Mobile v3. Use when planning native app implementations, creating detailed specifications, or generating code from requirements. Blueprint ensures vague plans don't lead to vague code.
+description: NativePHP Blueprint: planning format for Desktop v2 and Mobile v3. Use when planning native apps.
 category: nativephp
 tags: [nativephp, blueprint, ai, planning, architecture, specification, desktop, mobile]
 related_skills: [nativephp-desktop-patterns, nativephp-mobile-patterns, nativephp-testing-patterns]

@@ -1,6 +1,6 @@
 ---
 name: flutter-blueprint
-description: Structured planning format for Flutter apps — bridges requirements to production-ready code. Use when planning Flutter implementations, creating detailed specifications, or generating code from requirements. Blueprint ensures vague plans don't lead to vague code.
+description: Flutter Blueprint: planning format for Flutter apps. Use when planning implementations.
 category: flutter
 tags: [flutter, dart, blueprint, planning, architecture, mobile]
 related_skills: [flutter-clean-architecture, flutter-riverpod-patterns]

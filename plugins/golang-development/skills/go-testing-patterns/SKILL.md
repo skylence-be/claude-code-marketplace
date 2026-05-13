@@ -1,6 +1,6 @@
 ---
 name: go-testing-patterns
-description: Idiomatic Go testing patterns including table-driven tests, t.Run subtests, t.Parallel, t.Helper, mocking with interfaces, and integration tests with testcontainers. Use when writing Go tests, reviewing test quality, setting up CI test pipelines, or adding benchmark tests.
+description: Go testing: table-driven tests, t.Run/t.Parallel, interface mocking, testcontainers. Use when writing Go tests.
 ---
 
 # Go Testing Patterns

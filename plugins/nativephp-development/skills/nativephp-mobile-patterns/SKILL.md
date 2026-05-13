@@ -1,6 +1,6 @@
 ---
 name: nativephp-mobile-patterns
-description: Master NativePHP Mobile v3 patterns including plugin architecture, EDGE native components, bridge functions, camera, biometrics, geolocation, push notifications, secure storage, and iOS/Android deployment. Use when building mobile apps, implementing native device features, or deploying to app stores.
+description: NativePHP Mobile v3: EDGE components, bridge functions, camera, biometrics. Use when building mobile apps.
 category: nativephp
 tags: [nativephp, mobile, ios, android, laravel, php, plugins, camera, biometrics, push-notifications]
 ---

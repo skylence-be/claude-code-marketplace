@@ -1,6 +1,6 @@
 ---
 name: go-coding-standards
-description: Idiomatic Go coding standards covering gofmt formatting, naming conventions, the line-of-sight pattern, and initialisms. Use when writing new Go code, reviewing for style, enforcing team standards, or onboarding to a Go codebase.
+description: Go standards: gofmt, naming, line-of-sight pattern, initialisms. Use when writing Go or reviewing for style.
 ---
 
 # Go Coding Standards

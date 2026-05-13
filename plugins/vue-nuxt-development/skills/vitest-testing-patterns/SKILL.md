@@ -1,6 +1,6 @@
 ---
 name: vitest-testing-patterns
-description: Master Vitest testing for Vue 3 and Nuxt 4 including component testing (@vue/test-utils), composable testing, mocking strategies, Pinia store testing, snapshot testing, async operations, code coverage, SSR testing, and E2E with Playwright. Use when writing comprehensive test suites for Vue applications.
+description: Vitest for Vue 3/Nuxt 4: @vue/test-utils, composable testing, Pinia mocking. Use when writing Vue test suites.
 category: frontend
 tags: [vitest, testing, vue-test-utils, mocking, coverage]
 related_skills: [vue3-composition-api-patterns, typescript-vue-patterns, pinia-state-patterns]

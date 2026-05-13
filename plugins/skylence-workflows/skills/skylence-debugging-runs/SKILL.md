@@ -1,6 +1,6 @@
 ---
 name: skylence-debugging-runs
-description: Debugging a Skylence run that failed, hung, or produced unexpected output. Covers reading sky logs, the WebSocket event stream, common failure modes (lint errors, when condition not firing, chain_from failures, bash injection, missing secrets), and the runbook diagnostic flow.
+description: Debug Skylence runs: sky logs, failure modes (lint, when, chain_from). Use when a run fails or hangs.
 ---
 
 # Debugging Skylence Runs

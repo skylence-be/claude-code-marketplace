@@ -1,6 +1,6 @@
 ---
 name: livewire4-reactive-patterns
-description: Master Livewire 4 reactive patterns including single-file components, islands architecture, attributes (#[Reactive], #[Computed], #[Locked], #[Modelable], #[Defer], #[Async]), wire directives, lifecycle hooks, and component communication. Use when building interactive components, managing state, or implementing real-time features.
+description: Livewire 4: islands architecture, #[Reactive]/#[Computed]/#[Defer]/#[Async]. Use when building interactive components.
 ---
 
 # Livewire 4 Reactive Patterns

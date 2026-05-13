@@ -1,6 +1,6 @@
 ---
 name: rust-async-tokio
-description: Tokio async runtime patterns covering spawn_blocking for CPU/blocking I/O, !Send types across .await, holding locks across await points, Tokio and Rayon mixing, tokio::select!, structured cancellation, and channel patterns. Use when writing async Rust code, reviewing async code for runtime hazards, or debugging Tokio executor starvation.
+description: Tokio: spawn_blocking, !Send across .await, lock-across-await, select!. Use when writing async Rust or debugging starvation.
 ---
 
 # Rust Async with Tokio

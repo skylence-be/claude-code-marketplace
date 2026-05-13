@@ -1,6 +1,6 @@
 ---
 name: eloquent-relationships
-description: Master Eloquent ORM relationships including one-to-one, one-to-many, many-to-many, polymorphic, and advanced relationship patterns with eager loading and N+1 prevention. Use when designing database relationships, optimizing queries, or implementing complex data models in Laravel.
+description: Eloquent relationships: has-many, many-to-many, polymorphic, eager loading, N+1. Use when designing data models.
 ---
 
 # Eloquent Relationships

@@ -1,6 +1,6 @@
 ---
 name: php-modern-features
-description: Modern PHP 8.4 and 8.5 language features including new array functions, pipe operator, clone-with-properties, and chaining on new instances. Use when writing PHP code that targets 8.4+ or when replacing manual loops with built-in functions.
+description: PHP 8.4/8.5: array functions, pipe operator, clone-with-properties. Use when targeting 8.4+ or replacing manual loops.
 category: php
 tags: [php, 8.4, 8.5, modern, array-functions, pipe-operator]
 related_skills: [laravel-coding-standards, laravel-blueprint]

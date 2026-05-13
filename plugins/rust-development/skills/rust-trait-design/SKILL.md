@@ -1,6 +1,6 @@
 ---
 name: rust-trait-design
-description: Rust trait design covering small focused traits, dyn Trait vs generics tradeoffs, sealed traits, blanket impls, supertraits, GATs, newtypes, and the orphan rule. Use when designing public crate APIs, choosing between static and dynamic dispatch, implementing newtypes, or defining extensible abstractions.
+description: Rust traits: dyn Trait vs generics, sealed traits, blanket impls, GATs, newtypes. Use when designing crate APIs.
 ---
 
 # Rust Trait Design

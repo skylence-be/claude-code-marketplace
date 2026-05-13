@@ -1,6 +1,6 @@
 ---
 name: livewire-performance-optimization
-description: Master Livewire 4 performance optimization including query optimization, N+1 prevention, lazy loading, computed properties, polling strategies, wire:navigate, database queries, and performance testing. Use when building high-performance applications, optimizing slow components, or scaling Livewire applications.
+description: Livewire 4 performance: N+1 prevention, lazy loading, computed properties. Use when optimizing Livewire components.
 ---
 
 # Livewire Performance Optimization

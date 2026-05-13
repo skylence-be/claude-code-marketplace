@@ -1,6 +1,6 @@
 ---
 name: nativephp-testing-patterns
-description: Master NativePHP testing with facade fakes, assertion methods, and integration testing strategies for desktop and mobile applications. Use when writing tests for NativePHP apps, mocking native facades, or implementing TDD for desktop/mobile features.
+description: NativePHP testing: facade fakes, assertion methods, desktop/mobile. Use when writing tests for NativePHP.
 category: nativephp
 tags: [nativephp, testing, pest, phpunit, fakes, desktop, mobile, laravel]
 ---

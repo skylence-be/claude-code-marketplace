@@ -1,6 +1,6 @@
 ---
 name: action-driven-design
-description: Master action-driven architecture with typed DTOs, constructor-promoted dependencies, and form request bridges. Use when creating actions, DTOs, form requests, or refactoring services into actions.
+description: Action-driven architecture: typed DTOs, constructor-promoted deps, form request bridges. Use when creating actions.
 ---
 
 # Action-Driven Design (The Default Architecture)

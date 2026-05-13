@@ -1,6 +1,6 @@
 ---
 name: blaze-optimization
-description: Master Livewire Blaze - the Blade component performance optimizer. Covers function compilation, runtime memoization, compile-time folding, @blaze/@unblaze directives, safe/unsafe selective folding, debug profiling, and migration strategies. Use when optimizing Blade component performance, enabling Blaze on projects, or diagnosing folding issues.
+description: Livewire Blaze: Blade performance optimizer using function compilation, folding, and memoization. Use when optimizing Blade components or diagnosing folding issues.
 category: livewire
 tags: [blaze, blade, performance, optimization, folding, memoization, compilation]
 related_skills: [livewire-performance-optimization, livewire-blueprint]

@@ -1,6 +1,6 @@
 ---
 name: wayfinder-routes
-description: Laravel Wayfinder type-safe route generation for frontend code. Auto-generates TypeScript route functions from Laravel routes for tree-shakeable, type-safe URL building in Inertia, Vue, and React apps. Use when bridging backend routes to frontend code.
+description: Wayfinder: auto-generated TypeScript routes from Laravel for Inertia/Vue/React. Use when bridging backend routes to frontend.
 category: laravel
 tags: [wayfinder, routes, typescript, type-safe, inertia, frontend]
 related_skills: [laravel-api-design, inertia-patterns, typescript-vue-patterns]
