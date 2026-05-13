@@ -1,6 +1,6 @@
 # Multi-Framework Development Marketplace
 
-Professional development toolkit with **15 specialized plugins** featuring **52 AI agents**, **93+ slash commands**, a **self-reflection scoring code review pipeline**, **post-compaction context recovery**, and a **self-correcting workflow system** for Laravel, Livewire, Filament, Vue/Nuxt, Angular, Go, Magento 2, WordPress, Electron, Flutter, NativePHP, Git worktree management, Code Review, Archon Workflows, and Pro-Workflow.
+Professional development toolkit with **17 specialized plugins** featuring **55 AI agents**, **102+ slash commands**, a **self-reflection scoring code review pipeline**, **post-compaction context recovery**, and a **self-correcting workflow system** for Laravel, Livewire, Filament, Vue/Nuxt, Angular, Go, Rust, Skylence, Cartographer, Magento 2, WordPress, Electron, Flutter, NativePHP, Git worktree management, Code Review, and Pro-Workflow.
 
 ## Available Plugins
 
@@ -25,8 +25,15 @@ Install only what you need — each plugin is completely isolated with its own a
 ### Backend Go
 - **golang-development** - 2 agents, 3 commands, 7 skills (idiomatic Go, error handling, concurrency, testing, project structure, interface design, performance)
 
+### Backend Rust
+- **rust-development** - 2 agents, 4 commands, 10 skills (idiomatic Rust, ownership/borrowing, error handling, async Tokio, trait design, testing, project structure, performance, unsafe, Blueprint planning)
+
+### Project-Specific (Usage, not Development)
+- **skylence-workflows** - 1 agent, 4 commands, 4 skills (.sky file format, sky CLI reference, debugging runs, MUST/MUST NOT rules) for repos that use Skylence
+- **cartographer-graph** - 1 agent, 3 commands, 4 skills (MCP tools, CLI reference, impact workflow with depth labels, MUST/MUST NOT rules) for repos indexed with Cartographer
+
 ### Code Quality
-- **code-review** - 1 agent, 2 commands, 4 skills, 13 technology contexts (self-reflection scoring, team review, includes Go rules)
+- **code-review** - 1 agent, 2 commands, 4 skills, 14 technology contexts (self-reflection scoring, team review, includes Go and Rust rules)
 
 ### DevOps & Workflow
 - **git-worktree-management** - 1 agent, 5 commands (parallel development workflows)
@@ -50,6 +57,9 @@ Install only what you need — each plugin is completely isolated with its own a
 /plugin install flutter-development
 /plugin install nativephp-development
 /plugin install golang-development
+/plugin install rust-development
+/plugin install skylence-workflows
+/plugin install cartographer-graph
 /plugin install git-worktree-management
 /plugin install code-review
 /plugin install pro-workflow
@@ -212,7 +222,49 @@ Skills inspired by [Laravel Boost](https://github.com/laravel/boost) analysis, c
 
 **4 skills:** self-reflection-scoring, review-modes, git-diff-analysis, finding-taxonomy
 
-**12 technology contexts:** Laravel, Livewire, Filament, Vue/Nuxt, Angular, Magento 2, WordPress, Electron, Flutter, NativePHP, TypeScript, PHP
+**14 technology contexts:** Laravel, Livewire, Filament, Vue/Nuxt, Angular, Magento 2, WordPress, Electron, Flutter, NativePHP, TypeScript, PHP, Go, Rust
+
+### Golang Development Plugin
+
+**2 specialized agents:**
+- go-expert: idiomatic Go, project structure, concurrency, testing, toolchain
+- go-reviewer: code review focused on correctness, races, and API hygiene
+
+**7 skills:** go-coding-standards, go-error-handling, go-concurrency-patterns, go-testing-patterns, go-project-structure, go-interface-design, go-performance
+
+**3 commands:** go-project-new, go-test-new, go-lint-setup
+
+### Rust Development Plugin
+
+**2 specialized agents:**
+- rust-expert: idiomatic Rust, async Tokio, error handling, trait design, workspaces, toolchain
+- rust-reviewer: correctness, unsafe soundness, async hazards, error handling completeness
+
+**10 skills:** rust-coding-standards, rust-ownership-borrowing, rust-error-handling, rust-async-tokio, rust-trait-design, rust-testing-patterns, rust-project-structure, rust-performance, rust-unsafe, rust-blueprint
+
+**4 commands:** rust-project-new, rust-test-new, rust-lint-setup, rust-workspace-new
+
+### Skylence Workflows Plugin (USE)
+
+For repositories that have Skylence installed (`.sky/workflows/`). Teaches Claude how to author, lint, run, and debug `.sky` workflows. Improves on the GitNexus-style "inject into CLAUDE.md" approach by shipping as a clean, versioned marketplace plugin with on-demand skill loading.
+
+**1 specialized agent:**
+- skylence-workflow-author: authoring, linting, debugging `.sky` workflows
+
+**4 skills:** skylence-rules (MUST/MUST NOT), skylence-sky-format (four-delimiter format), skylence-cli-reference (sky CLI), skylence-debugging-runs (failure-mode triage)
+
+**4 commands:** skylence-workflow-new, skylence-run, skylence-lint, skylence-doctor
+
+### Cartographer Graph Plugin (USE)
+
+For repositories indexed with Cartographer. Teaches Claude how to use the MCP tools and CLI to navigate the code graph, run impact analysis with depth-labeled blast radius (d=1 WILL BREAK, d=2 LIKELY, d=3+ MAY), and plan refactors safely.
+
+**1 specialized agent:**
+- cartographer-graph-navigator: graph queries, impact analysis, rename planning, safe-edit workflow
+
+**4 skills:** cartographer-rules (MUST/MUST NOT), cartographer-mcp-tools (16 MCP tools), cartographer-cli-reference (CLI subcommands), cartographer-impact-workflow (always-run-before-edit gate)
+
+**3 commands:** cartographer-index, cartographer-impact, cartographer-mcp-setup
 
 ### Other Plugins
 
@@ -295,7 +347,7 @@ claude-code-marketplace/
 │   ├── status_lines/                # Custom status line generators
 │   └── settings.json                # Hook configuration + permissions
 ├── .claude-plugin/
-│   └── marketplace.json             # 13 plugins definition
+│   └── marketplace.json             # 17 plugins definition
 ├── plugins/
 │   ├── laravel-development/         # 9 agents, 18 commands, 13 skills
 │   ├── livewire-development/        # 2 agents, 5 commands, 7 skills
@@ -307,7 +359,11 @@ claude-code-marketplace/
 │   ├── electron-development/        # 2 agents, 2 commands
 │   ├── flutter-development/         # 2 agents, 2 commands
 │   ├── nativephp-development/       # 3 agents, 4 commands, 3 skills
-│   ├── code-review/                 # 1 agent, 2 commands, 4 skills, 12 contexts
+│   ├── golang-development/          # 2 agents, 3 commands, 7 skills
+│   ├── rust-development/            # 2 agents, 4 commands, 10 skills
+│   ├── skylence-workflows/          # 1 agent, 4 commands, 4 skills (USE)
+│   ├── cartographer-graph/          # 1 agent, 3 commands, 4 skills (USE)
+│   ├── code-review/                 # 1 agent, 2 commands, 4 skills, 14 contexts
 │   ├── git-worktree-management/     # 1 agent, 5 commands
 │   └── pro-workflow/                # 2 agents, 5 commands, 2 contexts
 └── README.md

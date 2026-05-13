@@ -1,0 +1,6 @@
+{
+  "skylence": {
+    "command": "sky",
+    "args": ["mcp", "stdio"]
+  }
+}

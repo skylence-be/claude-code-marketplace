@@ -1,7 +1,7 @@
 {
-    "name": "skylence-claude-code-laravel-livewire4",
-    "version": "1.6.0",
-    "description": "Full-stack development marketplace with 50+ specialized AI agents across 15 plugins (Laravel, Livewire, Filament, Vue/Nuxt, Angular, Magento2, WordPress, Electron, Flutter, NativePHP, Go, Git worktree, Pro-Workflow, Code Review, Archon Workflows), 90+ slash commands, 16 Laravel skills aligned with action-driven architecture",
+    "name": "skylence-claude-code-marketplace",
+    "version": "1.9.0",
+    "description": "Full-stack development marketplace with 55+ specialized AI agents across 17 plugins (Laravel, Livewire, Filament, Vue/Nuxt, Angular, Magento2, WordPress, Electron, Flutter, NativePHP, Go, Rust, Skylence workflows, Cartographer graph, Git worktree, Pro-Workflow, Code Review), 102+ slash commands, 16 Laravel skills aligned with action-driven architecture, and project-specific usage plugins for Skylence and Cartographer with bundled MCP servers (Playwright-style .mcp.json) for auto-registration",
     "author": {
         "name": "Skylence"
     },
@@ -32,7 +32,15 @@
         "rxjs",
         "typescript",
         "zoneless",
-        "ssr"
+        "ssr",
+        "rust",
+        "cargo",
+        "tokio",
+        "skylence",
+        "sky-workflow",
+        "cartographer",
+        "code-graph",
+        "impact-analysis"
     ],
     "commands": [
         "./.claude/commands/new-task.md",
@@ -80,7 +88,18 @@
         "./plugins/angular-development/commands/misc/feature-plan.md",
         "./plugins/golang-development/commands/go-project-new.md",
         "./plugins/golang-development/commands/go-test-new.md",
-        "./plugins/golang-development/commands/go-lint-setup.md"
+        "./plugins/golang-development/commands/go-lint-setup.md",
+        "./plugins/rust-development/commands/rust-project-new.md",
+        "./plugins/rust-development/commands/rust-test-new.md",
+        "./plugins/rust-development/commands/rust-lint-setup.md",
+        "./plugins/rust-development/commands/rust-workspace-new.md",
+        "./plugins/skylence-workflows/commands/skylence-workflow-new.md",
+        "./plugins/skylence-workflows/commands/skylence-run.md",
+        "./plugins/skylence-workflows/commands/skylence-lint.md",
+        "./plugins/skylence-workflows/commands/skylence-doctor.md",
+        "./plugins/cartographer-graph/commands/cartographer-index.md",
+        "./plugins/cartographer-graph/commands/cartographer-impact.md",
+        "./plugins/cartographer-graph/commands/cartographer-mcp-setup.md"
     ],
     "agents": [
         "./plugins/laravel-development/agents/laravel-architect.md",
@@ -129,7 +148,11 @@
         "./plugins/angular-development/agents/performance-expert.md",
         "./plugins/angular-development/agents/ssr-specialist.md",
         "./plugins/golang-development/agents/go-expert.md",
-        "./plugins/golang-development/agents/go-reviewer.md"
+        "./plugins/golang-development/agents/go-reviewer.md",
+        "./plugins/rust-development/agents/rust-expert.md",
+        "./plugins/rust-development/agents/rust-reviewer.md",
+        "./plugins/skylence-workflows/agents/skylence-workflow-author.md",
+        "./plugins/cartographer-graph/agents/cartographer-graph-navigator.md"
     ],
     "mcpServers": {
         "context7": {

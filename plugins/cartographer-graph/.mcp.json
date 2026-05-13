@@ -1,0 +1,6 @@
+{
+  "cartographer": {
+    "command": "cartographer",
+    "args": ["mcp"]
+  }
+}
