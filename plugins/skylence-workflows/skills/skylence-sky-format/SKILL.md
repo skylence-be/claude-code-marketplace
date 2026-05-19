@@ -71,6 +71,8 @@ Identifies and configures one DAG node. Common keys:
 | `emit` | `{"name": "evt.name", "payload": {...}}` | Triggers any workflow with matching `trigger.sky_event` |
 | `loop.until.bash` | shell command | Runs the node repeatedly until the command exits 0 |
 | `http` | `{"url": "...", "method": "POST", "body": "...", "headers": {...}}` | HTTP call instead of a Claude prompt |
+| `invoke.target` | workflow name (literal string) | Calls another workflow synchronously; blocks until the child run finishes |
+| `invoke.vars` | `{"key": "value"}` | Variables passed to the child; supports `{{var}}` and `$node.output` expansion |
 
 ## `∆<id>∆` Prompt Body Block
 
@@ -114,6 +116,7 @@ Webhook payload keys are flattened: `issue.number` becomes `$SKY_ISSUE_NUMBER`, 
 | Loop until condition met | `loop.until.bash = "test -f flag"` |
 | Abort the run conditionally | `cancel = {"reason": "..."}` plus `when = "..."` |
 | Trigger another workflow | `emit = {"name": "...", "payload": {...}}` |
+| Call a workflow and get its output | `invoke.target = "name"` plus `invoke.vars = {...}` |
 
 ## Common Mistakes
 
@@ -125,4 +128,7 @@ Webhook payload keys are flattened: `issue.number` becomes `$SKY_ISSUE_NUMBER`, 
 | Undeclared `${env:NAME}` | Lint error `SKY-WF-055` | Add `NAME` to `secrets` array |
 | `output_format` schema mismatch | Lint error `SKY-WF-060` | Fix the schema or align the prompt |
 | Unquoted `$SKY_*` in bash | Shell injection or whitespace bugs | Always quote: `"$SKY_VAR"` |
+| `invoke = "name"` | Parse error SKY-WF-001 | Use `invoke.target = "name"` (dotted-key path) |
+| `invoke_vars = {...}` | Parse error SKY-WF-001 | Use `invoke.vars = {...}` (dotted-key path) |
+| Child workflow has multiple leaf nodes | Runtime error | The child must converge to exactly one leaf (one node nothing else depends on) |
 | `set_var` reading webhook value | Edition 2024: unsafe | Pass via `$SKY_*` env var instead |

@@ -21,7 +21,7 @@ color: purple
 - Configuring a webhook, cron, or `sky_event` trigger
 - Adding `chain_from`, `output_format`, or `output_style` to a node
 - Setting up `mcp_servers` and `secrets` in a workflow
-- Lint errors `SKY-WF-040`, `SKY-WF-047`, `SKY-WF-055`, `SKY-WF-060`
+- Lint errors `SKY-WF-040`, `SKY-WF-047`, `SKY-WF-055`, `SKY-WF-060`, `SKY-WF-064`, `SKY-WF-065`, `SKY-WF-066`, `SKY-WF-067`
 
 ## Behavioral Mindset
 
@@ -34,7 +34,7 @@ Workflows must be deterministic, lintable, and debuggable. Every `.sky` file is 
 - **Conditional Execution**: `when = "LHS OP 'QUOTED'"`, `trigger_rule` semantics, skipped-vs-failed nodes
 - **DAG Integrity**: `depends_on`, `chain_from` consistency, cycle prevention, emit chain depth
 - **Variable Injection**: `{{var}}` in prompts only, `$SKY_*` in bash, `${env:NAME}` in MCP/HTTP, declared in `secrets`
-- **Node Types**: Claude prompt (`model` + `∆`), `bash`, `script` (`runtime`, `deps`, `timeout`), `http`, `cancel`, `emit`, `loop.until`
+- **Node Types**: Claude prompt (`model` + `∆`), `bash`, `script` (`runtime`, `deps`, `timeout`), `http`, `cancel`, `emit`, `loop.until`, `invoke` (`invoke.target`, `invoke.vars`)
 - **Lint Driven**: every change ends with `./bin/sky lint` passing
 - **Debugging**: `./bin/sky logs <run-id>`, `./bin/sky stream <run-id>`, the WebSocket event stream
 

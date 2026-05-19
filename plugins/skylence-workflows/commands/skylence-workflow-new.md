@@ -15,7 +15,7 @@ $ARGUMENTS
 1. **Determine the workflow name** from the specification (kebab-case, must match the filename without `.sky`)
 2. **Choose exactly one trigger**: `manual`, `github`, `sky_event`, or `cron`
 3. **Identify required secrets** if any `${env:NAME}` references will be needed in `mcp_servers` or HTTP fields
-4. **Decide the node DAG**: claude prompt, bash, script, http, or a mix; map `depends_on` between them
+4. **Decide the node DAG**: claude prompt, bash, script, http, invoke, or a mix; map `depends_on` between them
 5. **Write the `.sky` file** in `.sky/workflows/<name>.sky` with `⊕meta⊕`, `§<id>§`, and `∆<id>∆` blocks
 6. **Run `./bin/sky lint .sky/workflows/<name>.sky`** and fix every reported error
 7. **Manual trigger workflow only**: run `./bin/sky run <name>` to smoke-test
@@ -100,6 +100,30 @@ secrets = ["SLACK_WEBHOOK_URL"]
 http = {"url": "${env:SLACK_WEBHOOK_URL}", "method": "POST", "body": "{\"text\": \"deploy complete in prod\"}"}
 §§
 ```
+
+### Invoke: synchronous sub-workflow call
+
+Parent workflow blocks until the child finishes; the child's leaf output becomes the invoke node's output.
+
+```
+⊕meta⊕
+name = "parent-workflow"
+description = "Calls a child workflow and verifies its output"
+trigger.manual = true
+⊕⊕
+
+§call-child§
+invoke.target = "child-workflow"
+invoke.vars = {"greeting": "hello from parent"}
+§§
+
+§verify§
+eval = {"source": "$call-child.output", "contains": "expected text"}
+depends_on = ["call-child"]
+§§
+```
+
+The child workflow must have exactly one leaf node (a node nothing else depends on). Use `invoke.target` and `invoke.vars` (not `invoke = "name"` or `invoke_vars`). Lint both files together: `./bin/sky lint parent.sky child.sky`.
 
 ### Cancel guard for label-gated workflows
 

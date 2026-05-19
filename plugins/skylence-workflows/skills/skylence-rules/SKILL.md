@@ -27,6 +27,9 @@ A node with `chain_from = "implement"` must also have `"implement"` in its `depe
 ### Shell-quote every `$SKY_*` variable in `bash` nodes
 Values come from webhook payloads and may contain spaces, quotes, or shell metacharacters. Always write `"$SKY_ISSUE_NUMBER"`, never bare `$SKY_ISSUE_NUMBER`.
 
+### Lint invoke workflows together when checking SKY-WF-067
+`sky lint` must resolve the invoke target. Run `./bin/sky lint parent.sky child.sky` (or `./bin/sky lint` for all) so the child is visible during validation. Linting the parent alone falsely fails SKY-WF-067.
+
 ### Read `./bin/sky logs <run-id>` before assuming a run succeeded
 Exit codes are not enough; the WebSocket stream may show step failures that the CLI summary glosses over. Always inspect the full log for an unfamiliar workflow.
 
@@ -49,6 +52,15 @@ The `secrets` array names the environment variables; the values stay in `.env` (
 
 ### Trigger a workflow that emits `sky_event` without checking the chain depth
 The chain cap is 5. A new emit that triggers a workflow already in the ancestor chain is silently skipped. Map the emit chain on paper before adding new `emit`/`trigger.sky_event` pairs.
+
+### Use `invoke = "name"` or `invoke_vars = {...}` syntax
+Both produce a parse error (SKY-WF-001). The correct dotted-key syntax is `invoke.target = "name"` and `invoke.vars = {"key": "value"}`.
+
+### Put `invoke` inside a `loop` body
+Rejected at lint time (SKY-WF-065). Invoke is not supported inside loops in v1.
+
+### Invoke a child workflow with multiple leaf nodes
+The child must converge to exactly one leaf node (a node nothing else depends on). Multiple leaves fail at runtime with a clear error. Design child workflows with a single output node.
 
 ## Always-Run Gates
 
