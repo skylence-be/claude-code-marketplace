@@ -21,6 +21,7 @@ awk '
     managed["## Advisor"] = 1
     managed["## Model Delegation"] = 1
     managed["## Verify Before Asserting"] = 1
+    managed["## Delegating to Agents"] = 1
     managed["## LLM Council"] = 1
     managed["## Decisive Thinking"] = 1
     managed["## Coding Guidelines"] = 1
@@ -194,6 +195,27 @@ When about to state or act on load-bearing factual claim while hedging (may, mig
 - Search web (WebSearch / WebFetch) for anything outside codebase: library behavior, error text, version specifics.
 
 State what you verified and how. If you genuinely can't confirm, say so and label it guess; don't dress hunch as fact. Hedging is fine for real uncertainty you've named, not as substitute for checking.
+
+## Delegating to Agents
+
+When delegating to subagents (especially parallel agents in git worktrees), the orchestrator owns prevention and verification. Executors fail less when the brief is tight and the result is checked.
+
+Brief each task as a contract:
+- Objective, exact files and interfaces, and explicit out-of-scope list.
+- A runnable acceptance check (test, lint, or build command) the agent must pass.
+- Forbid scope creep: if a change beyond scope seems needed, STOP and report, don't do it.
+
+Require proof, not claims:
+- Agent returns the command it ran and its output, not "done".
+- Agent runs tests/lint/build before returning.
+- Review the diff against the spec in a fresh pass; flag correctness gaps only. A reviewer told to "find problems" invents them.
+
+Worktree hygiene:
+- Fetch first, then branch each worktree from current integration HEAD, not stale session-start HEAD. Stale base means conflicts before a line is written.
+- One file or bounded area per agent. If two tasks' `git diff --name-only` share any file, serialize them.
+- Sequential-only: schema migrations, shared config/types/routes, lockfiles. Lockfile owned by one agent or regenerated after merge.
+- Each branch passes lint and tests before merge; rebase remaining worktrees after each merge. Use a staging branch for multi-agent integration.
+- Isolate per worktree: copy (don't symlink) .env, assign distinct ports, use relative build-cache paths, clean artifacts before rebuild.
 
 ## LLM Council
 
