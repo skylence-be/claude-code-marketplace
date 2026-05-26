@@ -1,6 +1,6 @@
 {
   "_comment": "Copy to ~/.claude/judge-rules.json and customize. Rules evaluate in declaration order; first match wins. Three classes: 'deny' blocks (exit 2); 'allow' short-circuits to allow (use for allowlist patterns above broader denies); 'escalate' spawns `claude -p` with judge_prompt and parses the first word of the response (ALLOW or BLOCK). 'pattern' is a POSIX extended regex matched against the tool_input JSON. Patterns are case-sensitive. Portable across GNU grep and BSD grep — avoid \\s inside [], use [[:space:]]; avoid [^\\n], use .* (which already excludes newlines). The '_category' field is an inline label, ignored by the hook.",
-  "_categories": "fs | net | privilege | git-destructive | git-review | secrets | db | cloud | system",
+  "_categories": "fs | net | privilege | git-destructive | git-review | secrets | db | cloud | deps | system",
   "_caveats": "Regex bypasses exist (rm -fr vs rm -rf, alternative interpreters, base64-decoded commands). This is a safety net, not a security boundary. Pair with docs/judge-hook.md.",
   "rules": [
     {
@@ -178,6 +178,23 @@
       "class": "escalate",
       "reason": "destructive S3 operation (recursive rm or --delete sync)",
       "judge_prompt": "A Bash command is performing a destructive S3 operation (`aws s3 rm --recursive` or `aws s3 sync --delete`). Block unless the bucket name clearly indicates a non-production target (contains 'test', 'staging', 'dev', 'scratch', 'tmp') AND the user explicitly authorized the operation. Block by default."
+    },
+
+    {
+      "_category": "deps",
+      "tool": "Bash",
+      "pattern": "((npm|pnpm)\\s+(i|install|add)\\s+[^[:space:]]+@[0-9]|yarn\\s+add\\s+[^[:space:]]+@[0-9]|composer\\s+require\\s+[^[:space:]]+:)",
+      "class": "escalate",
+      "reason": "package install pinned to a specific version",
+      "judge_prompt": "A Bash command installs a package pinned to a specific version (npm/pnpm/yarn @version, or composer require vendor/pkg:version). ALLOW if recent context shows the current version was looked up from the registry (npm view or npm show <pkg> version, composer show <pkg>, or checking npmjs.com / packagist.org), or if the pinned version already matches the project lockfile or manifest. BLOCK if the version looks pinned from memory without a lookup. In the block reason instruct: verify the current stable version first with `npm view <pkg> version` or `composer show <pkg> --all`, then pin that; do not use a version recalled from training."
+    },
+    {
+      "_category": "deps",
+      "tool": "Edit",
+      "pattern": "\"file_path\"\\s*:\\s*\"[^\"]*(package|composer)\\.json\"",
+      "class": "escalate",
+      "reason": "editing package.json/composer.json (possible version pin)",
+      "judge_prompt": "An Edit is modifying package.json or composer.json. ALLOW if the change does not add or raise a dependency version, or if recent context shows the version was looked up from the registry (npm view / composer show / npmjs.com / packagist.org) or already matches the lockfile. BLOCK if a dependency version appears pinned from memory. In the block reason instruct: verify the current stable version first (`npm view <pkg> version` or `composer show <pkg> --all`), then use that; do not use a version recalled from training."
     },
 
     {

@@ -1,6 +1,6 @@
 {
     "name": "skylence-claude-code-marketplace",
-    "version": "1.11.7",
+    "version": "1.11.8",
     "description": "Full-stack development marketplace with 55+ specialized AI agents across 18 plugins (Laravel, Livewire, Filament, Vue/Nuxt, Angular, Magento2, WordPress, Electron, Flutter, NativePHP, Go, Rust, Skylence workflows, Cartographer graph, Git worktree, Pro-Workflow, Code Review, Core), 102+ slash commands, 16 Laravel skills aligned with action-driven architecture, project-specific usage plugins for Skylence and Cartographer with bundled MCP servers (Playwright-style .mcp.json) for auto-registration, and a Core plugin with solo-session-handoff (Solo MCP coordination with session-handoff fallback) and Claude Code uninstaller skills",
     "author": {
         "name": "Skylence"
