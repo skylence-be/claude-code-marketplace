@@ -112,6 +112,10 @@ Also call when:
 - Changing approach
 - Task complete: but first make deliverables durable (write file, commit)
 
+Skip when:
+- You are already running as Opus; advisor() would be Opus consulting itself.
+- This turn immediately follows a completed /plan session; the plan output already serves as the advisor input.
+
 On longer tasks: once before committing to approach, once before declaring done. Don't call after every step: advisor adds most value before the approach crystallizes.
 
 Give advice serious weight. If data and advice conflict, don't silently switch: make one more advisor call: "I found X, you suggest Y, which breaks the tie?"
