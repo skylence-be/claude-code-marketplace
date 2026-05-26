@@ -349,7 +349,7 @@
     {
       "name": "core",
       "source": "./plugins/core",
-      "description": "Core cross-project primitives. 5 skills + bundled hook scripts. solo-setup writes Solo-aware sections to ~/.claude/CLAUDE.md and optionally installs the safety hook bundle (judge-hook + env-guard + writing-guard, all wired in one step); solo-session-handoff persists session state via Solo MCP with session-handoff fallback if offline; session-handoff produces structured /clear summaries; humanize-writing strips AI tells from prose; uninstall-claude removes the Claude Code binary and ~/.claude on macOS, Linux, and Windows.",
+      "description": "Core cross-project primitives. 6 skills + bundled hook scripts. solo-setup writes Solo-aware sections to ~/.claude/CLAUDE.md and optionally installs safety hooks (judge-hook + writing-guard) and OS notification hooks; solo-session-handoff persists session state via Solo MCP with session-handoff fallback if offline; session-handoff produces structured /clear summaries; create-github-issue opens issues with the correct existing labels and Projects v2 custom field values; humanize-writing strips AI tells from prose; uninstall-claude removes the Claude Code binary and ~/.claude on macOS, Linux, and Windows.",
       "version": "1.0.0",
       "author": {
         "name": "Skylence"
