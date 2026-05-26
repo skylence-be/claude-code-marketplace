@@ -1,11 +1,23 @@
 ---
-name: solo-handoff
-description: Use PROACTIVELY when the user needs to share state across Claude sessions, hand off work to another agent, or coordinate across Solo projects. Triggers: 'hand off to another agent', 'save this for next session', 'shared todo', 'transfer to other project', 'scratchpad', 'lock to prevent race', 'cross-project', 'another agent needs this'. For in-conversation work only, use TaskCreate instead.
+name: solo-session-handoff
+description: Use PROACTIVELY when the user needs to share state across Claude sessions, hand off work to another agent, or coordinate across Solo projects. Checks Solo MCP availability first and falls back to session-handoff if offline. Triggers: 'hand off to another agent', 'save this for next session', 'shared todo', 'transfer to other project', 'scratchpad', 'lock to prevent race', 'cross-project', 'another agent needs this'. For in-conversation work only, use TaskCreate instead.
 ---
 
 # Solo Handoff
 
 Coordination primitives for cross-session and cross-agent state via the Solo MCP server.
+
+## Availability check
+
+Before doing anything else, verify the Solo MCP server is reachable:
+
+```
+whoami()
+```
+
+If the call errors or times out, **stop this skill immediately** and invoke `core:session-handoff` instead. Do not attempt any other Solo MCP calls.
+
+---
 
 ## When to use what
 

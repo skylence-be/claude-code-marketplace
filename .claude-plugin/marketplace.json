@@ -349,7 +349,7 @@
     {
       "name": "core",
       "source": "./plugins/core",
-      "description": "Core cross-project primitives. 2 skills: solo-handoff for persisting session state, coordinating across Solo projects, and managing todos via Solo MCP scratchpad and todo tools (SoloTerm workflow guide, full CRUD reference for scratchpads, todos, locks, and cross-project transfer); uninstall-claude for removing the Claude Code binary and ~/.claude on macOS, Linux, and Windows.",
+      "description": "Core cross-project primitives. 3 skills: solo-session-handoff for persisting session state via Solo MCP (checks server availability first; falls back to session-handoff if offline); session-handoff for structured /clear summaries when Solo MCP is unavailable; uninstall-claude for removing the Claude Code binary and ~/.claude on macOS, Linux, and Windows.",
       "version": "1.0.0",
       "author": {
         "name": "Skylence"
