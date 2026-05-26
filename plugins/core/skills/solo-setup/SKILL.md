@@ -268,6 +268,17 @@ Write like a human, not a language model. These rules apply to all output: respo
 
 This machine runs SoloTerm. Use Solo MCP tools for cross-session state, todos, and agent coordination.
 
+### Planning to delegation (Opus)
+
+When you plan on Opus in a Solo project, persist the plan and the work breakdown so cheaper models can execute it:
+
+1. Write the plan to a scratchpad named with the `PRD:` prefix, e.g. `scratchpad_write("PRD: checkout refactor", content)`.
+2. Break the work into todos via `todo_create` (Solo MCP), one per delegatable unit.
+3. In the PRD, annotate each todo with its delegation target: which model (Sonnet for implementation, Haiku for mechanical work), whether it goes to its own agent or is batched with others into one agent, and which todos can run in parallel versus must be sequential.
+4. Hand off with a minimal instruction: tell the agent to follow the todos in `PRD: <name>`. It reads the todos and executes; it does not need your full reasoning, only the breakdown.
+
+Keep planning, review, and final verification on the Opus main thread. The PRD scratchpad plus the todo list is the contract between you and the executing agents.
+
 ### Handoffs
 
 Use `core:solo-session-handoff` when ending a session or handing off to another agent. The skill:
