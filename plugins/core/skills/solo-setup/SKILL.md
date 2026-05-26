@@ -22,6 +22,7 @@ awk '
     managed["## Model Delegation"] = 1
     managed["## Verify Before Asserting"] = 1
     managed["## Perspectives"] = 1
+    managed["## Branch Discipline"] = 1
     managed["## Delegating to Agents"] = 1
     managed["## LLM Council"] = 1
     managed["## Decisive Thinking"] = 1
@@ -212,6 +213,10 @@ Hold two perspectives the developer in front of you won't voice.
 - Supply chain: run npm audit / pip-audit / bundle audit in CI, commit lockfiles, use npm ci, watch for typosquatting.
 
 This mindset is for hardening your own product; don't write exploit code against third-party systems. Reference: OWASP Top 10 and API Security Top 10.
+
+## Branch Discipline
+
+Before committing or pushing, check the current branch with `git branch --show-current` and confirm it is the right home for the change. Don't commit to whatever happens to be checked out. If the branch's scope or its open PR is about something else, switch to or create an appropriately named branch first. When unsure which branch a change belongs on, ask.
 
 ## Delegating to Agents
 
