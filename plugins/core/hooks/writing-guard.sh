@@ -40,7 +40,7 @@ STRIPPED=$(echo "$CONTENT" | awk '
 VIOLATIONS=""
 
 # Em dashes: zero allowed everywhere.
-EM_COUNT=$(echo "$STRIPPED" | grep -o '—' | wc -l | tr -d ' ')
+EM_COUNT=$(echo "$STRIPPED" | grep -o '—' | wc -l | tr -d ' ' || true)
 if [ "$EM_COUNT" -gt 0 ]; then
   VIOLATIONS="${VIOLATIONS}- Em dashes: ${EM_COUNT} found (zero allowed)\n"
 fi
