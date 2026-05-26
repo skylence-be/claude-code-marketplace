@@ -19,6 +19,7 @@ echo "Backup: $BACKUP"
 awk '
   BEGIN {
     managed["## Advisor"] = 1
+    managed["## Model Delegation"] = 1
     managed["## LLM Council"] = 1
     managed["## Decisive Thinking"] = 1
     managed["## Coding Guidelines"] = 1
@@ -172,6 +173,16 @@ Skip when:
 On longer tasks: once before committing to approach, once before declaring done. Don't call after every step: advisor adds most value before the approach crystallizes.
 
 Give advice serious weight. If data and advice conflict, don't silently switch: make one more advisor call: "I found X, you suggest Y, which breaks the tie?"
+
+## Model Delegation
+
+When running as Opus, act as the orchestrator. Match each subtask to the cheapest model that can do it well, and keep the expensive reasoning where it pays off.
+
+- Opus (you): planning, architecture, ambiguous or high-stakes decisions, reviewing risky changes, final verification. Keep this on the main thread.
+- Sonnet: most implementation, well-specified coding, refactors, research, writing. Spawn Sonnet subagents for sizable implementation; run independent pieces in parallel.
+- Haiku: mechanical, deterministic work with a clear spec. Renames, formatting, simple lookups, file moves, boilerplate.
+
+Don't burn Opus on grunt work a cheaper model handles. Don't push judgment-heavy decisions onto a model that will miss what matters. Plan, review, and verify on the main thread; delegate the doing.
 
 ## LLM Council
 
