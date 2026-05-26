@@ -1,0 +1,198 @@
+{
+  "_comment": "Copy to ~/.claude/judge-rules.json and customize. Rules evaluate in declaration order; first match wins. Three classes: 'deny' blocks (exit 2); 'allow' short-circuits to allow (use for allowlist patterns above broader denies); 'escalate' spawns `claude -p` with judge_prompt and parses the first word of the response (ALLOW or BLOCK). 'pattern' is a POSIX extended regex matched against the tool_input JSON. Patterns are case-sensitive. Portable across GNU grep and BSD grep — avoid \\s inside [], use [[:space:]]; avoid [^\\n], use .* (which already excludes newlines). The '_category' field is an inline label, ignored by the hook.",
+  "_categories": "fs | net | privilege | git-destructive | git-review | secrets | db | cloud | system",
+  "_caveats": "Regex bypasses exist (rm -fr vs rm -rf, alternative interpreters, base64-decoded commands). This is a safety net, not a security boundary. Pair with docs/judge-hook.md.",
+  "rules": [
+    {
+      "_category": "fs",
+      "tool": "Bash",
+      "pattern": "rm\\s+-[a-zA-Z]*[rR][a-zA-Z]*\\s+(/|~|\\$HOME)",
+      "class": "deny",
+      "reason": "recursive rm targeting /, ~, or $HOME"
+    },
+    {
+      "_category": "fs",
+      "tool": "Bash",
+      "pattern": "\\bdd\\b.*of=/dev/(sd|nvme|disk|hda|hdb)",
+      "class": "deny",
+      "reason": "dd writing to a block device (data destroyer)"
+    },
+    {
+      "_category": "fs",
+      "tool": "Bash",
+      "pattern": "\\bmkfs(\\.|\\s)",
+      "class": "deny",
+      "reason": "filesystem format (mkfs.*)"
+    },
+    {
+      "_category": "fs",
+      "tool": "Bash",
+      "pattern": "chmod\\s+(-R\\s+)?[0-7]*777\\b",
+      "class": "deny",
+      "reason": "chmod 777 (world-writable, often a sign of last-resort debugging)"
+    },
+
+    {
+      "_category": "net",
+      "tool": "Bash",
+      "pattern": "curl[^|]*\\|\\s*(bash|sh|zsh|ksh|fish)\\b",
+      "class": "deny",
+      "reason": "pipe-to-shell from curl"
+    },
+    {
+      "_category": "net",
+      "tool": "Bash",
+      "pattern": "wget[^|]*-[Oo][^|]*\\|\\s*(bash|sh|zsh|ksh|fish)\\b",
+      "class": "deny",
+      "reason": "pipe-to-shell from wget"
+    },
+
+    {
+      "_category": "privilege",
+      "tool": "Bash",
+      "pattern": "(^|[^a-zA-Z_/])sudo\\s",
+      "class": "deny",
+      "reason": "sudo invocation"
+    },
+
+    {
+      "_category": "git-destructive",
+      "tool": "Bash",
+      "pattern": "git\\s+push.*(--force(\\s|\")|\\s-f(\\s|\"))",
+      "class": "deny",
+      "reason": "force push (does not match --force-with-lease)"
+    },
+    {
+      "_category": "git-destructive",
+      "tool": "Bash",
+      "pattern": "git\\s+reset\\s+(--hard|--keep)\\b",
+      "class": "deny",
+      "reason": "git reset --hard / --keep (discards working tree changes)"
+    },
+    {
+      "_category": "git-destructive",
+      "tool": "Bash",
+      "pattern": "git\\s+clean\\s+-[a-zA-Z]*f",
+      "class": "deny",
+      "reason": "git clean -f (deletes untracked files irrecoverably)"
+    },
+    {
+      "_category": "git-destructive",
+      "tool": "Bash",
+      "pattern": "git\\s+(filter-branch|filter-repo)\\b",
+      "class": "deny",
+      "reason": "history rewrite (filter-branch / filter-repo)"
+    },
+    {
+      "_category": "git-destructive",
+      "tool": "Bash",
+      "pattern": "git\\s+branch\\s+-D\\b",
+      "class": "deny",
+      "reason": "force-delete local branch (-D)"
+    },
+
+    {
+      "_category": "git-review",
+      "tool": "Bash",
+      "pattern": "git\\s+push\\s+(--[^[:space:]]+\\s+)*(origin\\s+)?(main|master|production|prod|release)\\b",
+      "class": "escalate",
+      "reason": "push to a protected-looking branch",
+      "judge_prompt": "A Claude Code session is about to run `git push` to a protected-looking branch (main, master, production, prod, release). Block unless the recent user message clearly requested this push (phrases like 'push to main', 'ship it', 'merge to main'). 'Commit' or 'finish up' alone is not sufficient authorization for a push to a protected branch."
+    },
+    {
+      "_category": "git-review",
+      "tool": "Bash",
+      "pattern": "git\\s+push.*--delete\\b|git\\s+push\\s+origin\\s+:[^[:space:]]",
+      "class": "escalate",
+      "reason": "remote branch deletion",
+      "judge_prompt": "A Claude Code session is about to delete a remote branch. Block unless the user explicitly named the branch and asked to delete it. Allow only when the branch name in the command appears verbatim in a recent user instruction."
+    },
+
+    {
+      "_category": "secrets",
+      "tool": "Write",
+      "pattern": "\"file_path\"\\s*:\\s*\"[^\"]*/\\.env(\\.|\")",
+      "class": "deny",
+      "reason": "writing to a .env-style secret file"
+    },
+    {
+      "_category": "secrets",
+      "tool": "Edit",
+      "pattern": "\"file_path\"\\s*:\\s*\"[^\"]*/\\.env(\\.|\")",
+      "class": "deny",
+      "reason": "editing a .env-style secret file"
+    },
+    {
+      "_category": "secrets",
+      "tool": "Write",
+      "pattern": "\"file_path\"\\s*:\\s*\"[^\"]*\\.ssh/id_[a-zA-Z0-9_-]+\"",
+      "class": "deny",
+      "reason": "writing to an SSH private key"
+    },
+
+    {
+      "_category": "db",
+      "tool": "Bash",
+      "pattern": "(DROP\\s+(TABLE|DATABASE|SCHEMA|INDEX)|TRUNCATE\\s+TABLE|DELETE\\s+FROM)\\b",
+      "class": "escalate",
+      "reason": "destructive SQL (DROP/TRUNCATE/DELETE FROM)",
+      "judge_prompt": "A Bash command contains destructive SQL (DROP/TRUNCATE/DELETE FROM). Block unless one of: the target database or table name clearly indicates non-production (contains 'test', 'dev', 'scratch', 'tmp', 'local'); the DELETE has a narrow WHERE clause and the user requested the cleanup; the command is a documented schema migration the user just asked to run. Block by default."
+    },
+    {
+      "_category": "db",
+      "tool": "Bash",
+      "pattern": "(mongosh?|mongo).*\\b(dropDatabase|dropCollection|deleteMany)\\(",
+      "class": "escalate",
+      "reason": "destructive MongoDB operation",
+      "judge_prompt": "A Bash command is performing a destructive MongoDB operation (dropDatabase, dropCollection, deleteMany). Block unless the connection string or database name clearly indicates non-production (contains 'test', 'dev', 'local', 'scratch') and the user explicitly requested the deletion."
+    },
+    {
+      "_category": "db",
+      "tool": "Bash",
+      "pattern": "redis-cli\\b.*\\b(FLUSHALL|FLUSHDB)\\b",
+      "class": "escalate",
+      "reason": "Redis FLUSHALL / FLUSHDB",
+      "judge_prompt": "A Bash command is wiping Redis (FLUSHALL or FLUSHDB). Block unless the connection target is clearly a non-production instance and the user explicitly asked for the flush."
+    },
+
+    {
+      "_category": "cloud",
+      "tool": "Bash",
+      "pattern": "\\bterraform\\s+destroy\\b",
+      "class": "escalate",
+      "reason": "terraform destroy",
+      "judge_prompt": "A Bash command is running `terraform destroy`. Block unless the working directory name or `-var-file` argument clearly indicates a non-production environment (contains 'staging', 'dev', 'sandbox', 'scratch') AND the user explicitly requested the destruction. Block by default if the environment is unclear."
+    },
+    {
+      "_category": "cloud",
+      "tool": "Bash",
+      "pattern": "kubectl\\s+(delete|--context.*delete)\\s+(ns|namespace|deployment|deploy|sts|statefulset|pvc)\\b",
+      "class": "escalate",
+      "reason": "kubectl delete on high-impact resource type",
+      "judge_prompt": "A Bash command is deleting a Kubernetes resource (namespace, deployment, statefulset, pvc). Block unless the cluster context clearly indicates non-production (name contains 'dev', 'staging', 'scratch', 'minikube', 'kind') AND the user explicitly named the resource. Block by default."
+    },
+    {
+      "_category": "cloud",
+      "tool": "Bash",
+      "pattern": "aws\\s+s3\\b.*(rm.*--recursive|sync.*--delete)",
+      "class": "escalate",
+      "reason": "destructive S3 operation (recursive rm or --delete sync)",
+      "judge_prompt": "A Bash command is performing a destructive S3 operation (`aws s3 rm --recursive` or `aws s3 sync --delete`). Block unless the bucket name clearly indicates a non-production target (contains 'test', 'staging', 'dev', 'scratch', 'tmp') AND the user explicitly authorized the operation. Block by default."
+    },
+
+    {
+      "_category": "system",
+      "tool": "Bash",
+      "pattern": "\\b(shutdown|reboot|halt|poweroff)\\s",
+      "class": "deny",
+      "reason": "system power command"
+    },
+    {
+      "_category": "system",
+      "tool": "Bash",
+      "pattern": "(\\bkillall\\s|\\bpkill\\s+-9\\b|\\bkill\\s+-9\\s+1\\b)",
+      "class": "deny",
+      "reason": "mass process kill or kill init"
+    }
+  ]
+}

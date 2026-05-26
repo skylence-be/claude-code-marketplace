@@ -4,7 +4,7 @@ description: Write Solo-aware guidance to ~/.claude/CLAUDE.md. Adds standard XVE
 disable-model-invocation: true
 ---
 
-Configure `~/.claude/CLAUDE.md` for use with SoloTerm. Writes the standard guidance sections plus a Solo-specific block. No hooks, no settings.json changes.
+Configure `~/.claude/CLAUDE.md` for use with SoloTerm. Writes the standard guidance sections plus a Solo-specific block. Optionally installs the safety hook bundle (judge-hook + env-guard + writing-guard).
 
 ## Step 1: Backup and strip managed sections
 
@@ -33,7 +33,72 @@ awk '
 ' "$CLAUDE_MD" > "$CLAUDE_MD.tmp" && mv "$CLAUDE_MD.tmp" "$CLAUDE_MD"
 ```
 
-## Step 2: Append standard sections
+## Step 2: Install judge-hook (opt-in)
+
+Ask the user:
+
+> "Install judge-hook? Wires two hooks:
+> - **judge-hook** (PreToolUse): pattern-matches risky commands against `~/.claude/judge-rules.json`; can escalate ambiguous patterns to a Haiku LLM call. `.env` file blocking is handled here via rules; no separate env-guard script needed.
+> - **writing-guard** (PostToolUse on Write/Edit): flags AI writing tells in artifact content; blocks and asks Claude to revise.
+>
+> Requires `jq`. Rules file created from example if not present.
+>
+> Install? [y/N]"
+
+Default to **No**. If yes:
+
+```bash
+SETTINGS="$HOME/.claude/settings.json"
+PLUGIN_HOOKS="${CLAUDE_PLUGIN_ROOT}/hooks"
+
+# 1. Copy scripts
+cp "$PLUGIN_HOOKS/writing-guard.sh" ~/.claude/writing-guard.sh && chmod +x ~/.claude/writing-guard.sh
+cp "$PLUGIN_HOOKS/judge-hook.sh"    ~/.claude/judge-hook.sh   && chmod +x ~/.claude/judge-hook.sh
+
+# 2. Rules file: don't clobber an existing one
+if [ ! -f ~/.claude/judge-rules.json ]; then
+  cp "$PLUGIN_HOOKS/judge-rules.example.json" ~/.claude/judge-rules.json
+  echo "Wrote ~/.claude/judge-rules.json from example. Review and customize before relying on it."
+else
+  echo "~/.claude/judge-rules.json already exists: left untouched."
+fi
+
+# 3. Wire into settings.json (idempotent)
+
+# writing-guard: PostToolUse on Write|Edit
+if ! jq -e '.hooks.PostToolUse // [] | map(.hooks // [] | map(.command // "")) | flatten | any(contains("writing-guard.sh"))' "$SETTINGS" >/dev/null 2>&1; then
+  jq '.hooks //= {} | .hooks.PostToolUse //= [] | .hooks.PostToolUse += [{
+    "matcher": "Write|Edit",
+    "hooks": [{"type": "command", "command": "bash ~/.claude/writing-guard.sh"}]
+  }]' "$SETTINGS" > "$SETTINGS.tmp" && mv "$SETTINGS.tmp" "$SETTINGS"
+  echo "writing-guard wired."
+fi
+
+# judge-hook: PreToolUse (covers env-guard-style blocking via rules)
+if ! jq -e '.hooks.PreToolUse // [] | map(.hooks // [] | map(.command // "")) | flatten | any(contains("judge-hook.sh"))' "$SETTINGS" >/dev/null 2>&1; then
+  jq '.hooks //= {} | .hooks.PreToolUse //= [] | .hooks.PreToolUse += [{
+    "matcher": "Bash|Write|Edit|NotebookEdit|mcp__",
+    "hooks": [{"type": "command", "command": "bash ~/.claude/judge-hook.sh", "statusMessage": "Judging tool call..."}]
+  }]' "$SETTINGS" > "$SETTINGS.tmp" && mv "$SETTINGS.tmp" "$SETTINGS"
+  echo "judge-hook wired."
+fi
+```
+
+Then ask:
+
+> "Set `defaultMode` to `bypassPermissions`? With judge-hook active the hook is the safety gate; per-call prompts add friction without adding protection. [Y/n]"
+
+If yes:
+```bash
+jq '.permissions.defaultMode = "bypassPermissions"' "$SETTINGS" > "$SETTINGS.tmp" && mv "$SETTINGS.tmp" "$SETTINGS"
+echo "defaultMode set to bypassPermissions."
+```
+
+Tell the user to review `~/.claude/judge-rules.json` before the next session; the example ships `.env` blocking rules but they should add any environment-specific deny patterns. Restart Claude Code for hooks to take effect.
+
+---
+
+## Step 3: Append standard sections
 
 ```bash
 cat >> "$CLAUDE_MD" << 'EOF'
@@ -163,7 +228,7 @@ EOF
 echo "CLAUDE.md updated. Backup: $BACKUP"
 ```
 
-## Step 3: Summary
+## Step 4: Summary
 
 ```
 Solo Setup
@@ -178,5 +243,11 @@ CLAUDE.md sections written:
   Solo (SoloTerm)          ✓
 Backup: ~/.claude/CLAUDE.md.bak.<timestamp>
 
-Hooks:   not installed (run xve:setup to add hooks when ready)
+Hooks:
+  writing-guard.sh         ✓ / ✗ skipped
+  judge-hook.sh            ✓ / ✗ skipped  (covers .env blocking via rules)
+  judge-rules.json         ✓ created / already existed / ✗ skipped
+  defaultMode              bypassPermissions / unchanged
 ```
+
+Restart Claude Code for any hook changes to take effect.

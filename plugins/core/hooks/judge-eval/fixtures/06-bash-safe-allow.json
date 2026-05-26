@@ -1,0 +1,8 @@
+{
+  "_description": "Plain ls -la is allowed (no rule matches)",
+  "_expected_exit": 0,
+  "tool_name": "Bash",
+  "tool_input": {
+    "command": "ls -la /tmp"
+  }
+}

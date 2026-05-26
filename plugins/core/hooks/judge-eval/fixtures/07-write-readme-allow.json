@@ -1,0 +1,9 @@
+{
+  "_description": "Writing to README.md is allowed",
+  "_expected_exit": 0,
+  "tool_name": "Write",
+  "tool_input": {
+    "file_path": "/Users/x/project/README.md",
+    "content": "# Project"
+  }
+}

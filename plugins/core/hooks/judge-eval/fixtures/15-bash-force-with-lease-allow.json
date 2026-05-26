@@ -1,0 +1,8 @@
+{
+  "_description": "Edge case: --force-with-lease is NOT blocked by the force-push rule (it's the safer variant)",
+  "_expected_exit": 0,
+  "tool_name": "Bash",
+  "tool_input": {
+    "command": "git push origin feature-branch --force-with-lease"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "_description": "Any sudo invocation is denied",
+  "_expected_exit": 2,
+  "tool_name": "Bash",
+  "tool_input": {
+    "command": "sudo apt install foo"
+  }
+}

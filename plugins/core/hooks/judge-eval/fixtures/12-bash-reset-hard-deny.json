@@ -1,0 +1,8 @@
+{
+  "_description": "git reset --hard is denied (discards working tree)",
+  "_expected_exit": 2,
+  "tool_name": "Bash",
+  "tool_input": {
+    "command": "git reset --hard HEAD~1"
+  }
+}

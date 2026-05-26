@@ -1,0 +1,8 @@
+{
+  "_description": "git clean -fd is denied (deletes untracked files)",
+  "_expected_exit": 2,
+  "tool_name": "Bash",
+  "tool_input": {
+    "command": "git clean -fd"
+  }
+}

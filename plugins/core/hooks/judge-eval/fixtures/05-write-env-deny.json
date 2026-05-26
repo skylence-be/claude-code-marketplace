@@ -1,0 +1,9 @@
+{
+  "_description": "Writing to a .env file is denied",
+  "_expected_exit": 2,
+  "tool_name": "Write",
+  "tool_input": {
+    "file_path": "/Users/x/project/.env",
+    "content": "API_KEY=secret"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "_description": "Edge case: rm -i (interactive, no -r) is NOT blocked by the rm rule",
+  "_expected_exit": 0,
+  "tool_name": "Bash",
+  "tool_input": {
+    "command": "rm -i /tmp/foo.txt"
+  }
+}

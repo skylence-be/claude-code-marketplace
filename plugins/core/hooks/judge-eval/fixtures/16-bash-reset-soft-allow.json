@@ -1,0 +1,8 @@
+{
+  "_description": "Edge case: git reset --soft is NOT blocked (only --hard / --keep are)",
+  "_expected_exit": 0,
+  "tool_name": "Bash",
+  "tool_input": {
+    "command": "git reset --soft HEAD~1"
+  }
+}

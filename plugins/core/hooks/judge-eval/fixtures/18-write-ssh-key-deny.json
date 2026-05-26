@@ -1,0 +1,9 @@
+{
+  "_description": "Write to an SSH private key is denied",
+  "_expected_exit": 2,
+  "tool_name": "Write",
+  "tool_input": {
+    "file_path": "/Users/x/.ssh/id_ed25519",
+    "content": "-----BEGIN OPENSSH PRIVATE KEY-----"
+  }
+}

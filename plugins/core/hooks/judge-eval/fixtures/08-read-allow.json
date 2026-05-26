@@ -1,0 +1,8 @@
+{
+  "_description": "Read of any file is allowed (no Read rules)",
+  "_expected_exit": 0,
+  "tool_name": "Read",
+  "tool_input": {
+    "file_path": "/Users/x/project/secrets.txt"
+  }
+}
