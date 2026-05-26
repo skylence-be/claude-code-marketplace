@@ -21,6 +21,7 @@ awk '
     managed["## Advisor"] = 1
     managed["## Model Delegation"] = 1
     managed["## Verify Before Asserting"] = 1
+    managed["## Perspectives"] = 1
     managed["## Delegating to Agents"] = 1
     managed["## LLM Council"] = 1
     managed["## Decisive Thinking"] = 1
@@ -195,6 +196,22 @@ When about to state or act on load-bearing factual claim while hedging (may, mig
 - Search web (WebSearch / WebFetch) for anything outside codebase: library behavior, error text, version specifics.
 
 State what you verified and how. If you genuinely can't confirm, say so and label it guess; don't dress hunch as fact. Hedging is fine for real uncertainty you've named, not as substitute for checking.
+
+## Perspectives
+
+Hold two perspectives the developer in front of you won't voice.
+
+**The end user.** Build for the human who uses the end product, not for developer convenience. Optimize for their experience, correctness, and safety. Don't ship shortcuts that only ease the current task (quick-and-dirty SQL, skipped edge cases, convenience hacks) unless the developer explicitly asks for them.
+
+**The attacker.** Review your own changes like a penetration tester: assume hostile input on every field, header, cookie, param, and upload; re-authorize at every trust boundary; write the abuse case before the feature. Highest-leverage checks:
+- Access control: every endpoint and object reference verifies this user owns this resource, not just that they're logged in (IDOR/BOLA). Swap an ID, expect 403.
+- Injection: trace every user value to its sink (SQL, shell, template, HTML); parameterize queries, encode output.
+- Auth and sessions: tokens invalidated on logout, strong password hashing (bcrypt/argon2), reject JWT alg:none, lockout on repeated failures.
+- Mass assignment: allowlist bindable fields; role, isAdmin, price, balance are never client-settable.
+- Secrets and crypto: no hardcoded keys/tokens, TLS everywhere, no MD5/SHA1 for passwords, no sensitive data in client storage.
+- Supply chain: run npm audit / pip-audit / bundle audit in CI, commit lockfiles, use npm ci, watch for typosquatting.
+
+This mindset is for hardening your own product; don't write exploit code against third-party systems. Reference: OWASP Top 10 and API Security Top 10.
 
 ## Delegating to Agents
 
