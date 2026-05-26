@@ -349,7 +349,7 @@
     {
       "name": "core",
       "source": "./plugins/core",
-      "description": "Core cross-project primitives. 3 skills: solo-session-handoff for persisting session state via Solo MCP (checks server availability first; falls back to session-handoff if offline); session-handoff for structured /clear summaries when Solo MCP is unavailable; uninstall-claude for removing the Claude Code binary and ~/.claude on macOS, Linux, and Windows.",
+      "description": "Core cross-project primitives. 4 skills: solo-setup writes Solo-aware sections to ~/.claude/CLAUDE.md (standard XVE guidelines + Solo handoff/scratchpad/todo guidance, no hooks); solo-session-handoff persists session state via Solo MCP with session-handoff fallback if offline; session-handoff produces structured /clear summaries; uninstall-claude removes the Claude Code binary and ~/.claude on macOS, Linux, and Windows.",
       "version": "1.0.0",
       "author": {
         "name": "Skylence"
