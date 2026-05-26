@@ -98,7 +98,60 @@ Tell the user to review `~/.claude/judge-rules.json` before the next session; th
 
 ---
 
-## Step 3: Append standard sections
+## Step 3: Install notification hooks (opt-in)
+
+Ask the user:
+
+> "Install OS notification hooks? Fires native desktop notifications on key lifecycle events so you can step away during long runs:
+> - **PreCompact**: context window about to compact
+> - **PostCompact**: compaction done, context reset
+> - **Stop**: Claude finished a turn (can be noisy; disable if unwanted)
+> - **StopFailure**: Claude stopped due to an API error
+> - **TeammateIdle**: a teammate agent is going idle
+> - **Notification** (idle_prompt only): Claude has gone idle and is waiting for input
+>
+> Works on macOS (osascript), Windows (PowerShell NotifyIcon), and Linux (notify-send). Requires `jq`.
+>
+> Install? [Y/n]"
+
+If yes:
+
+```bash
+SETTINGS="$HOME/.claude/settings.json"
+PLUGIN_HOOKS="${CLAUDE_PLUGIN_ROOT}/hooks"
+
+cp "$PLUGIN_HOOKS/notify.sh" ~/.claude/notify.sh && chmod +x ~/.claude/notify.sh
+
+if jq -e '
+  [.hooks // {} | to_entries[] | .value[] | .hooks // [] | .[] | .command // ""]
+  | flatten | any(contains("notify.sh"))
+' "$SETTINGS" >/dev/null 2>&1; then
+  echo "notify.sh already wired: skipping."
+else
+  jq '
+    .hooks //= {}
+    | .hooks.PreCompact //= []
+    | .hooks.PreCompact += [{"hooks": [{"type": "command", "command": "bash ~/.claude/notify.sh"}]}]
+    | .hooks.PostCompact //= []
+    | .hooks.PostCompact += [{"hooks": [{"type": "command", "command": "bash ~/.claude/notify.sh"}]}]
+    | .hooks.Stop //= []
+    | .hooks.Stop += [{"hooks": [{"type": "command", "command": "bash ~/.claude/notify.sh"}]}]
+    | .hooks.StopFailure //= []
+    | .hooks.StopFailure += [{"hooks": [{"type": "command", "command": "bash ~/.claude/notify.sh"}]}]
+    | .hooks.TeammateIdle //= []
+    | .hooks.TeammateIdle += [{"hooks": [{"type": "command", "command": "bash ~/.claude/notify.sh"}]}]
+    | .hooks.Notification //= []
+    | .hooks.Notification += [{"matcher": "idle_prompt", "hooks": [{"type": "command", "command": "bash ~/.claude/notify.sh"}]}]
+  ' "$SETTINGS" > "$SETTINGS.tmp" && mv "$SETTINGS.tmp" "$SETTINGS"
+  echo "Notification hooks wired (6 events)."
+fi
+```
+
+If Stop is too noisy after install, remove the `.hooks.Stop` entry from `~/.claude/settings.json`. Restart Claude Code for hooks to take effect.
+
+---
+
+## Step 4: Append standard sections
 
 ```bash
 cat >> "$CLAUDE_MD" << 'EOF'
@@ -232,7 +285,7 @@ EOF
 echo "CLAUDE.md updated. Backup: $BACKUP"
 ```
 
-## Step 4: Summary
+## Step 5: Summary
 
 ```
 Solo Setup
@@ -247,11 +300,14 @@ CLAUDE.md sections written:
   Solo (SoloTerm)          ✓
 Backup: ~/.claude/CLAUDE.md.bak.<timestamp>
 
-Hooks:
+Safety hooks:
   writing-guard.sh         ✓ / ✗ skipped
   judge-hook.sh            ✓ / ✗ skipped  (covers .env blocking via rules)
   judge-rules.json         ✓ created / already existed / ✗ skipped
   defaultMode              bypassPermissions / unchanged
+
+Notification hooks:
+  notify.sh (6 events)     ✓ / ✗ skipped
 ```
 
 Restart Claude Code for any hook changes to take effect.
