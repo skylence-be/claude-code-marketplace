@@ -1,0 +1,13 @@
+{
+  "sky-workflow": {
+    "command": "sky",
+    "args": ["lsp", "stdio"],
+    "extensionToLanguage": {
+      ".sky": "sky-workflow"
+    },
+    "transport": "stdio",
+    "startupTimeout": 10000,
+    "shutdownTimeout": 5000,
+    "maxRestarts": 3
+  }
+}
