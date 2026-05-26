@@ -211,11 +211,11 @@ Require proof, not claims:
 - Review the diff against the spec in a fresh pass; flag correctness gaps only. A reviewer told to "find problems" invents them.
 
 Worktree hygiene:
-- Fetch first, then branch each worktree from current integration HEAD, not stale session-start HEAD. Stale base means conflicts before a line is written.
+- Be deliberate about each worktree's base. `worktree.baseRef` in settings.json defaults to `"fresh"` (branch from `origin/HEAD`); set `"head"` only when an agent must build on unpushed local commits. Fetch first so the base is current; a stale base means conflicts before a line is written.
 - One file or bounded area per agent. If two tasks' `git diff --name-only` share any file, serialize them.
 - Sequential-only: schema migrations, shared config/types/routes, lockfiles. Lockfile owned by one agent or regenerated after merge.
-- Each branch passes lint and tests before merge; rebase remaining worktrees after each merge. Use a staging branch for multi-agent integration.
-- Isolate per worktree: copy (don't symlink) .env, assign distinct ports, use relative build-cache paths, clean artifacts before rebuild.
+- Rebase remaining worktrees after each merge. Integrate multi-agent work on a staging branch and run the full lint/test suite there once, at feature end, rather than gating every branch.
+- Propagate gitignored files agents need (e.g. `.env`) via a `.worktreeinclude` file (gitignore syntax); Claude Code copies them into each new worktree. Assign distinct ports, use relative build-cache paths, clean artifacts before rebuild.
 
 ## LLM Council
 
