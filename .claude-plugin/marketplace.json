@@ -363,6 +363,25 @@
         "coordination",
         "mcp"
       ]
+    },
+    {
+      "name": "judge-design",
+      "source": "./plugins/judge-design",
+      "description": "Design and validate LLM-judge control layers for agent systems. 6 skills forming a workflow: action-surface-audit-skill maps an agent's consequential actions; judge-criteria-skill designs what the judge evaluates and the structured action-proposal format; judge-prompt-writer-skill produces a four-outcome judge system prompt (allow/block/revise/escalate); judge-eval-suite-skill generates test cases biased toward mundane boundary failures; judge-architecture-review-skill audits for judge-layer gaps before scaling; judge-setup writes a ## Judge section to ~/.claude/CLAUDE.md with proactive-invocation triggers and anti-theater rules. Complements the core plugin's judge-hook.sh deterministic runtime.",
+      "version": "1.0.0",
+      "author": {
+        "name": "Skylence"
+      },
+      "tags": [
+        "judge",
+        "llm-as-judge",
+        "agent-safety",
+        "control-layer",
+        "evals",
+        "guardrails",
+        "action-boundary",
+        "architecture-review"
+      ]
     }
   ]
 }
