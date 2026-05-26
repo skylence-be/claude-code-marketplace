@@ -14,7 +14,7 @@ End-of-session summary for `/clear`. Audience is the next agent, not a stakehold
 3. Background processes started with `run_in_background`; shell IDs matter
 4. Files created or modified this session
 5. Memory files written or updated
-6. Unresolved questions from the conversation
+6. Unresolved questions from conversation
 
 Do NOT grep or `git log` to rediscover state. Synthesize what happened in this session only.
 
@@ -70,4 +70,4 @@ Do NOT grep or `git log` to rediscover state. Synthesize what happened in this s
 - Relative paths
 - Omitting "Running state" because nothing is running; write "none"
 - Writing the handoff to a file
-- Steps beyond "Pick up here"; the next agent decides
+- Steps beyond "Pick up here"; next agent decides

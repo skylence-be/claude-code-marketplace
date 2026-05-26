@@ -26,4 +26,4 @@ bash "${CLAUDE_PLUGIN_ROOT}/skills/uninstall-claude/uninstall.sh"
 & "${env:CLAUDE_PLUGIN_ROOT}\skills\uninstall-claude\uninstall.ps1"
 ```
 
-The script handles everything: install-method detection, confirmation prompt, binary removal, `~/.claude/` wipe, and shell rc cleanup. Relay its output verbatim. Add nothing.
+Script handles everything: install-method detection, confirmation prompt, binary removal, `~/.claude/` wipe, and shell rc cleanup. Relay its output verbatim. Add nothing.

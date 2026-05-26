@@ -4,7 +4,7 @@ description: Write Solo-aware guidance to ~/.claude/CLAUDE.md. Adds standard XVE
 disable-model-invocation: true
 ---
 
-Configure `~/.claude/CLAUDE.md` for use with SoloTerm. Writes the standard guidance sections plus a Solo-specific block. Optionally installs the safety hook bundle (judge-hook + env-guard + writing-guard).
+Configure `~/.claude/CLAUDE.md` for SoloTerm. Writes standard guidance sections plus Solo-specific block. Optionally installs safety hooks (judge-hook + writing-guard) and OS notification hooks.
 
 ## Step 1: Backup and strip managed sections
 
@@ -20,6 +20,7 @@ awk '
   BEGIN {
     managed["## Advisor"] = 1
     managed["## Model Delegation"] = 1
+    managed["## Verify Before Asserting"] = 1
     managed["## LLM Council"] = 1
     managed["## Decisive Thinking"] = 1
     managed["## Coding Guidelines"] = 1
@@ -176,13 +177,23 @@ Give advice serious weight. If data and advice conflict, don't silently switch: 
 
 ## Model Delegation
 
-When running as Opus, act as the orchestrator. Match each subtask to the cheapest model that can do it well, and keep the expensive reasoning where it pays off.
+When running as Opus, act as orchestrator. Match each subtask to cheapest model that can do it well; keep expensive reasoning where it pays off.
 
-- Opus (you): planning, architecture, ambiguous or high-stakes decisions, reviewing risky changes, final verification. Keep this on the main thread.
+- Opus (you): planning, architecture, ambiguous or high-stakes decisions, reviewing risky changes, final verification. Keep on main thread.
 - Sonnet: most implementation, well-specified coding, refactors, research, writing. Spawn Sonnet subagents for sizable implementation; run independent pieces in parallel.
-- Haiku: mechanical, deterministic work with a clear spec. Renames, formatting, simple lookups, file moves, boilerplate.
+- Haiku: mechanical, deterministic work with clear spec. Renames, formatting, simple lookups, file moves, boilerplate.
 
-Don't burn Opus on grunt work a cheaper model handles. Don't push judgment-heavy decisions onto a model that will miss what matters. Plan, review, and verify on the main thread; delegate the doing.
+Don't burn Opus on grunt work cheaper model handles. Don't push judgment-heavy decisions onto model that will miss what matters. Plan, review, verify on main thread; delegate doing.
+
+## Verify Before Asserting
+
+When about to state or act on load-bearing factual claim while hedging (may, might, probably, likely, I think, should be), treat hedge as signal to verify, not ship. Confirm before you assert:
+
+- Read actual source: code, file, config, API response.
+- Run it: reproduce behavior rather than predict it.
+- Search web (WebSearch / WebFetch) for anything outside codebase: library behavior, error text, version specifics.
+
+State what you verified and how. If you genuinely can't confirm, say so and label it guess; don't dress hunch as fact. Hedging is fine for real uncertainty you've named, not as substitute for checking.
 
 ## LLM Council
 
@@ -270,20 +281,20 @@ This machine runs SoloTerm. Use Solo MCP tools for cross-session state, todos, a
 
 ### Planning to delegation (Opus)
 
-When you plan on Opus in a Solo project, persist the plan and the work breakdown so cheaper models can execute it:
+When you plan on Opus in Solo project, persist plan and work breakdown so cheaper models can execute it:
 
-1. Write the plan to a scratchpad named with the `PRD:` prefix, e.g. `scratchpad_write("PRD: checkout refactor", content)`.
-2. Break the work into todos via `todo_create` (Solo MCP), one per delegatable unit.
-3. In the PRD, annotate each todo with its delegation target: which model (Sonnet for implementation, Haiku for mechanical work), whether it goes to its own agent or is batched with others into one agent, and which todos can run in parallel versus must be sequential.
-4. Hand off with a minimal instruction: tell the agent to follow the todos in `PRD: <name>`. It reads the todos and executes; it does not need your full reasoning, only the breakdown.
+1. Write plan to scratchpad named with `PRD:` prefix, e.g. `scratchpad_write("PRD: checkout refactor", content)`.
+2. Break work into todos via `todo_create` (Solo MCP), one per delegatable unit.
+3. In PRD, annotate each todo with its delegation target: which model (Sonnet for implementation, Haiku for mechanical work), whether it goes to its own agent or is batched with others into one agent, and which todos run in parallel versus must be sequential.
+4. Hand off with minimal instruction: tell agent to follow todos in `PRD: <name>`. It reads todos and executes; it does not need your full reasoning, only breakdown.
 
-Keep planning, review, and final verification on the Opus main thread. The PRD scratchpad plus the todo list is the contract between you and the executing agents.
+Keep planning, review, and final verification on Opus main thread. PRD scratchpad plus todo list is contract between you and executing agents.
 
 ### Handoffs
 
-Use `core:solo-session-handoff` when ending a session or handing off to another agent. The skill:
-1. Calls `whoami()` to verify the Solo MCP server is reachable.
-2. If online: writes a scratchpad with session state, open todos, suggested skills, and pick-up notes.
+Use `core:solo-session-handoff` when ending session or handing off to another agent. Skill:
+1. Calls `whoami()` to verify Solo MCP server reachable.
+2. If online: writes scratchpad with session state, open todos, suggested skills, and pick-up notes.
 3. If offline: falls back to `core:session-handoff` (chat-only summary for /clear).
 
 ### When to use what
@@ -298,8 +309,8 @@ Use `core:solo-session-handoff` when ending a session or handing off to another 
 
 ### Scratchpad discipline
 
-- Include a `## Handoff` section when writing pick-up notes.
-- Include a `## Suggested skills` list naming skills the next agent should invoke.
+- Include `## Handoff` section when writing pick-up notes.
+- Include `## Suggested skills` list naming skills next agent should invoke.
 - Reference existing plans, PRDs, or diffs by absolute path; don't restate them inline.
 - Redact API keys, passwords, and PII; write `[REDACTED]` in place.
 EOF

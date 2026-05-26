@@ -9,7 +9,7 @@ Coordination primitives for cross-session and cross-agent state via the Solo MCP
 
 ## Availability check
 
-Before doing anything else, verify the Solo MCP server is reachable:
+Before doing anything else, verify Solo MCP server is reachable:
 
 ```
 whoami()
@@ -37,7 +37,7 @@ If the call errors or times out, **stop this skill immediately** and invoke `cor
 
 ## SoloTerm workflow
 
-When the user is working inside SoloTerm (a Solo-managed terminal session), follow this pattern:
+When working inside SoloTerm (a Solo-managed terminal session), follow this pattern:
 
 **Session start**: check for an existing scratchpad before doing anything else:
 ```
@@ -55,14 +55,14 @@ todo_create(title, body)                                   # track a new work it
 todo_update(todo_id, body=new_body)                       # revise a todo
 ```
 
-**Session end / handoff**: leave a clean state for the next agent:
+**Session end / handoff**: leave clean state for next agent:
 ```
 scratchpad_append_section(id, "## Handoff", handoff_text) # add pick-up notes; include suggested skills
 todo_complete(todo_id)                                     # close finished items
 scratchpad_archive(id)                                     # archive if the work is done
 ```
 
-The handoff section should include a "Suggested skills" list naming any skills the next agent should invoke, and references (absolute paths or URLs) to existing plans, PRDs, or diffs rather than restating them inline.
+Handoff section should include a "Suggested skills" list naming skills the next agent should invoke, and references (absolute paths or URLs) to existing plans, PRDs, or diffs rather than restating them inline.
 
 ---
 
@@ -72,7 +72,7 @@ The handoff section should include a "Suggested skills" list naming any skills t
 ```
 scratchpad_write(name, content)
 ```
-A leading `# H1` in `content` becomes the scratchpad's display title. Scope is the current project unless you pass `project_id`.
+A leading `# H1` in `content` becomes the scratchpad's display title. Scope is current project unless you pass `project_id`.
 
 ### Read
 ```
@@ -93,7 +93,7 @@ scratchpad_add_tags(id, tags)                               # tag for filtering
 scratchpad_remove_tags(id, tags)
 ```
 
-`expected_revision` on `scratchpad_edit` is a concurrency guard; pass the revision from the last read. The call fails if the pad has changed since, so you don't silently overwrite concurrent writes.
+`expected_revision` on `scratchpad_edit` is a concurrency guard; pass revision from last read. Call fails if the pad has changed since, so you don't silently overwrite concurrent writes.
 
 ### Move / export
 ```
@@ -136,7 +136,7 @@ todo_remove_blocker(todo_id, blocker_todo_id)
 todo_set_blockers(todo_id, [ids])                # replace full blocker set
 ```
 
-Pass `response_mode: "rich"` on write ops (`todo_create`, `todo_update`, etc.) to get fully hydrated state back in the response without a separate `todo_get`.
+Pass `response_mode: "rich"` on write ops (`todo_create`, `todo_update`, etc.) to get fully hydrated state back in response without a separate `todo_get`.
 
 ### Complete or remove
 ```
@@ -182,7 +182,7 @@ todo_transfer(todo_id, target_project_id)
 
 1. Redact API keys, passwords, and PII; write `[REDACTED]` in place.
 2. Don't re-state content already captured in plans, PRDs, ADRs, issues, or diffs; reference by absolute path or URL instead.
-3. Include a "Suggested skills" section in handoff notes naming skills the next agent should invoke.
+3. Include a "Suggested skills" section in handoff notes naming skills next agent should invoke.
 
 ---
 
