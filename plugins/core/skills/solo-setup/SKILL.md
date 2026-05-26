@@ -206,8 +206,8 @@ Brief each task as a contract:
 - Forbid scope creep: if a change beyond scope seems needed, STOP and report, don't do it.
 
 Require proof, not claims:
-- Agent returns the command it ran and its output, not "done".
-- Agent runs tests/lint/build before returning.
+- Agent returns the diff and what it changed, not "done".
+- Don't gate each returned task on a full build/test/lint. With Rust and cargo that per-task compile cost is brutal. Run the full build, tests, and lint once at the end of a feature, not after every delegated task.
 - Review the diff against the spec in a fresh pass; flag correctness gaps only. A reviewer told to "find problems" invents them.
 
 Worktree hygiene:
