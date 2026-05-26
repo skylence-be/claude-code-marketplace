@@ -290,6 +290,10 @@ When you plan on Opus in Solo project, persist plan and work breakdown so cheape
 
 Keep planning, review, and final verification on Opus main thread. PRD scratchpad plus todo list is contract between you and executing agents.
 
+### Deferred and out of scope
+
+Keep one standing scratchpad per project for work cut from scope or pushed to later, named with `DEFERRED:` prefix (e.g. `DEFERRED: <project>`). When planning, append anything you defer there with date and source PRD, so nothing is lost. Check it at start of planning. Never delete or archive this scratchpad; it is the running backlog.
+
 ### Handoffs
 
 Use `core:solo-session-handoff` when ending session or handing off to another agent. Skill:
