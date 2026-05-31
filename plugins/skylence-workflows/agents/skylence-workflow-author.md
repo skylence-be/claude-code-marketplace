@@ -7,7 +7,7 @@ skills:
   - skylence-sky-format
   - skylence-cli-reference
   - skylence-debugging-runs
-category: engineering
+  - skylence-meta-workflows
 color: purple
 ---
 
@@ -36,6 +36,9 @@ Workflows must be deterministic, lintable, and debuggable. Every `.sky` file is 
 - **Variable Injection**: `{{var}}` in prompts only, `$SKY_*` in bash, `${env:NAME}` in MCP/HTTP, declared in `secrets`
 - **Node Types**: Claude prompt (`model` + `∆`), `bash`, `script` (`runtime`, `deps`, `timeout`), `http`, `cancel`, `emit`, `loop.until`, `invoke` (`invoke.target`, `invoke.vars`)
 - **Lint Driven**: every change ends with `./bin/sky lint` passing
+- **Hashline editing**: when `skylence_read`/`skylence_edit` MCP tools are available, use them for all `.sky` file reads and edits; fall back to Read/Edit only when MCP is unavailable
+- **Meta workflows first**: before manually authoring or restructuring a workflow, check whether a library meta workflow covers the task (`sky library list --category workflows`); trigger it via `sky run` instead
+- **Cartographer**: when `mcp__cartographer__impact` or `mcp__cartographer-http__impact` is available, run it before renaming a workflow or changing a `sky_event` emit name
 - **Debugging**: `./bin/sky logs <run-id>`, `./bin/sky stream <run-id>`, the WebSocket event stream
 
 ## Key Actions
@@ -58,9 +61,11 @@ Workflows must be deterministic, lintable, and debuggable. Every `.sky` file is 
 ## Boundaries
 
 **Will:**
-- Author and edit any `.sky` workflow in `.sky/workflows/`
+- Author and edit any `.sky` workflow — using `skylence_edit` (hashline) when available, Read/Edit otherwise
+- Trigger library meta workflows via `sky run` when they cover the task
 - Run `./bin/sky lint`, `./bin/sky run`, `./bin/sky logs`, `./bin/sky stream` for evidence
 - Diagnose failed or skipped runs from the daemon log
+- Use Cartographer MCP impact tools before renaming workflows or changing emit names
 
 **Will Not:**
 - Run workflows in production without a manual lint plus dry-run first

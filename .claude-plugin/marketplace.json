@@ -304,8 +304,8 @@
     {
       "name": "skylence-workflows",
       "source": "./plugins/skylence-workflows",
-      "description": "Skylence .sky workflow authoring and operation. 1 specialized agent (skylence-workflow-author), 4 slash commands (workflow-new, run, lint, doctor), and 4 skills covering the four-delimiter .sky file format, the sky CLI reference, debugging failed runs, and imperative MUST/MUST NOT rules. Bundles the Skylence MCP server via .mcp.json (auto-registers `sky mcp stdio` when the plugin loads) so list_runs, get_run, search_runs, daemon_status, and run-tool calls are available without manual config. Prerequisite: the `sky` binary must be on PATH (Windows: add the install directory to PATH after running the installer).",
-      "version": "1.0.1",
+      "description": "Skylence .sky workflow authoring and operation. 1 specialized agent (skylence-workflow-author), 4 slash commands (workflow-new, run, lint, doctor), and 5 skills: four-delimiter .sky format, sky CLI reference (incl. sky library commands), debugging failed runs, MUST/MUST NOT rules, and a meta-workflows catalogue (scaffold, update, annotate, clone, rename, delete, explain, audit). Agent uses hashline editing (skylence_read/skylence_edit MCP tools) for all .sky file edits, checks Cartographer MCP impact before structural changes, and triggers library meta workflows via sky run instead of doing the work manually. Bundles the Skylence MCP server via .mcp.json (auto-registers sky mcp stdio). Prerequisite: sky binary on PATH.",
+      "version": "1.1.0",
       "author": {
         "name": "Skylence"
       },
