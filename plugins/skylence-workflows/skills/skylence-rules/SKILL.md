@@ -55,7 +55,7 @@ The chain cap is 5. A new emit that triggers a workflow already in the ancestor 
 ## File Editing
 
 ### Use hashline edit tools when available
-When `skylence_read` and `skylence_edit` MCP tools are available (sky MCP server connected), use them for ALL reads and edits of `.sky` files instead of the standard Read/Edit/Write tools. `skylence_read` returns a `¶path#TAG` content-hash header; pass it verbatim in `skylence_edit` patches. This prevents stale edits — the tool rejects the patch if the file changed since the read.
+When `skylence_read` and `skylence_edit` MCP tools are available (sky MCP server connected), use them for ALL file reads and edits instead of the standard Read/Edit/Write tools. `skylence_read` returns a `¶path#TAG` content-hash header; pass it verbatim in `skylence_edit` patches. This prevents stale edits: the tool rejects the patch if the file changed since the read.
 
 ### Prefer meta workflows over manual edits
 When a library meta workflow covers the task, trigger it via `sky run` instead of doing the work manually. Check `sky library list --category workflows`. Key authoring workflows: `scaffold-sky-workflow`, `update-sky-workflow`, `annotate-sky-workflow`, `clone-sky-workflow`, `rename-sky-workflow`, `delete-sky-workflow`, `explain-sky-workflow`. Pass `--var dir=<dir> --var name=<file>` as the workflow requires.
