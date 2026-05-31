@@ -11,7 +11,7 @@ The `sky` CLI is the single user-facing interface for Skylence. The binary lives
 
 ```bash
 ./bin/sky run <name>                # run a workflow by filename (without .sky)
-./bin/sky run <name> --vars k=v     # pass vars consumed via {{var}} or $SKY_VAR
+./bin/sky run <name> --var k=v      # pass vars consumed via {{var}} or $SKY_VAR (repeatable)
 ./bin/sky logs                      # list recent runs
 ./bin/sky logs <run-id>             # show a specific run with step status
 ./bin/sky lint                      # validate all .sky files in .sky/workflows/
@@ -86,11 +86,26 @@ When the `skylence-workflows` marketplace plugin is installed, the plugin's bund
 
 Then restart Claude Code.
 
-## Examples / Templates
+## Library
 
 ```bash
-./bin/sky examples list             # browse bundled workflow examples
-./bin/sky examples copy <name>      # copy an example into .sky/workflows/
+./bin/sky library list                          # list all available assets (built-in + remote)
+./bin/sky library list --category workflows     # filter to workflows only
+./bin/sky library install <name>                # install into .sky/ (current repo)
+./bin/sky library install <name> --to user      # install to ~/.skylence/harness-builder/
+./bin/sky library install --all --to user       # install everything from all sources
+./bin/sky library update                        # fetch latest from remote sources
+./bin/sky library update --force               # re-fetch even if cached
+./bin/sky library show <name>                  # print asset content
+```
+
+Remote sources are configured in `~/.skylence/harness-builder/config.yaml` under `library.sources` (production) and `library.dev_sources` (private/dev repos). The built-in source ships embedded with the binary.
+
+## Examples / Templates (deprecated)
+
+```bash
+./bin/sky examples list             # legacy alias — prefer sky library list
+./bin/sky examples copy <name>      # legacy alias — prefer sky library install <name>
 ```
 
 ## Budget and Audit

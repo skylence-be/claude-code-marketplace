@@ -52,6 +52,16 @@ The `secrets` array names the environment variables; the values stay in `.env` (
 
 ### Trigger a workflow that emits `sky_event` without checking the chain depth
 The chain cap is 5. A new emit that triggers a workflow already in the ancestor chain is silently skipped. Map the emit chain on paper before adding new `emit`/`trigger.sky_event` pairs.
+## File Editing
+
+### Use hashline edit tools when available
+When `skylence_read` and `skylence_edit` MCP tools are available (sky MCP server connected), use them for ALL reads and edits of `.sky` files instead of the standard Read/Edit/Write tools. `skylence_read` returns a `¶path#TAG` content-hash header; pass it verbatim in `skylence_edit` patches. This prevents stale edits — the tool rejects the patch if the file changed since the read.
+
+### Prefer meta workflows over manual edits
+When a library meta workflow covers the task, trigger it via `sky run` instead of doing the work manually. Check `sky library list --category workflows`. Key authoring workflows: `scaffold-sky-workflow`, `update-sky-workflow`, `annotate-sky-workflow`, `clone-sky-workflow`, `rename-sky-workflow`, `delete-sky-workflow`, `explain-sky-workflow`. Pass `--var dir=<dir> --var name=<file>` as the workflow requires.
+
+### Check Cartographer impact before structural changes
+When Cartographer MCP tools are available (`mcp__cartographer__impact` or `mcp__cartographer-http__impact`), run impact analysis before renaming a workflow, changing a `sky_event` emit name, or restructuring a shared DAG. Stale impact data (check `staleness.aheadBy`) is not authoritative.
 
 ### Use `invoke = "name"` or `invoke_vars = {...}` syntax
 Both produce a parse error (SKY-WF-001). The correct dotted-key syntax is `invoke.target = "name"` and `invoke.vars = {"key": "value"}`.
