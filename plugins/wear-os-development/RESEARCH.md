@@ -241,3 +241,29 @@ Sources:
 | Storage | `androidx.datastore:datastore-preferences` / `datastore` | replaces EncryptedSharedPreferences |
 | Background | `androidx.work:work-runtime-ktx` | battery-aware deferrable work |
 | Ongoing activity | `androidx.wear:wear-ongoing` | ongoing-activity chip |
+
+---
+
+## 10. Code-symbol verification (skill bodies)
+
+Specific API symbols used in the skill code examples were verified against official
+reference/guide pages (not written from memory):
+
+- `TransformingLazyColumn` + `rememberTransformingLazyColumnState` live in
+  `androidx.wear.compose.foundation.lazy`; the state is shared with `ScreenScaffold`.
+- Complications are served by `SuspendingComplicationDataSourceService` (Kotlin-coroutine
+  variant of `ComplicationDataSourceService`) in
+  `androidx.wear.watchface.complications.datasource`, implementing suspend
+  `onComplicationRequest()`.
+- Health Services `MeasureCallback` declares `onAvailabilityChanged(dataType:
+  DeltaDataType<*, *>, availability: Availability)` and `onDataReceived(data:
+  DataPointContainer)`; capabilities via `measureClient.getCapabilitiesAsync().await()`
+  then `DataType.HEART_RATE_BPM in capabilities.supportedDataTypesMeasure` (matches the
+  official MeasureClient example verbatim).
+
+Sources:
+- https://developer.android.com/reference/kotlin/androidx/wear/compose/foundation/lazy/package-summary
+- https://developer.android.com/training/wearables/complications/exposing-data
+- https://developer.android.com/reference/kotlin/androidx/wear/watchface/complications/datasource/ComplicationDataSourceService
+- https://developer.android.com/health-and-fitness/health-services/active-data/measure-client
+- https://developer.android.com/reference/kotlin/androidx/health/services/client/data/DataPointContainer
