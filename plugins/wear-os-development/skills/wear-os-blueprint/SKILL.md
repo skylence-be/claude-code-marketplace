@@ -1,6 +1,6 @@
 ---
 name: wear-os-blueprint
-description: Wear OS Blueprint: planning format for Kotlin + Compose smartwatch apps. Use when planning implementations or generating code.
+description: "Wear OS Blueprint: planning format for Kotlin + Compose smartwatch apps. Use when planning implementations or generating code."
 category: wear-os
 tags: [wear-os, blueprint, ai, planning, architecture, specification]
 related_skills: [wear-os-compose-patterns, wear-os-tiles-complications, wear-os-health-services, wear-os-data-and-security]
@@ -181,6 +181,25 @@ Tink + Android Keystore key, then persist ciphertext in DataStore.
 - Gate against Wear OS app-quality guidelines before release
 ```
 
+### 11. Toolchain & On-Device Verification (field lessons, 2026-06)
+
+Field-verified building a real Pixel Watch app end-to-end (compile → install → render):
+
+```markdown
+## Toolchain
+- JDK **21** — pin `org.gradle.java.home` in `gradle.properties`. JDK 26 breaks the
+  Gradle 8.13 Kotlin DSL script compiler (2-digit major rejected at startup).
+- Kotlin 2.3 DSL: `kotlinOptions { jvmTarget }` is gone → use
+  `android { kotlin { compilerOptions { jvmTarget = JvmTarget.JVM_17 } } }`.
+  (See RESEARCH.md "Field lessons" for the full toolchain notes.)
+
+## On-device verification (non-negotiable)
+- **Build-green ≠ renders.** A clean `assembleDebug` proves nothing about tiles,
+  complications, or background triggers. Verify rendered values and that triggers
+  actually fire on a physical watch — the complication-stuck-at-0% and blank-vector-tile
+  bugs both compiled and only failed on-device.
+```
+
 ## Blueprint Principles
 
 - **Glanceable first** — every surface answers "what can the user see/do in 2 seconds?"
@@ -189,4 +208,7 @@ Tink + Android Keystore key, then persist ciphertext in DataStore.
 - **Round-screen native** — use Wear Compose libraries, never mobile Compose Material.
 - **Decide surfaces up front** — app, Tile, Complication, and Ongoing Activity are
   separate deliverables with separate code paths.
+- **Build-green ≠ renders** — plan an on-device verification pass for every glanceable
+  surface; tiles, complications, and background triggers fail silently when they only
+  pass compilation (field lesson, 2026-06).
 - A vague plan leads to a watch app that drains the battery and ignores the round screen.

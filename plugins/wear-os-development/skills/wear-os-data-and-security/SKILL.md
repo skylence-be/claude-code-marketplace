@@ -44,6 +44,10 @@ val unitsFlow = context.settings.data.map { it[booleanPreferencesKey("metric")] 
 - **Credential Manager** for sign-in on the watch (don't reuse phone-only auth UIs).
 - Follow the Android security checklist: least-privilege permissions, never log secrets,
   validate all inbound Data Layer messages.
+- **Hardware-backed keys — request StrongBox, fall back to the TEE.** Field-verified
+  (building, 2026-06): set `setIsStrongBoxBacked(true)` on the Keystore key, but **catch
+  the failure and retry without it** — many watches have no StrongBox, and assuming it is
+  present crashes key generation on TEE-only devices.
 
 ## Phone ↔ watch sync — Data Layer API
 
@@ -76,6 +80,42 @@ not through the phone. Wrap non-urgent network sync in WorkManager.
   `RequiresCharging` for non-urgent sync.
 - **Foreground service + Ongoing Activity** for user-visible long tasks (tracking, media).
 - Avoid wake locks; avoid always-on unless the use case justifies the battery cost.
+
+### Field-verified background refresh & alerts (building, 2026-06)
+
+- **WorkManager periodic minimum interval = 15 min** — you cannot schedule tighter. Add
+  `NetworkType.CONNECTED`; periodic work **survives reboot** with
+  `ExistingPeriodicWorkPolicy.KEEP`, so you do **not** need a `BootReceiver`.
+- High-importance alert with vibration: set the **vibration pattern on the
+  `NotificationChannel`** (API 26+), not per-notification — once a channel exists,
+  per-notification vibration is ignored.
+- **Implicit-broadcast restriction:** manifest-declared receivers for
+  `ACTION_USER_PRESENT` / `ACTION_SCREEN_ON` generally **do not fire on API 26+**. Use a
+  **dynamically-registered** receiver from a long-lived component (accept the battery
+  cost) and verify it actually fires — never ship a manifest receiver that is a silent
+  no-op.
+
+## Shared cache & staleness floor (field-verified — building, 2026-06)
+
+Every surface — app foreground, tile, complication, background worker — refetches
+independently. Without a **single shared cache and one staleness floor** (e.g. **180s**)
+applied across all of them, every app-open and every tile-view hits the network and a
+rate-limited backend returns **429s**. Gate all fetches through one floor and serve the
+cache within it.
+
+## ADB / on-device ops (field-verified — building, 2026-06)
+
+- `adb shell run-as <pkg> sh -c '…'` lands in an unexpected cwd and **mangles chained
+  shells** on Wear OS. To write into app-private storage reliably: `adb push` to
+  `/data/local/tmp`, then a **direct** `adb shell run-as <pkg> cp /data/local/tmp/x files/x`
+  (a direct `run-as` command runs with cwd = the app data dir, so a relative `files/…`
+  path works).
+- `adb install -r` updates in place and **preserves app data**; a fresh install or
+  uninstall **wipes** it. Use `-r` to keep on-device state (e.g. an encrypted token
+  vault) across rebuilds.
+- "Widget won't update" / "blank vector" is usually a **render/refresh** issue, not data
+  — confirm the cached value is actually present with
+  `adb shell run-as <pkg> cat shared_prefs/*.xml` before chasing the data layer.
 
 ## Do / Don't
 

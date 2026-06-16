@@ -1,6 +1,6 @@
 ---
 name: wear-os-compose-patterns
-description: Compose for Wear OS: Material 3 Expressive scaffolds, scaling lists, navigation, ambient. Use when building Wear OS UI.
+description: "Compose for Wear OS: Material 3 Expressive scaffolds, scaling lists, navigation, ambient. Use when building Wear OS UI."
 category: wear-os
 tags: [wear-os, compose, material3, ui, round-screen, navigation]
 related_skills: [wear-os-blueprint, wear-os-tiles-complications, wear-os-data-and-security]

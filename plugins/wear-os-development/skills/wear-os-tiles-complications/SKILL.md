@@ -54,6 +54,21 @@ Register in `AndroidManifest.xml`:
 - `METADATA_GROUP_KEY` groups multiple `TileService`s in the manifest for cross-OS
   version switching of the "same" tile.
 
+### Tile refresh & rendering (field-verified — building, 2026-06)
+
+These bit a real Pixel Watch build; each compiled green and only failed when rendered:
+
+- **ProtoLayout is a separate render path from Compose** — your Compose `MaterialTheme`
+  colors do NOT carry over. Define tile colors as **ARGB ints**.
+- **Vector-in-tile footgun:** a `VectorDrawable` referenced via
+  `AndroidImageResourceByResId` can render **blank** on a tile. Verify on-device and
+  **rasterize to PNG** if it comes up empty.
+- Tiles refresh **on view** (`onTileRequest` fires when the user swipes to the tile), on
+  the **freshness interval**, and when you call `getUpdater(context).requestUpdate()`.
+  Serve cached data instantly; fetch only when your own staleness gate allows (see the
+  shared staleness floor in `wear-os-data-and-security`).
+- An arc gauge = two overlaid `Arc` / `ArcLine` layers (track + value) in a `Box`.
+
 ## Complications
 
 A complication is supplied by a `ComplicationDataSourceService` (complication data
@@ -72,6 +87,16 @@ class LastRunComplicationService : SuspendingComplicationDataSourceService() {
 - Declare which `ComplicationType`s you support (SHORT_TEXT, RANGED_VALUE, etc.).
 - Always provide preview data for the watch-face picker.
 - Keep the request handler fast and read from local storage (DataStore), not the network.
+
+### Keeping complications fresh (field-verified — building, 2026-06)
+
+- `onComplicationRequest` only runs on the system update period (~30 min) **or** when you
+  call `ComplicationDataSourceUpdateRequester.create(context, ComponentName(context, Svc::class.java)).requestUpdate()`.
+  **After any data change you MUST call `requestUpdate()`** or the complication shows
+  stale data forever — the classic "renders 0% then never updates" bug (compiles fine,
+  fails only on-device).
+- Complication images are **`MonochromaticImage`** — single-color, tinted by the watch
+  face. You cannot render a full-color logo, only a silhouette glyph.
 
 ## Ongoing Activity
 

@@ -26,6 +26,19 @@ fun RunNav() {
 - `SwipeDismissableNavHost` honors the watch's edge-swipe-back gesture.
 - Keep the back stack shallow — deep navigation is awkward on a watch.
 
+## Horizontal paging (field-verified — building, 2026-06)
+
+To swipe horizontally between sibling pages, use **`HorizontalPager` from
+`androidx.compose.foundation.pager`** — it is standard Compose, **not** a Wear package
+(there is no Wear-specific pager). Pair it with Wear's material `HorizontalPageIndicator`
+for round-screen dots.
+
+```kotlin
+import androidx.compose.foundation.pager.HorizontalPager   // standard Compose, NOT wear.*
+import androidx.compose.foundation.pager.rememberPagerState
+// HorizontalPageIndicator comes from the Wear material library
+```
+
 ## State & architecture
 
 - Hold UI state in a `ViewModel`; expose `StateFlow`, collect with

@@ -267,3 +267,42 @@ Sources:
 - https://developer.android.com/reference/kotlin/androidx/wear/watchface/complications/datasource/ComplicationDataSourceService
 - https://developer.android.com/health-and-fitness/health-services/active-data/measure-client
 - https://developer.android.com/reference/kotlin/androidx/health/services/client/data/DataPointContainer
+
+---
+
+## 11. Field lessons (from building a real Pixel Watch app, 2026-06)
+
+> Unlike sections 1–10 (sourced from official docs), these are **field-verified** notes
+> from building a standalone Wear OS app end-to-end (compile → install → on-device).
+> Compile-green ≠ runs/renders. The matching skill bodies carry the actionable form;
+> this section records the toolchain + environment facts. No APIs invented — every item
+> was hit while building.
+
+### Toolchain / build
+- **JDK 26 breaks Gradle 8.13.** The bundled Kotlin `.kts` script compiler's
+  `JavaVersion.parse()` rejects a 2-digit major and the build fails at startup. Fix:
+  install **JDK 21** (`brew install openjdk@21`) and pin `org.gradle.java.home` in
+  `gradle.properties`.
+- **Kotlin 2.3.0 removed `kotlinOptions { jvmTarget }`** → use the new DSL:
+  `android { kotlin { compilerOptions { jvmTarget = JvmTarget.JVM_17 } } }`.
+- Compose package moves verified on this build (see `wear-os-compose-patterns`):
+  `ScalingLazyColumn` → `androidx.wear.compose.foundation.lazy` (the
+  `androidx.wear.compose.material` one is deprecated); `HorizontalPager` →
+  `androidx.compose.foundation.pager` (standard Compose, **not** a Wear package).
+
+### Date / time
+- CET display from an ISO instant uses `java.time`:
+  `Instant.parse(iso).atZone(ZoneId.of("Europe/Brussels"))` formatted with
+  `DateTimeFormatter.ofPattern("dd/MM HH:mm")`.
+
+### Connectivity
+- The watch reaches the internet via Wi-Fi, a phone-over-Bluetooth proxy, or LTE — the
+  OS routes automatically. Transient **"unable to resolve host"** (DNS) blips happen on
+  network switches and self-clear; network-constrained background work retries, so don't
+  treat a single DNS failure as fatal.
+
+### Process
+- **On-device verification is non-negotiable.** The complication-stuck-at-0% and
+  vector-in-tile bugs both compiled and "built green," failing only when rendered on the
+  watch. Verify rendered values and actual trigger firing, not just an `assembleDebug`
+  exit 0.

@@ -48,6 +48,19 @@ fun StartScreen(onStart: () -> Unit, sensorReady: Boolean) {
 For confirm/cancel use the Wear-specific edge button so the tap target hugs the round
 bezel rather than a centered mobile-style button.
 
+## Field lessons (building, 2026-06)
+
+Verified on a real Pixel Watch build:
+
+- **Round-screen overflow is unforgiving.** A round display gives roughly a **~192dp**
+  in-flow content budget; content laid out past it is clipped by the bezel, not scrolled
+  into view. Keep screens to in-flow layout inside the scaffold's safe area and let a
+  list (TLC / SLC) own any overflow — don't push fixed-height columns past the curve.
+- **Add a tap-to-refresh affordance.** Background, tile, and complication refresh are all
+  throttled (15-min WorkManager floor, on-view tiles, a shared staleness gate), so a user
+  who wants data *now* needs a manual path — a tap that triggers your refresh while still
+  respecting the same staleness floor (see `wear-os-data-and-security`).
+
 ## Anti-patterns
 
 - ❌ Importing `androidx.compose.material3.*` (mobile) — visually and behaviorally wrong

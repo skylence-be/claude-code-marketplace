@@ -29,12 +29,14 @@ fun RunHistory(runs: List<RunRecord>) {
 
 ## ScalingLazyColumn (Material 2.5 — migration / legacy)
 
-`ScalingLazyColumn` (SLC) lives in `androidx.wear.compose.material`. It scales and fades
-items toward the edges. Still valid; use it when staying on Material 2.5 or migrating.
+`ScalingLazyColumn` (SLC) scales and fades items toward the edges. **Field-verified
+(building, 2026-06):** import it from **`androidx.wear.compose.foundation.lazy`** — the
+older `androidx.wear.compose.material` `ScalingLazyColumn` is **deprecated**. Use SLC
+only when staying on Material 2.5 or migrating; prefer TLC for new Material 3 UI.
 
 ```kotlin
-import androidx.wear.compose.material.ScalingLazyColumn
-import androidx.wear.compose.material.rememberScalingLazyListState
+import androidx.wear.compose.foundation.lazy.ScalingLazyColumn
+import androidx.wear.compose.foundation.lazy.rememberScalingLazyListState
 
 val listState = rememberScalingLazyListState()
 ScalingLazyColumn(state = listState) {
