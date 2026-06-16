@@ -178,6 +178,30 @@
       ]
     },
     {
+      "name": "wear-os-development",
+      "source": "./plugins/wear-os-development",
+      "description": "Wear OS smartwatch development with Kotlin + Jetpack Compose. 1 specialized agent, 2 slash commands, and 5 skills covering Blueprint AI planning for watch apps, Compose for Wear OS (Material 3 Expressive, ScalingLazyColumn/TransformingLazyColumn), Tiles + ProtoLayout + Complications + Ongoing Activity, Health Services (passive monitoring, ExerciseClient, MeasureClient), and on-watch data + security (DataStore over deprecated EncryptedSharedPreferences, Android Keystore, Data Layer API, battery-aware background work). Grounded in official Android 2026 guidance.",
+      "version": "1.0.0",
+      "author": {
+        "name": "Skylence"
+      },
+      "tags": [
+        "wear-os",
+        "kotlin",
+        "jetpack-compose",
+        "smartwatch",
+        "wearables",
+        "material3",
+        "tiles",
+        "protolayout",
+        "complications",
+        "health-services",
+        "datastore",
+        "blueprint",
+        "ai-planning"
+      ]
+    },
+    {
       "name": "nativephp-development",
       "source": "./plugins/nativephp-development",
       "description": "NativePHP desktop and mobile app development with 3 specialized agents (NativePHP architect, desktop expert, mobile expert), 4 slash commands for windows, menus, native providers, and mobile plugins, and 3 skill patterns for desktop, mobile, and testing. Covers NativeAppServiceProvider, window management, menu systems, event broadcasting, mobile bridge functions, and cross-platform deployment",

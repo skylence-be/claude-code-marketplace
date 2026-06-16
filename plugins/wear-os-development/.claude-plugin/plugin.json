@@ -1,0 +1,24 @@
+{
+    "name": "wear-os-development",
+    "version": "1.0.0",
+    "description": "Wear OS smartwatch development with Kotlin + Jetpack Compose. 1 specialized agent, 2 slash commands, and 5 skills covering Blueprint AI planning for watch apps, Compose for Wear OS (Material 3 Expressive, ScalingLazyColumn/TransformingLazyColumn), Tiles + ProtoLayout + Complications + Ongoing Activity, Health Services (passive monitoring, ExerciseClient, MeasureClient), and on-watch data + security (DataStore over deprecated EncryptedSharedPreferences, Android Keystore, Data Layer API, battery-aware background work). Grounded in official Android 2026 guidance.",
+    "author": {
+        "name": "Skylence"
+    },
+    "license": "MIT",
+    "keywords": [
+        "wear-os",
+        "kotlin",
+        "jetpack-compose",
+        "smartwatch",
+        "wearables",
+        "material3",
+        "tiles",
+        "protolayout",
+        "complications",
+        "health-services",
+        "datastore",
+        "blueprint",
+        "ai-planning"
+    ]
+}
